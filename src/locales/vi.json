@@ -1,0 +1,11 @@
+{
+  "MENU": {
+    "DASHBOARD": "Bảng điều khiển",
+    "USERS": "Người dùng",
+    "LIST_USERS": "Danh sách",
+    "CLOSE_CURRENT": "Đóng tab hiện tại",
+    "CLOSE_OTHER": "Đóng các tab khác",
+    "COLOSE_ALL": "Đóng tất cả",
+    "SWITCH_THEME": "Chuyển đổi theme"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "MENU": {
+    "DASHBOARD": "Dashboard",
+    "USERS": "Users",
+    "LIST_USERS": "List",
+    "CLOSE_CURRENT": "Close current",
+    "CLOSE_OTHER": "Close other",
+    "COLOSE_ALL": "Close all",
+    "SWITCH_THEME": "Switch theme"
+  }
+}

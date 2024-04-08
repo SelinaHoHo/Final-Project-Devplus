@@ -1,0 +1,19 @@
+#pageTabs-actions {
+  padding: 0 10px 0 10px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.rotate {
+  animation: rotate 7s linear infinite;
+  transform: rotate(360deg);
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
