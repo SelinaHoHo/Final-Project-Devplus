@@ -14,6 +14,7 @@ import TagsView from "../tagView";
 import HeaderComponent from "./header";
 import "./layout.scss";
 import MenuComponent from "./menu";
+import { ReactComponent as LogoSvg } from "../../assets/header/logo-team.svg";
 
 const { Sider, Content } = Layout;
 const WIDTH = 992;
@@ -90,11 +91,9 @@ const LayoutPage: FC = () => {
             </svg>
           </div>
           <div className='demo-logo-vertical'>
-            <img
-              width={30}
-              src='https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg'
-              alt=''
-            />
+            <span className='anticon' style={{ fontSize: "100px" }}>
+              <LogoSvg />
+            </span>
           </div>
           <MenuComponent
             menuList={menuList}
