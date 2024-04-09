@@ -14,7 +14,7 @@ import TagsView from "../tagView";
 import HeaderComponent from "./header";
 import "./layout.scss";
 import MenuComponent from "./menu";
-import { ReactComponent as LogoSvg } from "../../assets/header/logo-team.svg";
+import { ReactComponent as LogoSvg } from "../../assets/header/logo.svg";
 
 const { Sider, Content } = Layout;
 const WIDTH = 992;
