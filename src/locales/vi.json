@@ -16,6 +16,7 @@
     "SUCCESS": "Đăng nhập thành công!",
     "FAILED": "Đăng nhập thất bại!",
     "SUCCESS_MESSAGE": "Bạn đã đăng nhập thành công!",
-    "FAILED_MESSAGE": "Email hoặc mật khẩu không đúng!"
+    "FAILED_MESSAGE": "Email hoặc mật khẩu không đúng!",
+    "PASSWORD": "Mật khẩu"
   }
 }

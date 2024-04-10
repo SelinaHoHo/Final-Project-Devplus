@@ -18,6 +18,7 @@
     "SUCCESS": "Login Successful!",
     "SUCCESS_MESSAGE": "You have successfully logged in!",
     "FAILED": "Login Failed!",
-    "FAILED_MESSAGE": "Email or password is incorrect!"
+    "FAILED_MESSAGE": "Email or password is incorrect!",
+    "PASSWORD": "Password"
   }
 }

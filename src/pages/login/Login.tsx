@@ -1,10 +1,9 @@
 import { useLogin } from "@/hooks/useAuth";
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import { Button, Dropdown, Form, Grid, Input, Tooltip, Typography, theme as antTheme } from "antd";
-import React, { useEffect } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import {} from "../../apis/user.api";
 import { ReactComponent as MoonSvg } from "../../assets/header/ic_moon.svg";
 import { ReactComponent as SunSvg } from "../../assets/header/ic_sun.svg";
@@ -14,6 +13,9 @@ import {
   default as LoginImageDark,
 } from "../../assets/header/last_light.png";
 
+import { yupSync } from "@/helpers/validation";
+import { Rule } from "antd/es/form";
+import * as yup from "yup";
 import { ReactComponent as LogoSvg } from "../../assets/header/logo_login.svg";
 import i18n from "../../config/i18n";
 import { STORAGE_KEY } from "../../constants/enum";
@@ -30,17 +32,9 @@ const Login: React.FC = () => {
   const token = antTheme.useToken();
   const dispatch = useDispatch();
   const screens = useBreakpoint();
-  const navigate = useNavigate();
   const { t } = useTranslation();
   const [form] = Form.useForm();
   const { mutate: handleLogin } = useLogin();
-  const { isAuth } = useSelector((state: RootState) => state.auth);
-
-  useEffect(() => {
-    if (isAuth) {
-      navigate("/");
-    }
-  }, [isAuth, navigate]);
 
   const onChangeTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
@@ -57,6 +51,18 @@ const Login: React.FC = () => {
     localStorage.setItem(STORAGE_KEY.LOCALES, key);
     await i18n.changeLanguage(key);
   };
+
+  const validator = [
+    yupSync(
+      yup.object().shape({
+        email: yup
+          .string()
+          .trim()
+          .required(i18n.t("LOGIN.EMAIL_REQUIRED") as string),
+        password: yup.string().required(i18n.t("LOGIN.PASSWORD_REQUIRED") as string),
+      }),
+    ),
+  ] as unknown as Rule[];
 
   const onFinish = (values: { email: string; password: string }) => {
     handleLogin(values);
@@ -171,16 +177,7 @@ const Login: React.FC = () => {
             layout='vertical'
             requiredMark='optional'
           >
-            <Form.Item
-              name='email'
-              rules={[
-                {
-                  type: "email",
-                  required: true,
-                  message: t("LOGIN.EMAIL_REQUIRED") as string,
-                },
-              ]}
-            >
+            <Form.Item name='email' rules={validator}>
               <Input
                 size='large'
                 prefix={
@@ -191,15 +188,7 @@ const Login: React.FC = () => {
                 placeholder='Email'
               />
             </Form.Item>
-            <Form.Item
-              name='password'
-              rules={[
-                {
-                  required: true,
-                  message: t("LOGIN.PASSWORD_REQUIRED") as string,
-                },
-              ]}
-            >
+            <Form.Item name='password' rules={validator}>
               <Input.Password
                 size='large'
                 prefix={
@@ -208,7 +197,7 @@ const Login: React.FC = () => {
                   />
                 }
                 type='password'
-                placeholder='Password'
+                placeholder={t("LOGIN.PASSWORD")}
               />
             </Form.Item>
             <Form.Item style={{ marginBottom: "0px" }}>
