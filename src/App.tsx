@@ -29,6 +29,10 @@ function App() {
   const { theme } = useSelector((state: RootState) => state.global);
   const dispatch = useDispatch();
 
+  // if (localStorage.getItem("isLogin") === "true") {
+  //   dispatch(setUserItem({ isAuth: true }));
+  // }
+
   const setTheme = (dark = true) => {
     dispatch(
       setGlobalState({
@@ -75,6 +79,10 @@ function App() {
         <HistoryRouter history={history}>
           <Suspense fallback={<Spin />}>
             <Router />
+            {/* <ProtectedRoute>
+              <Outlet />
+              <Router />
+            </ProtectedRoute> */}
           </Suspense>
         </HistoryRouter>
       </ConfigProvider>

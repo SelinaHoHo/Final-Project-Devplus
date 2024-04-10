@@ -6,6 +6,16 @@
     "CLOSE_CURRENT": "Close current",
     "CLOSE_OTHER": "Close other",
     "COLOSE_ALL": "Close all",
-    "SWITCH_THEME": "Switch theme"
+    "SWITCH_THEME": "Switch theme",
+    "SIGN_IN": "SIGN IN",
+    "SIGN_IN_TITLE": "Welcome to Titans's Management Application!"
+  },
+  "LOGIN": {
+    "SIGN_IN": "SIGN IN",
+    "SIGN_IN_TITLE": "Welcome to Titans's Management Application!",
+    "REMEMBER_ME": "Remember me",
+    "FORGOT_PASSWORD": "Forgot password?",
+    "QUESTION": "Don't have an account?",
+    "lINK": "Sign up now"
   }
 }
