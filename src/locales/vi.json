@@ -66,5 +66,26 @@
     "ERROR": "Vui lòng chọn nhân viên và vị trí",
     "ERROR_NAME": "Vui lòng chọn nhân viên",
     "ERROR_ROLES": "Vui lòng chọn vị trí"
+  },
+  "CREATE_EMPLOYEE": {
+    "GENDER": "Giới tính",
+    "PHONE": "Số điện thoại",
+    "EMAIL": "Email",
+    "NAME": "Họ và tên",
+    "DOB": "Ngày sinh",
+    "STATUS": "Trạng thái",
+    "SUBMIT": "Gửi",
+    "USERNAME": "Tên đăng nhập",
+    "ROLE": "Vị trí",
+    "NAME_REQUIRED": "Vui lòng điền tên",
+    "USERNAME_REQUIRED": "Vui lòng điền tên đăng nhập",
+    "PHONE_REQUIRED": "Vui lòng điền số điện thoại",
+    "PHONEDIGITS_REQUIRED": "Số điện thoại phải có 10 số",
+    "EMAIL_REQUIRED": "Vui lòng điền email",
+    "INVALIDEMAIL_REQUIRED": "Sai địa chỉ email",
+    "DOB_REQUIRED": "Vui lòng chọn ngày sinh",
+    "GENDER_REQUIRED": "Vui lòng chọn giới tính",
+    "STATUS_REQUIRED": "Vui lòng chọn trạng thái",
+    "ROLE_REQUIRED": "Vui lòng chọn vai trò"
   }
 }

@@ -67,6 +67,29 @@
     "ALREADY_EXISTS": "The employee already exists",
     "ERROR": "Please select employee and roles",
     "ERROR_NAME": "Please select employee name",
-    "ERROR_ROLES": "Please select employee roles"
+    "ERROR_ROLES": "Please select employee roles",
+    "PASSWORD": "Password",
+    "SWITCH_THEME": "Switch theme"
+  },
+  "CREATE_EMPLOYEE": {
+    "GENDER": "Gender",
+    "PHONE": "Phone",
+    "EMAIL": "Email",
+    "NAME": "Name",
+    "DOB": "Date of Birth",
+    "STATUS": "Status",
+    "SUBMIT": "Submit",
+    "USERNAME": "Username",
+    "ROLE": "Role",
+    "NAME_REQUIRED": "Please enter name",
+    "USERNAME_REQUIRED": "Please enter Username",
+    "PHONE_REQUIRED": "Please enter phone number",
+    "PHONEDIGITS_REQUIRED": "Phone number must be 10 digits",
+    "EMAIL_REQUIRED": "Please enter email",
+    "INVALIDEMAIL_REQUIRED": "Invalid email address",
+    "DOB_REQUIRED": "Please enter date of birth",
+    "GENDER_REQUIRED": "Please enter gender",
+    "STATUS_REQUIRED": "Please enter status",
+    "ROLE_REQUIRED": "Please enter role"
   }
 }
