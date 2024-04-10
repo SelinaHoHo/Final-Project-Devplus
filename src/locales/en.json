@@ -108,6 +108,26 @@
     "POSITIONS": "Positions",
     "LANGUAGE_REQUIRED": "Please enter coding language",
     "TECHNICAL_REQUIRED": "Please enter technical",
-    "POSITIONS_REQUIRED": "Please enter positions"
+    "POSITIONS_REQUIRED": "Please enter positions",
+    "ERROR_ROLES": "Please select employee roles"
+  },
+  "TABLE": {
+    "EMPTY": "Empty",
+    "ACTIONS": "Actions",
+    "TOTAL_PAGE": "Total pages: {{total}}",
+    "DISPLAY": "Display",
+    "ITEM": "items",
+    "DETAILS": "Actions details",
+    "NAME": "name"
+  },
+  "LIST": {
+    "POSITIONS": "Positions",
+    "STATUS": "status",
+    "ACTIONS": "actions",
+    "NAME": "name"
+  },
+  "ACTION": {
+    "DETAILS": "details",
+    "SYNC": "sync"
   }
 }

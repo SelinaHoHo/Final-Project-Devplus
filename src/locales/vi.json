@@ -107,5 +107,24 @@
     "LANGUAGE_REQUIRED": "Vui lòng chọn ngôn ngữ lập trình",
     "TECHNICAL_REQUIRED": "Vui lòng chọn công nghệ",
     "POSITIONS_REQUIRED": "Vui lòng chọn vị trí"
+  },
+  "TABLE": {
+    "EMPTY": "trống",
+    "ACTIONS": "hành động",
+    "TOTAL_PAGE": "tổng trang: {{total}}",
+    "DISPLAY": "hiển thị",
+    "ITEM": "mục",
+    "DETAILS": "chi tiết",
+    "NAME": "tên"
+  },
+  "LIST": {
+    "POSITIONS": "Vị trí",
+    "STATUS": "Trạng thái",
+    "ACTIONS": "Hành Động",
+    "NAME": "tên"
+  },
+  "ACTION": {
+    "DETAILS": "chi tiết",
+    "SYNC": "Đồng bộ"
   }
 }

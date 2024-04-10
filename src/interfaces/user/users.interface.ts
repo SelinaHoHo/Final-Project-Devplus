@@ -1,9 +1,11 @@
-interface IUser {
+export interface IUser {
   id: string;
   userName: string;
   fullName: string;
   email: string;
-  isManager: boolean;
+  positions: string[];
+  status: boolean;
+  avatarUrl: string;
 }
 
 interface IGetUser {
@@ -47,3 +49,5 @@ export type SkillType = {
   id: string;
   name: string;
 };
+
+

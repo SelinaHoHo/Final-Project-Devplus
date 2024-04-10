@@ -10,6 +10,10 @@ import ListUser from "../pages/Users/ListUser";
 const CreateProject = lazy(() => import("@/pages/project/CreateProject"));
 const Dashboard = lazy(() => import("@/pages/Dashboard"));
 const Login = lazy(() => import("@/pages/login/Login"));
+import { Navigate, useRoutes } from "react-router-dom";
+import LayoutPage from "../components/layout";
+import ListUser from "@/pages/User/ListUser";
+import Dashboard from "@/pages/Dashboard";
 
 const Router = () => {
   return useRoutes([
