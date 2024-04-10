@@ -3,6 +3,7 @@
     "DASHBOARD": "Bảng điều khiển",
     "USERS": "Người dùng",
     "LIST_USERS": "Danh sách",
+    "CREATE_USER": "Tạo người dùng",
     "CLOSE_CURRENT": "Đóng tab hiện tại",
     "CLOSE_OTHER": "Đóng các tab khác",
     "COLOSE_ALL": "Đóng tất cả",
@@ -38,6 +39,21 @@
     "DOB_REQUIRED": "Vui lòng chọn ngày sinh",
     "GENDER_REQUIRED": "Vui lòng chọn giới tính",
     "STATUS_REQUIRED": "Vui lòng chọn trạng thái",
-    "ROLE_REQUIRED": "Vui lòng chọn vai trò"
+    "ROLE_REQUIRED": "Vui lòng chọn vai trò",
+    "PROFILE": "Thông tin cá nhân",
+    "MALE": "Nam",
+    "FEMALE": "Nữ",
+    "OTHER": "Khác",
+    "PENDING": "Đang chờ",
+    "IN_PROGRESS": "Đang làm việc",
+    "EMPLOYEE": "Nhân viên",
+    "MANAGER": "Quản lí",
+    "SKILL": "Kỹ năng",
+    "TECHNOLOGY": "Công nghệ",
+    "YOE": "Số năm kinh nghiệm",
+    "ADD_SKILL": "Thêm kỹ năng",
+    "ACTION": "Hành động",
+    "DELETE": "Xóa",
+    "WARNING": "Vui lòng điền cả Công nghệ và Số năm kinh nghiệm"
   }
 }

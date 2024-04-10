@@ -3,6 +3,7 @@
     "DASHBOARD": "Dashboard",
     "USERS": "Users",
     "LIST_USERS": "List",
+    "CREATE_USER": "Create user",
     "CLOSE_CURRENT": "Close current",
     "CLOSE_OTHER": "Close other",
     "COLOSE_ALL": "Close all",
@@ -41,6 +42,21 @@
     "DOB_REQUIRED": "Please enter date of birth",
     "GENDER_REQUIRED": "Please enter gender",
     "STATUS_REQUIRED": "Please enter status",
-    "ROLE_REQUIRED": "Please enter role"
+    "ROLE_REQUIRED": "Please enter role",
+    "PROFILE": "Profile",
+    "MALE": "Male",
+    "FEMALE": "Female",
+    "OTHER": "Other",
+    "PENDING": "Pending",
+    "IN_PROGRESS": "In progress",
+    "EMPLOYEE": "Employee",
+    "MANAGER": "Manager",
+    "SKILL": "Skill",
+    "TECHNOLOGY": "Technology",
+    "YOE": "Years of Experience",
+    "ADD_SKILL": "Add skill",
+    "ACTION": "Action",
+    "DELETE": "Delete",
+    "WARNING": "Please fill in both Technology and Years of Experience"
   }
 }
