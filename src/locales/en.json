@@ -19,6 +19,26 @@
     "SUCCESS_MESSAGE": "You have successfully logged in!",
     "FAILED": "Login Failed!",
     "FAILED_MESSAGE": "Email or password is incorrect!",
-    "PASSWORD": "Password"
+    "PASSWORD": "Password",
+    "SWITCH_THEME": "Switch theme"
+  },
+  "TABLE": {
+    "EMPTY": "Empty",
+    "ACTIONS": "Actions",
+    "TOTAL_PAGE": "Total pages: {{total}}",
+    "DISPLAY": "Display",
+    "ITEM": "items",
+    "DETAILS": "Actions details",
+    "NAME":"name"
+  },
+  "LIST": {
+    "POSITIONS": "Positions",
+    "STATUS": "status",
+    "ACTIONS": "actions",
+    "NAME":"name"
+  },
+  "ACTION":{
+    "DETAILS":"details",
+    "SYNC":"sync"
   }
 }

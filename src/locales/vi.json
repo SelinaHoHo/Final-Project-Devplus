@@ -17,6 +17,25 @@
     "FAILED": "Đăng nhập thất bại!",
     "SUCCESS_MESSAGE": "Bạn đã đăng nhập thành công!",
     "FAILED_MESSAGE": "Email hoặc mật khẩu không đúng!",
-    "PASSWORD": "Mật khẩu"
+    "PASSWORD": "Mật khẩu"},
+
+  "TABLE": {
+    "EMPTY": "trống",
+    "ACTIONS": "hành động",
+    "TOTAL_PAGE": "tổng trang: {{total}}",
+    "DISPLAY": "hiển thị",
+    "ITEM": "mục",
+    "DETAILS":"chi tiết",
+    "NAME":"tên"
+  },
+  "LIST": {
+    "POSITIONS": "Vị trí",
+    "STATUS": "Trạng thái",
+    "ACTIONS": "Hành Động",
+    "NAME":"tên"
+  },
+  "ACTION":{
+    "DETAILS":"chi tiết",
+    "SYNC":"Đồng bộ"
   }
 }

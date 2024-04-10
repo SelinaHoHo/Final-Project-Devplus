@@ -49,8 +49,8 @@
     }
 
     > :nth-child(2) {
-      flex: auto;
-      overflow: auto;
+      // flex: auto;
+      // overflow: auto;
       padding: 6px;
       box-sizing: border-box;
       .innerText {
@@ -108,6 +108,9 @@ body[theme-mode="dark"] {
       border-left: 0.5px solid rgb(41, 36, 36);
     }
   }
+}
+.layout-page-sider {
+  margin-bottom: 0;
 }
 
 .layout-page-sider-menu {

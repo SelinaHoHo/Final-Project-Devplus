@@ -1,0 +1,25 @@
+.ant-table-cell-fix-left-last::after {
+  position: relative !important;
+}
+
+.ant-table-wrapper {
+  box-shadow: none !important;
+}
+
+.ant-table-tbody > tr > td {
+  border-bottom: 1px dashed rgb(241, 243, 244) !important;
+}
+
+.ant-table-tbody > tr:first-child > td {
+  border-bottom: none !important;
+}
+
+body[theme-mode="dark"] {
+  .ant-table-tbody > tr > td {
+    border-bottom: 1px dashed rgb(46, 50, 54) !important;
+  }
+
+  .ant-table-tbody > tr:first-child > td {
+    border-bottom: none !important;
+  }
+}
