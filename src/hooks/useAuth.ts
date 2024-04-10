@@ -17,7 +17,6 @@ export const useLogin = () => {
     onSuccess: (data: ILoginResponse) => {
       dispatch(login(data));
       window.localStorage.setItem("accessToken", data.access_token);
-      window.localStorage.setItem("isLogin", "true");
       notification.success({
         message: "Login Successful",
         description: "You have successfully logged in.",

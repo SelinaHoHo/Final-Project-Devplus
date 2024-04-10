@@ -1,5 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { setUserItem } from "@/redux/features/auth/authSlice";
 import { setGlobalState } from "@/redux/features/global/globalSlice";
+import { jwtDecode } from "jwt-decode";
 import { ReactNode, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
@@ -8,7 +10,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     (async () => {
-      const accessToken = localStorage.getItem("token");
+      const accessToken = localStorage.getItem("accessToken");
       if (!accessToken) {
         return dispatch(
           setGlobalState({
@@ -18,12 +20,14 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       }
 
       try {
-        const user = { id: "1", email: "admin@gmail.com", role: "admin", name: "a" };
+        const data = jwtDecode<{ username: string; id: string; email: string; role: string }>(
+          accessToken,
+        );
+
         dispatch(
           setUserItem({
             isAuth: true,
-            user,
-            role: "admin",
+            user: { ...data },
           }),
         );
       } catch (_error) {

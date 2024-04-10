@@ -8,6 +8,7 @@ import { RootState } from "./redux/store";
 import Router from "./routes";
 import { HistoryRouter, history } from "./routes/history";
 import { menuList } from "./routes/menu";
+import { AuthProvider } from "./guards/AuthProvider";
 
 const initMenuListAll = (menu: MenuList) => {
   const MenuListAll: MenuChild[] = [];
@@ -78,11 +79,9 @@ function App() {
       >
         <HistoryRouter history={history}>
           <Suspense fallback={<Spin />}>
-            <Router />
-            {/* <ProtectedRoute>
-              <Outlet />
+            <AuthProvider>
               <Router />
-            </ProtectedRoute> */}
+            </AuthProvider>
           </Suspense>
         </HistoryRouter>
       </ConfigProvider>
