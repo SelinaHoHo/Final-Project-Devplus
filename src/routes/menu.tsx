@@ -18,6 +18,11 @@ export const menuList: MenuList = [
         label: "List Users",
         path: "/users/list",
       },
+      {
+        code: "createUser",
+        label: "Create User",
+        path: "/users/createUser",
+      },
     ],
   },
   {
