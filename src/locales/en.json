@@ -6,6 +6,19 @@
     "CLOSE_CURRENT": "Close current",
     "CLOSE_OTHER": "Close other",
     "COLOSE_ALL": "Close all",
-    "SWITCH_THEME": "Switch theme"
+    "SWITCH_THEME": "Switch theme",
+    "SIGN_IN": "SIGN IN",
+    "SIGN_IN_TITLE": "Welcome to Titans's Management Application!"
+  },
+  "LOGIN": {
+    "SIGN_IN": "SIGN IN",
+    "SIGN_IN_TITLE": "Welcome to Titans's Management Application!",
+    "EMAIL_REQUIRED": "Please input your Email!",
+    "PASSWORD_REQUIRED": "Please input your Password!",
+    "SUCCESS": "Login Successful!",
+    "SUCCESS_MESSAGE": "You have successfully logged in!",
+    "FAILED": "Login Failed!",
+    "FAILED_MESSAGE": "Email or password is incorrect!",
+    "PASSWORD": "Password"
   }
 }

@@ -7,5 +7,16 @@
     "CLOSE_OTHER": "Đóng các tab khác",
     "COLOSE_ALL": "Đóng tất cả",
     "SWITCH_THEME": "Chuyển đổi theme"
+  },
+  "LOGIN": {
+    "SIGN_IN": "ĐĂNG NHẬP",
+    "SIGN_IN_TITLE": "Chào mừng đến với ứng dụng Quản lý của Titans!",
+    "EMAIL_REQUIRED": "Vui lòng nhập Email!",
+    "PASSWORD_REQUIRED": "Vui lòng nhập Mật khẩu!",
+    "SUCCESS": "Đăng nhập thành công!",
+    "FAILED": "Đăng nhập thất bại!",
+    "SUCCESS_MESSAGE": "Bạn đã đăng nhập thành công!",
+    "FAILED_MESSAGE": "Email hoặc mật khẩu không đúng!",
+    "PASSWORD": "Mật khẩu"
   }
 }

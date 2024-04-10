@@ -2,6 +2,7 @@
 import { ConfigProvider, Spin, theme as antdTheme } from "antd";
 import { Suspense, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { AuthProvider } from "./guards/AuthProvider";
 import { MenuChild, MenuList } from "./interfaces/layout/menu.interface";
 import { setGlobalState, setMenuList } from "./redux/features/global/globalSlice";
 import { RootState } from "./redux/store";
@@ -64,9 +65,6 @@ function App() {
             Typography: {
               colorPrimary: "black",
             },
-            // Layout: {
-            //   colorBgLayout: theme === "dark" ? "red" : "#f5f5f5",
-            // },
           },
           token: { colorPrimary: "#13c2c2", fontFamily: "Roboto, sans-serif" },
           algorithm: theme === "dark" ? antdTheme.darkAlgorithm : antdTheme.defaultAlgorithm,
@@ -74,7 +72,9 @@ function App() {
       >
         <HistoryRouter history={history}>
           <Suspense fallback={<Spin />}>
-            <Router />
+            <AuthProvider>
+              <Router />
+            </AuthProvider>
           </Suspense>
         </HistoryRouter>
       </ConfigProvider>

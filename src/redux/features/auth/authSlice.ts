@@ -1,10 +1,10 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { jwtDecode } from "jwt-decode";
 import { getGlobalState } from "../../../utils/getGloabal";
 
 interface User {
   id: string;
-  name: string;
+  username: string;
   email: string;
   role: string;
 }
@@ -19,7 +19,7 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
-  isAuth: false,
+  isAuth: localStorage.getItem("accessToken") ? true : false,
   ...getGlobalState(),
   user: null,
   role: "",
@@ -31,7 +31,12 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     login(state, _action) {
+      const data = jwtDecode<{ username: string; id: string; email: string; role: string }>(
+        _action.payload.access_token,
+      );
+      state.user = { username: data.username, id: data.id, email: data.email, role: data.role };
       state.isAuth = true;
+      state.role = data.role;
     },
     setUserItem(state, action: PayloadAction<Partial<AuthState>>) {
       Object.assign(state, action.payload);
