@@ -177,7 +177,7 @@ const Login: React.FC = () => {
                 {
                   type: "email",
                   required: true,
-                  message: "Please input your Email!",
+                  message: t("LOGIN.EMAIL_REQUIRED") as string,
                 },
               ]}
             >
@@ -196,7 +196,7 @@ const Login: React.FC = () => {
               rules={[
                 {
                   required: true,
-                  message: "Please input your Password!",
+                  message: t("LOGIN.PASSWORD_REQUIRED") as string,
                 },
               ]}
             >

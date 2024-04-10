@@ -13,9 +13,11 @@
   "LOGIN": {
     "SIGN_IN": "SIGN IN",
     "SIGN_IN_TITLE": "Welcome to Titans's Management Application!",
-    "REMEMBER_ME": "Remember me",
-    "FORGOT_PASSWORD": "Forgot password?",
-    "QUESTION": "Don't have an account?",
-    "lINK": "Sign up now"
+    "EMAIL_REQUIRED": "Please input your Email!",
+    "PASSWORD_REQUIRED": "Please input your Password!",
+    "SUCCESS": "Login Successful!",
+    "SUCCESS_MESSAGE": "You have successfully logged in!",
+    "FAILED": "Login Failed!",
+    "FAILED_MESSAGE": "Email or password is incorrect!"
   }
 }
