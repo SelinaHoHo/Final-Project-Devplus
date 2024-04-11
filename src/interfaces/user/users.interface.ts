@@ -3,7 +3,6 @@ export interface IUser {
   userName: string;
   fullName: string;
   email: string;
-  // userName: string;
   isManager: boolean;
   managerId: string | null;
   manager?: {
@@ -25,7 +24,6 @@ export interface IUser {
     description: string;
     positions: { id: string; name: string; description: string }[];
     technicalMember: { id: string }[];
-    // positions: Position[];
   };
 }
 export interface Position {

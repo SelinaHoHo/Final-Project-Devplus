@@ -135,6 +135,16 @@
   "ACTION": {
     "DETAILS": "Details",
     "DOWN": "Download",
+    "ITEM": "items",
+    "EDIT": "Edit",
     "DELETE": "Delete"
+  },
+  "PROJECT": {
+    "PROJECTNAME": "Project Name",
+    "STARTDATE": "Start Date",
+    "TARGETDATE": "Target Completion Date",
+    "PROJECTSTATUS": "Project Status",
+    "PROGRESS": "Progress",
+    "ACTIONS": "Actions"
   }
 }
