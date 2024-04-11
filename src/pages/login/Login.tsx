@@ -101,12 +101,10 @@ const Login: React.FC = () => {
       paddingBottom: "30px",
       color: token.token.colorTextSecondary,
       fontSize: "3vh",
-      // fontSize: screens.md ? token.token.fontSizeHeading2 : token.token.fontSizeHeading3,
     },
     title: {
       fontSize: "5vh",
       textAlign: "center",
-      // fontSize: screens.md ? token.token.fontSizeHeading1 : token.token.fontSizeHeading2,
     },
     image: {
       width: screens.xxl ? "700px" : screens.xl ? "600px" : "500px",

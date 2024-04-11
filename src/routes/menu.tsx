@@ -20,4 +20,22 @@ export const menuList: MenuList = [
       },
     ],
   },
+  {
+    code: "projects",
+    label: "Projects",
+    icon: "project",
+    path: "/projects",
+    children: [
+      {
+        code: "list",
+        label: "List Projects",
+        path: "/projects/list",
+      },
+      {
+        code: "create",
+        label: "Create Projects",
+        path: "/projects/create",
+      },
+    ],
+  },
 ];
