@@ -1,6 +1,7 @@
 .layout-page-content > :nth-child(2) {
   flex: unset !important;
   overflow: unset !important;
+  overflow: auto;
   padding: 6px;
   box-sizing: border-box;
 }
