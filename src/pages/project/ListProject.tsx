@@ -68,14 +68,11 @@ const ListProject = () => {
             <Link to='../CreateProject'>Create Project</Link>
           </Button>
         </Col>
-        <Col span={24}>
+        <Col span={4}>
           <Search
             placeholder='search project'
             allowClear
             // onSearch={onSearch}
-            style={{
-              width: 200,
-            }}
           />
         </Col>
       </Row>
