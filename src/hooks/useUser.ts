@@ -1,13 +1,13 @@
 import { getUsers } from "@/apis/user.api";
 import { QUERY_KEY } from "@/constants/queryKey";
-import { IUsers } from "@/interfaces/user/users.interface";
+import { GetListUsers, IUsers } from "@/interfaces/user/users.interface";
 import { UseQueryResult, useQuery } from "@tanstack/react-query";
 
-export const useGetAccounts = (): UseQueryResult<IUsers, Error> => {
+export const useGetAccounts = (param: GetListUsers): UseQueryResult<IUsers, Error> => {
   return useQuery<IUsers>({
-    queryKey: [QUERY_KEY.USERS],
+    queryKey: [QUERY_KEY.USERS, param.page, param.take],
     queryFn: async (): Promise<IUsers> => {
-      const { data } = await getUsers();
+      const { data } = await getUsers(param);
       return data;
     },
   });

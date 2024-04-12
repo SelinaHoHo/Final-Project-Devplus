@@ -1,75 +1,41 @@
-import Search from "@/components/core/Search/Search";
 import { Table } from "@/components/core/Table/Table";
+import i18n from "@/config/i18n";
 import { useGetAccounts } from "@/hooks/useUser";
-import { DataType, IUser } from "@/interfaces/user/users.interface";
-import { useState } from "react";
-import { UsersColumnsTable } from "../UserListColumn";
+import { IUser } from "@/interfaces/user/users.interface";
+import { Button, Col, Input, Row } from "antd";
+import { useEffect, useState } from "react";
+import { Translation } from "react-i18next";
+import { UsersColumnsTable } from "./UserListColumn";
 
-const datas: DataType[] = [
-  {
-    id: "1",
-    name: "John Brown",
-    email: "son@example.com",
-    positions: ["Font-end", "DataType"],
-    status: true,
-    avatarUrl: "",
-  },
-  {
-    id: "2",
-    name: "him Green",
-    email: "son@example.com",
-    positions: ["FullStack"],
-    status: false,
-    avatarUrl: "",
-  },
-  {
-    id: "3",
-    name: "Joe Black",
-    email: "son@example.com",
-    positions: ["Back-end"],
-    status: true,
-    avatarUrl: "",
-  },
-  {
-    id: "4",
-    name: "Selina ho ho",
-    email: "son@example.com",
-    positions: ["FullStack"],
-    status: true,
-    avatarUrl: "",
-  },
-  {
-    id: "5",
-    name: "Selina ho ho",
-    email: "son@example.com",
-    positions: ["FullStack"],
-    status: true,
-    avatarUrl: "",
-  },
-  {
-    id: "6",
-    name: "Selina ho ho",
-    email: "son@example.com",
-    positions: ["FullStack"],
-    status: true,
-    avatarUrl: "",
-  },
-  {
-    id: "7",
-    name: "Selina ho ho",
-    email: "son@example.com",
-    positions: ["FullStack"],
-    status: true,
-    avatarUrl: "",
-  },
-];
 const ListUser = () => {
-  const { data, isLoading } = useGetAccounts();
-  //
-  const [filteredData, setFilteredData] = useState<DataType[]>(datas);
-  const handleSearch = (searchedData: DataType[]) => {
-    setFilteredData(searchedData);
+  const [table, setTable] = useState({
+    page: 1,
+    take: 10,
+  });
+  const [filterName, setFilterName] = useState("");
+  const paginatorSearch = {
+    name: filterName,
+    page: table.page,
+    take: table.take,
   };
+  const { data, isLoading, refetch } = useGetAccounts(paginatorSearch);
+
+  useEffect(() => {
+    if (filterName === "") {
+      setFilterName("");
+      refetch();
+    }
+  }, [filterName, refetch]);
+
+  const handleChangeSearch = (value: string) => {
+    if (value === "") {
+      setFilterName("");
+      refetch();
+    } else {
+      setFilterName(value);
+    }
+  };
+
   const handleAction = (key: string, _item: IUser) => {
     switch (key) {
       // case "update":
@@ -92,25 +58,44 @@ const ListUser = () => {
       default:
     }
   };
-  const [table, setTable] = useState({
-    page: 1,
-    take: 5,
-  });
+
+  const handleSearch = () => {
+    setTable({
+      page: 1,
+      take: 10,
+    });
+    refetch();
+  };
+
   return (
     <>
-      <div>
-        <Search data={datas} onSearch={handleSearch} />
+      <div style={{ margin: "3px" }}>
+        <Row gutter={5}>
+          <Col>
+            <Input
+              placeholder={i18n.t("TABLE.SEARCH_NAME")}
+              size='large'
+              allowClear
+              onChange={(value) => handleChangeSearch(value.target.value)}
+            ></Input>
+          </Col>
+          <Col>
+            <Button type='primary' onClick={handleSearch} size='large'>
+              <Translation>{(t) => t("TABLE.SEARCH")}</Translation>
+            </Button>
+          </Col>
+        </Row>
       </div>
-      <Table
+      <Table<IUser>
         paginate={{
           table,
           setTable,
-          total: data?.length || 0,
-          pageCount: 10,
+          total: data?.meta.itemCount,
+          pageCount: data?.meta.pageCount,
         }}
         columns={UsersColumnsTable(handleAction)}
         loading={isLoading}
-        dataSource={filteredData}
+        dataSource={data?.data}
       />
     </>
   );

@@ -20,22 +20,27 @@
     "PASSWORD": "Mật khẩu"},
 
   "TABLE": {
-    "EMPTY": "trống",
-    "ACTIONS": "hành động",
-    "TOTAL_PAGE": "tổng trang: {{total}}",
-    "DISPLAY": "hiển thị",
-    "ITEM": "mục",
-    "DETAILS":"chi tiết",
-    "NAME":"tên"
+    "EMPTY": "Không có dữ liệu",
+    "ACTIONS": "Hành động",
+    "TOTAL_PAGE": "Tổng trang: {{total}}",
+    "DISPLAY": "Hiển thị",
+    "ITEM": "Mục",
+    "DETAILS":"Chi tiết",
+    "NAME":"Tên",
+    "SEARCH": "Tìm kiếm",
+    "SEARCH_NAME": "Nhập tên"
   },
   "LIST": {
     "POSITIONS": "Vị trí",
     "STATUS": "Trạng thái",
     "ACTIONS": "Hành Động",
-    "NAME":"tên"
+    "NAME":"Tên",
+    "AVATAR":"Hình ảnh",
+    "ACTIVE":"Hoạt động",
+    "NO_ACTIVE":"Không hoạt động"
   },
   "ACTION":{
     "DETAILS":"chi tiết",
-    "SYNC":"Đồng bộ"
+    "DOWN":"tải xuống"
   }
 }

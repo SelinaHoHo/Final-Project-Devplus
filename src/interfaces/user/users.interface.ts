@@ -1,23 +1,28 @@
 export interface IUser {
-  // id: number;
-  // name: string;
-  // username: string;
-  // email: string;
   id: string;
-  name: string;
+  fullName: string;
+  gender: string;
   email: string;
   positions: string[];
-  status: boolean;
+  status: string;
   avatarUrl: string;
 }
 
-export type IUsers = IUser[];
+export type IUsers = {
+  users: IUser[];
+};
 
-export interface DataType {
-  id: string;
+export type GetListUsers = {
   name: string;
-  email: string;
-  positions: string[];
-  status: boolean;
-  avatarUrl: string;
-}
+  take: number;
+  page: number;
+};
+
+// export interface DataType {
+//   id: string;
+//   name: string;
+//   email: string;
+//   positions: string[];
+//   status: boolean;
+//   avatarUrl: string;
+// }
