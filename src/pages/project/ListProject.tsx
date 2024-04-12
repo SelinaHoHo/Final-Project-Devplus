@@ -1,6 +1,6 @@
 import { Table } from "@/components/core/Table/Table";
 import { useGetProjects } from "@/hooks/useProject";
-import { IProject } from "@/interfaces/project/projects.interface";
+import { ColumnIProject } from "@/interfaces/project/projects.interface";
 import { Button, Col, Row } from "antd";
 import Search from "antd/es/input/Search";
 import { useEffect, useState } from "react";
@@ -23,7 +23,7 @@ const ListProject = () => {
   };
 
   const { data, isLoading, refetch } = useGetProjects(paginatorSearch);
-  const handleAction = (key: string, _item: IProject) => {
+  const handleAction = (key: string, _item: ColumnIProject) => {
     switch (key) {
       // case "update":
       //   navigate(`/application/${item.id}`);
@@ -79,12 +79,12 @@ const ListProject = () => {
       <Row>
         <Col span={24}>
           <Table
-            scroll={{ y: 300 }} // thay đổi giá trị y tùy ý
+            scroll={{ x: "max-content" }}
             paginate={{
               table,
               setTable,
-              total: data?.meta.itemCount,
-              pageCount: data?.meta.pageCount,
+              total: data?.meta.itemCount || 1,
+              pageCount: data?.meta.pageCount || 10,
             }}
             columns={ProjectsColumnsTable(handleAction, true)}
             loading={isLoading}

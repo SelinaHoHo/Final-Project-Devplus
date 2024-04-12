@@ -39,6 +39,25 @@ export type { ICreateProjectReq, IErrorResponse };
 export type IProjects = IProject[];
 
 export interface IProject {
+  data: {
+    id: string;
+    name: string;
+    startDate: Date;
+    endDate: Date;
+    status: string;
+    progress: number;
+  }[];
+  meta: {
+    page: string;
+    take: string;
+    itemCount: number;
+    pageCount: number;
+    hasPreviousPage: boolean;
+    hasNextPage: boolean;
+  };
+}
+
+export interface ColumnIProject {
   id: string;
   name: string;
   startDate: Date;

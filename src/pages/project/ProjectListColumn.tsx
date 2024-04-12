@@ -1,15 +1,15 @@
 import { ButtonAction } from "@/components/core/ButtonAction/ButtonAction";
 import i18n from "@/config/i18n";
-import { IProject } from "@/interfaces/project/projects.interface";
+import { ColumnIProject } from "@/interfaces/project/projects.interface";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Progress, Space, Tag } from "antd";
 import { ColumnsType } from "antd/lib/table";
 import { Translation } from "react-i18next";
 
 export const ProjectsColumnsTable = (
-  handleAction: (key: string, item: IProject) => void,
+  handleAction: (key: string, item: ColumnIProject) => void,
   loading: boolean,
-): ColumnsType<IProject> => [
+): ColumnsType<ColumnIProject> => [
   {
     title: <Translation>{(t) => t("Id")}</Translation>,
     dataIndex: "id",
