@@ -8,4 +8,5 @@ export const API_URL = {
   CREATE_USER: "/user",
   TECHNOLOGY: "/technical",
   POSITION: "/position",
+  PROJECTS: "/project?",
 };

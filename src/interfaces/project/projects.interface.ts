@@ -40,9 +40,15 @@ export type IProjects = IProject[];
 
 export interface IProject {
   id: string;
-  project_name: string;
-  start_date: string;
-  target_completion_date: string;
-  project_status: string[];
+  name: string;
+  startDate: Date;
+  endDate: Date;
+  status: string;
   progress: number;
 }
+
+export type GetListProject = {
+  name: string;
+  take: number;
+  page: number;
+};

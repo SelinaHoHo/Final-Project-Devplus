@@ -1,6 +1,11 @@
-import { createProject } from "@/apis/project.api";
-import { ICreateProjectReq } from "@/interfaces/project/projects.interface";
-import { useMutation } from "@tanstack/react-query";
+import { createProject, getProjects } from "@/apis/project.api";
+import { QUERY_KEY } from "@/constants/queryKey";
+import {
+  GetListProject,
+  ICreateProjectReq,
+  IProject,
+} from "@/interfaces/project/projects.interface";
+import { UseQueryResult, useMutation, useQuery } from "@tanstack/react-query";
 import { notification } from "antd";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -25,6 +30,16 @@ export const useCreateProject = () => {
         message: t("CREATE_PROJECT.FAILED") as string,
         description: t(`CREATE_PROJECT.${res.message}`) as string,
       });
+    },
+  });
+};
+
+export const useGetProjects = (param: GetListProject): UseQueryResult<IProject, Error> => {
+  return useQuery<IProject>({
+    queryKey: [QUERY_KEY.PROJECTS],
+    queryFn: async (): Promise<IProject> => {
+      const { data } = await getProjects(param);
+      return data;
     },
   });
 };

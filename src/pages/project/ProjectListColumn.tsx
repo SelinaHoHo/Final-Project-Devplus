@@ -13,60 +13,41 @@ export const ProjectsColumnsTable = (
   {
     title: <Translation>{(t) => t("Id")}</Translation>,
     dataIndex: "id",
-    width: "4%",
+    width: "5%",
+    render: (_item, _record, index) => <>{index + 1}</>,
   },
   {
     title: <Translation>{(t) => t("PROJECT.PROJECTNAME")}</Translation>,
-    dataIndex: "project_name",
+    dataIndex: "name",
     width: "15%",
   },
   {
     title: <Translation>{(t) => t("PROJECT.STARTDATE")}</Translation>,
-    dataIndex: "start_date",
+    dataIndex: "startDate",
     width: "13%",
   },
   {
     title: <Translation>{(t) => t("PROJECT.TARGETDATE")}</Translation>,
-    dataIndex: "target_completion_date",
+    dataIndex: "endDate",
     width: "13%",
   },
   {
     title: <Translation>{(t) => t("PROJECT.PROJECTSTATUS")}</Translation>,
-    key: "project_status",
-    dataIndex: "project_status",
+    dataIndex: "status",
     filters: [
       {
-        text: "In Process",
-        value: "In Process",
+        text: "In Progress",
+        value: "InProgress",
       },
       {
-        text: "Testing",
-        value: "Testing",
-      },
-      {
-        text: "Done",
-        value: "Done",
+        text: "Completed",
+        value: "Completed",
       },
     ],
-    onFilter: (value, record) =>
-      record.project_status.some((status) => status.startsWith(value as string)),
+    onFilter: (value, record) => record.status.indexOf(value as string) === 0,
     filterSearch: true,
     width: "12%",
-    render: (_, { project_status }) => (
-      <>
-        {project_status.map((tag) => {
-          let color = tag.length > 5 ? "geekblue" : "green";
-          if (tag === "Done") {
-            color = "green";
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </>
-    ),
+    render: (status) => <Tag color={status === "Completed" ? "green" : "geekblue"}>{status}</Tag>,
   },
   {
     title: <Translation>{(t) => t("PROJECT.PROGRESS")}</Translation>,

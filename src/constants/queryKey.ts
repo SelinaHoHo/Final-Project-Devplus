@@ -5,4 +5,5 @@ export const QUERY_KEY = {
   TECH: "TECH",
   LANG: "LANG",
   POSITION: "POSITION",
+  PROJECTS: "PROJECTS",
 };

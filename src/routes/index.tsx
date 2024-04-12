@@ -68,7 +68,12 @@ const Router = () => {
             },
             {
               path: "list",
-              element: <ListProject />,
+              element: (
+                <div>
+                  {" "}
+                  <ListProject />
+                </div>
+              ),
             },
             {
               path: "create",
