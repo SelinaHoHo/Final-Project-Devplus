@@ -116,18 +116,23 @@
     "ACTIONS": "Actions",
     "TOTAL_PAGE": "Total pages: {{total}}",
     "DISPLAY": "Display",
-    "ITEM": "items",
+    "ITEM": "Items",
     "DETAILS": "Actions details",
-    "NAME": "name"
+    "NAME": "Name",
+    "SEARCH": "Search",
+    "SEARCH_NAME": "Enter name"
   },
   "LIST": {
     "POSITIONS": "Positions",
-    "STATUS": "status",
-    "ACTIONS": "actions",
-    "NAME": "name"
+    "STATUS": "Status",
+    "ACTIONS": "Actions",
+    "NAME": "Name",
+    "AVATAR": "Avatar",
+    "ACTIVE": "Active",
+    "NO_ACTIVE": " Inactive"
   },
   "ACTION": {
     "DETAILS": "details",
-    "SYNC": "sync"
+    "DOWN": "download"
   }
 }

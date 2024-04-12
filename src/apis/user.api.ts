@@ -4,12 +4,15 @@ import { ILanguage } from "@/interfaces/langs/langs.interface";
 import { ILoginRequest, ILoginResponse } from "@/interfaces/login/login.interface";
 import { IPosition } from "@/interfaces/positions/positions.interface";
 import { ITechnology } from "@/interfaces/tech/tech.interface";
-import { IGetUsers, IUsers } from "@/interfaces/user/users.interface";
+import { GetListUsers, IGetUsers, IUsers } from "@/interfaces/user/users.interface";
 import { AxiosResponse } from "axios";
 
-export const getUsers = (): Promise<AxiosResponse<IUsers>> => instance.get(API_URL.USERS);
 export const getAllUserNoPagination = (): Promise<AxiosResponse<IGetUsers>> =>
   instance.get(API_URL.GETALLUSER);
+
+export const getUsers = (param: GetListUsers): Promise<AxiosResponse<IUsers>> =>
+  instance.get(API_URL.USERS, { params: param });
+
 export const postLogin = (data: ILoginRequest): Promise<AxiosResponse<ILoginResponse>> =>
   instance.post(API_URL.LOGIN, data);
 

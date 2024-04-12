@@ -33,7 +33,7 @@ interface PaginateOptions {
   pageCount: number;
 }
 
-const pageSizeOptions = [{ value: 20 }, { value: 50 }, { value: 100 }];
+const pageSizeOptions = [{ value: 5 }, { value: 10 }, { value: 20 }, { value: 50 }, { value: 100 }];
 
 type TableProps<T> = TablePropsAntd<T> & {
   paginate?: PaginateOptions;
@@ -68,6 +68,7 @@ export const Table = <T extends HasId>({ paginate, dataSource, ...rest }: TableP
             padding: 10,
             backgroundColor: theme === "dark" ? "rgb(29 29 29)" : "white",
             borderRadius: "0 0 8px 8px",
+            margin: "0 10px",
           }}
         >
           <Space>

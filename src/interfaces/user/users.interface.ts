@@ -4,7 +4,7 @@ export interface IUser {
   fullName: string;
   email: string;
   positions: string[];
-  status: boolean;
+  status: string;
   avatarUrl: string;
 }
 
@@ -50,4 +50,10 @@ export type SkillType = {
   name: string;
 };
 
+
+export type GetListUsers = {
+  name: string;
+  take: number;
+  page: number;
+};
 
