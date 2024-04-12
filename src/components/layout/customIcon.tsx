@@ -16,7 +16,7 @@ const iconsComponents: Record<string, FC> = {
 export const CustomIcon: FC<CustomIconProps> = ({ type }) => {
   const IconComponent = iconsComponents[type] || DashboardSvg;
   return (
-    <span className='anticon' style={{ fontSize: "25px" }}>
+    <span className='anticon' style={{ fontSize: "25px", width: "auto" }}>
       <IconComponent />
     </span>
   );

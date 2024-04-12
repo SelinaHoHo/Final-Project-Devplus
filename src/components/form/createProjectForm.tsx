@@ -1,10 +1,6 @@
-import i18n from "@/config/i18n";
-import { StatusEnum } from "@/constants/enum";
 import { useCreateProject } from "@/hooks/useProject";
 import { useGetAllUserNoPagination } from "@/hooks/useUser";
 import { RootState } from "@/redux/store";
-import { DownOutlined } from "@ant-design/icons";
-import type { GetProps } from "antd";
 import { Button, Col, DatePicker, Form, Input, Row, Select, type FormProps } from "antd";
 import { Rule } from "antd/es/form";
 import dayjs from "dayjs";
@@ -18,15 +14,13 @@ import "./createProjectForm.scss";
 
 const { RangePicker } = DatePicker;
 const { TextArea } = Input;
-type RangePickerProps = GetProps<typeof DatePicker.RangePicker>;
 dayjs.extend(customParseFormat);
-const MAX_COUNT = 5;
 type ProjectType = {
   name: string;
   description: string;
   date: string[];
+  language: string[];
   technical: string[];
-  status: string;
   managerId: string;
   employeeId: string[];
 };
@@ -70,22 +64,7 @@ const CreateProjectForm: React.FC = () => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
   const userLogin = useSelector((state: RootState) => state.auth.user);
-  const [value, setValue] = React.useState<string[]>([]);
   const { mutate: createProject } = useCreateProject();
-
-  // Date Picker
-  const disabledDate: RangePickerProps["disabledDate"] = (current) => {
-    return current && current < dayjs().endOf("day");
-  };
-
-  const suffix = (
-    <>
-      <span>
-        {value.length} / {MAX_COUNT}
-      </span>
-      <DownOutlined style={{ color: "#16c2c2", fontSize: "10px", paddingRight: "5px" }} />
-    </>
-  );
 
   // Validation
   const validator = [
@@ -100,6 +79,7 @@ const CreateProjectForm: React.FC = () => {
         date: Yup.array().required(t("CREATE_PROJECT.DATE_REQUIRED") as string),
         endDate: Yup.date().required(t("CREATE_PROJECT.ENDDATE_REQUIRED") as string),
         technical: Yup.array().required(t("CREATE_PROJECT.TECHNICAL_REQUIRED") as string),
+        language: Yup.array().required(t("CREATE_PROJECT.TECHNICAL_REQUIRED") as string),
         status: Yup.string().required(t("CREATE_PROJECT.STATUS_REQUIRED") as string),
         managerId: Yup.string().required(t("CREATE_PROJECT.MANAGER_REQUIRED") as string),
         employeeId: Yup.array().required(t("CREATE_PROJECT.EMPLOYEE_REQUIRED") as string),
@@ -134,6 +114,29 @@ const CreateProjectForm: React.FC = () => {
 
         <Col xs={24} sm={24} md={24} lg={12}>
           <Form.Item<ProjectType>
+            name='date'
+            label={t("CREATE_PROJECT.DATE")}
+            labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
+            wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
+            rules={validator}
+          >
+            <RangePicker
+              style={{ width: "100%" }}
+              showTime={{
+                hideDisabledOptions: true,
+                defaultValue: [dayjs("00:00:00", "HH:mm:ss"), dayjs("11:59:59", "HH:mm:ss")],
+              }}
+              format='YYYY-MM-DD HH:mm:ss'
+              placeholder={[
+                t("CREATE_PROJECT.STARTDATE") as string,
+                t("CREATE_PROJECT.ENDDATE") as string,
+              ]}
+            />
+          </Form.Item>
+        </Col>
+
+        <Col xs={24} sm={24} md={24} lg={12}>
+          <Form.Item<ProjectType>
             name='technical'
             label={t("CREATE_PROJECT.TECHNICAL")}
             labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
@@ -143,10 +146,7 @@ const CreateProjectForm: React.FC = () => {
             <Select
               mode='multiple'
               style={{ width: "100%" }}
-              maxCount={MAX_COUNT}
               placeholder={t("CREATE_PROJECT.TECHNICAL_PLACEHOLDER") as string}
-              onChange={setValue}
-              suffixIcon={suffix}
               notFoundContent={null}
               options={technical.map((item) => ({
                 value: item,
@@ -158,41 +158,22 @@ const CreateProjectForm: React.FC = () => {
 
         <Col xs={24} sm={24} md={24} lg={12}>
           <Form.Item<ProjectType>
-            name='date'
-            label={t("CREATE_PROJECT.DATE")}
+            name='language'
+            label={t("CREATE_PROJECT.LANGUAGE")}
             labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
             wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
             rules={validator}
           >
-            <RangePicker
-              style={{ width: "100%" }}
-              disabledDate={disabledDate}
-              showTime={{
-                hideDisabledOptions: true,
-                defaultValue: [dayjs("00:00:00", "HH:mm:ss"), dayjs("11:59:59", "HH:mm:ss")],
-              }}
-              format='YYYY-MM-DD HH:mm:ss'
-            />
-          </Form.Item>
-        </Col>
-
-        <Col xs={24} sm={24} md={24} lg={12}>
-          <Form.Item<ProjectType>
-            name='status'
-            label={t("CREATE_PROJECT.STATUS")}
-            labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
-            wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
-          >
             <Select
-              defaultValue={t("CREATE_PROJECT.PENDING") as string}
-              suffixIcon={<DownOutlined />}
-            >
-              {Object.values(StatusEnum).map((type: string) => (
-                <Select.Option key={type} value={type}>
-                  {i18n.t(`CREATE_PROJECT.${type.toUpperCase()}`)}
-                </Select.Option>
-              ))}
-            </Select>
+              mode='multiple'
+              style={{ width: "100%" }}
+              placeholder={t("CREATE_PROJECT.LANGUAGE_PLACEHOLDER") as string}
+              notFoundContent={null}
+              options={technical.map((item) => ({
+                value: item,
+                label: item,
+              }))}
+            />
           </Form.Item>
         </Col>
 
@@ -207,7 +188,6 @@ const CreateProjectForm: React.FC = () => {
             <Select
               style={{ width: "100%" }}
               placeholder={t("CREATE_PROJECT.MANAGER_PLACEHOLDER") as string}
-              onChange={setValue}
               showSearch
               notFoundContent={null}
             >
@@ -232,7 +212,6 @@ const CreateProjectForm: React.FC = () => {
               mode='multiple'
               style={{ width: "100%" }}
               placeholder={t("CREATE_PROJECT.EMPLOYEE_PLACEHOLDER") as string}
-              onChange={setValue}
               notFoundContent={null}
             >
               {data?.map((item: UserType) => (

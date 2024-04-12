@@ -3,9 +3,11 @@ import { ICreateProjectReq } from "@/interfaces/project/projects.interface";
 import { useMutation } from "@tanstack/react-query";
 import { notification } from "antd";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 export const useCreateProject = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   return useMutation({
     mutationFn: async (req: ICreateProjectReq) => {
       const { data } = await createProject(req);
@@ -16,7 +18,7 @@ export const useCreateProject = () => {
         message: t("CREATE_PROJECT.SUCCESS") as string,
         description: t("CREATE_PROJECT.SUCCESS_MESSAGE") as string,
       });
-      //   navigate("/");
+      navigate("/projects");
     },
     onError: (res) => {
       notification.error({

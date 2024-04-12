@@ -3,6 +3,7 @@ interface IProject {
   description: string;
   startDate: string;
   endDate: string;
+  language: string[];
   technical: string[];
   managerId: string;
   employeeId: string[];
@@ -13,6 +14,7 @@ interface ICreateProjectReq {
   description: string;
   startDate: string;
   endDate: string;
+  language: string[];
   technical: string[];
   managerId?: string;
   employeeId?: string[];
