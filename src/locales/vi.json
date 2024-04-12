@@ -49,6 +49,7 @@
     "MANAGER": "Quản lý dự án",
     "MANAGER_PLACEHOLDER": "Vui lòng chọn quản lý dự án",
     "EMPLOYEE": "Nhân viên dự án",
-    "EMPLOYEE_PLACEHOLDER": "Vui chọn nhân viên dự án"
+    "EMPLOYEE_PLACEHOLDER": "Vui chọn nhân viên dự án",
+    "NAME_ALREADY_EXIST": "Dự án đã tồn tại!"
   }
 }

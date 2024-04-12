@@ -199,10 +199,22 @@ body[theme-mode="dark"] {
 }
 
 .demo-logo-vertical {
-  padding-top: 10px;
+  padding-top: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 60px;
   box-sizing: border-box;
+  font-size: 50px;
+}
+
+.demo-logo {
+  padding-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  box-sizing: border-box;
+  font-size: 50px;
+  margin-bottom: 5px;
 }

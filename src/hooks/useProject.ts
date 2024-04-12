@@ -18,11 +18,10 @@ export const useCreateProject = () => {
       });
       //   navigate("/");
     },
-    onError: () => {
+    onError: (res) => {
       notification.error({
-        // Show error notification
         message: t("CREATE_PROJECT.FAILED") as string,
-        description: t("CREATE_PROJECT.FAILED_MESSAGE") as string,
+        description: t(`CREATE_PROJECT.${res.message}`) as string,
       });
     },
   });

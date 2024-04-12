@@ -1,6 +1,7 @@
 import i18n from "@/config/i18n";
 import { StatusEnum } from "@/constants/enum";
 import { useCreateProject } from "@/hooks/useProject";
+import { useGetAllUserNoPagination } from "@/hooks/useUser";
 import { RootState } from "@/redux/store";
 import { DownOutlined } from "@ant-design/icons";
 import type { GetProps } from "antd";
@@ -30,47 +31,17 @@ type ProjectType = {
   employeeId: string[];
 };
 
+type UserType = {
+  fullName: string;
+  email: string;
+  user: {
+    id: string;
+  };
+  isManager: boolean;
+};
+
 const CreateProjectForm: React.FC = () => {
-  const employee = [
-    {
-      id: "1",
-      name: "Selina Ho",
-    },
-    {
-      id: "2",
-      name: "Thinh Nguyen",
-    },
-    {
-      id: "3",
-      name: "Khanh Nguyen",
-    },
-    {
-      id: "4",
-      name: "Hieu Truong",
-    },
-    {
-      id: "5",
-      name: "Quang Dang",
-    },
-  ];
-  const manager = [
-    {
-      id: "1",
-      name: "Thanh Le",
-    },
-    {
-      id: "2",
-      name: "Cuong Le",
-    },
-    {
-      id: "3",
-      name: "Quy Pham",
-    },
-    {
-      id: "4",
-      name: "Trung Do",
-    },
-  ];
+  const { data } = useGetAllUserNoPagination();
   const technical = [
     "Angular",
     "React",
@@ -89,6 +60,12 @@ const CreateProjectForm: React.FC = () => {
     "Kotlin",
     "C",
     "C++",
+    "PostgreSQL",
+    "MySQL",
+    "MongoDB",
+    "Redis",
+    "Docker",
+    "Kubernetes",
   ];
   const { t } = useTranslation();
   const [form] = Form.useForm();
@@ -231,12 +208,15 @@ const CreateProjectForm: React.FC = () => {
               style={{ width: "100%" }}
               placeholder={t("CREATE_PROJECT.MANAGER_PLACEHOLDER") as string}
               onChange={setValue}
+              showSearch
               notFoundContent={null}
-              options={manager.map((item) => ({
-                value: item.id,
-                label: item.name,
-              }))}
-            />
+            >
+              {data?.map((item: UserType) => (
+                <Select.Option key={item?.user.id} value={item?.user.id}>
+                  {item?.fullName}
+                </Select.Option>
+              ))}
+            </Select>
           </Form.Item>
         </Col>
 
@@ -254,11 +234,13 @@ const CreateProjectForm: React.FC = () => {
               placeholder={t("CREATE_PROJECT.EMPLOYEE_PLACEHOLDER") as string}
               onChange={setValue}
               notFoundContent={null}
-              options={employee.map((item) => ({
-                value: item.id,
-                label: item.name,
-              }))}
-            />
+            >
+              {data?.map((item: UserType) => (
+                <Select.Option key={item?.user.id} value={item?.user.id}>
+                  {item?.fullName}
+                </Select.Option>
+              ))}
+            </Select>
           </Form.Item>
         </Col>
 

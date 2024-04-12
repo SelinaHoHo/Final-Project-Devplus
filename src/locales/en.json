@@ -51,6 +51,7 @@
     "MANAGER": "Project Manager",
     "MANAGER_PLACEHOLDER": "Select project manager",
     "EMPLOYEE": "Project Employees",
-    "EMPLOYEE_PLACEHOLDER": "Select project employees"
+    "EMPLOYEE_PLACEHOLDER": "Select project employees",
+    "NAME_ALREADY_EXIST": "Project already exist!"
   }
 }
