@@ -26,9 +26,8 @@ type ProjectType = {
   date: string[];
   technical: string[];
   status: string;
-  manager: string;
-  employee: string[];
-  userId: string;
+  managerId: string;
+  employeeId: string[];
 };
 
 const CreateProjectForm: React.FC = () => {
@@ -125,8 +124,8 @@ const CreateProjectForm: React.FC = () => {
         endDate: Yup.date().required(t("CREATE_PROJECT.ENDDATE_REQUIRED") as string),
         technical: Yup.array().required(t("CREATE_PROJECT.TECHNICAL_REQUIRED") as string),
         status: Yup.string().required(t("CREATE_PROJECT.STATUS_REQUIRED") as string),
-        manager: Yup.string().required(t("CREATE_PROJECT.MANAGER_REQUIRED") as string),
-        employee: Yup.array().required(t("CREATE_PROJECT.EMPLOYEE_REQUIRED") as string),
+        managerId: Yup.string().required(t("CREATE_PROJECT.MANAGER_REQUIRED") as string),
+        employeeId: Yup.array().required(t("CREATE_PROJECT.EMPLOYEE_REQUIRED") as string),
       }),
     ),
   ] as unknown as Rule[];
@@ -136,7 +135,7 @@ const CreateProjectForm: React.FC = () => {
       ...values,
       startDate: JSON.parse(JSON.stringify(values.date[0])),
       endDate: JSON.parse(JSON.stringify(values.date[1])),
-      userId: userLogin?.id,
+      managerId: userLogin?.id,
     });
     form.resetFields();
   };
@@ -222,7 +221,7 @@ const CreateProjectForm: React.FC = () => {
 
         <Col xs={24} sm={24} md={24} lg={12}>
           <Form.Item<ProjectType>
-            name='manager'
+            name='managerId'
             label={t("CREATE_PROJECT.MANAGER")}
             labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
             wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
@@ -243,7 +242,7 @@ const CreateProjectForm: React.FC = () => {
 
         <Col xs={24} sm={24} md={24} lg={12}>
           <Form.Item<ProjectType>
-            name='employee'
+            name='employeeId'
             label={t("CREATE_PROJECT.EMPLOYEE")}
             labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
             wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}

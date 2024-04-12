@@ -4,7 +4,8 @@ interface IProject {
   startDate: string;
   endDate: string;
   technical: string[];
-  userId: string;
+  managerId: string;
+  employeeId: string[];
 }
 
 interface ICreateProjectReq {
@@ -13,7 +14,8 @@ interface ICreateProjectReq {
   startDate: string;
   endDate: string;
   technical: string[];
-  userId?: string;
+  managerId?: string;
+  employeeId?: string[];
 }
 
 interface IErrorResponse {
