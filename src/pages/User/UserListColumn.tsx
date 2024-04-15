@@ -1,6 +1,6 @@
 import { ButtonAction } from "@/components/core/ButtonAction/ButtonAction";
 import i18n from "@/config/i18n";
-import { IUser } from "@/interfaces/user/users.interface";
+import { IUser, Position } from "@/interfaces/user/users.interface";
 import { SearchOutlined, VerticalAlignBottomOutlined } from "@ant-design/icons";
 import { Avatar, Space, Tag } from "antd";
 import { ColumnsType } from "antd/lib/table";
@@ -40,35 +40,37 @@ export const UsersColumnsTable = (
     title: "Email",
     dataIndex: "email",
   },
+
   // {
-  //   title: <Translation>{(t) => t("LIST.POSITIONS")}</Translation>,
-  //   dataIndex: "positions",
-  //   key: "positions",
-  //   render: (_, { positions }) => (
-  //     <>
-  //       {positions.map((positions) => {
-  //         return <Tag key={positions}>{positions.toUpperCase()}</Tag>;
-  //       })}
-  //     </>
-  //   ),
-  // filters: [
-  //   {
-  //     text: "Font-end",
-  //     value: "Font-end",
-  //   },
-  //   {
-  //     text: "Back-end",
-  //     value: "Back-end ",
-  //   },
-  //   {
-  //     text: "FullStack",
-  //     value: "FullStack",
-  //   },
-  // ],
-  // onFilter: (value, record) => record.positions.includes(value as string),
-  // // filterSearch: true,
-  // width: "20%",
+  //   title: <Translation>{(t) => t("LIST.MANAGER")}</Translation>,
+  //   dataIndex: "isManager",
+  //   key: "isManager",
+  //   render: (isManager, record) => (
+  //     <Space>
+  //       {isManager === "true" ? record.managerId : ""}
+  //     </Space>
+  //   )
   // },
+  //
+  {
+    title: <Translation>{(t) => t("LIST.MANAGER")}</Translation>,
+    dataIndex: "user",
+    key: "user",
+    render: (user) => (user.isManager ? user.managerId : null),
+  },
+  {
+    title: <Translation>{(t) => t("LIST.POSITIONS")}</Translation>,
+    dataIndex: "positions",
+    key: "positions",
+    render: (positions: Position[]) => (
+      <>
+        {positions.map((position, index) => (
+          <Tag key={index}>{position.name.toUpperCase()}</Tag>
+        ))}
+      </>
+    ),
+  },
+  //
   {
     title: <Translation>{(t) => t("LIST.STATUS")}</Translation>,
     key: "status",
@@ -106,7 +108,7 @@ export const UsersColumnsTable = (
         </ButtonAction>
         <ButtonAction
           variant='primary'
-          handleAction={() => handleAction("sync", record)}
+          handleAction={() => handleAction("down", record)}
           tooltip={i18n.t("ACTION.DOWN")}
         >
           <VerticalAlignBottomOutlined />

@@ -3,9 +3,21 @@ export interface IUser {
   userName: string;
   fullName: string;
   email: string;
-  positions: string[];
+  positions: Position[];
   status: string;
   avatarUrl: string;
+  // isManager: boolean;
+  //
+  user: {
+    isManager: boolean;
+    managerId: string;
+    fullName: string;
+  };
+}
+export interface Position {
+  id: string;
+  name: string;
+  description: string;
 }
 
 interface IGetUser {
@@ -17,7 +29,6 @@ interface IGetUser {
 }
 
 export type IGetUsers = IGetUser[];
-export type IUsers = IUser[];
 
 export interface DataType {
   key: React.Key;
@@ -35,6 +46,14 @@ export type ProjectType = {
   employeeId: {
     id: string;
     roles: string[];
+  }
+}
+
+export type IUsers = {
+  data: IUser[];
+  meta: {
+    itemCount: number;
+    pageCount: number;
   };
 };
 
@@ -56,4 +75,3 @@ export type GetListUsers = {
   take: number;
   page: number;
 };
-
