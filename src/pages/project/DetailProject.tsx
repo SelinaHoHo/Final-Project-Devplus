@@ -13,15 +13,6 @@ const DetailProject = () => {
     <div className='page-detail-project'>
       <Title level={2}>{t("DETAIL_PROJECT.NAME")}</Title>
       <DetailProjectCom />
-      {/* {theme === "dark" ? (
-        <div className='detail-project-dark'>
-          <DetailProjectCom />
-        </div>
-      ) : (
-        <div className='detail-project-light'>
-          <DetailProjectCom />
-        </div>
-      )} */}
     </div>
   );
 };
