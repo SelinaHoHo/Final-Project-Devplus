@@ -7,6 +7,7 @@
     "LIST_PROJECTS": "List Project",
     "CREATE_PROJECTS": "Create Project",
     "CREATE_USER": "Create user",
+    "PROJECT_DETAIL": "Project Detail",
     "CLOSE_CURRENT": "Close current",
     "CLOSE_OTHER": "Close other",
     "COLOSE_ALL": "Close all",
@@ -151,5 +152,15 @@
   },
   "UPDATE": {
     "SUCCESS": "Update Status Success"
+  },
+  "DETAIL_PROJECT": {
+    "DESCRIPTION": "Description",
+    "STARTDATE": "Start date",
+    "ENDDATE": "End date",
+    "TECHNICAL": "Technical",
+    "LANGUAGE": "Language",
+    "TRACKING": "Traking",
+    "MANAGER": "Manager",
+    "EMPLOYEE": "Employee"
   }
 }

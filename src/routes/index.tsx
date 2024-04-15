@@ -9,8 +9,10 @@ import LayoutPage from "../components/layout";
 import ListProject from "../pages/project/ListProject";
 
 const CreateProject = lazy(() => import("@/pages/project/CreateProject"));
+const PageNoFound = lazy(() => import("@/pages/PageNotFound"));
 const Dashboard = lazy(() => import("@/pages/Dashboard"));
 const Login = lazy(() => import("@/pages/login/Login"));
+const DetailProject = lazy(() => import("@/pages/project/DetailProject"));
 
 const Router = () => {
   return useRoutes([
@@ -83,13 +85,21 @@ const Router = () => {
               path: "edit",
               element: <div>Edit Projects</div>,
             },
+            {
+              path: "detail/:id",
+              element: <DetailProject />,
+            },
           ],
+        },
+        {
+          path: "*",
+          element: <PageNoFound />,
         },
       ],
     },
     {
       path: "*",
-      element: <div>Not Found</div>,
+      element: <PageNoFound />,
     },
   ]);
 };

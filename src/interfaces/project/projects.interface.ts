@@ -1,18 +1,19 @@
-// interface IProject {
-//   name: string;
-//   description: string;
-//   startDate: string;
-//   endDate: string;
-//   language: string[];
-//   technical: string[];
-//   managerId: string;
-//   employeeId: [
-//     {
-//       id: string;
-//       roles: string[];
-//     },
-//   ];
-// }
+interface IProjectDe {
+  id: string;
+  name: string;
+  description: string;
+  startDate: string;
+  endDate: string;
+  language: string[];
+  technical: string[];
+  managerId: string;
+  employeeId: [
+    {
+      id: string;
+      roles: string[];
+    },
+  ];
+}
 
 interface ICreateProjectReq {
   name: string;
@@ -36,7 +37,7 @@ interface IErrorResponse {
 
 export type { ICreateProjectReq, IErrorResponse };
 
-export type IProjects = IProject[];
+export type IProjectDetail = IProjectDe;
 
 export interface IProject {
   data: {

@@ -1,9 +1,15 @@
-import { createProject, getProjects, patchUpdateStatus } from "@/apis/project.api";
+import {
+  createProject,
+  getDetailProject,
+  getProjects,
+  patchUpdateStatus,
+} from "@/apis/project.api";
 import { QUERY_KEY } from "@/constants/queryKey";
 import {
   GetListProject,
   ICreateProjectReq,
   IProject,
+  IProjectDetail,
   UpdateStatus,
 } from "@/interfaces/project/projects.interface";
 import { UseQueryResult, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -41,6 +47,16 @@ export const useGetProjects = (param: GetListProject): UseQueryResult<IProject, 
     queryKey: [QUERY_KEY.PROJECTS],
     queryFn: async (): Promise<IProject> => {
       const { data } = await getProjects(param);
+      return data;
+    },
+  });
+};
+
+export const useGetDetailProject = (id: string): UseQueryResult<IProjectDetail, Error> => {
+  return useQuery<IProjectDetail>({
+    queryKey: [QUERY_KEY.PROJECT],
+    queryFn: async (): Promise<IProjectDetail> => {
+      const { data } = await getDetailProject(id);
       return data;
     },
   });

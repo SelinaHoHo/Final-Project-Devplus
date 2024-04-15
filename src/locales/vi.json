@@ -7,6 +7,7 @@
     "LIST_PROJECTS": "Danh sách Dự Án",
     "CREATE_PROJECTS": "Tạo Dự Án",
     "CREATE_USER": "Tạo người dùng",
+    "PROJECT_DETAIL": "Chi tiết dự án",
     "CLOSE_CURRENT": "Đóng tab hiện tại",
     "CLOSE_OTHER": "Đóng các tab khác",
     "COLOSE_ALL": "Đóng tất cả",
@@ -147,5 +148,15 @@
   },
   "UPDATE": {
     "SUCCESS": "Cập nhập trạng thái thành công"
+  },
+  "DETAIL_PROJECT": {
+    "DESCRIPTION": "Mô tả",
+    "STARTDATE": "Ngày bắt đầu",
+    "ENDDATE": "Ngày kết thúc",
+    "TECHNICAL": "Kỹ thuật",
+    "LANGUAGE": "Ngôn ngữ",
+    "TRACKING": "Theo dõi",
+    "MANAGER": "Quản lý",
+    "EMPLOYEE": "Nhân viên"
   }
 }

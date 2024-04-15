@@ -4,6 +4,7 @@ import {
   GetListProject,
   ICreateProjectReq,
   IProject,
+  IProjectDetail,
   UpdateStatus,
 } from "@/interfaces/project/projects.interface";
 import { AxiosResponse } from "axios";
@@ -15,3 +16,6 @@ export const getProjects = (param: GetListProject): Promise<AxiosResponse<IProje
 
 export const patchUpdateStatus = (param: UpdateStatus): Promise<AxiosResponse<IProject>> =>
   instance.patch(`${API_URL.PROJECTS}/${param.id}`, param);
+
+export const getDetailProject = (id: string): Promise<AxiosResponse<IProjectDetail>> =>
+  instance.get(API_URL.GETDETAILPROJECT, { params: { id } });
