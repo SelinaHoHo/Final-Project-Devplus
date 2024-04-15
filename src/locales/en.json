@@ -145,6 +145,7 @@
     "TARGETDATE": "Target Completion Date",
     "PROJECTSTATUS": "Project Status",
     "PROGRESS": "Progress",
-    "ACTIONS": "Actions"
+    "ACTIONS": "Actions",
+    "MEMBERS": "Members"
   }
 }
