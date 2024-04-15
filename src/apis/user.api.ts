@@ -9,3 +9,6 @@ export const getUsers = (param: GetListUsers): Promise<AxiosResponse<IUsers>> =>
 
 export const postLogin = (data: ILoginRequest): Promise<AxiosResponse<ILoginResponse>> =>
   instance.post(API_URL.LOGIN, data);
+
+export const profile = (data: ILoginRequest): Promise<AxiosResponse<ILoginResponse>> =>
+  instance.post(API_URL.LOGIN, data);

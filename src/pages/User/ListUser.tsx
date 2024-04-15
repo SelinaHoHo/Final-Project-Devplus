@@ -6,6 +6,7 @@ import { Button, Col, Input, Row } from "antd";
 import { useEffect, useState } from "react";
 import { Translation } from "react-i18next";
 import { UsersColumnsTable } from "./UserListColumn";
+import { useNavigate } from "react-router-dom";
 
 const ListUser = () => {
   const [table, setTable] = useState({
@@ -19,7 +20,6 @@ const ListUser = () => {
     take: table.take,
   };
   const { data, isLoading, refetch } = useGetAccounts(paginatorSearch);
-
   useEffect(() => {
     if (filterName === "") {
       setFilterName("");
@@ -35,13 +35,13 @@ const ListUser = () => {
       setFilterName(value);
     }
   };
-
-  const handleAction = (key: string, _item: IUser) => {
+  const navigate = useNavigate();
+  const handleAction = (key: string, item: IUser) => {
     switch (key) {
-      // case "update":
-      //   navigate(`/application/${item.id}`);
-      //   break;
-      // case "detail":
+      case "detail":
+        navigate(`/users/detail/${item.id}`);
+        break;
+      // case "down":
       //   navigate(`/courses/${item.id}`);
       //   break;
       // case "delete":
@@ -58,7 +58,6 @@ const ListUser = () => {
       default:
     }
   };
-
   const handleSearch = () => {
     setTable({
       page: 1,
@@ -90,8 +89,8 @@ const ListUser = () => {
         paginate={{
           table,
           setTable,
-          total: data?.meta.itemCount,
-          pageCount: data?.meta.pageCount,
+          total: data?.meta.itemCount || 1,
+          pageCount: data?.meta.pageCount || 10,
         }}
         columns={UsersColumnsTable(handleAction)}
         loading={isLoading}

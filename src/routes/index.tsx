@@ -9,6 +9,7 @@ import { Navigate, useRoutes } from "react-router-dom";
 import LayoutPage from "../components/layout";
 import ListUser from "@/pages/User/ListUser";
 import Dashboard from "@/pages/Dashboard";
+import DetailUser from "@/pages/detailUser/DetailUser";
 // import Dashboard from "@/pages/Dashboard";
 
 const Router = () => {
@@ -49,13 +50,17 @@ const Router = () => {
               element: <ListUser />,
             },
             {
-              path: "edit",
-              element: <div>Edit Users</div>,
+              path: "detail/:id",
+              element: <DetailUser />,
             },
           ],
         },
       ],
     },
+    // {
+    //   path: "detail:id",
+    //   element: <DetailUser/>,
+    // },
     {
       path: "*",
       element: <div>Not Found</div>,

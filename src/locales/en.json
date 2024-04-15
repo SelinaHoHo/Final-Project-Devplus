@@ -32,6 +32,7 @@
     "NAME":"Name",
     "SEARCH": "Search",
     "SEARCH_NAME": "Enter name"
+ 
 
   },
   "LIST": {
@@ -41,7 +42,8 @@
     "NAME":"Name",
     "AVATAR":"Avatar",
     "ACTIVE":"Active",
-    "NO_ACTIVE":" Inactive"
+    "NOT_ACTIVE":" Inactive",
+    "MANAGER":"Manager"
   },
   "ACTION":{
     "DETAILS":"details",

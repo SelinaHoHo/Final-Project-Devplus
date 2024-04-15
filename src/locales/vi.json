@@ -37,7 +37,8 @@
     "NAME":"Tên",
     "AVATAR":"Hình ảnh",
     "ACTIVE":"Hoạt động",
-    "NO_ACTIVE":"Không hoạt động"
+    "NOT_ACTIVE":"Không hoạt động",
+    "MANAGER":"Quản lý"
   },
   "ACTION":{
     "DETAILS":"chi tiết",

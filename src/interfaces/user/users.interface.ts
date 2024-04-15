@@ -3,13 +3,29 @@ export interface IUser {
   fullName: string;
   gender: string;
   email: string;
-  positions: string[];
+  positions: Position[];
   status: string;
   avatarUrl: string;
+  // isManager: boolean;
+  //
+  user: {
+    isManager: boolean;
+    managerId: string;
+    fullName: string;
+  };
+}
+export interface Position {
+  id: string;
+  name: string;
+  description: string;
 }
 
 export type IUsers = {
-  users: IUser[];
+  data: IUser[];
+  meta: {
+    itemCount: number;
+    pageCount: number;
+  };
 };
 
 export type GetListUsers = {
@@ -17,12 +33,3 @@ export type GetListUsers = {
   take: number;
   page: number;
 };
-
-// export interface DataType {
-//   id: string;
-//   name: string;
-//   email: string;
-//   positions: string[];
-//   status: boolean;
-//   avatarUrl: string;
-// }
