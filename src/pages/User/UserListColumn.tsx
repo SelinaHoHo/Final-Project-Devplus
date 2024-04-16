@@ -2,7 +2,7 @@ import { ButtonAction } from "@/components/core/ButtonAction/ButtonAction";
 import i18n from "@/config/i18n";
 import { IUser } from "@/interfaces/user/users.interface";
 import { DeleteOutlined, FileSearchOutlined, VerticalAlignBottomOutlined } from "@ant-design/icons";
-import { Avatar, Space, Tag, Tooltip } from "antd";
+import { Avatar, Space, Tag } from "antd";
 import { ColumnsType } from "antd/lib/table";
 import { Translation } from "react-i18next";
 
@@ -49,14 +49,17 @@ export const UsersColumnsTable = (
     width: "20%",
     render: (manager, record) => {
       return record.isManager ? (
-        <Tooltip title={manager.profile.fullName} placement='top'>
+        // <Tooltip title={manager.profile.fullName} placement='top'>
+        <Space>
           <a href={`detail/${record.managerId}`}>
             <Avatar src={manager.profile.avatarUrl} style={{ backgroundColor: "#f56a00" }}>
               K
             </Avatar>
           </a>
-        </Tooltip>
+          {manager.profile.fullName}
+        </Space>
       ) : (
+        // </Tooltip>
         "..."
       );
     },
