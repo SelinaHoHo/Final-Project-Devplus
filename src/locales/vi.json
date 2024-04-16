@@ -131,6 +131,7 @@
   },
   "ACTION": {
     "DETAILS": "chi tiết",
-    "DOWN": "tải xuống"
+    "DOWN": "tải xuống",
+    "DELETE": "Xoá"
   }
 }

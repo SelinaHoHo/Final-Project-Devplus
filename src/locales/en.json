@@ -134,6 +134,7 @@
   },
   "ACTION": {
     "DETAILS": "details",
-    "DOWN": "download"
+    "DOWN": "download",
+    "DELETE": "Delete"
   }
 }

@@ -1,8 +1,8 @@
 import { ButtonAction } from "@/components/core/ButtonAction/ButtonAction";
 import i18n from "@/config/i18n";
-import { IUser, Position } from "@/interfaces/user/users.interface";
-import { SearchOutlined, VerticalAlignBottomOutlined } from "@ant-design/icons";
-import { Avatar, Space, Tag } from "antd";
+import { IUser } from "@/interfaces/user/users.interface";
+import { FileSearchOutlined, VerticalAlignBottomOutlined, DeleteOutlined } from "@ant-design/icons";
+import { Avatar, Space, Tag, Tooltip } from "antd";
 import { ColumnsType } from "antd/lib/table";
 import { Translation } from "react-i18next";
 
@@ -16,15 +16,15 @@ export const UsersColumnsTable = (
   },
   {
     title: <Translation>{(t) => t("LIST.AVATAR")}</Translation>,
-    dataIndex: "avatarUrl",
-    render: (_text, record) => {
+    dataIndex: "profile",
+    render: (profile) => {
       return (
         <Space>
-          {record.avatarUrl ? (
-            <Avatar size='large' src={record.avatarUrl} />
+          {profile.avatarUrl ? (
+            <Avatar size='large' src={profile.avatarUrl} />
           ) : (
             <Avatar style={{ backgroundColor: "#13C2C2" }} size='large'>
-              {record.fullName[0].toUpperCase()}
+              {profile.fullName[0].toUpperCase()}
             </Avatar>
           )}
         </Space>
@@ -33,51 +33,53 @@ export const UsersColumnsTable = (
   },
   {
     title: <Translation>{(t) => t("LIST.NAME")}</Translation>,
-    dataIndex: "fullName",
-    key: "fullName",
+    dataIndex: "profile",
+    key: "profile",
+    render: (profile) => {
+      return profile.fullName;
+    },
   },
   {
     title: "Email",
     dataIndex: "email",
   },
-
-  // {
-  //   title: <Translation>{(t) => t("LIST.MANAGER")}</Translation>,
-  //   dataIndex: "isManager",
-  //   key: "isManager",
-  //   render: (isManager, record) => (
-  //     <Space>
-  //       {isManager === "true" ? record.managerId : ""}
-  //     </Space>
-  //   )
-  // },
-  //
   {
     title: <Translation>{(t) => t("LIST.MANAGER")}</Translation>,
-    dataIndex: "user",
-    key: "user",
-    render: (user) => (user.isManager ? user.managerId : null),
+    dataIndex: "manager",
+    render: (manager, record) => {
+      return record.isManager == true ? (
+        <Tooltip title={manager.profile.fullName} placement='top'>
+          <a href={`detail/${manager.id}`}>
+            <Avatar src={manager.profile.avatarUrl} style={{ backgroundColor: "#f56a00" }}>
+              K
+            </Avatar>
+          </a>
+        </Tooltip>
+      ) : (
+        "..."
+      );
+    },
   },
-  {
-    title: <Translation>{(t) => t("LIST.POSITIONS")}</Translation>,
-    dataIndex: "positions",
-    key: "positions",
-    render: (positions: Position[]) => (
-      <>
-        {positions.map((position, index) => (
-          <Tag key={index}>{position.name.toUpperCase()}</Tag>
-        ))}
-      </>
-    ),
-  },
-  //
+  // {
+  //   title: <Translation>{(t) => t("LIST.POSITIONS")}</Translation>,
+  //   dataIndex: "profile",
+  //   key: "profile",
+  //   render: (positions: Position[]) => (
+  //     <>
+  //       {positions.map((position, index) => (
+  //         <Tag key={index}>{position.name.toUpperCase()}</Tag>
+  //       ))}
+  //     </>
+  //   ),
+  // },
+
   {
     title: <Translation>{(t) => t("LIST.STATUS")}</Translation>,
     key: "status",
-    dataIndex: "status",
-    render: (status) => (
-      <Tag color={status === "active" ? "green" : "red"}>
-        <Translation>{(t) => t(`LIST.${status.toUpperCase()}`)}</Translation>
+    dataIndex: "profile",
+    render: (profile) => (
+      <Tag color={profile.status === "active" ? "green" : "red"}>
+        <Translation>{(t) => t(`LIST.${profile.status.toUpperCase()}`)}</Translation>
       </Tag>
     ),
     filters: [
@@ -90,7 +92,7 @@ export const UsersColumnsTable = (
         value: "notactive",
       },
     ],
-    onFilter: (value, record) => record.status === value,
+    onFilter: (value, record) => record.profile.status === value,
   },
   {
     title: <Translation>{(t) => t("LIST.ACTIONS")}</Translation>,
@@ -104,7 +106,7 @@ export const UsersColumnsTable = (
           handleAction={() => handleAction("detail", record)}
           tooltip={i18n.t("ACTION.DETAILS")}
         >
-          <SearchOutlined />
+          <FileSearchOutlined />
         </ButtonAction>
         <ButtonAction
           variant='primary'
@@ -112,6 +114,13 @@ export const UsersColumnsTable = (
           tooltip={i18n.t("ACTION.DOWN")}
         >
           <VerticalAlignBottomOutlined />
+        </ButtonAction>
+        <ButtonAction
+          variant='danger'
+          handleAction={() => handleAction("delete", record)}
+          tooltip={i18n.t("ACTION.DELETE")}
+        >
+          <DeleteOutlined />
         </ButtonAction>
       </Space>
     ),
