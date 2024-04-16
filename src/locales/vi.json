@@ -44,5 +44,11 @@
     "DETAILS":"chi tiết",
     "DOWN":"tải xuống",
     "DELETE":"Xoá"
+  },
+  "MODAL":{
+    "TITLE_DELETE":"Xoá",
+    "CONFIRM_DELETE":"Xác nhận xoá",
+    "OK": "Đồng ý",
+    "CANCEL":"Huỷ bỏ"
   }
 }

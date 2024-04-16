@@ -2,11 +2,12 @@ import { Table } from "@/components/core/Table/Table";
 import i18n from "@/config/i18n";
 import { useGetAccounts } from "@/hooks/useUser";
 import { IUser } from "@/interfaces/user/users.interface";
-import { Button, Col, Input, Row } from "antd";
+import { Button, Col, Input, Row, Modal } from "antd";
 import { useEffect, useState } from "react";
 import { Translation } from "react-i18next";
 import { UsersColumnsTable } from "./UserListColumn";
 import { useNavigate } from "react-router-dom";
+import { t } from "i18next";
 
 const ListUser = () => {
   const [table, setTable] = useState({
@@ -36,25 +37,44 @@ const ListUser = () => {
     }
   };
   const navigate = useNavigate();
+  // const handleAction = (key: string, item: IUser) => {
+  //   switch (key) {
+  //     case "detail":
+  //       navigate(`/users/detail/${item.id}`);
+  //       break;
+  //     // case "down":
+  //     //   navigate(`/courses/${item.id}`);
+  //     //   break;
+  //     case "delete":
+  //       openModal(
+  //         () => {
+  //           onDeleteApplication(item.id);
+  //         },
+  //         ModalTypeEnum.CONFIRM,
+  //         ICON_URL.ICON_TRASH,
+  //         t("MODAL.CONFIRM_DELETE", { name: item.name }),
+  //         t("MODAL.TITLE_DELETE", { name: item.name })
+  //       );
+  //       break;
+  //     default:
+  //   }
+  // };
   const handleAction = (key: string, item: IUser) => {
     switch (key) {
       case "detail":
         navigate(`/users/detail/${item.id}`);
         break;
-      // case "down":
-      //   navigate(`/courses/${item.id}`);
-      //   break;
-      // case "delete":
-      //   openModal(
-      //     () => {
-      //       onDeleteApplication(item.id);
-      //     },
-      //     ModalTypeEnum.CONFIRM,
-      //     ICON_URL.ICON_TRASH,
-      //     t("MODAL.CONFIRM_DELETE", { name: item.name }),
-      //     t("MODAL.TITLE_DELETE", { name: item.name })
-      //   );
-      //   break;
+      case "delete":
+        // eslint-disable-next-line no-case-declarations
+        const fullName = item.profile.fullName || "";
+        Modal.confirm({
+          title: t("MODAL.TITLE_DELETE", { name: fullName }),
+          content: t("MODAL.CONFIRM_DELETE", { name: fullName }),
+          okText: t("MODAL.OK"),
+          cancelText: t("MODAL.CANCEL"),
+          // onOk: () => onDeleteApplication(item.id),
+        });
+        break;
       default:
     }
   };

@@ -47,5 +47,11 @@
     "DETAILS": "details",
     "DOWN": "download",
     "DELETE": "Delete"
+  },
+  "MODAL":{
+    "TITLE_DELETE":"Delete: {{name}}",
+    "CONFIRM_DELETE":"Confirm delete: {{name}}",
+    "OK": "OK",
+    "CANCEL":"Cancel"
   }
 }
