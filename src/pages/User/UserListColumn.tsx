@@ -1,7 +1,7 @@
 import { ButtonAction } from "@/components/core/ButtonAction/ButtonAction";
 import i18n from "@/config/i18n";
 import { IUser } from "@/interfaces/user/users.interface";
-import { FileSearchOutlined, VerticalAlignBottomOutlined, DeleteOutlined } from "@ant-design/icons";
+import { DeleteOutlined, FileSearchOutlined, VerticalAlignBottomOutlined } from "@ant-design/icons";
 import { Avatar, Space, Tag, Tooltip } from "antd";
 import { ColumnsType } from "antd/lib/table";
 import { Translation } from "react-i18next";
@@ -46,10 +46,11 @@ export const UsersColumnsTable = (
   {
     title: <Translation>{(t) => t("LIST.MANAGER")}</Translation>,
     dataIndex: "manager",
+    width: "20%",
     render: (manager, record) => {
-      return record.isManager == true ? (
+      return record.isManager ? (
         <Tooltip title={manager.profile.fullName} placement='top'>
-          <a href={`detail/${manager.id}`}>
+          <a href={`detail/${record.managerId}`}>
             <Avatar src={manager.profile.avatarUrl} style={{ backgroundColor: "#f56a00" }}>
               K
             </Avatar>
@@ -60,19 +61,6 @@ export const UsersColumnsTable = (
       );
     },
   },
-  // {
-  //   title: <Translation>{(t) => t("LIST.POSITIONS")}</Translation>,
-  //   dataIndex: "profile",
-  //   key: "profile",
-  //   render: (positions: Position[]) => (
-  //     <>
-  //       {positions.map((position, index) => (
-  //         <Tag key={index}>{position.name.toUpperCase()}</Tag>
-  //       ))}
-  //     </>
-  //   ),
-  // },
-
   {
     title: <Translation>{(t) => t("LIST.STATUS")}</Translation>,
     key: "status",
@@ -88,7 +76,7 @@ export const UsersColumnsTable = (
         value: "active",
       },
       {
-        text: <Translation>{(t) => t("LIST.NOT_ACTIVE")}</Translation>,
+        text: <Translation>{(t) => t("LIST.NOTACTIVE")}</Translation>,
         value: "notactive",
       },
     ],

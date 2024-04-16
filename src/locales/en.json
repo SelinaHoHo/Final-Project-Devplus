@@ -29,25 +29,23 @@
     "DISPLAY": "Display",
     "ITEM": "Items",
     "DETAILS": "Actions details",
-    "NAME":"Name",
+    "NAME": "Name",
     "SEARCH": "Search",
     "SEARCH_NAME": "Enter name"
- 
-
   },
   "LIST": {
     "POSITIONS": "Positions",
     "STATUS": "Status",
     "ACTIONS": "Actions",
-    "NAME":"Name",
-    "AVATAR":"Avatar",
-    "ACTIVE":"Active",
-    "NOT_ACTIVE":" Inactive",
-    "MANAGER":"Manager"
+    "NAME": "Name",
+    "AVATAR": "Avatar",
+    "ACTIVE": "Active",
+    "NOTACTIVE": " Inactive",
+    "MANAGER": "Manager"
   },
-  "ACTION":{
-    "DETAILS":"details",
-    "DOWN":"download",
-    "DELETE":"Delete"
+  "ACTION": {
+    "DETAILS": "details",
+    "DOWN": "download",
+    "DELETE": "Delete"
   }
 }
