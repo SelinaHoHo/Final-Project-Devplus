@@ -4,15 +4,19 @@
 }
 
 .ant-input {
-  height: 40px;
+  min-height: 40px;
 }
 
 .ant-picker {
-  height: 40px;
+  min-height: 40px;
+}
+
+.ant-select-selector {
+  min-height: 40px;
 }
 
 .ant-select {
-  height: 40px;
+  min-height: 40px;
 }
 
 .form-item {

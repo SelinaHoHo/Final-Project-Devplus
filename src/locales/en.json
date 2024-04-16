@@ -34,7 +34,8 @@
     "FAILED_MESSAGE": "Create project failed!",
     "TECHNICAL_REQUIRED": "Please chosse project technicals!",
     "MANAGER_REQUIRED": "Please chosse project manager!",
-    "EMPLOYEE_REQUIRED": "Please chosse project employees!",
+    "EMPLOYEE_ID_REQUIRED": "Please chosse project employee!",
+    "EMPLOYEE_ROLE_REQUIRED": "Please chosse employee role!",
     "STATUS_REQUIRED": "Please chosse project status!",
     "TITLE": "Create Project",
     "STARTDATE": "Start date",
@@ -54,8 +55,18 @@
     "DESCRIPTIONDES": "Enter project description",
     "MANAGER": "Manager",
     "MANAGER_PLACEHOLDER": "Select project manager",
-    "EMPLOYEE": "Employees",
-    "EMPLOYEE_PLACEHOLDER": "Select project employees",
-    "NAME_ALREADY_EXIST": "Project already exist!"
+    "EMPLOYEE": "Employee",
+    "EMPLOYEE_NAME": "Select employees",
+    "EMPLOYEE_ROLES": "Select roles",
+    "NAME_ALREADY_EXIST": "Project already exist!",
+    "CREATE_EMPLOYEE": "Add employee",
+    "DELETE": "Remove",
+    "ROLES": "Roles",
+    "ACTION": "Action",
+    "EMPLOYEE_LIST": "Employee list",
+    "ALREADY_EXISTS": "The employee already exists",
+    "ERROR": "Please select employee and roles",
+    "ERROR_NAME": "Please select employee name",
+    "ERROR_ROLES": "Please select employee roles"
   }
 }

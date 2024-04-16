@@ -6,7 +6,12 @@ interface IProject {
   language: string[];
   technical: string[];
   managerId: string;
-  employeeId: string[];
+  employeeId: [
+    {
+      id: string;
+      roles: string[];
+    },
+  ];
 }
 
 interface ICreateProjectReq {
@@ -17,7 +22,12 @@ interface ICreateProjectReq {
   language: string[];
   technical: string[];
   managerId?: string;
-  employeeId?: string[];
+  employeeId: [
+    {
+      id: string;
+      roles: string[];
+    },
+  ];
 }
 
 interface IErrorResponse {

@@ -1,17 +1,14 @@
 interface IUser {
   id: string;
-  fullName: string;
+  userName: string;
   email: string;
   isManager: boolean;
 }
 
 interface IGetUser {
   id: string;
-  fullName: string;
+  userName: string;
   email: string;
-  user: {
-    id: string;
-  };
   isManager: boolean;
 }
 

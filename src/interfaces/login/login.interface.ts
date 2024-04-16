@@ -11,4 +11,4 @@ interface IErrorResponse {
   message: string;
 }
 
-export type { ILoginRequest, ILoginResponse, IErrorResponse };
+export type { IErrorResponse, ILoginRequest, ILoginResponse };
