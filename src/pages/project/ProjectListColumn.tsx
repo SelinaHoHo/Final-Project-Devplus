@@ -2,12 +2,14 @@ import { ButtonAction } from "@/components/core/ButtonAction/ButtonAction";
 import i18n from "@/config/i18n";
 import { ColumnIProject } from "@/interfaces/project/projects.interface";
 import { DeleteOutlined, EditOutlined, FileSearchOutlined } from "@ant-design/icons";
-import { Avatar, Progress, Space, Tag } from "antd";
+import { Avatar, Progress, Select, Space } from "antd";
 import { ColumnsType } from "antd/lib/table";
+import { format, parseISO } from "date-fns";
 import { Translation } from "react-i18next";
 
 export const ProjectsColumnsTable = (
   handleAction: (key: string, item: ColumnIProject) => void,
+  handleChange: (value: string, item: ColumnIProject) => void,
   loading: boolean,
 ): ColumnsType<ColumnIProject> => [
   {
@@ -24,12 +26,17 @@ export const ProjectsColumnsTable = (
   {
     title: <Translation>{(t) => t("PROJECT.STARTDATE")}</Translation>,
     dataIndex: "startDate",
+    // sorter: (a, b) => new Date(a.startDate) - new Date(b.startDate),
     width: "15%",
+    render: (text) => format(parseISO(text), "dd/MM/yyyy"),
   },
+
   {
     title: <Translation>{(t) => t("PROJECT.TARGETDATE")}</Translation>,
     dataIndex: "endDate",
     width: "15%",
+    // sorter: (a, b) => new Date(a.endDate) - new Date(b.endDate),
+    render: (text) => format(parseISO(text), "dd/MM/yyyy"),
   },
   {
     title: <Translation>{(t) => t("PROJECT.PROJECTSTATUS")}</Translation>,
@@ -43,39 +50,70 @@ export const ProjectsColumnsTable = (
         text: "Completed",
         value: "Completed",
       },
+      {
+        text: "Pending",
+        value: "Pending",
+      },
     ],
     onFilter: (value, record) => record.status.indexOf(value as string) === 0,
     filterSearch: true,
     width: "10%",
-    render: (status) => <Tag color={status === "Completed" ? "green" : "geekblue"}>{status}</Tag>,
+    render: (status, record) => (
+      <>
+        <Select
+          defaultValue={status}
+          style={{ width: 120 }}
+          onChange={() => handleChange("value", record)}
+          options={[
+            { value: "InProgress", label: "In Progress" },
+            { value: "Completed", label: "Completed" },
+            { value: "Pending", label: "Pending" },
+          ]}
+        />
+      </>
+    ),
   },
   {
     title: <Translation>{(t) => t("PROJECT.PROGRESS")}</Translation>,
     dataIndex: "progress",
     sorter: (a, b) => a.progress - b.progress,
     width: "20%",
-    render: (_text, record) => <Progress percent={record.progress} />,
+    render: (_text, record) => {
+      const currentDate: Date = new Date();
+      const startDate: Date = new Date(record.startDate);
+      const endDate: Date = new Date(record.endDate);
+      const daysPassed: number = Math.max(
+        0,
+        Math.min(
+          currentDate.getTime() - startDate.getTime(),
+          endDate.getTime() - startDate.getTime(),
+        ) /
+          (1000 * 60 * 60 * 24),
+      );
+      const totalDays: number = (endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24);
+      const progressPercent: number = (daysPassed / totalDays) * 100;
+
+      return <Progress percent={Math.round(progressPercent)} />;
+    },
   },
+
   {
     title: <Translation>{(t) => t("PROJECT.MEMBERS")}</Translation>,
     dataIndex: "members",
     width: "10%",
-    render: (_text) => (
-      <>
-        <Avatar.Group
-          maxCount={3}
-          size='large'
-          maxStyle={{
-            color: "#f56a00",
-            backgroundColor: "#fde3cf",
-          }}
-        >
-          <Avatar src='https://api.dicebear.com/7.x/miniavs/svg?seed=3' />
-          <Avatar src='https://api.dicebear.com/7.x/miniavs/svg?seed=3' />
-          <Avatar src='https://api.dicebear.com/7.x/miniavs/svg?seed=3' />
-          <Avatar src='https://api.dicebear.com/7.x/miniavs/svg?seed=3' />
-        </Avatar.Group>
-      </>
+    render: (_text, record) => (
+      <Avatar.Group
+        maxCount={3}
+        size='large'
+        maxStyle={{
+          color: "#f56a00",
+          backgroundColor: "#fde3cf",
+        }}
+      >
+        {record.projectMembers.map((item) => (
+          <Avatar src={item.user.profile.avatarUrl} />
+        ))}
+      </Avatar.Group>
     ),
   },
   {

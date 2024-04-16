@@ -46,6 +46,7 @@ export interface IProject {
     endDate: Date;
     status: string;
     progress: number;
+    projectMembers: ProjectMembers[];
   }[];
   meta: {
     page: string;
@@ -57,6 +58,24 @@ export interface IProject {
   };
 }
 
+export interface ProjectMembers {
+  id: string;
+  user: {
+    isManager: boolean;
+    manager: string;
+    managerId: string;
+    profile: {
+      avatarUrl: string;
+      dayOfBirth: string;
+      email: string;
+      fullName: string;
+      gender: string;
+      phoneNumber: number;
+      status: string;
+    };
+  };
+}
+
 export interface ColumnIProject {
   id: string;
   name: string;
@@ -64,6 +83,7 @@ export interface ColumnIProject {
   endDate: Date;
   status: string;
   progress: number;
+  projectMembers: ProjectMembers[];
 }
 
 export type GetListProject = {

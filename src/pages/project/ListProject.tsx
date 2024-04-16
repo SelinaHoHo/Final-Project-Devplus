@@ -46,6 +46,29 @@ const ListProject = () => {
     }
   };
 
+  const handleChange = (value: string, _item: ColumnIProject) => {
+    switch (value) {
+      // case "update":
+      //   navigate(`/application/${item.id}`);
+      //   break;
+      // case "detail":
+      //   navigate(`/courses/${item.id}`);
+      //   break;
+      // case "delete":
+      //   openModal(
+      //     () => {
+      //       onDeleteApplication(item.id);
+      //     },
+      //     ModalTypeEnum.CONFIRM,
+      //     ICON_URL.ICON_TRASH,
+      //     t("MODAL.CONFIRM_DELETE", { name: item.name }),
+      //     t("MODAL.TITLE_DELETE", { name: item.name })
+      //   );
+      //   break;
+      default:
+    }
+  };
+
   const onSearch = () => {
     setTable({
       page: 1,
@@ -86,7 +109,7 @@ const ListProject = () => {
               total: data?.meta.itemCount || 1,
               pageCount: data?.meta.pageCount || 10,
             }}
-            columns={ProjectsColumnsTable(handleAction, true)}
+            columns={ProjectsColumnsTable(handleAction, handleChange, true)}
             loading={isLoading}
             dataSource={data?.data}
           />
