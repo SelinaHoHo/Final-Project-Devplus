@@ -110,9 +110,25 @@ body[theme-mode="dark"] {
   }
 }
 
+.ant-layout-content.layout-page-content {
+  max-height: 100vh;
+  overflow-y: scroll;
+}
+
+.layout-page-content > :nth-child(2) {
+  height: 100%;
+  overflow: unset;
+}
+
 .layout-page-sider-menu {
   border-right: none !important;
 }
+
+.layout-page-sider {
+  border-right: none !important;
+  margin-bottom: 0 !important;
+}
+
 .ant-menu-inline-collapsed {
   width: 79px !important;
 }
@@ -199,10 +215,22 @@ body[theme-mode="dark"] {
 }
 
 .demo-logo-vertical {
-  padding-top: 10px;
+  padding-top: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 60px;
   box-sizing: border-box;
+  font-size: 50px;
+}
+
+.demo-logo {
+  padding-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  box-sizing: border-box;
+  font-size: 50px;
+  margin-bottom: 5px;
 }

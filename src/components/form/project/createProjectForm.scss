@@ -1,0 +1,46 @@
+.ant-form-item-label {
+  display: flex;
+  align-self: flex-start !important;
+}
+
+.ant-input {
+  min-height: 40px;
+}
+
+.ant-picker {
+  min-height: 40px;
+}
+
+.ant-select-selector {
+  min-height: 40px;
+}
+
+.ant-select {
+  min-height: 40px;
+}
+
+.form-item {
+  margin: 0;
+}
+
+.ant-select-suffix {
+  color: #16c2c2;
+  font-size: 10px;
+}
+
+.anticon-calendar {
+  color: #16c2c2;
+  font-size: 15px;
+}
+.ant-btn {
+  font-size: 15px;
+}
+
+.anticon-down {
+  color: #16c2c2;
+  font-size: 10px;
+}
+
+.ant-select-outlined.ant-select-multiple .ant-select-selection-item {
+  background-color: #16c2c223;
+}

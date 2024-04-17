@@ -4,6 +4,7 @@ import { Drawer, Layout, theme as antTheme } from "antd";
 import { Suspense, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet, useLocation } from "react-router";
+import { ReactComponent as LogoSvg } from "../../assets/header/logo_login.svg";
 import { setUserItem } from "../../redux/features/auth/authSlice";
 import { RootState } from "../../redux/store";
 import { menuList } from "../../routes/menu";
@@ -14,7 +15,6 @@ import TagsView from "../tagView";
 import HeaderComponent from "./header";
 import "./layout.scss";
 import MenuComponent from "./menu";
-import { ReactComponent as LogoSvg } from "../../assets/header/logo.svg";
 
 const { Sider, Content } = Layout;
 const WIDTH = 992;
@@ -91,7 +91,7 @@ const LayoutPage: FC = () => {
             </svg>
           </div>
           <div className='demo-logo-vertical'>
-            <span className='anticon' style={{ fontSize: "100px" }}>
+            <span className='anticon'>
               <LogoSvg />
             </span>
           </div>
@@ -112,6 +112,11 @@ const LayoutPage: FC = () => {
           onClose={toggle}
           open={!collapsed}
         >
+          <div className='demo-logo'>
+            <span className='anticon'>
+              <LogoSvg />
+            </span>
+          </div>
           <MenuComponent
             menuList={menuList}
             openKey={openKey}
