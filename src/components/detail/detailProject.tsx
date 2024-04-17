@@ -6,117 +6,87 @@ import "./detailProject.scss";
 interface DataType {
   key: string;
   name: string;
+  email: string;
   roles: string[];
 }
-
-const columns: TableProps<DataType>["columns"] = [
-  {
-    title: "Name",
-    dataIndex: "name",
-    key: "name",
-    render: (text) => (
-      <>
-        <List itemLayout='horizontal'>
-          <List.Item>
-            <List.Item.Meta
-              avatar={
-                <Avatar
-                  style={{ alignItems: "center", justifyContent: "center" }}
-                  src={`https://api.dicebear.com/7.x/miniavs/svg?seed=1`}
-                />
-              }
-              title={<p style={{ margin: "7px 0" }}>{text}</p>}
-            />
-          </List.Item>
-        </List>
-      </>
-    ),
-  },
-  {
-    title: "Roles",
-    dataIndex: "roles",
-    key: "roles",
-    render: (_, { roles }) => (
-      <>
-        {roles.map((role) => {
-          return (
-            <Tag color={"#16c2c2"} key={role}>
-              {role.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </>
-    ),
-  },
-];
-
-const data: DataType[] = [
-  {
-    key: "1",
-    name: "John Brown",
-    roles: ["FE", "DevOps"],
-  },
-  {
-    key: "2",
-    name: "Jim Green",
-    roles: ["BE", "DevOps"],
-  },
-  {
-    key: "3",
-    name: "Joe Black",
-    roles: ["DA", "BA"],
-  },
-  {
-    key: "4",
-    name: "John Brown",
-    roles: ["FE", "DevOps"],
-  },
-  {
-    key: "5",
-    name: "Jim Green",
-    roles: ["BE", "DevOps"],
-  },
-  {
-    key: "6",
-    name: "Joe Black",
-    roles: ["DA", "BA"],
-  },
-  {
-    key: "7",
-    name: "John Brown",
-    roles: ["FE", "DevOps"],
-  },
-  {
-    key: "8",
-    name: "Jim Green",
-    roles: ["BE", "DevOps"],
-  },
-  {
-    key: "9",
-    name: "Joe Black",
-    roles: ["DA", "BA"],
-  },
-  {
-    key: "10",
-    name: "John Brown",
-    roles: ["FE", "DevOps"],
-  },
-  {
-    key: "11",
-    name: "Jim Green",
-    roles: ["BE", "DevOps"],
-  },
-  {
-    key: "12",
-    name: "Joe Black",
-    roles: ["DA", "BA"],
-  },
-];
 
 const { Title, Paragraph } = Typography;
 const detailProject = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { t } = useTranslation();
+  const columns: TableProps<DataType>["columns"] = [
+    {
+      title: t("DETAIL_PROJECT.TABLE_NAME"),
+      dataIndex: "name",
+      width: "30%",
+      key: "name",
+      render: (text) => (
+        <>
+          <List itemLayout='horizontal'>
+            <List.Item>
+              <List.Item.Meta
+                avatar={
+                  <Avatar
+                    style={{ alignItems: "center", justifyContent: "center" }}
+                    src={`https://api.dicebear.com/7.x/miniavs/svg?seed=1`}
+                  />
+                }
+                title={<p style={{ margin: "7px 0" }}>{text}</p>}
+              />
+            </List.Item>
+          </List>
+        </>
+      ),
+    },
+    {
+      title: "Email",
+      width: "30%",
+      dataIndex: "email",
+      key: "email",
+      render: (text) => (
+        <>
+          <p>{text}</p>
+        </>
+      ),
+    },
+    {
+      title: t("DETAIL_PROJECT.TABLE_ROLES"),
+      dataIndex: "roles",
+      key: "roles",
+      render: (_, { roles }) => (
+        <>
+          {roles.map((role) => {
+            return (
+              <Tag color={"#16c2c2"} key={role}>
+                {role.toUpperCase()}
+              </Tag>
+            );
+          })}
+        </>
+      ),
+    },
+  ];
+
+  const data: DataType[] = [
+    {
+      key: "1",
+      name: "John Brown",
+      email: "jxQ1j@example.com",
+      roles: ["FE", "DevOps"],
+    },
+    {
+      key: "2",
+      name: "Jim Green",
+      email: "jxQ1j@example.com",
+      roles: ["BE", "DevOps"],
+    },
+    {
+      key: "3",
+      name: "Joe Black",
+      email: "jxQ1j@example.com",
+      roles: ["DA", "BA"],
+    },
+  ];
   return (
     <Row gutter={[16, 4]} style={{ width: "100%" }}>
       <Col md={24} lg={{ span: 16, flex: "column" }} style={{ width: "100%" }}>

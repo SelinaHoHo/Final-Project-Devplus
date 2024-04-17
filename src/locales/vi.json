@@ -2,11 +2,11 @@
   "MENU": {
     "DASHBOARD": "Bảng điều khiển",
     "USERS": "Người dùng",
-    "PROJECTS": "Dự Án",
+    "PROJECTS": "Dự án",
     "LIST_USERS": "Danh sách",
-    "LIST_PROJECTS": "Danh sách Dự Án",
-    "CREATE_PROJECTS": "Tạo Dự Án",
     "CREATE_USER": "Tạo người dùng",
+    "LIST_PROJECTS": "Danh sách dự án",
+    "CREATE_PROJECTS": "Tạo dự án",
     "PROJECT_DETAIL": "Chi tiết dự án",
     "CLOSE_CURRENT": "Đóng tab hiện tại",
     "CLOSE_OTHER": "Đóng các tab khác",
@@ -157,6 +157,8 @@
     "LANGUAGE": "Ngôn ngữ",
     "TRACKING": "Theo dõi",
     "MANAGER": "Quản lý",
-    "EMPLOYEE": "Nhân viên"
+    "EMPLOYEE": "Danh sách nhân viên",
+    "TABLE_NAME": "Tên",
+    "TABLE_ROLES": "Vai trò"
   }
 }

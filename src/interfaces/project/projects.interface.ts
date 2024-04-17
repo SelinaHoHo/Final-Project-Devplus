@@ -6,10 +6,18 @@ interface IProjectDe {
   endDate: string;
   language: string[];
   technical: string[];
-  managerId: string;
+  managerId: {
+    id: string;
+    name: string;
+    email: string;
+    image: string;
+  };
   employeeId: [
     {
       id: string;
+      name: string;
+      email: string;
+      image: string;
       roles: string[];
     },
   ];

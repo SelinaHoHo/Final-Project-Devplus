@@ -161,6 +161,8 @@
     "LANGUAGE": "Language",
     "TRACKING": "Traking",
     "MANAGER": "Manager",
-    "EMPLOYEE": "Employee"
+    "EMPLOYEE": "Employee List",
+    "TABLE_NAME": "Name",
+    "TABLE_ROLES": "Roles"
   }
 }
