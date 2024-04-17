@@ -1,6 +1,7 @@
 interface IUser {
   id: string;
   userName: string;
+  fullName: string;
   email: string;
   isManager: boolean;
 }
@@ -10,6 +11,7 @@ interface IGetUser {
   userName: string;
   email: string;
   isManager: boolean;
+  profile: IUser;
 }
 
 export type IGetUsers = IGetUser[];

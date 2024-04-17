@@ -1,12 +1,12 @@
 import { useGetLangs } from "@/hooks/useLang";
-import { useGetPositions } from "@/hooks/usePosition";
+import { useGetPosition } from "@/hooks/usePosition";
 import { useGetTechs } from "@/hooks/useTech";
+import { useGetAllUserNoPagination } from "@/hooks/useUser";
 import {
   Button,
   Col,
   DatePicker,
   Form,
-  FormInstance,
   Input,
   notification,
   Radio,
@@ -22,17 +22,14 @@ import { createUser } from "../../../apis/user.api";
 import { yupSync } from "../../../helpers/validation";
 import "./CreateUser.scss";
 
-interface EmployeeFormProps {
-  form: FormInstance;
-}
-
-const CreateUser: React.FC<EmployeeFormProps> = () => {
+const CreateUser = () => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
 
   const { data: languages } = useGetLangs();
   const { data: technologies } = useGetTechs();
-  const { data: positions } = useGetPositions();
+  const { data: positions } = useGetPosition();
+  const { data: users } = useGetAllUserNoPagination();
 
   const validator = [
     yupSync(
@@ -198,7 +195,15 @@ const CreateUser: React.FC<EmployeeFormProps> = () => {
                   wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                   rules={validator}
                 >
-                  <Input placeholder={t("CREATE_EMPLOYEE.MANAGED_BY")} />
+                  <Select placeholder={t("CREATE_EMPLOYEE.MANAGED_BY")}>
+                    {users
+                      ?.filter((user) => user.isManager)
+                      .map((user) => (
+                        <Select.Option key={user.id} value={user.id}>
+                          {user.profile.fullName}
+                        </Select.Option>
+                      ))}
+                  </Select>
                 </Form.Item>
               )}
             </Col>

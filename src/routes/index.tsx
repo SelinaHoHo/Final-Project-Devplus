@@ -5,9 +5,9 @@ import { lazy } from "react";
 import { Navigate, useRoutes } from "react-router-dom";
 import LayoutPage from "../components/layout";
 import ListProject from "../pages/project/ListProject";
+import ListUser from "../pages/Users/ListUser";
 
 const CreateProject = lazy(() => import("@/pages/project/CreateProject"));
-import ListUser from "../pages/Users/ListUser";
 const Dashboard = lazy(() => import("@/pages/Dashboard"));
 const Login = lazy(() => import("@/pages/login/Login"));
 
