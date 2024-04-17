@@ -101,6 +101,10 @@
     "MANAGED_BY": "Quản lí bởi",
     "MANAGED_BY_REQUIRED": "Vui lòng chọn được quản lí bởi ai",
     "CODING_LANGUAGE": "Ngôn ngữ lập trình",
-    "TECHNOLOGIES": "Công nghệ"
+    "TECHNOLOGIES": "Công nghệ",
+    "POSITIONS": "Vị trí",
+    "LANGUAGE_REQUIRED": "Vui lòng chọn ngôn ngữ lập trình",
+    "TECHNICAL_REQUIRED": "Vui lòng chọn công nghệ",
+    "POSITIONS_REQUIRED": "Vui lòng chọn vị trí"
   }
 }

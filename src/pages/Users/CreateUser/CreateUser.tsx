@@ -8,6 +8,7 @@ import {
   Form,
   FormInstance,
   Input,
+  notification,
   Radio,
   RadioChangeEvent,
   Row,
@@ -29,6 +30,10 @@ const CreateUser: React.FC<EmployeeFormProps> = () => {
   const { t } = useTranslation();
   const [form] = Form.useForm();
 
+  const { data: languages } = useGetLangs();
+  const { data: technologies } = useGetTechs();
+  const { data: positions } = useGetPositions();
+
   const validator = [
     yupSync(
       Yup.object().shape({
@@ -44,9 +49,9 @@ const CreateUser: React.FC<EmployeeFormProps> = () => {
         description: Yup.string().required(t("CREATE_EMPLOYEE.DESCRIPTION_REQUIRED") as string),
         isManager: Yup.string().required(t("CREATE_EMPLOYEE.IS_MANAGER_REQUIRED") as string),
         managedBy: Yup.string().required(t("CREATE_EMPLOYEE.MANAGED_BY_REQUIRED") as string),
-        positions: Yup.array()
-          .of(Yup.string().required("Position is required"))
-          .required("At least one position must be selected"),
+        language: Yup.array().required(t("CREATE_EMPLOYEE.LANGUAGE_REQUIRED") as string),
+        technical: Yup.array().required(t("CREATE_EMPLOYEE.TECHNICAL_REQUIRED") as string),
+        positions: Yup.array().required(t("CREATE_EMPLOYEE.POSITIONS_REQUIRED") as string),
       }),
     ),
   ] as unknown as Rule[];
@@ -60,17 +65,19 @@ const CreateUser: React.FC<EmployeeFormProps> = () => {
   const onFinish = async (values: string[]) => {
     try {
       await createUser(values);
+      notification.success({
+        message: "Success",
+        description: "Successfully created employee",
+      });
       window.location.reload();
     } catch (error) {
       alert(error);
+      notification.error({
+        message: "Error",
+        description: "Error",
+      });
     }
   };
-
-  const { data: languages } = useGetLangs();
-
-  const { data: technologies } = useGetTechs();
-
-  const { data: positions } = useGetPositions();
 
   return (
     <div>
@@ -209,6 +216,7 @@ const CreateUser: React.FC<EmployeeFormProps> = () => {
                 labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 name='language'
+                rules={validator}
               >
                 <Select mode='multiple' placeholder={t("CREATE_EMPLOYEE.CODING_LANGUAGE")}>
                   {languages?.map((language) => (
@@ -226,6 +234,7 @@ const CreateUser: React.FC<EmployeeFormProps> = () => {
                 labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 name='technical'
+                rules={validator}
               >
                 <Select mode='multiple' placeholder={t("CREATE_EMPLOYEE.TECHNOLOGIES")}>
                   {technologies?.map((technology) => (
@@ -237,12 +246,13 @@ const CreateUser: React.FC<EmployeeFormProps> = () => {
 
             <Col xs={24} sm={24} md={24} lg={24}>
               <Form.Item
-                label='Positions'
+                label={t("CREATE_EMPLOYEE.POSITIONS")}
                 labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 name='positions'
+                rules={validator}
               >
-                <Select mode='multiple' placeholder='Positions'>
+                <Select mode='multiple' placeholder={t("CREATE_EMPLOYEE.POSITIONS")}>
                   {positions?.map((position) => (
                     <Select.Option value={position.id}>{position.name}</Select.Option>
                   ))}
@@ -254,7 +264,7 @@ const CreateUser: React.FC<EmployeeFormProps> = () => {
 
         <Form.Item>
           <Button type='primary' htmlType='submit'>
-            Submit
+            {t("CREATE_EMPLOYEE.SUBMIT")}
           </Button>
         </Form.Item>
       </Form>

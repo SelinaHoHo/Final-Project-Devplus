@@ -103,6 +103,10 @@
     "MANAGED_BY": "Managed by",
     "MANAGED_BY_REQUIRED": "Please enter managed by",
     "CODING_LANGUAGE": "Coding language",
-    "TECHNOLOGIES": "Technologies"
+    "TECHNOLOGIES": "Technologies",
+    "POSITIONS": "Positions",
+    "LANGUAGE_REQUIRED": "Please enter coding language",
+    "TECHNICAL_REQUIRED": "Please enter technical",
+    "POSITIONS_REQUIRED": "Please enter positions"
   }
 }
