@@ -1,4 +1,4 @@
-import CreateProjectForm from "@/components/form/createProjectForm";
+import CreateProjectForm from "@/components/form/project/createProjectForm";
 import { RootState } from "@/redux/store";
 import { Typography } from "antd";
 import { useTranslation } from "react-i18next";
@@ -12,7 +12,6 @@ const CreateProject = () => {
   return (
     <div className='page-create-project'>
       <Title level={2}>{t("CREATE_PROJECT.TITLE")}</Title>
-      {/* Form */}
       {theme === "dark" ? (
         <div className='form-create-dark'>
           <CreateProjectForm />

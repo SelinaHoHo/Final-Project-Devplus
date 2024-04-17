@@ -54,7 +54,6 @@
     "MANAGER": "Người quản lý",
     "MANAGER_PLACEHOLDER": "Vui lòng chọn quản lý dự án",
     "EMPLOYEE": "Nhân viên",
-    "ROLES": "Vị trí",
     "EMPLOYEE_NAME": "Vui lòng chọn nhân viên dự án",
     "EMPLOYEE_ROLES": "Vui lòng chọn vị trí",
     "NAME_ALREADY_EXIST": "Dự án đã tồn tại!",
@@ -63,7 +62,7 @@
     "ROLES": "Vị trí",
     "ACTION": "Thao tác",
     "EMPLOYEE_LIST": "Danh sách nhân viên",
-    "ALREADY_EXISTS": "The employee already exists",
+    "ALREADY_EXISTS": "Nhân viên đã trong dự án",
     "ERROR": "Vui lòng chọn nhân viên và vị trí",
     "ERROR_NAME": "Vui lòng chọn nhân viên",
     "ERROR_ROLES": "Vui lòng chọn vị trí"
