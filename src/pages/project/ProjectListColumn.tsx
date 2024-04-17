@@ -27,14 +27,14 @@ export const ProjectsColumnsTable = (
     title: <Translation>{(t) => t("PROJECT.STARTDATE")}</Translation>,
     dataIndex: "startDate",
     // sorter: (a, b) => new Date(a.startDate) - new Date(b.startDate),
-    width: "15%",
+    width: "12%",
     render: (text) => format(parseISO(text), "dd/MM/yyyy"),
   },
 
   {
     title: <Translation>{(t) => t("PROJECT.TARGETDATE")}</Translation>,
     dataIndex: "endDate",
-    width: "15%",
+    width: "12%",
     // sorter: (a, b) => new Date(a.endDate) - new Date(b.endDate),
     render: (text) => format(parseISO(text), "dd/MM/yyyy"),
   },
@@ -63,7 +63,7 @@ export const ProjectsColumnsTable = (
         <Select
           defaultValue={status}
           style={{ width: 120 }}
-          onChange={() => handleChange("value", record)}
+          onChange={(value) => handleChange(value, record)}
           options={[
             { value: "InProgress", label: "In Progress" },
             { value: "Completed", label: "Completed" },
@@ -76,8 +76,38 @@ export const ProjectsColumnsTable = (
   {
     title: <Translation>{(t) => t("PROJECT.PROGRESS")}</Translation>,
     dataIndex: "progress",
-    sorter: (a, b) => a.progress - b.progress,
-    width: "20%",
+    sorter: (a, b) => {
+      const currentDate = new Date();
+      const startDateA = new Date(a.startDate);
+      const endDateA = new Date(a.endDate);
+      const startDateB = new Date(b.startDate);
+      const endDateB = new Date(b.endDate);
+
+      const daysPassedA = Math.max(
+        0,
+        Math.min(
+          currentDate.getTime() - startDateA.getTime(),
+          endDateA.getTime() - startDateA.getTime(),
+        ) /
+          (1000 * 60 * 60 * 24),
+      );
+      const totalDaysA = (endDateA.getTime() - startDateA.getTime()) / (1000 * 60 * 60 * 24);
+      const progressPercentA = (daysPassedA / totalDaysA) * 100;
+
+      const daysPassedB = Math.max(
+        0,
+        Math.min(
+          currentDate.getTime() - startDateB.getTime(),
+          endDateB.getTime() - startDateB.getTime(),
+        ) /
+          (1000 * 60 * 60 * 24),
+      );
+      const totalDaysB = (endDateB.getTime() - startDateB.getTime()) / (1000 * 60 * 60 * 24);
+      const progressPercentB = (daysPassedB / totalDaysB) * 100;
+
+      return Math.round(progressPercentA) - Math.round(progressPercentB);
+    },
+    width: "16%",
     render: (_text, record) => {
       const currentDate: Date = new Date();
       const startDate: Date = new Date(record.startDate);
@@ -100,7 +130,7 @@ export const ProjectsColumnsTable = (
   {
     title: <Translation>{(t) => t("PROJECT.MEMBERS")}</Translation>,
     dataIndex: "members",
-    width: "10%",
+    width: "15%",
     render: (_text, record) => (
       <Avatar.Group
         maxCount={3}

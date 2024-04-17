@@ -1,5 +1,5 @@
 import { Table } from "@/components/core/Table/Table";
-import { useGetProjects } from "@/hooks/useProject";
+import { useGetProjects, useUpdateStatus } from "@/hooks/useProject";
 import { ColumnIProject } from "@/interfaces/project/projects.interface";
 import { Button, Col, Row } from "antd";
 import Search from "antd/es/input/Search";
@@ -46,27 +46,9 @@ const ListProject = () => {
     }
   };
 
-  const handleChange = (value: string, _item: ColumnIProject) => {
-    switch (value) {
-      // case "update":
-      //   navigate(`/application/${item.id}`);
-      //   break;
-      // case "detail":
-      //   navigate(`/courses/${item.id}`);
-      //   break;
-      // case "delete":
-      //   openModal(
-      //     () => {
-      //       onDeleteApplication(item.id);
-      //     },
-      //     ModalTypeEnum.CONFIRM,
-      //     ICON_URL.ICON_TRASH,
-      //     t("MODAL.CONFIRM_DELETE", { name: item.name }),
-      //     t("MODAL.TITLE_DELETE", { name: item.name })
-      //   );
-      //   break;
-      default:
-    }
+  const { mutate: handleUpdateStatus } = useUpdateStatus();
+  const handleChange = (value: string, item: ColumnIProject) => {
+    handleUpdateStatus({ id: item.id, status: value });
   };
 
   const onSearch = () => {

@@ -91,3 +91,8 @@ export type GetListProject = {
   take: number;
   page: number;
 };
+
+export interface UpdateStatus {
+  id: string;
+  status: string;
+}

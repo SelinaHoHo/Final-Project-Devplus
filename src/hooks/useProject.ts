@@ -1,11 +1,12 @@
-import { createProject, getProjects } from "@/apis/project.api";
+import { createProject, getProjects, patchUpdateStatus } from "@/apis/project.api";
 import { QUERY_KEY } from "@/constants/queryKey";
 import {
   GetListProject,
   ICreateProjectReq,
   IProject,
+  UpdateStatus,
 } from "@/interfaces/project/projects.interface";
-import { UseQueryResult, useMutation, useQuery } from "@tanstack/react-query";
+import { UseQueryResult, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { notification } from "antd";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -40,6 +41,21 @@ export const useGetProjects = (param: GetListProject): UseQueryResult<IProject, 
     queryFn: async (): Promise<IProject> => {
       const { data } = await getProjects(param);
       return data;
+    },
+  });
+};
+
+export const useUpdateStatus = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (param: UpdateStatus) => {
+      const data = await patchUpdateStatus(param);
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEY.PROJECTS],
+      });
     },
   });
 };
