@@ -133,8 +133,8 @@
     "MANAGER": "Manager"
   },
   "ACTION": {
-    "DETAILS": "details",
-    "DOWN": "download",
+    "DETAILS": "Details",
+    "DOWN": "Download",
     "DELETE": "Delete"
   }
 }

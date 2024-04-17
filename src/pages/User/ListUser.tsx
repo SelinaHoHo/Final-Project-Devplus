@@ -5,8 +5,8 @@ import { IUser } from "@/interfaces/user/users.interface";
 import { Button, Col, Input, Row } from "antd";
 import { useEffect, useState } from "react";
 import { Translation } from "react-i18next";
-import { UsersColumnsTable } from "./UserListColumn";
 import { useNavigate } from "react-router-dom";
+import { UsersColumnsTable } from "./UserListColumn";
 
 const ListUser = () => {
   const [table, setTable] = useState({
@@ -39,7 +39,7 @@ const ListUser = () => {
   const handleAction = (key: string, item: IUser) => {
     switch (key) {
       case "detail":
-        navigate(`/users/detail/${item.id}`);
+        navigate(`/users/${item.id}`);
         break;
       // case "down":
       //   navigate(`/courses/${item.id}`);

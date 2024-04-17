@@ -65,10 +65,6 @@ function App() {
             Typography: {
               colorPrimary: "black",
             },
-            Table: {
-              // colorBgContainer: theme === "dark" ? "rgb(22 28 36)" : "white",
-              // headerBg: theme === "dark" ? "rgb(47 57 68)" : "#fafafa",
-            },
           },
           token: { colorPrimary: "#13c2c2", fontFamily: "Roboto, sans-serif" },
           algorithm: theme === "dark" ? antdTheme.darkAlgorithm : antdTheme.defaultAlgorithm,

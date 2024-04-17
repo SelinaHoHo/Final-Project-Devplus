@@ -50,7 +50,7 @@ const Router = () => {
               element: <ListUser />,
             },
             {
-              path: "detail/:id",
+              path: ":id",
               element: <DetailUser />,
             },
             {
@@ -82,10 +82,6 @@ const Router = () => {
         },
       ],
     },
-    // {
-    //   path: "detail:id",
-    //   element: <DetailUser/>,
-    // },
     {
       path: "*",
       element: <div>Not Found</div>,
