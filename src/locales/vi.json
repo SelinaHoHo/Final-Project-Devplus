@@ -143,5 +143,8 @@
     "PROGRESS": "Tiến độ",
     "ACTIONS": "Hành Động",
     "MEMBERS": "Thành viên"
+  },
+  "UPDATE": {
+    "SUCCESS": "Cập nhập trạng thái thành công"
   }
 }

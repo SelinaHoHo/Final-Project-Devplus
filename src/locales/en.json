@@ -147,5 +147,8 @@
     "PROGRESS": "Progress",
     "ACTIONS": "Actions",
     "MEMBERS": "Members"
+  },
+  "UPDATE": {
+    "SUCCESS": "Update Status Success"
   }
 }

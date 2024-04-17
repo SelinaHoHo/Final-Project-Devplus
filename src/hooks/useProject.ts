@@ -8,6 +8,7 @@ import {
 } from "@/interfaces/project/projects.interface";
 import { UseQueryResult, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { notification } from "antd";
+import { t } from "i18next";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
@@ -55,6 +56,9 @@ export const useUpdateStatus = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEY.PROJECTS],
+      });
+      notification.success({
+        message: t("UPDATE.SUCCESS") as string,
       });
     },
   });
