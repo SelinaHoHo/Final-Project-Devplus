@@ -1,4 +1,3 @@
-import AuthGuard from "@/guards/AuthGuard";
 import GuestGuard from "@/guards/GuestGuard";
 import { lazy } from "react";
 import { Navigate, useRoutes } from "react-router-dom";
@@ -22,9 +21,9 @@ const Router = () => {
     {
       path: "/",
       element: (
-        <AuthGuard>
+        <GuestGuard>
           <LayoutPage />
-        </AuthGuard>
+        </GuestGuard>
       ),
       children: [
         {

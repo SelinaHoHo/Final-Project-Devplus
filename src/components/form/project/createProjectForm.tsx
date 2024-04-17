@@ -4,7 +4,8 @@ import { useGetPosition } from "@/hooks/usePosition";
 import { useCreateProject } from "@/hooks/useProject";
 import { useGetTechnical } from "@/hooks/useTechnical";
 import { useGetAllUserNoPagination } from "@/hooks/useUser";
-import { PlusOutlined } from "@ant-design/icons";
+
+import { DataType, ProjectType, SkillType, UserType } from "@/interfaces/user/users.interface";
 import {
   Button,
   Col,
@@ -13,7 +14,6 @@ import {
   Input,
   Row,
   Select,
-  Table,
   Typography,
   type FormProps,
 } from "antd";
@@ -23,49 +23,19 @@ import customParseFormat from "dayjs/plugin/customParseFormat";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
-import { yupSync } from "../../helpers/validation";
+import { yupSync } from "../../../helpers/validation";
+import EmployeeFormTable from "./EmployeeFormTable";
 import "./createProjectForm.scss";
 
 const { RangePicker } = DatePicker;
 const { TextArea } = Input;
 dayjs.extend(customParseFormat);
 
-interface DataType {
-  key: React.Key;
-  name: string;
-  roles: string[];
-}
-
-type ProjectType = {
-  name: string;
-  description: string;
-  date: string[];
-  language: string[];
-  technical: string[];
-  managerId: string;
-  employeeId: {
-    id: string;
-    roles: string[];
-  };
-};
-
-type UserType = {
-  id: string;
-  userName: string;
-  email: string;
-  isManager: boolean;
-};
-
-type SkillType = {
-  id: string;
-  name: string;
-};
-
 const CreateProjectForm: React.FC = () => {
   const { data: user } = useGetAllUserNoPagination();
-  const { data: technical } = useGetTechnical();
-  const { data: language } = useGetLanguage();
-  const { data: position } = useGetPosition();
+  const { data: _technical } = useGetTechnical();
+  const { data: _language } = useGetLanguage();
+  const { data: _position } = useGetPosition();
   const { t } = useTranslation();
   const [form] = Form.useForm();
   const { mutate: createProject } = useCreateProject();
@@ -75,6 +45,7 @@ const CreateProjectForm: React.FC = () => {
   const [employeeData, setEmployeeData] = useState<DataType>({
     key: "",
     name: "",
+    employeeId: "",
     roles: [],
   });
 
@@ -82,9 +53,21 @@ const CreateProjectForm: React.FC = () => {
     switch (type) {
       case "name":
         setEmployeeData({ ...employeeData, name: data, key: data });
+        form.setFields([
+          {
+            name: "employeeId",
+            errors: [],
+          },
+        ]);
         break;
       case "roles":
         setEmployeeData({ ...employeeData, roles: data });
+        form.setFields([
+          {
+            name: "roles",
+            errors: [],
+          },
+        ]);
         break;
       default:
         break;
@@ -94,18 +77,13 @@ const CreateProjectForm: React.FC = () => {
   const handleAddRow = () => {
     schema
       .validate(employeeData, { abortEarly: false })
-      .then(() => {
-        if (dataSource.some((item) => item.key === employeeData.name)) {
-          throw new Yup.ValidationError(t("CREATE_PROJECT.ALREADY_EXISTS"), employeeData, "name");
-        }
-        setDataSource([...dataSource, employeeData]);
-      })
+      .then(() => {})
       .catch((error) => {
-        if (error instanceof Yup.ValidationError) {
-          alert(t("CREATE_PROJECT.ERROR"));
-        } else {
-          alert(t("CREATE_PROJECT.ERROR"));
-        }
+        const errors = error.inner.map((e: { path: string; message: string }) => ({
+          name: e.path,
+          errors: [e.message],
+        }));
+        form.setFields(errors);
       });
   };
 
@@ -145,7 +123,7 @@ const CreateProjectForm: React.FC = () => {
 
   // Validation
   const schema = Yup.object().shape({
-    name: Yup.string().required(t("CREATE_PROJECT.ERROR_NAME") as string),
+    employeeId: Yup.string().required(t("CREATE_PROJECT.EMPLOYEE_REQUIRED") as string),
     roles: Yup.array().min(1, t("CREATE_PROJECT.ERROR_ROLES") as string),
   });
 
@@ -181,7 +159,7 @@ const CreateProjectForm: React.FC = () => {
   };
 
   return (
-    <Form onFinish={onFinish} form={form} initialValues={{ items: [{}] }}>
+    <Form onFinish={onFinish} form={form} initialValues={{ items: [{}] }} id='prj'>
       <Row gutter={[8, 4]}>
         <Col xs={24} sm={24} md={24} lg={24}>
           <Form.Item<ProjectType>
@@ -231,10 +209,12 @@ const CreateProjectForm: React.FC = () => {
               style={{ width: "100%" }}
               placeholder={t("CREATE_PROJECT.TECHNICAL_PLACEHOLDER") as string}
               notFoundContent={null}
-              options={technical?.map((item: SkillType) => ({
-                value: item.id,
-                label: item.name,
-              }))}
+              options={
+                [].map((item: SkillType) => ({
+                  value: item.id,
+                  label: item.name,
+                })) || []
+              }
             />
           </Form.Item>
         </Col>
@@ -252,7 +232,7 @@ const CreateProjectForm: React.FC = () => {
               style={{ width: "100%" }}
               placeholder={t("CREATE_PROJECT.LANGUAGE_PLACEHOLDER") as string}
               notFoundContent={null}
-              options={language?.map((item: SkillType) => ({
+              options={[].map((item: SkillType) => ({
                 value: item.id,
                 label: item.name,
               }))}
@@ -274,7 +254,7 @@ const CreateProjectForm: React.FC = () => {
               showSearch
               notFoundContent={null}
             >
-              {user?.map(
+              {[].map(
                 (item: UserType) =>
                   item.isManager && (
                     <Select.Option key={item?.id} value={item?.id}>
@@ -285,80 +265,12 @@ const CreateProjectForm: React.FC = () => {
             </Select>
           </Form.Item>
         </Col>
+
         <Col xs={24} sm={24} md={24} lg={24}>
-          <Row gutter={[8, 4]}>
-            <Col xs={24} sm={24} md={24} lg={12}>
-              <Form.Item
-                name='employeeId'
-                label={t("CREATE_PROJECT.EMPLOYEE")}
-                labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
-                wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
-              >
-                <Select
-                  style={{ width: "100%" }}
-                  placeholder={t("CREATE_PROJECT.EMPLOYEE_NAME") as string}
-                  showSearch
-                  notFoundContent={null}
-                  onChange={(e) => handleAddEmployee("name", e)}
-                  value={employeeData?.name}
-                >
-                  {user?.map(
-                    (item: UserType) =>
-                      !item.isManager && (
-                        <Select.Option key={item?.id} value={item?.id}>
-                          {item?.userName}
-                        </Select.Option>
-                      ),
-                  )}
-                </Select>
-              </Form.Item>
-            </Col>
-
-            <Col xs={24} sm={24} md={24} lg={12}>
-              <Form.Item
-                name='roles'
-                label={t("CREATE_PROJECT.ROLES")}
-                labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
-                wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
-              >
-                <Select
-                  mode='multiple'
-                  style={{ width: "100%" }}
-                  placeholder={t("CREATE_PROJECT.EMPLOYEE_ROLES") as string}
-                  notFoundContent={null}
-                  options={position?.map((item: SkillType) => ({
-                    value: item.name,
-                    label: item.name,
-                  }))}
-                  onChange={(e) => handleAddEmployee("roles", e)}
-                  value={employeeData?.roles}
-                />
-              </Form.Item>
-            </Col>
-            <Col xs={12} sm={12} md={12} lg={12}>
-              <Form.Item>
-                <Button onClick={handleAddRow} type='dashed' block icon={<PlusOutlined />}>
-                  {t("CREATE_PROJECT.CREATE_EMPLOYEE")}
-                </Button>
-              </Form.Item>
-            </Col>
-            <Col xs={24} sm={24} md={24} lg={24}>
-              <Form.Item
-                name={"employees"}
-                labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
-                wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
-                label={t("CREATE_PROJECT.EMPLOYEE_LIST")}
-              >
-                <Table
-                  rowClassName={() => "editable-row"}
-                  dataSource={dataSource}
-                  columns={defaultColumns}
-                />
-              </Form.Item>
-            </Col>
-          </Row>
+          <EmployeeFormTable
+            data={{ employeeData, dataSource, defaultColumns, handleAddEmployee, handleAddRow }}
+          />
         </Col>
-
         <Col xs={24} sm={24} md={24} lg={24}>
           <Form.Item<ProjectType>
             name='description'
@@ -369,13 +281,12 @@ const CreateProjectForm: React.FC = () => {
             <TextArea placeholder={t("CREATE_PROJECT.DESCRIPTIONDES")} />
           </Form.Item>
         </Col>
+        <Form.Item style={{ textAlign: "right" }}>
+          <Button type='primary' size='large' htmlType='submit' form='prj'>
+            {t("CREATE_PROJECT.SUBMIT")}
+          </Button>
+        </Form.Item>
       </Row>
-
-      <Form.Item style={{ textAlign: "right" }}>
-        <Button type='primary' size='large' htmlType='submit'>
-          {t("CREATE_PROJECT.SUBMIT")}
-        </Button>
-      </Form.Item>
     </Form>
   );
 };
