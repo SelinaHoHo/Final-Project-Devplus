@@ -77,7 +77,7 @@ const ListProject = () => {
         </Col>
         <Col span={12} style={{ textAlign: "end" }}>
           <Button type='primary'>
-            <Link to='../CreateProject'>Create Project</Link>
+            <Link to='../create'>Create Project</Link>
           </Button>
         </Col>
       </Row>
