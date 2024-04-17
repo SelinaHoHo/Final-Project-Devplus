@@ -108,6 +108,33 @@
     "POSITIONS": "Positions",
     "LANGUAGE_REQUIRED": "Please enter coding language",
     "TECHNICAL_REQUIRED": "Please enter technical",
-    "POSITIONS_REQUIRED": "Please enter positions"
+    "POSITIONS_REQUIRED": "Please enter positions",
+    "ERROR_ROLES": "Please select employee roles"
+  },
+  "TABLE": {
+    "EMPTY": "Empty",
+    "ACTIONS": "Actions",
+    "TOTAL_PAGE": "Total pages: {{total}}",
+    "DISPLAY": "Display",
+    "ITEM": "Items",
+    "DETAILS": "Actions details",
+    "NAME": "Name",
+    "SEARCH": "Search",
+    "SEARCH_NAME": "Enter name"
+  },
+  "LIST": {
+    "POSITIONS": "Positions",
+    "STATUS": "Status",
+    "ACTIONS": "Actions",
+    "NAME": "Name",
+    "AVATAR": "Avatar",
+    "ACTIVE": "Active",
+    "NOTACTIVE": "Inactive",
+    "MANAGER": "Manager"
+  },
+  "ACTION": {
+    "DETAILS": "Details",
+    "DOWN": "Download",
+    "DELETE": "Delete"
   }
 }

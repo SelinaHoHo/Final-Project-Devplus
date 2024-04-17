@@ -1,0 +1,50 @@
+$light-1: #fff !important;
+$dark-1: #000 !important;
+$dark-2: #1f1f1f !important;
+
+.btn-action {
+  width: 24px;
+  height: 24px;
+  padding: unset;
+  border-radius: 8px;
+  color: #fff;
+  border: none;
+  margin-right: 4px;
+
+  &.white {
+    background-color: white;
+    box-shadow: 0px 1px 1px #00000029;
+  }
+
+  &.success {
+    background-color: #00c07e;
+
+    &:hover {
+      background-color: #009a65 !important;
+    }
+  }
+
+  &.primary {
+    background-color: #5646ff;
+
+    &:hover {
+      background-color: #3524f3 !important;
+    }
+  }
+
+  &.danger {
+    background-color: #fc5661;
+
+    &:hover {
+      background-color: #fb303e !important;
+    }
+  }
+
+  &:hover {
+    color: #ffffff !important;
+  }
+
+  &:focus {
+    color: #ffffff;
+  }
+}

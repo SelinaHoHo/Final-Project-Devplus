@@ -107,5 +107,31 @@
     "LANGUAGE_REQUIRED": "Vui lòng chọn ngôn ngữ lập trình",
     "TECHNICAL_REQUIRED": "Vui lòng chọn công nghệ",
     "POSITIONS_REQUIRED": "Vui lòng chọn vị trí"
+  },
+  "TABLE": {
+    "EMPTY": "Không có dữ liệu",
+    "ACTIONS": "Hành động",
+    "TOTAL_PAGE": "Tổng trang: {{total}}",
+    "DISPLAY": "Hiển thị",
+    "ITEM": "Mục",
+    "DETAILS": "Chi tiết",
+    "NAME": "Tên",
+    "SEARCH": "Tìm kiếm",
+    "SEARCH_NAME": "Nhập tên"
+  },
+  "LIST": {
+    "POSITIONS": "Vị trí",
+    "STATUS": "Trạng thái",
+    "ACTIONS": "Hành Động",
+    "NAME": "Tên",
+    "AVATAR": "Hình ảnh",
+    "ACTIVE": "Hoạt động",
+    "NOTACTIVE": "Không hoạt động",
+    "MANAGER": "Quản lý"
+  },
+  "ACTION": {
+    "DETAILS": "Chi tiết",
+    "DOWN": "Tải xuống",
+    "DELETE": "Xoá"
   }
 }
