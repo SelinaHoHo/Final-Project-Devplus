@@ -126,7 +126,7 @@
     "NAME": "Tên",
     "AVATAR": "Hình ảnh",
     "ACTIVE": "Hoạt động",
-    "NOT_ACTIVE": "Không hoạt động",
+    "NOTACTIVE": "Không hoạt động",
     "MANAGER": "Quản lý"
   },
   "ACTION": {

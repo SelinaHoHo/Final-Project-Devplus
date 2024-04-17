@@ -129,7 +129,7 @@
     "NAME": "Name",
     "AVATAR": "Avatar",
     "ACTIVE": "Active",
-    "NOT_ACTIVE": "Inactive",
+    "NOTACTIVE": "Inactive",
     "MANAGER": "Manager"
   },
   "ACTION": {

@@ -2,7 +2,7 @@ import instance from "@/config/axios";
 import { API_URL } from "@/constants/apiUrl";
 import { ILanguage } from "@/interfaces/langs/langs.interface";
 import { ILoginRequest, ILoginResponse } from "@/interfaces/login/login.interface";
-import { IPosition } from "@/interfaces/positions/positions.interface";
+import { IPositions } from "@/interfaces/position/positions.interface";
 import { ITechnology } from "@/interfaces/tech/tech.interface";
 import { GetListUsers, IGetUsers, IUsers } from "@/interfaces/user/users.interface";
 import { AxiosResponse } from "axios";
@@ -23,7 +23,7 @@ export const getLanguages = (): Promise<AxiosResponse<ILanguage[]>> =>
 export const getTechnologies = (): Promise<AxiosResponse<ITechnology[]>> =>
   instance.get(API_URL.TECHNOLOGY);
 
-export const getPositions = (): Promise<AxiosResponse<IPosition[]>> =>
+export const getPositions = (): Promise<AxiosResponse<IPositions[]>> =>
   instance.get(API_URL.POSITION);
 
 export const createUser = (data: string[]): Promise<AxiosResponse<string[]>> =>

@@ -51,7 +51,7 @@ export const UsersColumnsTable = (
       return record.isManager ? (
         // <Tooltip title={manager.profile.fullName} placement='top'>
         <Space>
-          <a href={`detail/${record.managerId}`}>
+          <a href={`/users/${record.managerId}`}>
             <Avatar src={manager.profile.avatarUrl} style={{ backgroundColor: "#f56a00" }}>
               K
             </Avatar>

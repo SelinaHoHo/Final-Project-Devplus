@@ -49,8 +49,8 @@
     }
 
     > :nth-child(2) {
-      // flex: auto;
-      // overflow: auto;
+      flex: auto;
+      overflow: auto;
       padding: 6px;
       box-sizing: border-box;
       .innerText {
@@ -115,12 +115,14 @@ body[theme-mode="dark"] {
 
 .ant-layout-content.layout-page-content {
   max-height: 100vh;
-  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .layout-page-content > :nth-child(2) {
-  height: 100%;
+  // height: 10%;
   overflow: unset;
+  flex: unset !important;
+  overflow: unset !important;
 }
 
 .layout-page-sider-menu {

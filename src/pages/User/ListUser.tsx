@@ -68,23 +68,21 @@ const ListUser = () => {
 
   return (
     <>
-      <div style={{ margin: "3px" }}>
-        <Row gutter={5}>
-          <Col>
-            <Input
-              placeholder={i18n.t("TABLE.SEARCH_NAME")}
-              size='large'
-              allowClear
-              onChange={(value) => handleChangeSearch(value.target.value)}
-            ></Input>
-          </Col>
-          <Col>
-            <Button type='primary' onClick={handleSearch} size='large'>
-              <Translation>{(t) => t("TABLE.SEARCH")}</Translation>
-            </Button>
-          </Col>
-        </Row>
-      </div>
+      <Row gutter={5}>
+        <Col>
+          <Input
+            placeholder={i18n.t("TABLE.SEARCH_NAME")}
+            size='large'
+            allowClear
+            onChange={(value) => handleChangeSearch(value.target.value)}
+          ></Input>
+        </Col>
+        <Col>
+          <Button type='primary' onClick={handleSearch} size='large'>
+            <Translation>{(t) => t("TABLE.SEARCH")}</Translation>
+          </Button>
+        </Col>
+      </Row>
       <Table<IUser>
         paginate={{
           table,

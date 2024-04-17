@@ -60,8 +60,8 @@ export type ProjectType = {
   employeeId: {
     id: string;
     roles: string[];
-  }
-}
+  };
+};
 
 export type IUsers = {
   data: IUser[];
@@ -82,7 +82,6 @@ export type SkillType = {
   id: string;
   name: string;
 };
-
 
 export type GetListUsers = {
   name: string;
