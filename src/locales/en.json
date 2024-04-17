@@ -137,7 +137,8 @@
     "DOWN": "Download",
     "ITEM": "items",
     "EDIT": "Edit",
-    "DELETE": "Delete"
+    "DELETE": "Delete",
+    "DETAIL": "Detail"
   },
   "PROJECT": {
     "PROJECTNAME": "Project Name",

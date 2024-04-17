@@ -133,7 +133,8 @@
     "DETAILS": "Chi tiết",
     "DOWN": "Tải xuống",
     "EDIT": "Chỉnh sửa",
-    "DELETE": "Xóa"
+    "DELETE": "Xóa",
+    "DETAIL": "Chi tiết"
   },
   "PROJECT": {
     "PROJECTNAME": "Tên Dự Án",
