@@ -1,5 +1,27 @@
-.layout-page-content {
-  .page-create-user {
-    padding: 30px;
+.container {
+  padding: 30px;
+
+  section {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 20px 0;
+
+    .ant-form-item-label {
+      display: flex;
+      align-self: flex-start !important;
+    }
+
+    .ant-input {
+      height: 50px;
+    }
+
+    .ant-picker {
+      height: 50px;
+    }
+
+    .ant-select {
+      height: 50px;
+    }
   }
 }
