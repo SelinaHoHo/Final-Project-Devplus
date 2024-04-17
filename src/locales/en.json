@@ -73,6 +73,7 @@
     "SWITCH_THEME": "Switch theme"
   },
   "CREATE_EMPLOYEE": {
+    "CREATE_EMPLOYEE": "Create Employee",
     "POSITION": "Position",
     "EMAIL": "Email",
     "FULLNAME": "Full name",
