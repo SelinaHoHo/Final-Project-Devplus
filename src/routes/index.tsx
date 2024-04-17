@@ -1,9 +1,11 @@
 import AuthGuard from "@/guards/AuthGuard";
 import GuestGuard from "@/guards/GuestGuard";
+import CreateUser from "@/pages/Users/CreateUser/CreateUser";
 import { lazy } from "react";
 import { Navigate, useRoutes } from "react-router-dom";
 import LayoutPage from "../components/layout";
 import ListProject from "../pages/project/ListProject";
+import ListUser from "../pages/Users/ListUser";
 
 const CreateProject = lazy(() => import("@/pages/project/CreateProject"));
 const Dashboard = lazy(() => import("@/pages/Dashboard"));
@@ -44,11 +46,15 @@ const Router = () => {
             },
             {
               path: "list",
-              element: <div>List Users</div>,
+              element: <ListUser />,
             },
             {
               path: "edit",
               element: <div>Edit Users</div>,
+            },
+            {
+              path: "createUser",
+              element: <CreateUser />,
             },
           ],
         },

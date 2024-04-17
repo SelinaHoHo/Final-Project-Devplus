@@ -5,5 +5,7 @@ export const API_URL = {
   PROJECT: "/project",
   LANGUAGE: "/language",
   TECHNICAL: "/technical",
+  CREATE_USER: "/user",
+  TECHNOLOGY: "/technical",
   POSITION: "/position",
 };
