@@ -28,5 +28,6 @@ export const getPositions = (): Promise<AxiosResponse<IPositions[]>> =>
 
 export const createUser = (data: string[]): Promise<AxiosResponse<string[]>> =>
   instance.post(API_URL.CREATE_USER, data);
+
 export const profile = (data: ILoginRequest): Promise<AxiosResponse<ILoginResponse>> =>
   instance.post(API_URL.LOGIN, data);

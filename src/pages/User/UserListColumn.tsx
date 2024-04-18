@@ -52,11 +52,11 @@ export const UsersColumnsTable = (
         // <Tooltip title={manager.profile.fullName} placement='top'>
         <Space>
           <a href={`/users/${record.managerId}`}>
-            <Avatar src={manager.profile.avatarUrl} style={{ backgroundColor: "#f56a00" }}>
+            <Avatar src={manager?.profile?.avatarUrl} style={{ backgroundColor: "#f56a00" }}>
               K
             </Avatar>
           </a>
-          {manager.profile.fullName}
+          {manager?.profile?.fullName}
         </Space>
       ) : (
         // </Tooltip>

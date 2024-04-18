@@ -132,6 +132,20 @@
   "ACTION": {
     "DETAILS": "Chi tiết",
     "DOWN": "Tải xuống",
-    "DELETE": "Xoá"
+    "EDIT": "Chỉnh sửa",
+    "DELETE": "Xóa",
+    "DETAIL": "Chi tiết"
+  },
+  "PROJECT": {
+    "PROJECTNAME": "Tên Dự Án",
+    "STARTDATE": "Ngày bắt đầu",
+    "TARGETDATE": "Ngày hoàn thành",
+    "PROJECTSTATUS": "Trạng thái",
+    "PROGRESS": "Tiến độ",
+    "ACTIONS": "Hành Động",
+    "MEMBERS": "Thành viên"
+  },
+  "UPDATE": {
+    "SUCCESS": "Cập nhập trạng thái thành công"
   }
 }
