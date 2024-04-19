@@ -151,7 +151,11 @@
     "MEMBERS": "Members",
     "STATUS_INPROGRESS": "In Progress",
     "STATUS_PENDING": "Pending",
-    "STATUS_COMPLETED": "Completed"
+    "STATUS_COMPLETED": "Completed",
+    "SUCCESS": "Success",
+    "FAILED": "Failed",
+    "SUCCESS_DELETE": "Delete Success",
+    "FAILED_DELETE": "Project is pending"
   },
   "UPDATE": {
     "SUCCESS": "Update Status Success"

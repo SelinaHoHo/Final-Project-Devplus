@@ -147,7 +147,11 @@
     "MEMBERS": "Thành viên",
     "STATUS_INPROGRESS": "Đang Tiến Hành",
     "STATUS_PENDING": "Đang Chờ",
-    "STATUS_COMPLETED": "Đã Hoàn Thành"
+    "STATUS_COMPLETED": "Đã Hoàn Thành",
+    "SUCCESS": "Thành công",
+    "FAILED": "Thất bại",
+    "SUCCESS_DELETE": "Xóa thành công",
+    "FAILED_DELETE": "Dự án đang chờ xử lí"
   },
   "UPDATE": {
     "SUCCESS": "Cập nhập trạng thái thành công"

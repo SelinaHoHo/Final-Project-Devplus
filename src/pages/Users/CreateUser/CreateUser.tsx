@@ -52,7 +52,7 @@ const CreateUser = () => {
         dayOfBirth: Yup.date().required(t("CREATE_EMPLOYEE.DOB_REQUIRED") as string),
         description: Yup.string().required(t("CREATE_EMPLOYEE.DESCRIPTION_REQUIRED") as string),
         isManager: Yup.string().required(t("CREATE_EMPLOYEE.IS_MANAGER_REQUIRED") as string),
-        managedBy: Yup.string().required(t("CREATE_EMPLOYEE.MANAGED_BY_REQUIRED") as string),
+        managerId: Yup.string().required(t("CREATE_EMPLOYEE.MANAGED_BY_REQUIRED") as string),
         language: Yup.array().required(t("CREATE_EMPLOYEE.LANGUAGE_REQUIRED") as string),
         technical: Yup.array().required(t("CREATE_EMPLOYEE.TECHNICAL_REQUIRED") as string),
         positions: Yup.array().required(t("CREATE_EMPLOYEE.POSITIONS_REQUIRED") as string),
@@ -80,6 +80,7 @@ const CreateUser = () => {
         description: "Successfully created employee",
       });
       navigate("/employees");
+      form.resetFields();
     } catch (error) {
       alert(error);
       notification.error({
@@ -187,7 +188,7 @@ const CreateUser = () => {
                 {managedByInputVisible && (
                   <Form.Item
                     label={t("CREATE_EMPLOYEE.MANAGED_BY")}
-                    name='managedBy'
+                    name='managerId'
                     labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                     wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                     rules={validator}
@@ -383,7 +384,7 @@ const CreateUser = () => {
                 {managedByInputVisible && (
                   <Form.Item
                     label={t("CREATE_EMPLOYEE.MANAGED_BY")}
-                    name='managedBy'
+                    name='managerId'
                     labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                     wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                     rules={validator}
