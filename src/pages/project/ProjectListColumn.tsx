@@ -3,7 +3,7 @@ import { ButtonAction } from "@/components/core/ButtonAction/ButtonAction";
 import i18n from "@/config/i18n";
 import { ColumnIProject } from "@/interfaces/project/projects.interface";
 import { DeleteOutlined, EditOutlined, FileSearchOutlined } from "@ant-design/icons";
-import { Avatar, notification, Progress, Select, Space, Tooltip } from "antd";
+import { Avatar, Modal, notification, Progress, Select, Space, Tooltip } from "antd";
 import { ColumnsType } from "antd/lib/table";
 import { format, parseISO } from "date-fns";
 import { Translation } from "react-i18next";
@@ -195,9 +195,10 @@ export const ProjectsColumnsTable = (
           loading={!loading}
           // handleAction={() => handleAction("delete", record)}
           handleAction={() => {
-            if (window.confirm("Are you sure you want to delete this project?")) {
-              deleteProjects(record.id);
-            }
+            Modal.confirm({
+              title: <Translation>{(t) => t("PROJECT.CONFIRM_DELETE")}</Translation>,
+              onOk: () => deleteProjects(record.id),
+            });
           }}
           tooltip={i18n.t("ACTION.DELETE")}
         >

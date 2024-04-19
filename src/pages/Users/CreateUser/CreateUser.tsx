@@ -47,7 +47,7 @@ const CreateUser = () => {
           .required(t("CREATE_EMPLOYEE.EMAIL_REQUIRED") as string),
         address: Yup.string().required(t("CREATE_EMPLOYEE.ADDRESS_REQUIRED") as string),
         status: Yup.string()
-          .oneOf(["Pending", "In Progress"], t("CREATE_EMPLOYEE.INVALID_STATUS") as string)
+          .oneOf(["Active", "Disable"], t("CREATE_EMPLOYEE.INVALID_STATUS") as string)
           .required(t("CREATE_EMPLOYEE.STATUS_REQUIRED") as string),
         dayOfBirth: Yup.date().required(t("CREATE_EMPLOYEE.DOB_REQUIRED") as string),
         description: Yup.string().required(t("CREATE_EMPLOYEE.DESCRIPTION_REQUIRED") as string),
@@ -327,10 +327,8 @@ const CreateUser = () => {
                   rules={validator}
                 >
                   <Select placeholder={t("CREATE_EMPLOYEE.STATUS")}>
-                    <Select.Option value='Pending'>{t("CREATE_EMPLOYEE.PENDING")}</Select.Option>
-                    <Select.Option value='In Progress'>
-                      {t("CREATE_EMPLOYEE.IN_PROGRESS")}
-                    </Select.Option>
+                    <Select.Option value='Active'>{t("CREATE_EMPLOYEE.ACTIVE")}</Select.Option>
+                    <Select.Option value='Disable'>{t("CREATE_EMPLOYEE.DISABLE")}</Select.Option>
                   </Select>
                 </Form.Item>
               </Col>
