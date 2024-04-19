@@ -48,12 +48,12 @@ export const UsersColumnsTable = (
     dataIndex: "manager",
     width: "20%",
     render: (manager, record) => {
-      return record.isManager ? (
+      return record.managerId === null ? (
         "..."
       ) : (
         <Space>
           <a href={`/users/${record.managerId}`}>
-            <Avatar src={manager?.profile?.avatarUrl} style={{ backgroundColor: "#f56a00" }}>
+            <Avatar src={manager?.profile?.avatarUrl}>
               {manager?.profile?.fullName[0].toUpperCase()}
             </Avatar>
           </a>
