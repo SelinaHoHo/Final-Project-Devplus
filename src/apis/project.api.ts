@@ -18,4 +18,4 @@ export const patchUpdateStatus = (param: UpdateStatus): Promise<AxiosResponse<IP
   instance.patch(`${API_URL.PROJECTS}/${param.id}`, param);
 
 export const getDetailProject = (id: string): Promise<AxiosResponse<IProjectDetail>> =>
-  instance.get(API_URL.GETDETAILPROJECT, { params: { id } });
+  instance.get(`${API_URL.PROJECT}/${id}`);

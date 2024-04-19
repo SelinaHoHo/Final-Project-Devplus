@@ -12,7 +12,7 @@ const CreateProject = lazy(() => import("@/pages/project/CreateProject"));
 const PageNoFound = lazy(() => import("@/pages/PageNotFound"));
 const Dashboard = lazy(() => import("@/pages/Dashboard"));
 const Login = lazy(() => import("@/pages/login/Login"));
-const DetailProject = lazy(() => import("@/pages/project/DetailProject"));
+const DetailProject = lazy(() => import("@/pages/project/Detail/DetailProject"));
 
 const Router = () => {
   return useRoutes([
@@ -86,7 +86,7 @@ const Router = () => {
               element: <div>Edit Projects</div>,
             },
             {
-              path: "detail/:id",
+              path: ":id",
               element: <DetailProject />,
             },
           ],

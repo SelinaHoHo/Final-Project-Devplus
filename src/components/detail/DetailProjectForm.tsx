@@ -1,92 +1,31 @@
-import type { TableProps } from "antd";
-import { Avatar, Card, Col, List, Row, Space, Steps, Table, Tag, Typography } from "antd";
+import { IProjectDetail, ProjectMembers } from "@/interfaces/project/projects.interface";
+import { EmployeeProjectsColumnsTable } from "@/pages/project/Detail/DetailColumn";
+import { Avatar, Card, Col, List, Row, Space, Steps, Table, Typography } from "antd";
+import { FC } from "react";
 import { useTranslation } from "react-i18next";
 import "./detailProject.scss";
 
-interface DataType {
-  key: string;
-  name: string;
-  email: string;
-  roles: string[];
-}
+type DataProps = {
+  data: IProjectDetail | undefined;
+};
 
 const { Title, Paragraph } = Typography;
-const detailProject = () => {
+const DetailProjectForm: FC<DataProps> = ({ data }) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { t } = useTranslation();
-  const columns: TableProps<DataType>["columns"] = [
-    {
-      title: t("DETAIL_PROJECT.TABLE_NAME"),
-      dataIndex: "name",
-      width: "30%",
-      key: "name",
-      render: (text) => (
-        <>
-          <List itemLayout='horizontal'>
-            <List.Item>
-              <List.Item.Meta
-                avatar={
-                  <Avatar
-                    style={{ alignItems: "center", justifyContent: "center" }}
-                    src={`https://api.dicebear.com/7.x/miniavs/svg?seed=1`}
-                  />
-                }
-                title={<p style={{ margin: "7px 0" }}>{text}</p>}
-              />
-            </List.Item>
-          </List>
-        </>
-      ),
-    },
-    {
-      title: "Email",
-      width: "30%",
-      dataIndex: "email",
-      key: "email",
-      render: (text) => (
-        <>
-          <p>{text}</p>
-        </>
-      ),
-    },
-    {
-      title: t("DETAIL_PROJECT.TABLE_ROLES"),
-      dataIndex: "roles",
-      key: "roles",
-      render: (_, { roles }) => (
-        <>
-          {roles.map((role) => {
-            return (
-              <Tag color={"#16c2c2"} key={role}>
-                {role.toUpperCase()}
-              </Tag>
-            );
-          })}
-        </>
-      ),
-    },
-  ];
+  const formattedDate = (date: string | Date) => {
+    const formatted = new Date(date);
+    return `${formatted.getFullYear()}-${(formatted.getMonth() + 1)
+      .toString()
+      .padStart(2, "0")}-${formatted.getDate().toString().padStart(2, "0")} ${formatted
+      .getHours()
+      .toString()
+      .padStart(2, "0")}:${formatted.getMinutes().toString().padStart(2, "0")}:${formatted
+      .getSeconds()
+      .toString()
+      .padStart(2, "0")}`;
+  };
 
-  const data: DataType[] = [
-    {
-      key: "1",
-      name: "John Brown",
-      email: "jxQ1j@example.com",
-      roles: ["FE", "DevOps"],
-    },
-    {
-      key: "2",
-      name: "Jim Green",
-      email: "jxQ1j@example.com",
-      roles: ["BE", "DevOps"],
-    },
-    {
-      key: "3",
-      name: "Joe Black",
-      email: "jxQ1j@example.com",
-      roles: ["DA", "BA"],
-    },
-  ];
   return (
     <Row gutter={[16, 4]} style={{ width: "100%" }}>
       <Col md={24} lg={{ span: 16, flex: "column" }} style={{ width: "100%" }}>
@@ -95,15 +34,15 @@ const detailProject = () => {
             <Row gutter={[8, 4]}>
               <Col xs={24} sm={24} md={24} lg={24}>
                 <Title level={5}>{t("DETAIL_PROJECT.DESCRIPTION")}</Title>
-                <Paragraph>{t("DETAIL_PROJECT.DESCRIPTION_CONTENT")}</Paragraph>
+                <Paragraph>{data?.description}</Paragraph>
               </Col>
               <Col xs={24} sm={24} md={24} lg={12}>
                 <Title level={5}>{t("DETAIL_PROJECT.STARTDATE")}</Title>
-                <Paragraph>{t("DETAIL_PROJECT.STARTDATE_CONTENT")}</Paragraph>
+                <Paragraph>{formattedDate(data?.startDate || new Date())}</Paragraph>
               </Col>
               <Col xs={24} sm={24} md={24} lg={12}>
                 <Title level={5}>{t("DETAIL_PROJECT.ENDDATE")}</Title>
-                <Paragraph>{t("DETAIL_PROJECT.ENDDATE_CONTENT")}</Paragraph>
+                <Paragraph>{formattedDate(data?.endDate || new Date())}</Paragraph>
               </Col>
             </Row>
           </Card>
@@ -111,11 +50,15 @@ const detailProject = () => {
             <Row gutter={[8, 4]}>
               <Col xs={24} sm={24} md={24} lg={12}>
                 <Title level={5}>{t("DETAIL_PROJECT.TECHNICAL")}</Title>
-                <Paragraph>{t("DETAIL_PROJECT.TECHNICAL_CONTENT")}</Paragraph>
+                <Paragraph>
+                  {data?.technicalProject.map((item) => item.technical.name).join(", ")}
+                </Paragraph>
               </Col>
               <Col xs={24} sm={24} md={24} lg={12}>
                 <Title level={5}>{t("DETAIL_PROJECT.LANGUAGE")}</Title>
-                <Paragraph>{t("DETAIL_PROJECT.LANGUAGE_CONTENT")}</Paragraph>
+                <Paragraph>
+                  {data?.languageProject.map((item) => item.language.name).join(", ")}
+                </Paragraph>
               </Col>
             </Row>
           </Card>
@@ -134,16 +77,16 @@ const detailProject = () => {
                             <Avatar
                               style={{ alignItems: "center", justifyContent: "center" }}
                               size={64}
-                              src={`https://api.dicebear.com/7.x/miniavs/svg?seed=1`}
+                              src={data?.user.profile.avatarUrl}
                             />
                           }
                           title={
                             <p style={{ color: "#16c2c2", fontSize: "3vh", margin: "0" }}>
-                              Manager name
+                              {data?.user.profile.fullName}
                             </p>
                           }
                           description={
-                            <p style={{ fontSize: "2vh", margin: "0" }}>Manager email</p>
+                            <p style={{ fontSize: "2vh", margin: "0" }}>{data?.user.email}</p>
                           }
                         />
                       </List.Item>
@@ -161,7 +104,10 @@ const detailProject = () => {
                     <Title level={5}>{t("DETAIL_PROJECT.EMPLOYEE")}</Title>
                   </Col>
                   <Col xs={24} sm={24} md={24} lg={24}>
-                    <Table columns={columns} dataSource={data} />
+                    <Table<ProjectMembers>
+                      columns={EmployeeProjectsColumnsTable()}
+                      dataSource={data?.projectMembers}
+                    />
                   </Col>
                 </Row>
               </Col>
@@ -195,4 +141,4 @@ const detailProject = () => {
   );
 };
 
-export default detailProject;
+export default DetailProjectForm;

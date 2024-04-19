@@ -6,21 +6,35 @@ interface IProjectDe {
   endDate: string;
   language: string[];
   technical: string[];
-  managerId: {
+  user: {
     id: string;
-    name: string;
     email: string;
-    image: string;
+    profile: {
+      fullName: string;
+      avatarUrl: string;
+    };
   };
-  employeeId: [
-    {
-      id: string;
-      name: string;
-      email: string;
-      image: string;
-      roles: string[];
-    },
-  ];
+  projectMembers: ProjectMembers[];
+  languageProject: languageProject[];
+  technicalProject: technicalProject[];
+}
+
+export interface languageProject {
+  id: string;
+  level: string;
+  experience: string;
+  language: {
+    name: string;
+  };
+}
+
+export interface technicalProject {
+  id: string;
+  level: string;
+  experience: string;
+  technical: {
+    name: string;
+  };
 }
 
 interface ICreateProjectReq {
@@ -83,6 +97,14 @@ export interface ProjectMembers {
       status: string;
     };
   };
+  roles: [
+    {
+      id: string;
+      position: {
+        name: string;
+      };
+    },
+  ];
 }
 
 export interface ColumnIProject {
