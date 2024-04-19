@@ -49,18 +49,16 @@ export const UsersColumnsTable = (
     width: "20%",
     render: (manager, record) => {
       return record.isManager ? (
-        // <Tooltip title={manager.profile.fullName} placement='top'>
+        "..."
+      ) : (
         <Space>
           <a href={`/users/${record.managerId}`}>
             <Avatar src={manager?.profile?.avatarUrl} style={{ backgroundColor: "#f56a00" }}>
-              K
+              {manager?.profile?.fullName[0].toUpperCase()}
             </Avatar>
           </a>
           {manager?.profile?.fullName}
         </Space>
-      ) : (
-        // </Tooltip>
-        "..."
       );
     },
   },
