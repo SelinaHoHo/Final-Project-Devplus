@@ -97,7 +97,7 @@ const ListProject = () => {
             }}
             columns={ProjectsColumnsTable(handleAction, handleChange, true)}
             loading={isLoading}
-            dataSource={data?.data.filter((project) => !project.isDelete)}
+            dataSource={data?.data}
           />
         </Col>
       </Row>
