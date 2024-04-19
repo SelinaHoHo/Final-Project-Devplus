@@ -118,7 +118,9 @@ const CreateProjectForm: React.FC = () => {
       width: "30%",
       key: "employeeId",
       render: (employeeId: string) => (
-        <Typography>{user?.find((item: any) => item.id === employeeId)?.userName}</Typography>
+        <Typography>
+          {user?.find((item: any) => item.id === employeeId)?.profile?.fullName}
+        </Typography>
       ),
     },
     {
@@ -286,7 +288,7 @@ const CreateProjectForm: React.FC = () => {
                   (item: UserType) =>
                     item.isManager && (
                       <Select.Option key={item?.id} value={item?.id}>
-                        {item?.userName}
+                        {item?.profile?.fullName}
                       </Select.Option>
                     ),
                 )}
