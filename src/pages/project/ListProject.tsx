@@ -4,7 +4,7 @@ import { ColumnIProject } from "@/interfaces/project/projects.interface";
 import { Button, Col, Row } from "antd";
 import Search from "antd/es/input/Search";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./ListProject.scss";
 import { ProjectsColumnsTable } from "./ProjectListColumn";
 
@@ -23,14 +23,15 @@ const ListProject = () => {
   };
 
   const { data, isLoading, refetch } = useGetProjects(paginatorSearch);
+  const navigate = useNavigate();
   const handleAction = (key: string, _item: ColumnIProject) => {
     switch (key) {
       // case "update":
       //   navigate(`/application/${item.id}`);
       //   break;
-      // case "detail":
-      //   navigate(`/courses/${item.id}`);
-      //   break;
+      case "detail":
+        navigate(`/projects/${_item.id}`);
+        break;
       // case "delete":
       //   openModal(
       //     () => {
