@@ -4,7 +4,7 @@ import { useGetPosition } from "@/hooks/usePosition";
 import { useCreateProject } from "@/hooks/useProject";
 import { useGetTechnical } from "@/hooks/useTechnical";
 import { useGetAllUserNoPagination } from "@/hooks/useUser";
-import { DataType, ProjectType, SkillType, UserType } from "@/interfaces/user/users.interface";
+import { DataType, IGetUser, ProjectType, SkillType } from "@/interfaces/user/users.interface";
 import {
   Button,
   Col,
@@ -284,9 +284,9 @@ const CreateProjectForm: React.FC = () => {
                 notFoundContent={null}
               >
                 {user?.map(
-                  (item: UserType) =>
+                  (item: IGetUser) =>
                     item.isManager && (
-                      <Select.Option key={item?.id} value={item?.id}>
+                      <Select.Option key={item?.id} value={item?.profile.fullName}>
                         {item?.profile?.fullName}
                       </Select.Option>
                     ),
