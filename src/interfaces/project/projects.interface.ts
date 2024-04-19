@@ -1,18 +1,41 @@
-// interface IProject {
-//   name: string;
-//   description: string;
-//   startDate: string;
-//   endDate: string;
-//   language: string[];
-//   technical: string[];
-//   managerId: string;
-//   employeeId: [
-//     {
-//       id: string;
-//       roles: string[];
-//     },
-//   ];
-// }
+interface IProjectDe {
+  id: string;
+  name: string;
+  description: string;
+  startDate: string;
+  endDate: string;
+  language: string[];
+  technical: string[];
+  user: {
+    id: string;
+    email: string;
+    profile: {
+      fullName: string;
+      avatarUrl: string;
+    };
+  };
+  projectMembers: ProjectMembers[];
+  languageProject: languageProject[];
+  technicalProject: technicalProject[];
+}
+
+export interface languageProject {
+  id: string;
+  level: string;
+  experience: string;
+  language: {
+    name: string;
+  };
+}
+
+export interface technicalProject {
+  id: string;
+  level: string;
+  experience: string;
+  technical: {
+    name: string;
+  };
+}
 
 interface ICreateProjectReq {
   name: string;
@@ -36,7 +59,7 @@ interface IErrorResponse {
 
 export type { ICreateProjectReq, IErrorResponse };
 
-export type IProjects = IProject[];
+export type IProjectDetail = IProjectDe;
 
 export interface IProject {
   data: {
@@ -74,6 +97,14 @@ export interface ProjectMembers {
       status: string;
     };
   };
+  roles: [
+    {
+      id: string;
+      position: {
+        name: string;
+      };
+    },
+  ];
 }
 
 export interface ColumnIProject {

@@ -41,6 +41,11 @@ export const menuList: MenuList = [
         label: "Create Projects",
         path: "/projects/create",
       },
+      {
+        code: "detail",
+        label: "Project Detail",
+        path: "/projects/detail/:id",
+      },
     ],
   },
 ];

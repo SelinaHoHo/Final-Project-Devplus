@@ -2,11 +2,12 @@
   "MENU": {
     "DASHBOARD": "Bảng điều khiển",
     "USERS": "Người dùng",
-    "PROJECTS": "Dự Án",
+    "PROJECTS": "Dự án",
     "LIST_USERS": "Danh sách",
-    "LIST_PROJECTS": "Danh sách Dự Án",
-    "CREATE_PROJECTS": "Tạo Dự Án",
     "CREATE_USER": "Tạo người dùng",
+    "LIST_PROJECTS": "Danh sách dự án",
+    "CREATE_PROJECTS": "Tạo dự án",
+    "PROJECT_DETAIL": "Chi tiết dự án",
     "CLOSE_CURRENT": "Đóng tab hiện tại",
     "CLOSE_OTHER": "Đóng các tab khác",
     "COLOSE_ALL": "Đóng tất cả",
@@ -147,5 +148,17 @@
   },
   "UPDATE": {
     "SUCCESS": "Cập nhập trạng thái thành công"
+  },
+  "DETAIL_PROJECT": {
+    "DESCRIPTION": "Mô tả",
+    "STARTDATE": "Ngày bắt đầu",
+    "ENDDATE": "Ngày kết thúc",
+    "TECHNICAL": "Kỹ thuật",
+    "LANGUAGE": "Ngôn ngữ",
+    "TRACKING": "Theo dõi",
+    "MANAGER": "Quản lý",
+    "EMPLOYEE": "Danh sách nhân viên",
+    "TABLE_NAME": "Tên",
+    "TABLE_ROLES": "Vai trò"
   }
 }
