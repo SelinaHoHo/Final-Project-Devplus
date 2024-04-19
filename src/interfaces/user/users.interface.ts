@@ -80,3 +80,7 @@ export type GetListUsers = {
   take: number;
   page: number;
 };
+
+export interface DeleteUser {
+  id: string;
+}

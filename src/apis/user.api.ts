@@ -4,7 +4,7 @@ import { ILanguage } from "@/interfaces/langs/langs.interface";
 import { ILoginRequest, ILoginResponse } from "@/interfaces/login/login.interface";
 import { IPositions } from "@/interfaces/position/positions.interface";
 import { ITechnology } from "@/interfaces/tech/tech.interface";
-import { GetListUsers, IGetUsers, IUsers } from "@/interfaces/user/users.interface";
+import { DeleteUser, GetListUsers, IGetUsers, IUsers } from "@/interfaces/user/users.interface";
 import { AxiosResponse } from "axios";
 
 export const getAllUserNoPagination = (): Promise<AxiosResponse<IGetUsers>> =>
@@ -31,3 +31,6 @@ export const createUser = (data: string[]): Promise<AxiosResponse<string[]>> =>
 
 export const profile = (data: ILoginRequest): Promise<AxiosResponse<ILoginResponse>> =>
   instance.post(API_URL.LOGIN, data);
+
+export const deleteUser = (param: DeleteUser): Promise<AxiosResponse<IUsers>> =>
+  instance.delete(`${API_URL.USERS}?id=${param.id}`);
