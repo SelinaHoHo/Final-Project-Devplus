@@ -148,7 +148,11 @@
     "PROJECTSTATUS": "Project Status",
     "PROGRESS": "Progress",
     "ACTIONS": "Actions",
-    "MEMBERS": "Members"
+    "MEMBERS": "Members",
+    "SUCCESS": "Success",
+    "FAILED": "Failed",
+    "SUCCESS_DELETE": "Delete Success",
+    "FAILED_DELETE": "Project is pending"
   },
   "UPDATE": {
     "SUCCESS": "Update Status Success"

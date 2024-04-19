@@ -144,7 +144,11 @@
     "PROJECTSTATUS": "Trạng thái",
     "PROGRESS": "Tiến độ",
     "ACTIONS": "Hành Động",
-    "MEMBERS": "Thành viên"
+    "MEMBERS": "Thành viên",
+    "SUCCESS": "Thành công",
+    "FAILED": "Thất bại",
+    "SUCCESS_DELETE": "Xóa thành công",
+    "FAILED_DELETE": "Dự án đang chờ xử lí"
   },
   "UPDATE": {
     "SUCCESS": "Cập nhập trạng thái thành công"

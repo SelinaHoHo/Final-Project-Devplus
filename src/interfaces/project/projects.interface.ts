@@ -45,6 +45,7 @@ interface ICreateProjectReq {
   language: string[];
   technical: string[];
   managerId?: string;
+  isDelete: boolean;
   employeeId: [
     {
       id: string;
@@ -70,6 +71,7 @@ export interface IProject {
     status: string;
     progress: number;
     projectMembers: ProjectMembers[];
+    isDelete: boolean;
   }[];
   meta: {
     page: string;
