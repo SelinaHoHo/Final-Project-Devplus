@@ -160,5 +160,14 @@
     "EMPLOYEE": "Danh sách nhân viên",
     "TABLE_NAME": "Tên",
     "TABLE_ROLES": "Vai trò"
+  },
+  "DELETE_USER": {
+    "TITLE_DELETE": "Xóa: {{name}}",
+    "CONFIRM_DELETE": "Xác nhận xóa: {{name}}",
+    "OK": "OK",
+    "CANCEL": "Hủy",
+    "SUCCESS": "Xóa Người dùng thành công",
+    "FAILED": "Xóa người dùng thất bại",
+    "FAILED_MESSAGE": "Người dùng này đang trong dự án, vui lòng kiểm tra lại"
   }
 }

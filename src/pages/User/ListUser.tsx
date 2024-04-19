@@ -1,8 +1,9 @@
 import { Table } from "@/components/core/Table/Table";
 import i18n from "@/config/i18n";
-import { useGetAccounts } from "@/hooks/useUser";
+import { useDeleteUser, useGetAccounts } from "@/hooks/useUser";
 import { IUser } from "@/interfaces/user/users.interface";
-import { Button, Col, Input, Row } from "antd";
+import { Button, Col, Input, Modal, Row } from "antd";
+import { t } from "i18next";
 import { useEffect, useState } from "react";
 import { Translation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -20,6 +21,7 @@ const ListUser = () => {
     take: table.take,
   };
   const { data, isLoading, refetch } = useGetAccounts(paginatorSearch);
+
   useEffect(() => {
     if (filterName === "") {
       setFilterName("");
@@ -35,26 +37,25 @@ const ListUser = () => {
       setFilterName(value);
     }
   };
+
   const navigate = useNavigate();
+  const { mutate: onDeleteUser } = useDeleteUser();
   const handleAction = (key: string, item: IUser) => {
     switch (key) {
       case "detail":
-        navigate(`/users/${item.id}`);
+        navigate(`/users/detail/${item.id}`);
         break;
-      // case "down":
-      //   navigate(`/courses/${item.id}`);
-      //   break;
-      // case "delete":
-      //   openModal(
-      //     () => {
-      //       onDeleteApplication(item.id);
-      //     },
-      //     ModalTypeEnum.CONFIRM,
-      //     ICON_URL.ICON_TRASH,
-      //     t("MODAL.CONFIRM_DELETE", { name: item.name }),
-      //     t("MODAL.TITLE_DELETE", { name: item.name })
-      //   );
-      //   break;
+      case "delete":
+        //  eslint-disable-next-line no-case-declarations
+        const fullName = item.profile.fullName || "";
+        Modal.confirm({
+          title: t("DELETE_USER.TITLE_DELETE", { name: fullName }),
+          content: t("DELETE_USER.CONFIRM_DELETE", { name: fullName }),
+          okText: t("DELETE_USER.OK"),
+          cancelText: t("DELETE_USER.CANCEL"),
+          onOk: () => onDeleteUser({ id: item.id }),
+        });
+        break;
       default:
     }
   };

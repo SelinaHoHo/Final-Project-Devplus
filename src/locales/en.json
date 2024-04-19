@@ -164,5 +164,14 @@
     "EMPLOYEE": "Employee List",
     "TABLE_NAME": "Name",
     "TABLE_ROLES": "Roles"
+  },
+  "DELETE_USER": {
+    "TITLE_DELETE": "Delete: {{name}}",
+    "CONFIRM_DELETE": "Confirm delete: {{name}}",
+    "OK": "OK",
+    "CANCEL": "Cancel",
+    "SUCCESS": "Delete User Success",
+    "FAILED": "Delete User Failed",
+    "FAILED_MESSAGE": "User is in  a project, please check again"
   }
 }
