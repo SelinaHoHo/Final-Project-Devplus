@@ -11,17 +11,17 @@ export const menuList: MenuList = [
     code: "users",
     label: "Users",
     icon: "user",
-    path: "/users",
+    path: "/employees",
     children: [
       {
         code: "list",
         label: "List Users",
-        path: "/users/list",
+        path: "/employees/list",
       },
       {
         code: "createUser",
         label: "Create User",
-        path: "/users/createUser",
+        path: "/employees/createEmployee",
       },
     ],
   },
@@ -40,11 +40,6 @@ export const menuList: MenuList = [
         code: "create",
         label: "Create Projects",
         path: "/projects/create",
-      },
-      {
-        code: "detail",
-        label: "Project Detail",
-        path: "/projects/detail/:id",
       },
     ],
   },

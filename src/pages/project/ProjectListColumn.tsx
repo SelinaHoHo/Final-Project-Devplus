@@ -2,7 +2,7 @@ import { ButtonAction } from "@/components/core/ButtonAction/ButtonAction";
 import i18n from "@/config/i18n";
 import { ColumnIProject } from "@/interfaces/project/projects.interface";
 import { DeleteOutlined, EditOutlined, FileSearchOutlined } from "@ant-design/icons";
-import { Avatar, Progress, Select, Space } from "antd";
+import { Avatar, Progress, Select, Space, Tooltip } from "antd";
 import { ColumnsType } from "antd/lib/table";
 import { format, parseISO } from "date-fns";
 import { Translation } from "react-i18next";
@@ -12,12 +12,6 @@ export const ProjectsColumnsTable = (
   handleChange: (value: string, item: ColumnIProject) => void,
   loading: boolean,
 ): ColumnsType<ColumnIProject> => [
-  {
-    title: <Translation>{(t) => t("Id")}</Translation>,
-    dataIndex: "id",
-    width: "5%",
-    render: (_item, _record, index) => <>{index + 1}</>,
-  },
   {
     title: <Translation>{(t) => t("PROJECT.PROJECTNAME")}</Translation>,
     dataIndex: "name",
@@ -43,15 +37,15 @@ export const ProjectsColumnsTable = (
     dataIndex: "status",
     filters: [
       {
-        text: "In Progress",
+        text: <Translation>{(t) => t("PROJECT.STATUS_INPROGRESS")}</Translation>,
         value: "InProgress",
       },
       {
-        text: "Completed",
+        text: <Translation>{(t) => t("PROJECT.STATUS_COMPLETED")}</Translation>,
         value: "Completed",
       },
       {
-        text: "Pending",
+        text: <Translation>{(t) => t("PROJECT.STATUS_PENDING")}</Translation>,
         value: "Pending",
       },
     ],
@@ -62,12 +56,21 @@ export const ProjectsColumnsTable = (
       <>
         <Select
           defaultValue={status}
-          style={{ width: 120 }}
+          style={{ width: 150 }}
           onChange={(value) => handleChange(value, record)}
           options={[
-            { value: "InProgress", label: "In Progress" },
-            { value: "Completed", label: "Completed" },
-            { value: "Pending", label: "Pending" },
+            {
+              value: "InProgress",
+              label: <Translation>{(t) => t("PROJECT.STATUS_INPROGRESS")}</Translation>,
+            },
+            {
+              value: "Completed",
+              label: <Translation>{(t) => t("PROJECT.STATUS_COMPLETED")}</Translation>,
+            },
+            {
+              value: "Pending",
+              label: <Translation>{(t) => t("PROJECT.STATUS_PENDING")}</Translation>,
+            },
           ]}
         />
       </>
@@ -141,7 +144,9 @@ export const ProjectsColumnsTable = (
         }}
       >
         {record.projectMembers.map((item) => (
-          <Avatar src={item.user.profile.avatarUrl} />
+          <Tooltip title={item.user.profile.fullName}>
+            <Avatar src={item.user.profile.avatarUrl} />
+          </Tooltip>
         ))}
       </Avatar.Group>
     ),
@@ -154,7 +159,7 @@ export const ProjectsColumnsTable = (
     render: (_text, record) => (
       <Space direction='horizontal'>
         <ButtonAction
-          variant='success'
+          variant='primary'
           handleAction={() => handleAction("edit", record)}
           tooltip={i18n.t("ACTION.EDIT")}
         >

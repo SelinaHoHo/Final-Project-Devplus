@@ -1,19 +1,19 @@
 {
   "MENU": {
     "DASHBOARD": "Dashboard",
-    "USERS": "Users",
+    "USERS": "Employees",
     "PROJECTS": "Projects",
-    "LIST_USERS": "List",
-    "LIST_PROJECTS": "List Project",
-    "CREATE_PROJECTS": "Create Project",
-    "CREATE_USER": "Create user",
-    "PROJECT_DETAIL": "Project Detail",
+    "LIST_USERS": "List employee",
+    "LIST_PROJECTS": "List project",
+    "CREATE_PROJECTS": "Create project",
+    "CREATE_USER": "Create employee",
     "CLOSE_CURRENT": "Close current",
     "CLOSE_OTHER": "Close other",
     "COLOSE_ALL": "Close all",
     "SWITCH_THEME": "Switch theme",
     "SIGN_IN": "SIGN IN",
-    "SIGN_IN_TITLE": "Welcome to Titans's Management Application!"
+    "SIGN_IN_TITLE": "Welcome to Titans's Management Application!",
+    "LOGOUT": "Logout"
   },
   "LOGIN": {
     "SIGN_IN": "SIGN IN",
@@ -47,7 +47,7 @@
     "DESCRIPTION": "Description",
     "DATE": "Timeline",
     "TECHNICAL": "Technical",
-    "LANGUAGE": "Language",
+    "LANGUAGE": "Language/Framework",
     "TECHNICAL_PLACEHOLDER": "Select project technical",
     "LANGUAGE_PLACEHOLDER": "Select project language",
     "PENDING": "Pending",
@@ -89,7 +89,7 @@
     "NAME_REQUIRED": "Please enter name",
     "EMAIL_REQUIRED": "Please enter email",
     "INVALIDEMAIL_REQUIRED": "Invalid email address",
-    "DOB_REQUIRED": "Please enter date of birth",
+    "DOB_REQUIRED": "Please select date of birth (at least 18 years old)",
     "ROLE_REQUIRED": "Please enter role",
     "PROFILE": "Profile",
     "PENDING": "Pending",
@@ -148,7 +148,10 @@
     "PROJECTSTATUS": "Project Status",
     "PROGRESS": "Progress",
     "ACTIONS": "Actions",
-    "MEMBERS": "Members"
+    "MEMBERS": "Members",
+    "STATUS_INPROGRESS": "In Progress",
+    "STATUS_PENDING": "Pending",
+    "STATUS_COMPLETED": "Completed"
   },
   "UPDATE": {
     "SUCCESS": "Update Status Success"
@@ -158,7 +161,7 @@
     "STARTDATE": "Start date",
     "ENDDATE": "End date",
     "TECHNICAL": "Technical",
-    "LANGUAGE": "Language",
+    "LANGUAGE": "Language/Framework",
     "TRACKING": "Traking",
     "MANAGER": "Manager",
     "EMPLOYEE": "Employee List",
@@ -173,5 +176,12 @@
     "SUCCESS": "Delete User Success",
     "FAILED": "Delete User Failed",
     "FAILED_MESSAGE": "User is in  a project, please check again"
+  },
+  "LISTUSER": {
+    "CREATE_BUTTON": "Create user"
+  },
+  "LISTPROJECT": {
+    "CREATE_BUTTON": "Create project",
+    "PROJECT_NAME": "Enter project name"
   }
 }

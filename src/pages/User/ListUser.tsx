@@ -6,7 +6,7 @@ import { Button, Col, Input, Modal, Row } from "antd";
 import { t } from "i18next";
 import { useEffect, useState } from "react";
 import { Translation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UsersColumnsTable } from "./UserListColumn";
 
 const ListUser = () => {
@@ -43,7 +43,7 @@ const ListUser = () => {
   const handleAction = (key: string, item: IUser) => {
     switch (key) {
       case "detail":
-        navigate(`/users/detail/${item.id}`);
+        navigate(`/employees/detail/${item.id}`);
         break;
       case "delete":
         //  eslint-disable-next-line no-case-declarations
@@ -70,31 +70,41 @@ const ListUser = () => {
   return (
     <>
       <Row gutter={5}>
-        <Col>
+        <Col span={6}>
           <Input
             placeholder={i18n.t("TABLE.SEARCH_NAME")}
-            size='large'
+            size='middle'
+            value={filterName}
             allowClear
             onChange={(value) => handleChangeSearch(value.target.value)}
           ></Input>
         </Col>
-        <Col>
-          <Button type='primary' onClick={handleSearch} size='large'>
+        <Col span={6}>
+          <Button type='primary' onClick={handleSearch} size='middle'>
             <Translation>{(t) => t("TABLE.SEARCH")}</Translation>
           </Button>
         </Col>
+        <Col span={12} style={{ textAlign: "end" }}>
+          <Button type='primary' size='middle'>
+            <Link to='../createEmployee'>{t("LISTUSER.CREATE_BUTTON")}</Link>
+          </Button>
+        </Col>
       </Row>
-      <Table<IUser>
-        paginate={{
-          table,
-          setTable,
-          total: data?.meta.itemCount || 1,
-          pageCount: data?.meta.pageCount || 10,
-        }}
-        columns={UsersColumnsTable(handleAction)}
-        loading={isLoading}
-        dataSource={data?.data}
-      />
+      <Row>
+        <Col span={24}>
+          <Table<IUser>
+            paginate={{
+              table,
+              setTable,
+              total: data?.meta.itemCount || 1,
+              pageCount: data?.meta.pageCount || 10,
+            }}
+            columns={UsersColumnsTable(handleAction)}
+            loading={isLoading}
+            dataSource={data?.data}
+          />
+        </Col>
+      </Row>
     </>
   );
 };
