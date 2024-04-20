@@ -185,7 +185,9 @@ const CreateProjectForm: React.FC = () => {
       ),
     });
     setDataSource([]);
-    form.resetFields();
+    setTimeout(() => {
+      form.resetFields();
+    }, 1000);
   };
 
   return (
@@ -215,11 +217,7 @@ const CreateProjectForm: React.FC = () => {
             >
               <RangePicker
                 style={{ width: "100%" }}
-                showTime={{
-                  hideDisabledOptions: true,
-                  defaultValue: [dayjs("00:00:00", "HH:mm:ss"), dayjs("11:59:59", "HH:mm:ss")],
-                }}
-                format='YYYY-MM-DD HH:mm:ss'
+                format='YYYY-MM-DD'
                 placeholder={[
                   t("CREATE_PROJECT.STARTDATE") as string,
                   t("CREATE_PROJECT.ENDDATE") as string,

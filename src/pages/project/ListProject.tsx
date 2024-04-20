@@ -1,4 +1,5 @@
 import { Table } from "@/components/core/Table/Table";
+import i18n from "@/config/i18n";
 import { useGetProjects, useUpdateStatus } from "@/hooks/useProject";
 import { ColumnIProject } from "@/interfaces/project/projects.interface";
 import { Button, Col, Row } from "antd";
@@ -69,23 +70,23 @@ const ListProject = () => {
       <Row>
         <Col span={12}>
           <Search
-            placeholder='search project'
+            placeholder={i18n.t("LISTPROJECT.PROJECT_NAME")}
             onChange={(value) => setFilterName(value.target.value)}
             allowClear
+            size='middle'
             onSearch={onSearch}
             style={{ width: 250 }}
           />
         </Col>
         <Col span={12} style={{ textAlign: "end" }}>
-          <Button type='primary'>
-            <Link to='../create'>Create Project</Link>
+          <Button type='primary' size='middle'>
+            <Link to='../create'>{i18n.t("LISTPROJECT.CREATE_BUTTON")}</Link>
           </Button>
         </Col>
       </Row>
       <Row>
         <Col span={24}>
           <Table
-            scroll={{ x: "max-content" }}
             paginate={{
               table,
               setTable,

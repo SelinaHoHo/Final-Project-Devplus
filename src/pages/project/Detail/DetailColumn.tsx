@@ -1,31 +1,36 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ProjectMembers } from "@/interfaces/project/projects.interface";
-import { Avatar, List } from "antd";
+import { Avatar } from "antd";
 import { ColumnsType } from "antd/lib/table";
 import { Translation } from "react-i18next";
 
 export const EmployeeProjectsColumnsTable = (): ColumnsType<ProjectMembers> => [
   {
-    title: <Translation>{(t) => t("DETAIL_PROJECT.TABLE_NAME")}</Translation>,
-    key: "name",
-    width: "30%",
+    title: <Translation>{(t) => t("LIST.AVATAR")}</Translation>,
+    key: "avatar",
+    width: "10%",
     render: (record) => {
       return (
         <>
           {record?.user?.isManager === false && (
-            <List itemLayout='horizontal'>
-              <List.Item>
-                <List.Item.Meta
-                  avatar={
-                    <Avatar
-                      style={{ alignItems: "center", justifyContent: "center" }}
-                      src={record?.user?.profile?.avatarUrl}
-                    />
-                  }
-                  title={<p style={{ margin: "7px 0" }}>{record?.user?.profile?.fullName}</p>}
-                />
-              </List.Item>
-            </List>
+            <Avatar
+              style={{ alignItems: "center", justifyContent: "center" }}
+              src={record?.user?.profile?.avatarUrl}
+            />
+          )}
+        </>
+      );
+    },
+  },
+  {
+    title: <Translation>{(t) => t("DETAIL_PROJECT.TABLE_NAME")}</Translation>,
+    key: "name",
+    width: "20%",
+    render: (record) => {
+      return (
+        <>
+          {record?.user?.isManager === false && (
+            <p style={{ margin: "7px 0" }}>{record?.user?.profile?.fullName}</p>
           )}
         </>
       );

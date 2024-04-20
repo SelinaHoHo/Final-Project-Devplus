@@ -1,7 +1,7 @@
 import AuthGuard from "@/guards/AuthGuard";
 import GuestGuard from "@/guards/GuestGuard";
-import CreateUser from "@/pages/Users/CreateUser/CreateUser";
 import ListUser from "@/pages/User/ListUser";
+import CreateUser from "@/pages/Users/CreateUser/CreateUser";
 import DetailUser from "@/pages/detailUser/DetailUser";
 import { lazy } from "react";
 import { Navigate, useRoutes } from "react-router-dom";
@@ -41,11 +41,11 @@ const Router = () => {
           element: <Dashboard />,
         },
         {
-          path: "users",
+          path: "employees",
           children: [
             {
               index: true,
-              element: <Navigate to='/users/list' replace />,
+              element: <Navigate to='/employees/list' replace />,
             },
             {
               path: "list",
@@ -56,7 +56,7 @@ const Router = () => {
               element: <DetailUser />,
             },
             {
-              path: "createUser",
+              path: "createEmployee",
               element: <CreateUser />,
             },
           ],

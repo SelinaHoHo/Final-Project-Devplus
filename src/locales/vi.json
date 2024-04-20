@@ -3,15 +3,15 @@
     "DASHBOARD": "Bảng điều khiển",
     "USERS": "Người dùng",
     "PROJECTS": "Dự án",
-    "LIST_USERS": "Danh sách",
+    "LIST_USERS": "Danh sách người dùng",
     "CREATE_USER": "Tạo người dùng",
     "LIST_PROJECTS": "Danh sách dự án",
     "CREATE_PROJECTS": "Tạo dự án",
-    "PROJECT_DETAIL": "Chi tiết dự án",
     "CLOSE_CURRENT": "Đóng tab hiện tại",
     "CLOSE_OTHER": "Đóng các tab khác",
     "COLOSE_ALL": "Đóng tất cả",
-    "SWITCH_THEME": "Chuyển đổi theme"
+    "SWITCH_THEME": "Chuyển đổi theme",
+    "LOGOUT": "Đăng xuất"
   },
   "LOGIN": {
     "SIGN_IN": "ĐĂNG NHẬP",
@@ -46,7 +46,7 @@
     "TECHNICAL_PLACEHOLDER": "Chọn công nghệ",
     "DATE": "Mốc thời gian",
     "TECHNICAL": "Công nghệ",
-    "LANGUAGE": "Ngôn ngữ",
+    "LANGUAGE": "Ngôn ngữ/Framework",
     "LANGUAGE_PLACEHOLDER": "Vui lòng chọn ngôn ngữ",
     "PENDING": "Chờ thực hiện",
     "IN_PROGRESS": "Đang thực hiện",
@@ -85,7 +85,7 @@
     "NAME_REQUIRED": "Vui lòng điền tên",
     "EMAIL_REQUIRED": "Vui lòng điền email",
     "INVALIDEMAIL_REQUIRED": "Sai địa chỉ email",
-    "DOB_REQUIRED": "Vui lòng chọn ngày sinh",
+    "DOB_REQUIRED": "Vui lòng chọn ngày sinh (từ đủ 18 tuổi)",
     "POSITION_REQUIRED": "Vui lòng chọn vị trí",
     "PROFILE": "Thông tin cá nhân",
     "PENDING": "Đang chờ",
@@ -118,14 +118,14 @@
     "DETAILS": "Chi tiết",
     "NAME": "Tên",
     "SEARCH": "Tìm kiếm",
-    "SEARCH_NAME": "Nhập tên"
+    "SEARCH_NAME": "Nhập tên người dùng"
   },
   "LIST": {
     "POSITIONS": "Vị trí",
     "STATUS": "Trạng thái",
     "ACTIONS": "Hành Động",
     "NAME": "Tên",
-    "AVATAR": "Hình ảnh",
+    "AVATAR": "Avatar",
     "ACTIVE": "Hoạt động",
     "NOTACTIVE": "Không hoạt động",
     "MANAGER": "Quản lý"
@@ -144,7 +144,10 @@
     "PROJECTSTATUS": "Trạng thái",
     "PROGRESS": "Tiến độ",
     "ACTIONS": "Hành Động",
-    "MEMBERS": "Thành viên"
+    "MEMBERS": "Thành viên",
+    "STATUS_INPROGRESS": "Đang Tiến Hành",
+    "STATUS_PENDING": "Đang Chờ",
+    "STATUS_COMPLETED": "Đã Hoàn Thành"
   },
   "UPDATE": {
     "SUCCESS": "Cập nhập trạng thái thành công"
@@ -154,7 +157,7 @@
     "STARTDATE": "Ngày bắt đầu",
     "ENDDATE": "Ngày kết thúc",
     "TECHNICAL": "Kỹ thuật",
-    "LANGUAGE": "Ngôn ngữ",
+    "LANGUAGE": "Ngôn ngữ/Framework",
     "TRACKING": "Theo dõi",
     "MANAGER": "Quản lý",
     "EMPLOYEE": "Danh sách nhân viên",
@@ -169,5 +172,12 @@
     "SUCCESS": "Xóa Người dùng thành công",
     "FAILED": "Xóa người dùng thất bại",
     "FAILED_MESSAGE": "Người dùng này đang trong dự án, vui lòng kiểm tra lại"
+  },
+  "LISTUSER": {
+    "CREATE_BUTTON": "Tạo người dùng"
+  },
+  "LISTPROJECT": {
+    "CREATE_BUTTON": "Tạo dự án",
+    "PROJECT_NAME": "Nhập tên dự án"
   }
 }

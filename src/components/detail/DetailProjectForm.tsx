@@ -17,13 +17,7 @@ const DetailProjectForm: FC<DataProps> = ({ data }) => {
     const formatted = new Date(date);
     return `${formatted.getFullYear()}-${(formatted.getMonth() + 1)
       .toString()
-      .padStart(2, "0")}-${formatted.getDate().toString().padStart(2, "0")} ${formatted
-      .getHours()
-      .toString()
-      .padStart(2, "0")}:${formatted.getMinutes().toString().padStart(2, "0")}:${formatted
-      .getSeconds()
-      .toString()
-      .padStart(2, "0")}`;
+      .padStart(2, "0")}-${formatted.getDate().toString().padStart(2, "0")}`;
   };
 
   return (
@@ -32,10 +26,6 @@ const DetailProjectForm: FC<DataProps> = ({ data }) => {
         <Space direction='vertical'>
           <Card bordered type='inner'>
             <Row gutter={[8, 4]}>
-              <Col xs={24} sm={24} md={24} lg={24}>
-                <Title level={5}>{t("DETAIL_PROJECT.DESCRIPTION")}</Title>
-                <Paragraph>{data?.description}</Paragraph>
-              </Col>
               <Col xs={24} sm={24} md={24} lg={12}>
                 <Title level={5}>{t("DETAIL_PROJECT.STARTDATE")}</Title>
                 <Paragraph>{formattedDate(data?.startDate || new Date())}</Paragraph>
@@ -44,10 +34,6 @@ const DetailProjectForm: FC<DataProps> = ({ data }) => {
                 <Title level={5}>{t("DETAIL_PROJECT.ENDDATE")}</Title>
                 <Paragraph>{formattedDate(data?.endDate || new Date())}</Paragraph>
               </Col>
-            </Row>
-          </Card>
-          <Card bordered type='inner'>
-            <Row gutter={[8, 4]}>
               <Col xs={24} sm={24} md={24} lg={12}>
                 <Title level={5}>{t("DETAIL_PROJECT.TECHNICAL")}</Title>
                 <Paragraph>
@@ -62,6 +48,16 @@ const DetailProjectForm: FC<DataProps> = ({ data }) => {
               </Col>
             </Row>
           </Card>
+          {data?.description !== null && (
+            <Card bordered type='inner'>
+              <Row gutter={[8, 4]}>
+                <Col xs={24} sm={24} md={24} lg={24}>
+                  <Title level={5}>{t("DETAIL_PROJECT.DESCRIPTION")}</Title>
+                  <Paragraph>{data?.description}</Paragraph>
+                </Col>
+              </Row>
+            </Card>
+          )}
           <Card bordered type='inner'>
             <Row gutter={[8, 4]}>
               <Col xs={24} sm={24} md={24} lg={24}>

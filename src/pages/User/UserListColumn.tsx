@@ -10,11 +10,6 @@ export const UsersColumnsTable = (
   handleAction: (key: string, item: IUser) => void,
 ): ColumnsType<IUser> => [
   {
-    title: "Id",
-    dataIndex: "id",
-    render: (_item, _record, index) => <>{index + 1}</>,
-  },
-  {
     title: <Translation>{(t) => t("LIST.AVATAR")}</Translation>,
     dataIndex: "profile",
     render: (profile) => {
@@ -91,18 +86,18 @@ export const UsersColumnsTable = (
     render: (_text, record) => (
       <Space direction='horizontal'>
         <ButtonAction
-          variant='success'
-          handleAction={() => handleAction("detail", record)}
-          tooltip={i18n.t("ACTION.DETAILS")}
-        >
-          <FileSearchOutlined />
-        </ButtonAction>
-        <ButtonAction
           variant='primary'
           handleAction={() => handleAction("down", record)}
           tooltip={i18n.t("ACTION.DOWN")}
         >
           <VerticalAlignBottomOutlined />
+        </ButtonAction>
+        <ButtonAction
+          variant='success'
+          handleAction={() => handleAction("detail", record)}
+          tooltip={i18n.t("ACTION.DETAILS")}
+        >
+          <FileSearchOutlined />
         </ButtonAction>
         <ButtonAction
           variant='danger'

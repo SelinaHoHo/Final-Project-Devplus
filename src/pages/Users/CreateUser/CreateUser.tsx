@@ -20,6 +20,7 @@ import { Rule } from "antd/es/form";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { createUser } from "../../../apis/user.api";
 import { yupSync } from "../../../helpers/validation";
@@ -27,6 +28,7 @@ import "./CreateUser.scss";
 const { Title } = Typography;
 
 const CreateUser = () => {
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const [form] = Form.useForm();
   const { theme } = useSelector((state: RootState) => state.global);
@@ -64,6 +66,12 @@ const CreateUser = () => {
     setManagedByInputVisible(e.target.value === false);
   };
 
+  const getEighteenYearsAgo = () => {
+    const today = new Date();
+    const eighteenYearsAgo = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+    return eighteenYearsAgo;
+  };
+
   const onFinish = async (values: string[]) => {
     try {
       await createUser(values);
@@ -71,7 +79,7 @@ const CreateUser = () => {
         message: "Success",
         description: "Successfully created employee",
       });
-      window.location.reload();
+      navigate("/employees");
     } catch (error) {
       alert(error);
       notification.error({
@@ -130,24 +138,6 @@ const CreateUser = () => {
                 </Form.Item>
               </Col>
 
-              {/* Status */}
-              <Col xs={24} sm={24} md={24} lg={12}>
-                <Form.Item
-                  label={t("CREATE_EMPLOYEE.STATUS")}
-                  name='status'
-                  labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
-                  wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
-                  rules={validator}
-                >
-                  <Select placeholder={t("CREATE_EMPLOYEE.STATUS")}>
-                    <Select.Option value='Pending'>{t("CREATE_EMPLOYEE.PENDING")}</Select.Option>
-                    <Select.Option value='In Progress'>
-                      {t("CREATE_EMPLOYEE.IN_PROGRESS")}
-                    </Select.Option>
-                  </Select>
-                </Form.Item>
-              </Col>
-
               {/* DOB */}
               <Col xs={24} sm={24} md={24} lg={12}>
                 <Form.Item
@@ -159,7 +149,7 @@ const CreateUser = () => {
                 >
                   <DatePicker
                     style={{ width: "100%" }}
-                    disabledDate={(current) => current && current.isAfter(Date.now())}
+                    disabledDate={(current) => current && current.isAfter(getEighteenYearsAgo())}
                     placeholder={t("CREATE_EMPLOYEE.DOB")}
                   />
                 </Form.Item>
@@ -178,7 +168,7 @@ const CreateUser = () => {
                 </Form.Item>
               </Col>
 
-              <Col xs={24} sm={24} md={24} lg={12}>
+              <Col xs={24} sm={24} md={24} lg={6}>
                 <Form.Item
                   label={t("CREATE_EMPLOYEE.MANAGER")}
                   name='isManager'
@@ -193,7 +183,7 @@ const CreateUser = () => {
                 </Form.Item>
               </Col>
 
-              <Col xs={24} sm={24} md={24} lg={12}>
+              <Col xs={24} sm={24} md={24} lg={6}>
                 {managedByInputVisible && (
                   <Form.Item
                     label={t("CREATE_EMPLOYEE.MANAGED_BY")}

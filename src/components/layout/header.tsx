@@ -1,9 +1,11 @@
 import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
-import { Dropdown, Layout, Tooltip, theme as antTheme } from "antd";
+import { Avatar, Dropdown, Layout, Tooltip, theme as antTheme } from "antd";
 import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { logout } from "@/redux/features/auth/authSlice";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import { ReactComponent as MoonSvg } from "../../assets/header/ic_moon.svg";
 import { ReactComponent as SunSvg } from "../../assets/header/ic_sun.svg";
 import { ReactComponent as LanguageSvg } from "../../assets/header/language.svg";
@@ -24,26 +26,25 @@ interface HeaderProps {
 
 const HeaderComponent: FC<HeaderProps> = ({ collapsed, toggle }) => {
   const { theme } = useSelector((state: RootState) => state.global);
-  //   const navigate = useNavigate();
+  const navigate = useNavigate();
   const token = antTheme.useToken();
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  //   const onActionClick = async (action: Action) => {
-  //     let res: boolean;
-  //     switch (action) {
-  //       case 'userInfo':
-  //         return;
-  //       case 'userSetting':
-  //         return;
-  //       case 'logout':
-  //         res = Boolean(dispatch(logout()));
+  const onActionClick = async (action: string) => {
+    let res: boolean;
+    switch (action) {
+      //       case 'userInfo':
+      //         return;
+      //       case 'userSetting':
+      //         return;
+      case "logout":
+        res = Boolean(dispatch(logout()));
+        res && navigate("/sign-in");
 
-  //         res && navigate('/sign-in');
-
-  //         return;
-  //     }
-  //   };
+        return;
+    }
+  };
 
   const onChangeTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
@@ -94,6 +95,19 @@ const HeaderComponent: FC<HeaderProps> = ({ collapsed, toggle }) => {
             }}
           >
             <LanguageSvg />
+          </Dropdown>
+          <Dropdown
+            menu={{
+              onClick: () => onActionClick("logout"),
+              items: [
+                {
+                  key: "1",
+                  label: t("MENU.LOGOUT"),
+                },
+              ],
+            }}
+          >
+            <Avatar size={25} src='https://api.dicebear.com/7.x/miniavs/svg?seed=3' />
           </Dropdown>
         </div>
       </div>
