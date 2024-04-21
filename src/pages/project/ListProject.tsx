@@ -1,9 +1,10 @@
 import { Table } from "@/components/core/Table/Table";
 import i18n from "@/config/i18n";
-import { useGetProjects, useUpdateStatus } from "@/hooks/useProject";
+import { useDeleteProject, useGetProjects, useUpdateStatus } from "@/hooks/useProject";
 import { ColumnIProject } from "@/interfaces/project/projects.interface";
-import { Button, Col, Row } from "antd";
+import { Button, Col, Modal, Row } from "antd";
 import Search from "antd/es/input/Search";
+import { t } from "i18next";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./ListProject.scss";
@@ -25,6 +26,7 @@ const ListProject = () => {
 
   const { data, isLoading, refetch } = useGetProjects(paginatorSearch);
   const navigate = useNavigate();
+  const { mutate: onDeleteProject } = useDeleteProject();
   const handleAction = (key: string, _item: ColumnIProject) => {
     switch (key) {
       // case "update":
@@ -33,17 +35,17 @@ const ListProject = () => {
       case "detail":
         navigate(`/projects/${_item.id}`);
         break;
-      // case "delete":
-      //   openModal(
-      //     () => {
-      //       onDeleteApplication(item.id);
-      //     },
-      //     ModalTypeEnum.CONFIRM,
-      //     ICON_URL.ICON_TRASH,
-      //     t("MODAL.CONFIRM_DELETE", { name: item.name }),
-      //     t("MODAL.TITLE_DELETE", { name: item.name })
-      //   );
-      //   break;
+      case "delete":
+        //  eslint-disable-next-line no-case-declarations
+        const projectName = _item.name || "";
+        Modal.confirm({
+          title: t("DELETE_USER.TITLE_DELETE", { name: projectName }),
+          content: t("DELETE_USER.CONFIRM_DELETE", { name: projectName }),
+          okText: t("DELETE_USER.OK"),
+          cancelText: t("DELETE_USER.CANCEL"),
+          onOk: () => onDeleteProject(_item.id),
+        });
+        break;
       default:
     }
   };

@@ -129,3 +129,7 @@ export interface UpdateStatus {
   id: string;
   status: string;
 }
+
+export interface IDeleteProject {
+  id: string;
+}

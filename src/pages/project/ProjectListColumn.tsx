@@ -1,29 +1,11 @@
-import { deleteProject } from "@/apis/project.api";
 import { ButtonAction } from "@/components/core/ButtonAction/ButtonAction";
 import i18n from "@/config/i18n";
 import { ColumnIProject } from "@/interfaces/project/projects.interface";
 import { DeleteOutlined, EditOutlined, FileSearchOutlined } from "@ant-design/icons";
-import { Avatar, Modal, notification, Progress, Select, Space, Tooltip } from "antd";
+import { Avatar, Progress, Select, Space, Tooltip } from "antd";
 import { ColumnsType } from "antd/lib/table";
 import { format, parseISO } from "date-fns";
 import { Translation } from "react-i18next";
-
-const deleteProjects = async (id: string) => {
-  try {
-    await deleteProject(id);
-    notification.success({
-      message: <Translation>{(t) => t("PROJECT.SUCCESS")}</Translation>,
-      description: <Translation>{(t) => t("PROJECT.SUCCESS_DELETE")}</Translation>,
-    });
-    window.location.reload();
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  } catch (error) {
-    notification.error({
-      message: <Translation>{(t) => t("PROJECT.FAILED")}</Translation>,
-      description: <Translation>{(t) => t("PROJECT.FAILED_DELETE")}</Translation>,
-    });
-  }
-};
 
 export const ProjectsColumnsTable = (
   handleAction: (key: string, item: ColumnIProject) => void,
@@ -190,16 +172,11 @@ export const ProjectsColumnsTable = (
         >
           <FileSearchOutlined />
         </ButtonAction>
+
         <ButtonAction
           variant='danger'
           loading={!loading}
-          // handleAction={() => handleAction("delete", record)}
-          handleAction={() => {
-            Modal.confirm({
-              title: <Translation>{(t) => t("PROJECT.CONFIRM_DELETE")}</Translation>,
-              onOk: () => deleteProjects(record.id),
-            });
-          }}
+          handleAction={() => handleAction("delete", record)}
           tooltip={i18n.t("ACTION.DELETE")}
         >
           <DeleteOutlined />
