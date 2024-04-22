@@ -144,8 +144,8 @@ export const ProjectsColumnsTable = (
         }}
       >
         {record.projectMembers.map((item) => (
-          <Tooltip title={item.user.profile.fullName}>
-            <Avatar src={item.user.profile.avatarUrl} />
+          <Tooltip key={item.id} title={item?.user?.profile?.fullName}>
+            <Avatar src={item?.user?.profile?.avatarUrl} />
           </Tooltip>
         ))}
       </Avatar.Group>
