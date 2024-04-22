@@ -253,6 +253,10 @@
     "ADDEMPLOYEE_SUCCESS_MESSAGE": "Thêm người dùng vào dự án thành công.",
     "ADDEMPLOYEE_FAILED_MESSAGE": "Thêm người dùng vào dự án thất bại.",
     "UNASSIGNEMPLOYEE_SUCCESS_MESSAGE": "Xóa người dùng ra khỏi dự án thành công.",
-    "UNASSIGNEMPLOYEE_FAILED_MESSAGE": "Xóa người dùng ra khỏi dự án thất bại."
+    "UNASSIGNEMPLOYEE_FAILED_MESSAGE": "Xóa người dùng ra khỏi dự án thất bại.",
+    "SUBMIT": "Cập nhật",
+    "ADD_EMPLOYEE": "Phân công",
+    "EMPLOYEE_REQUIRED": "Vui lòng chọn nhân viên dự án",
+    "ROLES_REQUIRED": "Vui lòng chọn vị trí"
   }
 }

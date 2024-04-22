@@ -2,9 +2,11 @@ import instance from "@/config/axios";
 import { API_URL } from "@/constants/apiUrl";
 import {
   GetListProject,
+  IAssignEmployee,
   ICreateProjectReq,
   IProject,
   IProjectDetail,
+  IUpdateProject,
   UpdateStatus,
 } from "@/interfaces/project/projects.interface";
 import { AxiosResponse } from "axios";
@@ -21,8 +23,14 @@ export const getDetailProject = (id: string): Promise<AxiosResponse<IProjectDeta
   instance.get(`${API_URL.PROJECT}/${id}`);
 
 export const deleteProject = (id: string) => instance.delete(`${API_URL.PROJECTS}/${id}`);
+
 export const patchUpdateProject = (
   id: string,
-  data: IProjectDetail,
-): Promise<AxiosResponse<IProjectDetail>> =>
-  instance.patch(`${API_URL.GETDETAILPROJECT}/${id}`, data);
+  data: IUpdateProject,
+): Promise<AxiosResponse<IUpdateProject>> => instance.patch(`${API_URL.PROJECT}/${id}`, data);
+
+export const addEmployeeToProject = (data: IAssignEmployee): Promise<AxiosResponse<string[]>> =>
+  instance.post(API_URL.ADD_EMPLOYEE, data);
+
+export const unassignEmployeeToProject = (id: string) =>
+  instance.delete(`${API_URL.UNASSIGN_EMPLOYEE}/${id}`);
