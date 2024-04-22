@@ -73,16 +73,16 @@ const DetailProjectForm: FC<DataProps> = ({ data }) => {
                             <Avatar
                               style={{ alignItems: "center", justifyContent: "center" }}
                               size={64}
-                              src={data?.user.profile.avatarUrl}
+                              src={data?.user?.profile?.avatarUrl}
                             />
                           }
                           title={
                             <p style={{ color: "#16c2c2", fontSize: "3vh", margin: "0" }}>
-                              {data?.user.profile.fullName}
+                              {data?.user?.profile?.fullName}
                             </p>
                           }
                           description={
-                            <p style={{ fontSize: "2vh", margin: "0" }}>{data?.user.email}</p>
+                            <p style={{ fontSize: "2vh", margin: "0" }}>{data?.user?.email}</p>
                           }
                         />
                       </List.Item>
