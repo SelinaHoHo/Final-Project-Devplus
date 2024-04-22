@@ -55,6 +55,7 @@ export type IGetUsers = IGetUser[];
 export interface DataType {
   key: React.Key;
   employeeId: string;
+  projectId: string;
   roles: string[];
 }
 export type ProjectType = {
@@ -160,3 +161,8 @@ export type IUserDetail = {
     roles: { length: string; role: string; position: { name: string } }[];
   }[];
 };
+export interface IAssignEmployee {
+  employeeId: string;
+  projectId: string;
+  roles: string[];
+}

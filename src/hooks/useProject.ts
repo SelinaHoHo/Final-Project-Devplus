@@ -3,6 +3,7 @@ import {
   deleteProject,
   getDetailProject,
   getProjects,
+  patchUpdateProject,
   patchUpdateStatus,
 } from "@/apis/project.api";
 import { QUERY_KEY } from "@/constants/queryKey";
@@ -29,14 +30,14 @@ export const useCreateProject = () => {
     },
     onSuccess: () => {
       notification.success({
-        message: t("CREATE_PROJECT.SUCCESS") as string,
+        message: t("UPDATE_PROJECT.SUCCESS") as string,
         description: t("CREATE_PROJECT.SUCCESS_MESSAGE") as string,
       });
       navigate("/projects");
     },
     onError: (res) => {
       notification.error({
-        message: t("CREATE_PROJECT.FAILED") as string,
+        message: t("UPDATE_PROJECT.FAILED") as string,
         description: t(`CREATE_PROJECT.${res.message}`) as string,
       });
     },
@@ -100,6 +101,33 @@ export const useDeleteProject = () => {
       notification.error({
         message: t("PROJECT.FAILED") as string,
         description: t("PROJECT.FAILED_DELETE") as string,
+      });
+    },
+  });
+};
+
+export const useUpdateProject = (id: string) => {
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (req: IProjectDetail) => {
+      const { data } = await patchUpdateProject(id, req);
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEY.PROJECT],
+      });
+      notification.success({
+        message: t("UPDATE_PROJECT.SUCCESS") as string,
+        description: t("UPDATE_PROJECT.SUCCESS_MESSAGE") as string,
+      });
+      navigate("/projects");
+    },
+    onError: () => {
+      notification.error({
+        message: t("UPDATE_PROJECT.FAILED") as string,
+        description: t("UPDATE_PROJECT.FAILED_MESSAGE") as string,
       });
     },
   });

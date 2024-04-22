@@ -9,4 +9,8 @@ export const API_URL = {
   TECHNOLOGY: "/technical",
   POSITION: "/position",
   PROJECTS: "/project",
+  GETDETAILPROJECT: "/project/${id}",
+  CREATE_PROJECT: "/project",
+  ADD_EMPLOYEE: "/project/add-employee",
+  UNASSIGN_EMPLOYEE: "/project/unassign-employee/${id}",
 };

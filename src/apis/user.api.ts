@@ -7,6 +7,7 @@ import { ITechnology } from "@/interfaces/tech/tech.interface";
 import {
   DeleteUser,
   GetListUsers,
+  IAssignEmployee,
   IGetUsers,
   IUserDetail,
   IUsers,
@@ -43,3 +44,8 @@ export const deleteUser = (param: DeleteUser): Promise<AxiosResponse<IUsers>> =>
 
 export const getDetailEmoloyee = (id: string): Promise<AxiosResponse<IUserDetail>> =>
   instance.get(`${API_URL.USERS}/${id}`);
+export const addEmployeeToProject = (data: IAssignEmployee): Promise<AxiosResponse<string[]>> =>
+  instance.post(API_URL.ADD_EMPLOYEE, data);
+
+export const unassignEmployeeToProject = (id: string) =>
+  instance.delete(`${API_URL.UNASSIGN_EMPLOYEE}/${id}`);
