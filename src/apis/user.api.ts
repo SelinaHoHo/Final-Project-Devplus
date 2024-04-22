@@ -34,6 +34,3 @@ export const profile = (data: ILoginRequest): Promise<AxiosResponse<ILoginRespon
 
 export const deleteUser = (param: DeleteUser): Promise<AxiosResponse<IUsers>> =>
   instance.delete(`${API_URL.USERS}?id=${param.id}`);
-
-// export const getDetailUser = (id: string): Promise<AxiosResponse<IGetUsers>> =>
-//   instance.get(`${API_URL.PROJECT}/${id}`);
