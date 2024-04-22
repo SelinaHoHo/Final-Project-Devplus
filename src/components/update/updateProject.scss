@@ -49,3 +49,9 @@
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
+
+.table-assign-employee {
+  .ant-table-row:last-child {
+    display: none !important;
+  }
+}

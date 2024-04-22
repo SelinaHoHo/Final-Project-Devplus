@@ -15,6 +15,8 @@ export const UpdateAssignEmployee = (
     render: (record) => {
       if (record?.user?.isManager === false) {
         return <p style={{ margin: "7px 0" }}>{record?.user?.profile?.fullName}</p>;
+      } else {
+        return <p style={{ display: "none" }}></p>;
       }
     },
   },

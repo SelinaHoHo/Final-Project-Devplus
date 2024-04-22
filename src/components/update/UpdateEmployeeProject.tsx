@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { yupSync } from "@/helpers/validation";
 import { useGetPosition } from "@/hooks/usePosition";
-import { useUnAssignEmployee } from "@/hooks/useProject";
+import { useAddEmployeeToProject, useUnAssignEmployee } from "@/hooks/useProject";
 import { useGetAllUserNoPagination } from "@/hooks/useUser";
 import {
   IAssignEmployee,
@@ -16,6 +16,7 @@ import { Rule } from "antd/es/form";
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
+import "./updateProject.scss";
 
 type DataProps = {
   data: IProjectDetail | undefined;
@@ -24,7 +25,7 @@ type DataProps = {
 const UpdateEmployeeProject: FC<DataProps> = ({ data }) => {
   const { data: user } = useGetAllUserNoPagination();
   const { data: position } = useGetPosition();
-  // const { mutate: assignEmployee } = useAddEmployeeToProject();
+  const { mutate: assignEmployee } = useAddEmployeeToProject();
   const { mutate: unassignEmployee } = useUnAssignEmployee();
   const { t } = useTranslation();
   const [form] = Form.useForm();
@@ -44,30 +45,22 @@ const UpdateEmployeeProject: FC<DataProps> = ({ data }) => {
   };
   const onFinish = (values: IAssignEmployee) => {
     // console.log(values);
-    data?.projectMembers?.filter((item: ProjectMembers) => {
+    const exist = data?.projectMembers?.some((item: ProjectMembers) => {
       if (item?.user?.id === values.employeeId) {
-        return messageApi.open({
-          type: "error",
-          content: t("CREATE_PROJECT.ALREADY_EXISTS"),
-        });
-      } else {
-        // console.log("se");
+        return true;
       }
     });
-    // data?.projectMembers?.map((item: ProjectMembers) => {
-    //   if (item?.user?.id === values.employeeId) {
-    //     return messageApi.open({
-    //       type: "error",
-    //       content: t("CREATE_PROJECT.ALREADY_EXISTS"),
-    //     });
-    //   } else {
-    //     console.log("se");
-    //     // assignEmployee({ ...values, projectId: data?.id as string });
-    //     // setTimeout(() => {
-    //     //   form.resetFields();
-    //     // }, 1000);
-    //   }
-    // });
+    if (exist) {
+      messageApi.open({
+        type: "error",
+        content: t("CREATE_PROJECT.ALREADY_EXISTS"),
+      });
+    } else {
+      assignEmployee({ ...values, projectId: data?.id as string });
+      setTimeout(() => {
+        form.resetFields();
+      }, 1000);
+    }
   };
 
   return (
@@ -134,6 +127,7 @@ const UpdateEmployeeProject: FC<DataProps> = ({ data }) => {
           </Col>
           <Col xs={24} sm={24} md={24} lg={12}>
             <Form.Item
+              className='table-assign-employee'
               label={t("DETAIL_PROJECT.EMPLOYEE")}
               labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
               wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
