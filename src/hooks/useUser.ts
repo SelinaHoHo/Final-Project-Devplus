@@ -48,3 +48,13 @@ export const useDeleteUser = () => {
     },
   });
 };
+
+// export const useGetDetailEmployee = (id: string): UseQueryResult<IGetUsers, Error> => {
+//   return useQuery<IGetUsers>({
+//     queryKey: [QUERY_KEY.USER],
+//     queryFn: async (): Promise<IGetUsers> => {
+//       const { data } = await getDetailProject(id);
+//       return data;
+//     },
+//   });
+// };

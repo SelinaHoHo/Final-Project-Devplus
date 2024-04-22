@@ -45,7 +45,6 @@ interface ICreateProjectReq {
   language: string[];
   technical: string[];
   managerId?: string;
-  isDelete: boolean;
   employeeId: [
     {
       id: string;
