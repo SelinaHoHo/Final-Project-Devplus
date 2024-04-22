@@ -1,13 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useGetLanguage } from "@/hooks/useLanguage";
-import { useGetPosition } from "@/hooks/usePosition";
+import { useUpdateProject } from "@/hooks/useProject";
 import { useGetTechnical } from "@/hooks/useTechnical";
 import { useGetAllUserNoPagination } from "@/hooks/useUser";
-import { IProjectDetail, ProjectMembers } from "@/interfaces/project/projects.interface";
+import { IProjectDetail } from "@/interfaces/project/projects.interface";
 import { ProjectType, SkillType, UserType } from "@/interfaces/user/users.interface";
-import { UpdateAssignEmployee } from "@/pages/project/Update/UpdatAssignEmployee";
-import { PlusOutlined } from "@ant-design/icons";
-import { Button, Col, DatePicker, Form, Input, Row, Select, Table, type FormProps } from "antd";
+import { Button, Col, DatePicker, Form, Input, Row, Select, type FormProps } from "antd";
 import { Rule } from "antd/es/form";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
@@ -26,15 +24,12 @@ const { TextArea } = Input;
 dayjs.extend(customParseFormat);
 
 const UpdateProjectForm: FC<DataProps> = ({ data }) => {
-  // console.log(data);
   const { data: user } = useGetAllUserNoPagination();
   const { data: technical } = useGetTechnical();
   const { data: language } = useGetLanguage();
-  const { data: position } = useGetPosition();
   const { t } = useTranslation();
   const [form] = Form.useForm();
-  //   const { mutate: updateProject } = useUpdateProject(id);
-  //   const [messageApi, contextHolder] = message.useMessage();
+  const { mutate: updateProject } = useUpdateProject(data?.id as string);
 
   const validator = [
     yupSync(
@@ -54,22 +49,26 @@ const UpdateProjectForm: FC<DataProps> = ({ data }) => {
     ),
   ] as unknown as Rule[];
 
-  const initialValue = {
-    name: data?.name,
-    description: data?.description,
-    // date: [data?.startDate, data?.endDate],
-    technical: data?.technicalProject?.map((item: any) => item?.technical.name),
-    language: data?.languageProject?.map((item: any) => item?.language.name),
-    managerId: data?.user?.profile?.fullName,
-  };
+  const dateFormat = "YYYY/MM/DD";
 
-  const onFinish: FormProps<ProjectType>["onFinish"] = () => {
-    // console.log(values);
-    // updateProject({
-    //   ...values,
-    //   startDate: JSON.parse(JSON.stringify(values.date[0])),
-    //   endDate: JSON.parse(JSON.stringify(values.date[1])),
-    // });
+  const initialValue = data
+    ? {
+        name: data?.name,
+        description: data?.description,
+        date: [dayjs(data?.startDate, dateFormat), dayjs(data?.endDate, dateFormat)],
+        technical: data?.technicalProject?.map((item: any) => item?.technical?.id),
+        language: data?.languageProject?.map((item: any) => item?.language?.id),
+        managerId: data?.user?.profile?.fullName,
+      }
+    : {};
+
+  const onFinish: FormProps<ProjectType>["onFinish"] = (values) => {
+    updateProject({
+      id: data?.id as string,
+      ...values,
+      startDate: JSON.parse(JSON.stringify(values.date[0])),
+      endDate: JSON.parse(JSON.stringify(values.date[1])),
+    });
     setTimeout(() => {
       form.resetFields();
     }, 1000);
@@ -77,8 +76,7 @@ const UpdateProjectForm: FC<DataProps> = ({ data }) => {
 
   return (
     <>
-      {/* {contextHolder} */}
-      <Form onFinish={onFinish} form={form} initialValues={initialValue} id='prj'>
+      <Form onFinish={onFinish} form={form} initialValues={initialValue} id='updateProject'>
         <Row gutter={[8, 4]}>
           <Col xs={24} sm={24} md={24} lg={24}>
             <Form.Item<ProjectType>
@@ -123,7 +121,6 @@ const UpdateProjectForm: FC<DataProps> = ({ data }) => {
                 mode='multiple'
                 style={{ width: "100%" }}
                 placeholder={t("CREATE_PROJECT.TECHNICAL_PLACEHOLDER") as string}
-                notFoundContent={null}
                 options={technical?.map((item: SkillType) => ({
                   value: item.id,
                   label: item.name,
@@ -145,7 +142,9 @@ const UpdateProjectForm: FC<DataProps> = ({ data }) => {
                 style={{ width: "100%" }}
                 placeholder={t("CREATE_PROJECT.LANGUAGE_PLACEHOLDER") as string}
                 notFoundContent={null}
+                // defaultValue={data?.languageProject?.map((item: any) => item?.id)}
                 options={language?.map((item: SkillType) => ({
+                  key: item.id,
                   value: item.id,
                   label: item.name,
                 }))}
@@ -170,78 +169,12 @@ const UpdateProjectForm: FC<DataProps> = ({ data }) => {
                 {user?.map(
                   (item: UserType) =>
                     item.isManager && (
-                      <Select.Option key={item?.id} value={item?.id}>
+                      <Select.Option key={item?.id} value={item?.profile.fullName}>
                         {item?.profile?.fullName}
                       </Select.Option>
                     ),
                 )}
               </Select>
-            </Form.Item>
-          </Col>
-          <Col xs={24} sm={24} md={24} lg={12}>
-            <Row gutter={[8, 4]}>
-              <Col xs={24} sm={24} md={24} lg={12}>
-                <Form.Item
-                  name='employeeId'
-                  label={t("CREATE_PROJECT.EMPLOYEE")}
-                  labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
-                  wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
-                >
-                  <Select
-                    style={{ width: "100%" }}
-                    placeholder={t("CREATE_PROJECT.EMPLOYEE_NAME") as string}
-                    showSearch
-                    notFoundContent={null}
-                  >
-                    {user?.map(
-                      (item: UserType) =>
-                        !item.isManager && (
-                          <Select.Option key={item?.id} value={item?.id}>
-                            {item?.profile?.fullName}
-                          </Select.Option>
-                        ),
-                    ) || []}
-                  </Select>
-                </Form.Item>
-              </Col>
-              <Col xs={24} sm={24} md={24} lg={12}>
-                <Form.Item
-                  name='roles'
-                  label={t("CREATE_PROJECT.ROLES")}
-                  labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
-                  wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
-                >
-                  <Select
-                    mode='multiple'
-                    style={{ width: "100%" }}
-                    placeholder={t("CREATE_PROJECT.EMPLOYEE_ROLES") as string}
-                    notFoundContent={null}
-                    options={position?.map((item: SkillType) => ({
-                      value: item.id,
-                      label: item.name,
-                    }))}
-                  />
-                </Form.Item>
-              </Col>
-              <Col xs={24} sm={24} md={24} lg={24}>
-                <Form.Item>
-                  <Button type='dashed' block icon={<PlusOutlined />}>
-                    {t("CREATE_PROJECT.CREATE_EMPLOYEE")}
-                  </Button>
-                </Form.Item>
-              </Col>
-            </Row>
-          </Col>
-          <Col xs={24} sm={24} md={24} lg={12}>
-            <Form.Item
-              label={t("DETAIL_PROJECT.EMPLOYEE")}
-              labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
-              wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
-            >
-              <Table<ProjectMembers>
-                columns={UpdateAssignEmployee()}
-                dataSource={data?.projectMembers}
-              />
             </Form.Item>
           </Col>
           <Col xs={24} sm={24} md={24} lg={24}>
@@ -251,15 +184,12 @@ const UpdateProjectForm: FC<DataProps> = ({ data }) => {
               labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
               wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
             >
-              <TextArea
-                defaultValue={data?.description}
-                placeholder={t("CREATE_PROJECT.DESCRIPTIONDES")}
-              />
+              <TextArea placeholder={t("CREATE_PROJECT.DESCRIPTIONDES")} />
             </Form.Item>
           </Col>
         </Row>
         <Form.Item style={{ textAlign: "right" }}>
-          <Button type='primary' size='large' htmlType='submit' form='prj'>
+          <Button type='primary' size='large' htmlType='submit' form='updateProject'>
             {t("UPDATE_PROJECT.SUBMIT")}
           </Button>
         </Form.Item>

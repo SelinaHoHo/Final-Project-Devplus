@@ -260,6 +260,10 @@
     "ADDEMPLOYEE_SUCCESS_MESSAGE": "Successfully added user to the project.",
     "ADDEMPLOYEE_FAILED_MESSAGE": "Failed to add user to the project.",
     "UNASSIGNEMPLOYEE_SUCCESS_MESSAGE": "Successfully removed user from the project.",
-    "UNASSIGNEMPLOYEE_FAILED_MESSAGE": "Failed to remove user from the project."
+    "UNASSIGNEMPLOYEE_FAILED_MESSAGE": "Failed to remove user from the project.",
+    "SUBMIT": "Update",
+    "ADD_EMPLOYEE": "Assign",
+    "EMPLOYEE_REQUIRED": "Please select employee",
+    "ROLES_REQUIRED": "Please select roles"
   }
 }

@@ -85,6 +85,7 @@ export interface IProject {
 export interface ProjectMembers {
   id: string;
   user: {
+    id: string;
     isManager: boolean;
     manager: string;
     managerId: string;
@@ -131,4 +132,25 @@ export interface UpdateStatus {
 
 export interface IDeleteProject {
   id: string;
+}
+
+export interface IAssignEmployee {
+  employeeId: string;
+  projectId: string;
+  roles: string[];
+}
+
+export interface IUnassignEmployee {
+  id: string;
+}
+
+export interface IUpdateProject {
+  id: string;
+  name: string;
+  description: string;
+  startDate: string;
+  endDate: string;
+  language: string[];
+  technical: string[];
+  managerId?: string;
 }
