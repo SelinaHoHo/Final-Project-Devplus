@@ -92,8 +92,8 @@
     "DOB_REQUIRED": "Please select date of birth (at least 18 years old)",
     "ROLE_REQUIRED": "Please enter role",
     "PROFILE": "Profile",
-    "PENDING": "Pending",
-    "IN_PROGRESS": "In progress",
+    "ACTIVE": "Active",
+    "DISABLE": "Disable",
     "MANAGER": "Manager",
     "YES": "Yes",
     "NO": "No",
@@ -151,7 +151,12 @@
     "MEMBERS": "Members",
     "STATUS_INPROGRESS": "In Progress",
     "STATUS_PENDING": "Pending",
-    "STATUS_COMPLETED": "Completed"
+    "STATUS_COMPLETED": "Completed",
+    "SUCCESS": "Success",
+    "FAILED": "Failed",
+    "SUCCESS_DELETE": "Delete Success",
+    "FAILED_DELETE": "Project is pending",
+    "CONFIRM_DELETE": "Are you sure you want to delete this project?"
   },
   "UPDATE": {
     "SUCCESS": "Update Status Success"

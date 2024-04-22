@@ -1,5 +1,6 @@
 import {
   createProject,
+  deleteProject,
   getDetailProject,
   getProjects,
   patchUpdateStatus,
@@ -75,6 +76,30 @@ export const useUpdateStatus = () => {
       });
       notification.success({
         message: t("UPDATE.SUCCESS") as string,
+      });
+    },
+  });
+};
+
+export const useDeleteProject = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (id: string) => {
+      const data = await deleteProject(id);
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEY.PROJECTS],
+      });
+      notification.success({
+        message: t("PROJECT.SUCCESS") as string,
+      });
+    },
+    onError: () => {
+      notification.error({
+        message: t("PROJECT.FAILED") as string,
+        description: t("PROJECT.FAILED_DELETE") as string,
       });
     },
   });

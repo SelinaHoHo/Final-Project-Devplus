@@ -172,6 +172,7 @@ export const ProjectsColumnsTable = (
         >
           <FileSearchOutlined />
         </ButtonAction>
+
         <ButtonAction
           variant='danger'
           loading={!loading}

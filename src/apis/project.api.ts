@@ -19,3 +19,5 @@ export const patchUpdateStatus = (param: UpdateStatus): Promise<AxiosResponse<IP
 
 export const getDetailProject = (id: string): Promise<AxiosResponse<IProjectDetail>> =>
   instance.get(`${API_URL.PROJECT}/${id}`);
+
+export const deleteProject = (id: string) => instance.delete(`${API_URL.PROJECTS}/${id}`);

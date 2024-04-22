@@ -70,6 +70,7 @@ export interface IProject {
     status: string;
     progress: number;
     projectMembers: ProjectMembers[];
+    isDelete: boolean;
   }[];
   meta: {
     page: string;
@@ -126,4 +127,8 @@ export type GetListProject = {
 export interface UpdateStatus {
   id: string;
   status: string;
+}
+
+export interface IDeleteProject {
+  id: string;
 }

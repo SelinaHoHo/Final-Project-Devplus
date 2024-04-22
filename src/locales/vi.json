@@ -88,8 +88,8 @@
     "DOB_REQUIRED": "Vui lòng chọn ngày sinh (từ đủ 18 tuổi)",
     "POSITION_REQUIRED": "Vui lòng chọn vị trí",
     "PROFILE": "Thông tin cá nhân",
-    "PENDING": "Đang chờ",
-    "IN_PROGRESS": "Đang làm việc",
+    "ACTIVE": "Hoạt động",
+    "DISABLE": "Không hoạt động",
     "MANAGER": "Quản lí",
     "YES": "Có",
     "NO": "Không",
@@ -147,7 +147,12 @@
     "MEMBERS": "Thành viên",
     "STATUS_INPROGRESS": "Đang Tiến Hành",
     "STATUS_PENDING": "Đang Chờ",
-    "STATUS_COMPLETED": "Đã Hoàn Thành"
+    "STATUS_COMPLETED": "Đã Hoàn Thành",
+    "SUCCESS": "Thành công",
+    "FAILED": "Thất bại",
+    "SUCCESS_DELETE": "Xóa thành công",
+    "FAILED_DELETE": "Dự án đang chờ xử lí",
+    "CONFIRM_DELETE": "Bạn có chắc chắn muốn xóa dự án này không?"
   },
   "UPDATE": {
     "SUCCESS": "Cập nhập trạng thái thành công"
