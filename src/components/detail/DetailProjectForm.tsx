@@ -99,7 +99,7 @@ const DetailProjectForm: FC<DataProps> = ({ data }) => {
                   <Col xs={24} sm={24} md={24} lg={24}>
                     <Title level={5}>{t("DETAIL_PROJECT.EMPLOYEE")}</Title>
                   </Col>
-                  <Col xs={24} sm={24} md={24} lg={24}>
+                  <Col xs={24} sm={24} md={24} lg={24} className='table-assign-employee'>
                     <Table<ProjectMembers>
                       columns={EmployeeProjectsColumnsTable()}
                       dataSource={data?.projectMembers}

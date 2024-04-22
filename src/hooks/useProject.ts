@@ -60,7 +60,7 @@ export const useGetProjects = (param: GetListProject): UseQueryResult<IProject, 
 
 export const useGetDetailProject = (id: string): UseQueryResult<IProjectDetail, Error> => {
   return useQuery<IProjectDetail>({
-    queryKey: [QUERY_KEY.PROJECT],
+    queryKey: [QUERY_KEY.PROJECT, id],
     queryFn: async (): Promise<IProjectDetail> => {
       const { data } = await getDetailProject(id);
       return data;
@@ -138,12 +138,16 @@ export const useUpdateProject = (id: string) => {
 };
 
 export const useAddEmployeeToProject = () => {
+  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (req: IAssignEmployee) => {
       const { data } = await addEmployeeToProject(req);
       return data;
     },
     onSuccess: () => {
+      queryClient.refetchQueries({
+        queryKey: [QUERY_KEY.PROJECT],
+      });
       notification.success({
         message: t("UPDATE_PROJECT.SUCCESS") as string,
         description: t("UPDATE_PROJECT.ADDEMPLOYEE_SUCCESS_MESSAGE") as string,

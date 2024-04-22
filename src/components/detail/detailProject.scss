@@ -32,3 +32,9 @@
 .content-right {
   width: 50%;
 }
+
+.table-assign-employee {
+  .ant-table-row:last-child {
+    display: none !important;
+  }
+}
