@@ -21,3 +21,8 @@ export const getDetailProject = (id: string): Promise<AxiosResponse<IProjectDeta
   instance.get(`${API_URL.PROJECT}/${id}`);
 
 export const deleteProject = (id: string) => instance.delete(`${API_URL.PROJECTS}/${id}`);
+export const patchUpdateProject = (
+  id: string,
+  data: IProjectDetail,
+): Promise<AxiosResponse<IProjectDetail>> =>
+  instance.patch(`${API_URL.GETDETAILPROJECT}/${id}`, data);

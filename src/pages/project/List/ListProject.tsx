@@ -29,9 +29,9 @@ const ListProject = () => {
   const { mutate: onDeleteProject } = useDeleteProject();
   const handleAction = (key: string, _item: ColumnIProject) => {
     switch (key) {
-      // case "update":
-      //   navigate(`/application/${item.id}`);
-      //   break;
+      case "edit":
+        navigate(`/projects/edit/${_item.id}`);
+        break;
       case "detail":
         navigate(`/projects/${_item.id}`);
         break;

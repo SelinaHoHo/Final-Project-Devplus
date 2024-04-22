@@ -7,6 +7,7 @@ import { ITechnology } from "@/interfaces/tech/tech.interface";
 import {
   DeleteUser,
   GetListUsers,
+  IAssignEmployee,
   IGetUsers,
   IUserDetail,
   IUsers,
@@ -65,3 +66,9 @@ export const exportCv = async (id: string) =>
       link.click();
       document.body.removeChild(link);
     });
+
+export const addEmployeeToProject = (data: IAssignEmployee): Promise<AxiosResponse<string[]>> =>
+  instance.post(API_URL.ADD_EMPLOYEE, data);
+
+export const unassignEmployeeToProject = (id: string) =>
+  instance.delete(`${API_URL.UNASSIGN_EMPLOYEE}/${id}`);

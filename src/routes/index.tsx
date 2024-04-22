@@ -6,16 +6,17 @@ import CreateUser from "@/pages/Users/CreateUser/CreateUser";
 import { lazy } from "react";
 import { Navigate, useRoutes } from "react-router-dom";
 import LayoutPage from "../components/layout";
-import ListProject from "../pages/project/ListProject";
+import ListProject from "../pages/project/List/ListProject";
 
-const CreateProject = lazy(() => import("@/pages/project/CreateProject"));
 const TechnicalPage = lazy(() => import("@/pages/technical/TechnicalPage"));
 const LanguagePage = lazy(() => import("@/pages/language/LanguagePage"));
 const PositionPage = lazy(() => import("@/pages/position/PositionPage"));
+const CreateProject = lazy(() => import("@/pages/project/Create/CreateProject"));
 const PageNoFound = lazy(() => import("@/pages/PageNotFound"));
 const Dashboard = lazy(() => import("@/pages/Dashboard"));
 const Login = lazy(() => import("@/pages/login/Login"));
 const DetailProject = lazy(() => import("@/pages/project/Detail/DetailProject"));
+const UpdateProject = lazy(() => import("@/pages/project/Update/UpdateProject"));
 
 const Router = () => {
   return useRoutes([
@@ -85,8 +86,8 @@ const Router = () => {
               element: <CreateProject />,
             },
             {
-              path: "edit",
-              element: <div>Edit Projects</div>,
+              path: "edit/:id",
+              element: <UpdateProject />,
             },
             {
               path: ":id",
