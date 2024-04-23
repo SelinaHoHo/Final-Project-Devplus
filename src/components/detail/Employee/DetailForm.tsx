@@ -30,8 +30,8 @@ const DetailForm: FC<DataProps> = ({ data }) => {
       title: t("DETAIL_EMPLOYEE.LANGUAGE_FRAMEWORK"),
       dataIndex: "name",
       key: "name",
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      render: (text: string, record: LanguageMember) => record.language.name,
+
+      render: (_text: string, record: LanguageMember) => record.language.name,
     },
     {
       title: t("DETAIL_EMPLOYEE.LEVEL"),
@@ -51,8 +51,7 @@ const DetailForm: FC<DataProps> = ({ data }) => {
       dataIndex: "name",
       key: "name",
 
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      render: (text: string, record: TechnicalMember) => record.technical.name,
+      render: (_text: string, record: TechnicalMember) => record.technical.name,
     },
     {
       title: t("DETAIL_EMPLOYEE.LEVEL"),
