@@ -127,7 +127,7 @@ const LanguagePage = () => {
       case "delete":
         const languageName = _item.name || "";
         Modal.confirm({
-          title: t("SKILL.LANG_DELETE", { name: languageName }),
+          title: t("SKILL.TECH_DELETE", { name: languageName }),
           okText: t("SKILL.OK_CREATE"),
           cancelText: t("SKILL.CANCEL"),
           onOk: () => deleteLanguage(_item.id),

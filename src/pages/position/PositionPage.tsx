@@ -127,7 +127,7 @@ const PositionPage = () => {
       case "delete":
         const positionName = _item.name || "";
         Modal.confirm({
-          title: t("SKILL.POSITION_DELETE", { name: positionName }),
+          title: t("SKILL.TECH_DELETE", { name: positionName }),
           okText: t("SKILL.OK_CREATE"),
           cancelText: t("SKILL.CANCEL"),
           onOk: () => deletePosition(_item.id),
