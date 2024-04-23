@@ -1,7 +1,7 @@
 import DetailForm from "@/components/detail/Employee/DetailForm";
 import { useGetDetailEmployee } from "@/hooks/useUser";
 import { HomeOutlined, UserOutlined } from "@ant-design/icons";
-import { Breadcrumb } from "antd";
+import { Breadcrumb, Spin } from "antd";
 import { useParams } from "react-router-dom";
 import "./EmployeeDetail.scss";
 
@@ -32,7 +32,11 @@ const EmployeeDetail = () => {
 
       <br />
 
-      {isLoading ? <p>Loading...</p> : <DetailForm data={data} />}
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <Spin tip='Loading' size='large' spinning={isLoading}>
+          <DetailForm data={data} />
+        </Spin>
+      </div>
     </div>
   );
 };
