@@ -3,6 +3,7 @@
     "DASHBOARD": "Dashboard",
     "USERS": "Employees",
     "PROJECTS": "Projects",
+    "TECHNICALS": "Technicals",
     "LIST_USERS": "List employee",
     "LIST_PROJECTS": "List project",
     "CREATE_PROJECTS": "Create project",
@@ -198,5 +199,30 @@
     "NOW": "Now",
     "LEVEL": "Level",
     "EXPERIENCE": "Experience"
+  },
+  "SKILL": {
+    "TECH_NAME": "Technical name",
+    "ACTIONS": "Actions",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "TECH_CREATE": "Create technical",
+    "TECH_UPDATE": "Update technical",
+    "TECH_UPDATE_BUTTON": "Update",
+    "TECH_NAME_REQUIRED": "Please enter name",
+    "TECH_NAME_PLACEHOLDER": "Enter name",
+    "TECH_PLH": "Enter name",
+    "SUCCESS": "Successfully!",
+    "FAILED": "Failed!",
+    "CREATE_SUCCESS_TECH": "Create technical success.",
+    "CREATE_FAILED_TECH": "Technical already exists.",
+    "UPDATE_SUCCESS_TECH": "Update technical success.",
+    "UPDATE_FAILED_TECH": "Update technical failed",
+    "DELETE_SUCCESS_TECH": "Delete technical success.",
+    "DELETE_FAILED_TECH": "Delete technical failed.",
+    "TECH_DELETE": "Are you sure to delete {{name}}?",
+    "OK_CREATE": "Delete",
+    "CANCEL": "Cancel",
+    "TECH_TITLE": "Technicals",
+    "CREATE_NEW_TECH": "Create technical"
   }
 }

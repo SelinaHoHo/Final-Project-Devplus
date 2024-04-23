@@ -9,6 +9,7 @@ const iconsComponents: Record<string, FC> = {
   dashboard: DashboardSvg,
   user: UserSvg,
   project: ProjectSvg,
+  technical: ProjectSvg,
 };
 export const CustomIcon: FC<CustomIconProps> = ({ type }) => {
   const IconComponent = iconsComponents[type] || DashboardSvg;

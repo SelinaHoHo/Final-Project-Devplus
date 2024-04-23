@@ -3,6 +3,7 @@
     "DASHBOARD": "Bảng điều khiển",
     "USERS": "Người dùng",
     "PROJECTS": "Dự án",
+    "TECHNICALS": "Kỹ thuật",
     "LIST_USERS": "Danh sách người dùng",
     "CREATE_USER": "Tạo người dùng",
     "LIST_PROJECTS": "Danh sách dự án",
@@ -192,5 +193,30 @@
     "NOW": "Hiện tại",
     "LEVEL": "Trình độ",
     "EXPERIENCE": "Kinh nghiệm"
+  },
+  "SKILL": {
+    "TECH_NAME": "Tên kỹ thuật",
+    "ACTIONS": "Hành động",
+    "EDIT": "Chỉnh sửa",
+    "DELETE": "Xóa",
+    "TECH_CREATE": "Tạo kỹ thuật mới",
+    "TECH_UPDATE": "Cập nhật kỹ thuật",
+    "TECH_UPDATE_BUTTON": "Cập nhật",
+    "TECH_NAME_REQUIRED": "Vui lòng nhập tên",
+    "TECH_NAME_PLACEHOLDER": "Nhập tên",
+    "TECH_PLH": "Nhập tên",
+    "SUCCESS": "Thành công!",
+    "FAILED": "Thất bại!",
+    "CREATE_SUCCESS_TECH": "Tạo kỹ thuật thành công.",
+    "CREATE_FAILED_TECH": "Kỹ thuật đã tồn tại.",
+    "UPDATE_SUCCESS_TECH": "Cập nhật kỹ thuật thành công.",
+    "UPDATE_FAILED_TECH": "Cập nhật kỹ thuật thất bại.",
+    "DELETE_SUCCESS_TECH": "Xóa kỹ thuật thành công.",
+    "DELETE_FAILED_TECH": "Xóa kỹ thuật thất bại.",
+    "TECH_DELETE": "Bạn có chắc muốn xóa '{{name}}' không?",
+    "OK_CREATE": "Xóa",
+    "CANCEL": "Hủy",
+    "TECH_TITLE": "Các kỹ thuật",
+    "CREATE_NEW_TECH": "Tạo kỹ thuật mới"
   }
 }

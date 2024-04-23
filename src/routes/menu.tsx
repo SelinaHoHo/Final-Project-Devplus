@@ -43,4 +43,10 @@ export const menuList: MenuList = [
       },
     ],
   },
+  {
+    code: "technicals",
+    label: "Technicals",
+    icon: "technical",
+    path: "/technicals",
+  },
 ];
