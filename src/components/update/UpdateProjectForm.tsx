@@ -9,11 +9,16 @@ import { Button, Col, DatePicker, Form, Input, Row, Select, type FormProps } fro
 import { Rule } from "antd/es/form";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
+import timezone from "dayjs/plugin/timezone";
+import utc from "dayjs/plugin/utc";
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
 import { yupSync } from "../../helpers/validation";
 import "./updateProject.scss";
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 type DataProps = {
   data: IProjectDetail | undefined;
@@ -49,13 +54,14 @@ const UpdateProjectForm: FC<DataProps> = ({ data }) => {
     ),
   ] as unknown as Rule[];
 
-  const dateFormat = "YYYY/MM/DD";
-
   const initialValue = data
     ? {
         name: data?.name,
         description: data?.description,
-        date: [dayjs(data?.startDate, dateFormat), dayjs(data?.endDate, dateFormat)],
+        date: [
+          dayjs(data?.startDate).tz("Asia/Ho_Chi_Minh"),
+          dayjs(data?.endDate).tz("Asia/Ho_Chi_Minh"),
+        ],
         technical: data?.technicalProject?.map((item: any) => item?.technical?.id),
         language: data?.languageProject?.map((item: any) => item?.language?.id),
         managerId: data?.user?.profile?.fullName,
@@ -89,7 +95,6 @@ const UpdateProjectForm: FC<DataProps> = ({ data }) => {
               <Input placeholder={t("CREATE_PROJECT.NAMEDES")} />
             </Form.Item>
           </Col>
-
           <Col xs={24} sm={24} md={24} lg={12}>
             <Form.Item<ProjectType>
               name='date'
@@ -100,7 +105,7 @@ const UpdateProjectForm: FC<DataProps> = ({ data }) => {
             >
               <RangePicker
                 style={{ width: "100%" }}
-                format='YYYY-MM-DD'
+                format='DD/MM/YYYY'
                 placeholder={[
                   t("CREATE_PROJECT.STARTDATE") as string,
                   t("CREATE_PROJECT.ENDDATE") as string,
@@ -108,7 +113,6 @@ const UpdateProjectForm: FC<DataProps> = ({ data }) => {
               />
             </Form.Item>
           </Col>
-
           <Col xs={24} sm={24} md={24} lg={12}>
             <Form.Item<ProjectType>
               name='technical'
@@ -128,7 +132,6 @@ const UpdateProjectForm: FC<DataProps> = ({ data }) => {
               />
             </Form.Item>
           </Col>
-
           <Col xs={24} sm={24} md={24} lg={12}>
             <Form.Item<ProjectType>
               name='language'
@@ -151,7 +154,6 @@ const UpdateProjectForm: FC<DataProps> = ({ data }) => {
               />
             </Form.Item>
           </Col>
-
           <Col xs={24} sm={24} md={24} lg={12}>
             <Form.Item<ProjectType>
               name='managerId'
@@ -169,7 +171,7 @@ const UpdateProjectForm: FC<DataProps> = ({ data }) => {
                 {user?.map(
                   (item: UserType) =>
                     item.isManager && (
-                      <Select.Option key={item?.id} value={item?.profile.fullName}>
+                      <Select.Option key={item?.id} value={item?.id}>
                         {item?.profile?.fullName}
                       </Select.Option>
                     ),
@@ -177,6 +179,7 @@ const UpdateProjectForm: FC<DataProps> = ({ data }) => {
               </Select>
             </Form.Item>
           </Col>
+
           <Col xs={24} sm={24} md={24} lg={24}>
             <Form.Item<ProjectType>
               name='description'
