@@ -30,6 +30,7 @@ const DetailForm: FC<DataProps> = ({ data }) => {
       title: t("DETAIL_EMPLOYEE.LANGUAGE_FRAMEWORK"),
       dataIndex: "name",
       key: "name",
+      width: 300,
 
       render: (_text: string, record: LanguageMember) => record.language.name,
     },
@@ -37,11 +38,13 @@ const DetailForm: FC<DataProps> = ({ data }) => {
       title: t("DETAIL_EMPLOYEE.LEVEL"),
       dataIndex: "level",
       key: "level",
+      width: 100,
     },
     {
       title: t("DETAIL_EMPLOYEE.EXPERIENCE"),
       dataIndex: "experience",
       key: "experience",
+      width: 100,
     },
   ];
 
@@ -50,6 +53,7 @@ const DetailForm: FC<DataProps> = ({ data }) => {
       title: t("DETAIL_EMPLOYEE.TECHNICAL"),
       dataIndex: "name",
       key: "name",
+      width: 300,
 
       render: (_text: string, record: TechnicalMember) => record.technical.name,
     },
@@ -57,12 +61,13 @@ const DetailForm: FC<DataProps> = ({ data }) => {
       title: t("DETAIL_EMPLOYEE.LEVEL"),
       dataIndex: "level",
       key: "level",
+      width: 100,
     },
     {
       title: t("DETAIL_EMPLOYEE.EXPERIENCE"),
       dataIndex: "experience",
       key: "experience",
-      // Assuming the experience data is in record.experience
+      width: 100,
     },
   ];
 
