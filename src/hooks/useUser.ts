@@ -1,6 +1,12 @@
-import { deleteUser, getAllUserNoPagination, getUsers } from "@/apis/user.api";
+import { deleteUser, getAllUserNoPagination, getDetailEmoloyee, getUsers } from "@/apis/user.api";
 import { QUERY_KEY } from "@/constants/queryKey";
-import { DeleteUser, GetListUsers, IGetUsers, IUsers } from "@/interfaces/user/users.interface";
+import {
+  DeleteUser,
+  GetListUsers,
+  IGetUsers,
+  IUserDetail,
+  IUsers,
+} from "@/interfaces/user/users.interface";
 import { UseQueryResult, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { notification } from "antd";
 import { t } from "i18next";
@@ -17,7 +23,7 @@ export const useGetAccounts = (param: GetListUsers): UseQueryResult<IUsers, Erro
 
 export const useGetAllUserNoPagination = (): UseQueryResult<IGetUsers, Error> => {
   return useQuery<IGetUsers>({
-    queryKey: [QUERY_KEY.USERS],
+    queryKey: [QUERY_KEY.USERS_NO_PAGINATE],
     queryFn: async (): Promise<IGetUsers> => {
       const { data } = await getAllUserNoPagination();
       return data;
@@ -45,6 +51,16 @@ export const useDeleteUser = () => {
         message: t("DELETE_USER.FAILED") as string,
         description: t("DELETE_USER.FAILED_MESSAGE") as string,
       });
+    },
+  });
+};
+
+export const useGetDetailEmployee = (id: string): UseQueryResult<IUserDetail, Error> => {
+  return useQuery<IUserDetail>({
+    queryKey: [QUERY_KEY.USERS, id],
+    queryFn: async (): Promise<IUserDetail> => {
+      const { data } = await getDetailEmoloyee(id);
+      return data;
     },
   });
 };

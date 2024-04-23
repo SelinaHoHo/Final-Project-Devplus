@@ -82,9 +82,6 @@
     "SUBMIT": "Submit",
     "ADDRESS": "Address",
     "ADDRESS_REQUIRED": "Please enter address",
-    "STATUS": "Status",
-    "INVALID_STATUS": "Invalid status",
-    "STATUS_REQUIRED": "Please enter status",
     "DESCRIPTION": "Description",
     "NAME_REQUIRED": "Please enter name",
     "EMAIL_REQUIRED": "Please enter email",
@@ -92,8 +89,6 @@
     "DOB_REQUIRED": "Please select date of birth (at least 18 years old)",
     "ROLE_REQUIRED": "Please enter role",
     "PROFILE": "Profile",
-    "ACTIVE": "Active",
-    "DISABLE": "Disable",
     "MANAGER": "Manager",
     "YES": "Yes",
     "NO": "No",
@@ -188,5 +183,20 @@
   "LISTPROJECT": {
     "CREATE_BUTTON": "Create project",
     "PROJECT_NAME": "Enter project name"
+  },
+  "DETAIL_EMPLOYEE": {
+    "PROFILE": "Profile",
+    "ADDRESS": "Address",
+    "EMAIL": "Email",
+    "POSITION": "Position",
+    "LANGUAGE_FRAMEWORK": "Language/Framework",
+    "TECHNICAL": "Technical",
+    "TYPICAL_PROJECTS": "Typical Projects",
+    "PROJECT_NAME": "Project Name",
+    "ROLE": "Role",
+    "DESCRIPTION": "Description",
+    "NOW": "Now",
+    "LEVEL": "Level",
+    "EXPERIENCE": "Experience"
   }
 }

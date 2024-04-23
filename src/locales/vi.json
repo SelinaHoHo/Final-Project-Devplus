@@ -78,18 +78,13 @@
     "SUBMIT": "Gửi",
     "ADDRESS": "Địa chỉ",
     "ADDRESS_REQUIRED": "Vui lòng điền địa chỉ",
-    "STATUS": "Trạng thái",
     "DESCRIPTION": "Mô tả",
-    "INVALID_STATUS": "Sai trạng thái",
-    "STATUS_REQUIRED": "Vui long chọn trạng thái",
     "NAME_REQUIRED": "Vui lòng điền tên",
     "EMAIL_REQUIRED": "Vui lòng điền email",
     "INVALIDEMAIL_REQUIRED": "Sai địa chỉ email",
     "DOB_REQUIRED": "Vui lòng chọn ngày sinh (từ đủ 18 tuổi)",
     "POSITION_REQUIRED": "Vui lòng chọn vị trí",
     "PROFILE": "Thông tin cá nhân",
-    "ACTIVE": "Hoạt động",
-    "DISABLE": "Không hoạt động",
     "MANAGER": "Quản lí",
     "YES": "Có",
     "NO": "Không",
@@ -184,5 +179,18 @@
   "LISTPROJECT": {
     "CREATE_BUTTON": "Tạo dự án",
     "PROJECT_NAME": "Nhập tên dự án"
+  },
+  "DETAIL_EMPLOYEE": {
+    "PROFILE": "Thông tin cá nhân",
+    "ADDRESS": "Địa chỉ",
+    "EMAIL": "Email",
+    "POSITION": "Vị trí",
+    "LANGUAGE_FRAMEWORK": "Ngôn ngữ/FrameWork",
+    "TECHNICAL": "Công nghệ",
+    "ROLE": "Vai trò",
+    "DESCRIPTION": "Mô tả",
+    "NOW": "Hiện tại",
+    "LEVEL": "Trình độ",
+    "EXPERIENCE": "Kinh nghiệm"
   }
 }
