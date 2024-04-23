@@ -49,4 +49,16 @@ export const menuList: MenuList = [
     icon: "technical",
     path: "/technicals",
   },
+  {
+    code: "languages",
+    label: "Languages",
+    icon: "language",
+    path: "/languages",
+  },
+  {
+    code: "positions",
+    label: "Positions",
+    icon: "position",
+    path: "/positions",
+  },
 ];

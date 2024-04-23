@@ -2,14 +2,10 @@ import {
   createTechnical,
   deleteTechnical,
   getAllTechnical,
-  getTechnical,
   updateTechnical,
 } from "@/apis/technical.api";
 import { QUERY_KEY } from "@/constants/queryKey";
-import ITechnical, {
-  ITechnicalCreate,
-  ITechnicals,
-} from "@/interfaces/technical/technicals.interface";
+import ISkill, { ISkillCreate, ISkills } from "@/interfaces/skill/skills.interface";
 import { UseQueryResult, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { notification } from "antd";
 import { useTranslation } from "react-i18next";
@@ -18,7 +14,7 @@ export const useCreateTechnical = () => {
   const { t } = useTranslation();
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: async (req: ITechnicalCreate) => {
+    mutationFn: async (req: ISkillCreate) => {
       const { data } = await createTechnical(req);
       return data;
     },
@@ -41,21 +37,11 @@ export const useCreateTechnical = () => {
   });
 };
 
-export const useGetTechnical = (): UseQueryResult<ITechnicals, Error> => {
-  return useQuery<ITechnicals>({
+export const useGetTechnical = (): UseQueryResult<ISkills, Error> => {
+  return useQuery<ISkills>({
     queryKey: [QUERY_KEY.TECHNICALS],
-    queryFn: async (): Promise<ITechnicals> => {
+    queryFn: async (): Promise<ISkills> => {
       const { data } = await getAllTechnical();
-      return data;
-    },
-  });
-};
-
-export const useGetDetailTechnical = (id: string): UseQueryResult<ITechnical, Error> => {
-  return useQuery<ITechnical>({
-    queryKey: [QUERY_KEY.TECHNICAL, id],
-    queryFn: async (): Promise<ITechnical> => {
-      const { data } = await getTechnical(id);
       return data;
     },
   });
@@ -65,7 +51,7 @@ export const useUpdateTechnical = () => {
   const { t } = useTranslation();
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: async (req: ITechnical) => {
+    mutationFn: async (req: ISkill) => {
       const { data } = await updateTechnical(req);
       return data;
     },

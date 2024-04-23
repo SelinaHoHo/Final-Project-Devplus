@@ -10,6 +10,8 @@ import ListProject from "../pages/project/ListProject";
 
 const CreateProject = lazy(() => import("@/pages/project/CreateProject"));
 const TechnicalPage = lazy(() => import("@/pages/technical/TechnicalPage"));
+const LanguagePage = lazy(() => import("@/pages/language/LanguagePage"));
+const PositionPage = lazy(() => import("@/pages/position/PositionPage"));
 const PageNoFound = lazy(() => import("@/pages/PageNotFound"));
 const Dashboard = lazy(() => import("@/pages/Dashboard"));
 const Login = lazy(() => import("@/pages/login/Login"));
@@ -95,6 +97,14 @@ const Router = () => {
         {
           path: "technicals",
           element: <TechnicalPage />,
+        },
+        {
+          path: "languages",
+          element: <LanguagePage />,
+        },
+        {
+          path: "positions",
+          element: <PositionPage />,
         },
         {
           path: "*",
