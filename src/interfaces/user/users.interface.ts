@@ -3,7 +3,6 @@ export interface IUser {
   userName: string;
   fullName: string;
   email: string;
-  // userName: string;
   isManager: boolean;
   managerId: string | null;
   manager?: {
@@ -25,7 +24,6 @@ export interface IUser {
     description: string;
     positions: { id: string; name: string; description: string }[];
     technicalMember: { id: string }[];
-    // positions: Position[];
   };
 }
 export interface Position {
@@ -111,3 +109,54 @@ export type GetListUsers = {
 export interface DeleteUser {
   id: string;
 }
+
+export type IUserDetail = {
+  id: string;
+  email: string;
+  isManager: boolean;
+  positionMember: {
+    id: string;
+    postion: { id: string; name: string; description: string };
+  }[];
+  languageMember: {
+    id: string;
+    language: { id: string; name: string; description: string };
+  }[];
+  technicalMember: {
+    id: string;
+    technical: { id: string; name: string; description: string };
+  }[];
+  managerId: string | null;
+  manager?: {
+    userName: string;
+    profile: {
+      avatarUrl: string;
+      fullName: string;
+    };
+  };
+  projectHistory: { createDate: string }[];
+  profile: {
+    id: string;
+    fullName: string;
+    email: string;
+    address: string;
+    dayOfBirth: string;
+    avatarUrl: string;
+    status: string;
+    description: string;
+    positions: { id: string; name: string; description: string }[];
+    technicalMember: { id: string }[];
+  };
+  projectMembers: {
+    item: string;
+    project: {
+      name: string;
+      endDate: string;
+      startDate: string;
+      languageProject: { language: { name: string } }[];
+      technicalProject: { technical: { name: string } }[];
+      description: string;
+    };
+    roles: { length: string; role: string; position: { name: string } }[];
+  }[];
+};

@@ -1,0 +1,23 @@
+.page-detail-employee {
+  margin: 0 40px;
+  height: 100vh;
+}
+
+.form-create-light {
+  margin-top: 10px;
+  background-color: white;
+  padding: 20px 20px 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 8px 0 #16c2c20e, 0 4px 10px 0 #16c2c21f;
+}
+
+.form-create-dark {
+  margin-top: 10px;
+  background-color: #141414;
+  padding: 20px 20px 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 8px 0 #ffffff00, 0 4px 10px rgba(255, 255, 255, 0.26);
+}
+.ant-typography {
+  margin-top: 5px;
+}
