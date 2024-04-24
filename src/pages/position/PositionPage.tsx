@@ -15,7 +15,7 @@ import { Rule } from "antd/es/form";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
-import "../project/createProject.scss";
+import "../project/Create/createProject.scss";
 
 interface CreateFormProps {
   visible: boolean;

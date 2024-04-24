@@ -34,9 +34,9 @@
     "DESCRIPTION_REQUIRED": "Please input project description!",
     "DATE_REQUIRED": "Please chosse project date!",
     "SUCCESS": "Create Successful!",
-    "SUCCESS_MESSAGE": "You have successfully created a project!",
+    "SUCCESS_MESSAGE": "You have successfully created a project.",
     "FAILED": "Create Failed!",
-    "FAILED_MESSAGE": "Create project failed!",
+    "FAILED_MESSAGE": "Create project failed.",
     "TECHNICAL_REQUIRED": "Please chosse project technicals!",
     "MANAGER_REQUIRED": "Please chosse project manager!",
     "EMPLOYEE_ID_REQUIRED": "Please chosse project employee!",
@@ -169,7 +169,8 @@
     "MANAGER": "Manager",
     "EMPLOYEE": "Employee List",
     "TABLE_NAME": "Name",
-    "TABLE_ROLES": "Roles"
+    "TABLE_ROLES": "Roles",
+    "DETAIL": "Detail"
   },
   "DELETE_USER": {
     "TITLE_DELETE": "Delete: {{name}}",
@@ -251,5 +252,19 @@
     "CREATE_NEW_POSITION": "Create position",
     "REQUIRED": "Name can't be empty",
     "FAILED_CV": "Failed to upload CV. Please check again."
+  },
+  "UPDATE_PROJECT": {
+    "SUCCESS": "Successful!",
+    "SUCCESS_MESSAGE": "You have successfully updated project.",
+    "FAILED": "Failed!",
+    "FAILED_MESSAGE": "Update project failed.",
+    "ADDEMPLOYEE_SUCCESS_MESSAGE": "Successfully added user to the project.",
+    "ADDEMPLOYEE_FAILED_MESSAGE": "Failed to add user to the project.",
+    "UNASSIGNEMPLOYEE_SUCCESS_MESSAGE": "Successfully removed user from the project.",
+    "UNASSIGNEMPLOYEE_FAILED_MESSAGE": "Failed to remove user from the project.",
+    "SUBMIT": "Update",
+    "ADD_EMPLOYEE": "Assign",
+    "EMPLOYEE_REQUIRED": "Please select employee",
+    "ROLES_REQUIRED": "Please select roles"
   }
 }

@@ -1,162 +1,40 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useGetLanguage } from "@/hooks/useLanguage";
-import { useGetPosition } from "@/hooks/usePosition";
-import { useCreateProject } from "@/hooks/useProject";
+import { useUpdateProject } from "@/hooks/useProject";
 import { useGetTechnical } from "@/hooks/useTechnical";
 import { useGetAllUserNoPagination } from "@/hooks/useUser";
-import { DataType, ProjectType, SkillType, UserType } from "@/interfaces/user/users.interface";
-import {
-  Button,
-  Col,
-  DatePicker,
-  Form,
-  Input,
-  Row,
-  Select,
-  Typography,
-  message,
-  type FormProps,
-} from "antd";
+import { IProjectDetail } from "@/interfaces/project/projects.interface";
+import { ProjectType, SkillType, UserType } from "@/interfaces/user/users.interface";
+import { Button, Col, DatePicker, Form, Input, Row, Select, type FormProps } from "antd";
 import { Rule } from "antd/es/form";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
-import React, { useState } from "react";
+import timezone from "dayjs/plugin/timezone";
+import utc from "dayjs/plugin/utc";
+import { FC } from "react";
 import { useTranslation } from "react-i18next";
 import * as Yup from "yup";
-import { yupSync } from "../../../helpers/validation";
-import EmployeeFormTable from "./EmployeeFormTable";
-import "./createProjectForm.scss";
+import { yupSync } from "../../helpers/validation";
+import "./updateProject.scss";
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+type DataProps = {
+  data: IProjectDetail | undefined;
+};
 
 const { RangePicker } = DatePicker;
 const { TextArea } = Input;
 dayjs.extend(customParseFormat);
 
-const CreateProjectForm: React.FC = () => {
+const UpdateProjectForm: FC<DataProps> = ({ data }) => {
   const { data: user } = useGetAllUserNoPagination();
   const { data: technical } = useGetTechnical();
   const { data: language } = useGetLanguage();
-  const { data: position } = useGetPosition();
   const { t } = useTranslation();
   const [form] = Form.useForm();
-  const { mutate: createProject } = useCreateProject();
-  const [messageApi, contextHolder] = message.useMessage();
-
-  //table
-  const [dataSource, setDataSource] = useState<DataType[]>([]);
-  const [employeeData, setEmployeeData] = useState<DataType>({
-    key: "",
-    employeeId: "",
-    projectId: "",
-    roles: [],
-  });
-
-  const handleAddEmployee = (type: string, data: any) => {
-    switch (type) {
-      case "employeeId":
-        setEmployeeData({ ...employeeData, employeeId: data, key: data });
-        form.setFields([
-          {
-            name: "employeeId",
-            errors: [],
-          },
-        ]);
-        break;
-      case "roles":
-        setEmployeeData({ ...employeeData, roles: data });
-        form.setFields([
-          {
-            name: "roles",
-            errors: [],
-          },
-        ]);
-        break;
-      default:
-        break;
-    }
-  };
-
-  const handleAddRow = () => {
-    schema
-      .validate(employeeData, { abortEarly: false })
-      .then(() => {
-        if (dataSource.some((item) => item.employeeId === employeeData.employeeId)) {
-          throw new Yup.ValidationError(
-            t("CREATE_PROJECT.ALREADY_EXISTS"),
-            employeeData,
-            "employeeId",
-          );
-        }
-        setDataSource([...dataSource, employeeData]);
-      })
-      .catch((error) => {
-        if (
-          error instanceof Yup.ValidationError &&
-          dataSource.some((item) => item.employeeId === employeeData.employeeId)
-        ) {
-          messageApi.open({
-            type: "error",
-            content: t("CREATE_PROJECT.ALREADY_EXISTS"),
-          });
-        } else {
-          const errors = error.inner.map((e: { path: string; message: string }) => ({
-            name: e.path,
-            errors: [e.message],
-          }));
-          form.setFields(errors);
-        }
-      });
-  };
-
-  const handleDelete = (key: React.Key) => {
-    const newData = dataSource.filter((item) => item.key !== key);
-    setDataSource(newData);
-  };
-
-  const defaultColumns = [
-    {
-      title: t("CREATE_PROJECT.NAME"),
-      dataIndex: "employeeId",
-      width: "30%",
-      key: "employeeId",
-      render: (employeeId: string) => (
-        <Typography>
-          {user?.find((item: any) => item.id === employeeId)?.profile?.fullName}
-        </Typography>
-      ),
-    },
-    {
-      title: t("CREATE_PROJECT.ROLES"),
-      dataIndex: "roles",
-      width: "60%",
-      key: "roles",
-      render: (roles: string[]) => (
-        <Typography>
-          {roles
-            .map((role: string) => {
-              const po = position?.find((item: any) => item.id === role);
-              return po ? po.name : null;
-            })
-            .join(", ")}
-        </Typography>
-      ),
-    },
-    {
-      title: t("CREATE_PROJECT.ACTION"),
-      dataIndex: "operation",
-      render: (_: any, record: DataType) =>
-        dataSource.length >= 1 ? (
-          <a style={{ color: "#16c2c2" }} onClick={() => handleDelete(record.key)}>
-            {t("CREATE_PROJECT.DELETE")}
-          </a>
-        ) : null,
-    },
-  ];
-
-  // Validation
-  const schema = Yup.object().shape({
-    employeeId: Yup.string().required(t("CREATE_PROJECT.ERROR_NAME") as string),
-    roles: Yup.array().min(1, t("CREATE_PROJECT.ERROR_ROLES") as string),
-  });
+  const { mutate: updateProject } = useUpdateProject(data?.id as string);
 
   const validator = [
     yupSync(
@@ -176,16 +54,27 @@ const CreateProjectForm: React.FC = () => {
     ),
   ] as unknown as Rule[];
 
+  const initialValue = data
+    ? {
+        name: data?.name,
+        description: data?.description,
+        date: [
+          dayjs(data?.startDate).tz("Asia/Ho_Chi_Minh"),
+          dayjs(data?.endDate).tz("Asia/Ho_Chi_Minh"),
+        ],
+        technical: data?.technicalProject?.map((item: any) => item?.technical?.id),
+        language: data?.languageProject?.map((item: any) => item?.language?.id),
+        managerId: data?.user?.id,
+      }
+    : {};
+
   const onFinish: FormProps<ProjectType>["onFinish"] = (values) => {
-    createProject({
+    updateProject({
+      id: data?.id as string,
       ...values,
       startDate: JSON.parse(JSON.stringify(values.date[0])),
       endDate: JSON.parse(JSON.stringify(values.date[1])),
-      employeeId: JSON.parse(
-        JSON.stringify(dataSource.map((item) => ({ id: item.employeeId, role: item.roles }))),
-      ),
     });
-    setDataSource([]);
     setTimeout(() => {
       form.resetFields();
     }, 1000);
@@ -193,8 +82,7 @@ const CreateProjectForm: React.FC = () => {
 
   return (
     <>
-      {contextHolder}
-      <Form onFinish={onFinish} form={form} initialValues={{ items: [{}] }} id='prj'>
+      <Form onFinish={onFinish} form={form} initialValues={initialValue} id='updateProject'>
         <Row gutter={[8, 4]}>
           <Col xs={24} sm={24} md={24} lg={24}>
             <Form.Item<ProjectType>
@@ -207,7 +95,6 @@ const CreateProjectForm: React.FC = () => {
               <Input placeholder={t("CREATE_PROJECT.NAMEDES")} />
             </Form.Item>
           </Col>
-
           <Col xs={24} sm={24} md={24} lg={12}>
             <Form.Item<ProjectType>
               name='date'
@@ -218,7 +105,7 @@ const CreateProjectForm: React.FC = () => {
             >
               <RangePicker
                 style={{ width: "100%" }}
-                format='YYYY-MM-DD'
+                format='DD/MM/YYYY'
                 placeholder={[
                   t("CREATE_PROJECT.STARTDATE") as string,
                   t("CREATE_PROJECT.ENDDATE") as string,
@@ -226,7 +113,6 @@ const CreateProjectForm: React.FC = () => {
               />
             </Form.Item>
           </Col>
-
           <Col xs={24} sm={24} md={24} lg={12}>
             <Form.Item<ProjectType>
               name='technical'
@@ -239,15 +125,14 @@ const CreateProjectForm: React.FC = () => {
                 mode='multiple'
                 style={{ width: "100%" }}
                 placeholder={t("CREATE_PROJECT.TECHNICAL_PLACEHOLDER") as string}
-                notFoundContent={null}
                 options={technical?.map((item: SkillType) => ({
+                  key: item.id,
                   value: item.id,
                   label: item.name,
                 }))}
               />
             </Form.Item>
           </Col>
-
           <Col xs={24} sm={24} md={24} lg={12}>
             <Form.Item<ProjectType>
               name='language'
@@ -262,13 +147,13 @@ const CreateProjectForm: React.FC = () => {
                 placeholder={t("CREATE_PROJECT.LANGUAGE_PLACEHOLDER") as string}
                 notFoundContent={null}
                 options={language?.map((item: SkillType) => ({
+                  key: item.id,
                   value: item.id,
                   label: item.name,
                 }))}
               />
             </Form.Item>
           </Col>
-
           <Col xs={24} sm={24} md={24} lg={12}>
             <Form.Item<ProjectType>
               name='managerId'
@@ -294,19 +179,6 @@ const CreateProjectForm: React.FC = () => {
               </Select>
             </Form.Item>
           </Col>
-          <Col xs={24} sm={24} md={24} lg={24}>
-            <EmployeeFormTable
-              data={{
-                user,
-                position,
-                employeeData,
-                dataSource,
-                defaultColumns,
-                handleAddEmployee,
-                handleAddRow,
-              }}
-            />
-          </Col>
 
           <Col xs={24} sm={24} md={24} lg={24}>
             <Form.Item<ProjectType>
@@ -320,8 +192,8 @@ const CreateProjectForm: React.FC = () => {
           </Col>
         </Row>
         <Form.Item style={{ textAlign: "right" }}>
-          <Button type='primary' size='large' htmlType='submit' form='prj'>
-            {t("CREATE_PROJECT.SUBMIT")}
+          <Button type='primary' size='large' htmlType='submit' form='updateProject'>
+            {t("UPDATE_PROJECT.SUBMIT")}
           </Button>
         </Form.Item>
       </Form>
@@ -329,4 +201,4 @@ const CreateProjectForm: React.FC = () => {
   );
 };
 
-export default CreateProjectForm;
+export default UpdateProjectForm;

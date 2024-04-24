@@ -1,14 +1,17 @@
 import {
+  addEmployeeToProject,
   deleteUser,
   exportCv,
   getAllUserNoPagination,
   getDetailEmoloyee,
   getUsers,
+  unassignEmployeeToProject,
 } from "@/apis/user.api";
 import { QUERY_KEY } from "@/constants/queryKey";
 import {
   DeleteUser,
   GetListUsers,
+  IAssignEmployee,
   IGetUsers,
   IUserDetail,
   IUsers,
@@ -79,6 +82,47 @@ export const useGetCv = () => {
       notification.error({
         message: t("SKILL.FAILED") as string,
         description: t("SKILL.FAILED_CV") as string,
+      });
+    },
+  });
+};
+export const useAddEmployeeToProject = () => {
+  return useMutation({
+    mutationFn: async (req: IAssignEmployee) => {
+      const { data } = await addEmployeeToProject(req);
+      return data;
+    },
+    onSuccess: () => {
+      notification.success({
+        message: t("UPDATE_PROJECT.SUCCESS") as string,
+        description: t("UPDATE_PROJECT.ADDEMPLOYEE_SUCCESS_MESSAGE") as string,
+      });
+    },
+    onError: () => {
+      notification.error({
+        message: t("UPDATE_PROJECT.FAILED") as string,
+        description: t("UPDATE_PROJECT.ADDEMPLOYEE_FAILED_MESSAGE") as string,
+      });
+    },
+  });
+};
+
+export const useUnAssignEmployee = (id: string) => {
+  return useMutation({
+    mutationFn: async () => {
+      const { data } = await unassignEmployeeToProject(id);
+      return data;
+    },
+    onSuccess: () => {
+      notification.success({
+        message: t("UPDATE_PROJECT.SUCCESS") as string,
+        description: t("UPDATE_PROJECT.UNASSIGNEMPLOYEE_SUCCESS_MESSAGE") as string,
+      });
+    },
+    onError: () => {
+      notification.error({
+        message: t("UPDATE_PROJECT.FAILED") as string,
+        description: t("UPDATE_PROJECT.UNASSIGNEMPLOYEE_FAILED_MESSAGE") as string,
       });
     },
   });

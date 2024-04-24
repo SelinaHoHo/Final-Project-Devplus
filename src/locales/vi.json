@@ -34,7 +34,7 @@
     "SUCCESS": "Tạo thành công!",
     "SUCCESS_MESSAGE": "Bạn đã tạo dự án thành công!",
     "FAILED": "Tạo thất bại!",
-    "FAILED_MESSAGE": "Tạo dự án thất bại!",
+    "FAILED_MESSAGE": "Tạo dự án thất bại.",
     "TECHNICAL_REQUIRED": "Vui lòng chọn kỹ thuật của dự án!",
     "MANAGER_REQUIRED": "Vui lòng chọn quản lý dự án!",
     "EMPLOYEE_ID_REQUIRED": "Vui lòng chọn nhân viên dự án!",
@@ -165,7 +165,8 @@
     "MANAGER": "Quản lý",
     "EMPLOYEE": "Danh sách nhân viên",
     "TABLE_NAME": "Tên",
-    "TABLE_ROLES": "Vai trò"
+    "TABLE_ROLES": "Vai trò",
+    "DETAIL": "Chi tiết"
   },
   "DELETE_USER": {
     "TITLE_DELETE": "Xóa: {{name}}",
@@ -245,5 +246,19 @@
     "CREATE_NEW_POSITION": "Tạo vị trí mới",
     "REQUIRED": "Tên không được rỗng",
     "FAILED_CV": "Tải CV thất bại. Vui lòng kiểm tra lại."
+  },
+  "UPDATE_PROJECT": {
+    "SUCCESS": "Thành công!",
+    "SUCCESS_MESSAGE": "Bạn đã cập nhật dự án thành công.",
+    "FAILED": "Thất bại!",
+    "FAILED_MESSAGE": "Bạn đã cập nhật dự án thất bại.",
+    "ADDEMPLOYEE_SUCCESS_MESSAGE": "Thêm người dùng vào dự án thành công.",
+    "ADDEMPLOYEE_FAILED_MESSAGE": "Thêm người dùng vào dự án thất bại.",
+    "UNASSIGNEMPLOYEE_SUCCESS_MESSAGE": "Xóa người dùng ra khỏi dự án thành công.",
+    "UNASSIGNEMPLOYEE_FAILED_MESSAGE": "Xóa người dùng ra khỏi dự án thất bại.",
+    "SUBMIT": "Cập nhật",
+    "ADD_EMPLOYEE": "Phân công",
+    "EMPLOYEE_REQUIRED": "Vui lòng chọn nhân viên dự án",
+    "ROLES_REQUIRED": "Vui lòng chọn vị trí"
   }
 }

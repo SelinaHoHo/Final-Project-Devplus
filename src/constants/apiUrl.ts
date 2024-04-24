@@ -10,4 +10,8 @@ export const API_URL = {
   POSITION: "/position",
   PROJECTS: "/project",
   EXPORTCV: "/file/generate-cv",
+  GETDETAILPROJECT: "/project/${id}",
+  CREATE_PROJECT: "/project",
+  ADD_EMPLOYEE: "/project/add-employee",
+  UNASSIGN_EMPLOYEE: "/project/unassign-employee",
 };

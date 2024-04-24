@@ -1,16 +1,21 @@
 import {
+  addEmployeeToProject,
   createProject,
   deleteProject,
   getDetailProject,
   getProjects,
+  patchUpdateProject,
   patchUpdateStatus,
+  unassignEmployeeToProject,
 } from "@/apis/project.api";
 import { QUERY_KEY } from "@/constants/queryKey";
 import {
   GetListProject,
+  IAssignEmployee,
   ICreateProjectReq,
   IProject,
   IProjectDetail,
+  IUpdateProject,
   UpdateStatus,
 } from "@/interfaces/project/projects.interface";
 import { UseQueryResult, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -29,14 +34,14 @@ export const useCreateProject = () => {
     },
     onSuccess: () => {
       notification.success({
-        message: t("CREATE_PROJECT.SUCCESS") as string,
+        message: t("UPDATE_PROJECT.SUCCESS") as string,
         description: t("CREATE_PROJECT.SUCCESS_MESSAGE") as string,
       });
       navigate("/projects");
     },
     onError: (res) => {
       notification.error({
-        message: t("CREATE_PROJECT.FAILED") as string,
+        message: t("UPDATE_PROJECT.FAILED") as string,
         description: t(`CREATE_PROJECT.${res.message}`) as string,
       });
     },
@@ -55,7 +60,7 @@ export const useGetProjects = (param: GetListProject): UseQueryResult<IProject, 
 
 export const useGetDetailProject = (id: string): UseQueryResult<IProjectDetail, Error> => {
   return useQuery<IProjectDetail>({
-    queryKey: [QUERY_KEY.PROJECT],
+    queryKey: [QUERY_KEY.PROJECT, id],
     queryFn: async (): Promise<IProjectDetail> => {
       const { data } = await getDetailProject(id);
       return data;
@@ -100,6 +105,79 @@ export const useDeleteProject = () => {
       notification.error({
         message: t("PROJECT.FAILED") as string,
         description: t("PROJECT.FAILED_DELETE") as string,
+      });
+    },
+  });
+};
+
+export const useUpdateProject = (id: string) => {
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (req: IUpdateProject) => {
+      const { data } = await patchUpdateProject(id, req);
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEY.UPDATEPROJECT],
+      });
+      notification.success({
+        message: t("UPDATE_PROJECT.SUCCESS") as string,
+        description: t("UPDATE_PROJECT.SUCCESS_MESSAGE") as string,
+      });
+      navigate("/projects");
+    },
+    onError: () => {
+      notification.error({
+        message: t("UPDATE_PROJECT.FAILED") as string,
+        description: t("UPDATE_PROJECT.FAILED_MESSAGE") as string,
+      });
+    },
+  });
+};
+
+export const useAddEmployeeToProject = () => {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (req: IAssignEmployee) => {
+      const { data } = await addEmployeeToProject(req);
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.refetchQueries({
+        queryKey: [QUERY_KEY.PROJECT],
+      });
+      notification.success({
+        message: t("UPDATE_PROJECT.SUCCESS") as string,
+        description: t("UPDATE_PROJECT.ADDEMPLOYEE_SUCCESS_MESSAGE") as string,
+      });
+    },
+    onError: () => {
+      notification.error({
+        message: t("UPDATE_PROJECT.FAILED") as string,
+        description: t("UPDATE_PROJECT.ADDEMPLOYEE_FAILED_MESSAGE") as string,
+      });
+    },
+  });
+};
+
+export const useUnAssignEmployee = () => {
+  return useMutation({
+    mutationFn: async (id: string) => {
+      const { data } = await unassignEmployeeToProject(id);
+      return data;
+    },
+    onSuccess: () => {
+      notification.success({
+        message: t("UPDATE_PROJECT.SUCCESS") as string,
+        description: t("UPDATE_PROJECT.UNASSIGNEMPLOYEE_SUCCESS_MESSAGE") as string,
+      });
+    },
+    onError: () => {
+      notification.error({
+        message: t("UPDATE_PROJECT.FAILED") as string,
+        description: t("UPDATE_PROJECT.UNASSIGNEMPLOYEE_FAILED_MESSAGE") as string,
       });
     },
   });
