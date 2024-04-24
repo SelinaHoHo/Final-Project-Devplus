@@ -165,7 +165,8 @@
     "MANAGER": "Quản lý",
     "EMPLOYEE": "Danh sách nhân viên",
     "TABLE_NAME": "Tên",
-    "TABLE_ROLES": "Vai trò"
+    "TABLE_ROLES": "Vai trò",
+    "DETAIL": "Chi tiết"
   },
   "DELETE_USER": {
     "TITLE_DELETE": "Xóa: {{name}}",

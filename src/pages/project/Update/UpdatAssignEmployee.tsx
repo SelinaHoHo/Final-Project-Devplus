@@ -26,12 +26,9 @@ export const UpdateAssignEmployee = (
     width: "60%",
     render: (record) => {
       if (record?.user?.isManager === false) {
-        return (
-          <p>
-            {record?.user?.isManager === false &&
-              record?.roles?.map((role: any) => role?.position?.name).join(", ")}
-          </p>
-        );
+        return <p>{record?.roles?.map((role: any) => role?.position?.name).join(", ")}</p>;
+      } else {
+        return <p style={{ display: "none" }}></p>;
       }
     },
   },
@@ -46,7 +43,7 @@ export const UpdateAssignEmployee = (
             style={{ color: "#16c2c2", fontSize: "20px" }}
           />
         );
-      }
+      } else return <p style={{ display: "none" }}></p>;
     },
   },
 ];

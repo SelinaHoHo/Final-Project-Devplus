@@ -44,7 +44,6 @@ const UpdateEmployeeProject: FC<DataProps> = ({ data }) => {
     unassignEmployee(id);
   };
   const onFinish = (values: IAssignEmployee) => {
-    // console.log(values);
     const exist = data?.projectMembers?.some((item: ProjectMembers) => {
       if (item?.user?.id === values.employeeId) {
         return true;
