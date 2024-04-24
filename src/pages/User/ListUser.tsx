@@ -1,6 +1,6 @@
 import { Table } from "@/components/core/Table/Table";
 import i18n from "@/config/i18n";
-import { useDeleteUser, useGetAccounts } from "@/hooks/useUser";
+import { useDeleteUser, useGetAccounts, useGetCv } from "@/hooks/useUser";
 import { IUser } from "@/interfaces/user/users.interface";
 import { Button, Col, Input, Modal, Row } from "antd";
 import { t } from "i18next";
@@ -22,6 +22,7 @@ const ListUser = () => {
   };
   const { data, isLoading, refetch } = useGetAccounts(paginatorSearch);
 
+  const { mutate: exportCv } = useGetCv();
   useEffect(() => {
     if (filterName === "") {
       setFilterName("");
@@ -40,8 +41,12 @@ const ListUser = () => {
 
   const navigate = useNavigate();
   const { mutate: onDeleteUser } = useDeleteUser();
+
   const handleAction = (key: string, item: IUser) => {
     switch (key) {
+      case "down":
+        exportCv(item.id);
+        break;
       case "detail":
         navigate(`/employees/detail/${item.id}`);
         break;

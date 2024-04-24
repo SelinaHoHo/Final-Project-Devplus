@@ -12,6 +12,7 @@ import {
   IUsers,
 } from "@/interfaces/user/users.interface";
 import { AxiosResponse } from "axios";
+import { Buffer } from "buffer";
 
 export const getAllUserNoPagination = (): Promise<AxiosResponse<IGetUsers>> =>
   instance.get(API_URL.GETALLUSER);
@@ -43,3 +44,24 @@ export const deleteUser = (param: DeleteUser): Promise<AxiosResponse<IUsers>> =>
 
 export const getDetailEmoloyee = (id: string): Promise<AxiosResponse<IUserDetail>> =>
   instance.get(`${API_URL.USERS}/${id}`);
+
+export const exportCv = async (id: string) =>
+  await instance
+    .get(API_URL.EXPORTCV, {
+      params: {
+        id,
+      },
+      responseType: "arraybuffer",
+    })
+    .then((response) => {
+      const blob = new Blob([Buffer.from(response.data, "hex")], {
+        type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "cv.docx";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });

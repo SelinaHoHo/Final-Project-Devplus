@@ -9,4 +9,5 @@ export const API_URL = {
   TECHNOLOGY: "/technical",
   POSITION: "/position",
   PROJECTS: "/project",
+  EXPORTCV: "/file/generate-cv",
 };
