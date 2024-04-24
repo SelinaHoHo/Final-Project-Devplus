@@ -1,14 +1,100 @@
-import { getAllPosition } from "@/apis/position.api";
+import {
+  createPosition,
+  deletePosition,
+  getAllPosition,
+  updatePosition,
+} from "@/apis/position.api";
 import { QUERY_KEY } from "@/constants/queryKey";
-import { IPositions } from "@/interfaces/position/positions.interface";
-import { UseQueryResult, useQuery } from "@tanstack/react-query";
+import ISkill, { ISkillCreate, ISkills } from "@/interfaces/skill/skills.interface";
+import { UseQueryResult, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { notification } from "antd";
+import { useTranslation } from "react-i18next";
 
-export const useGetPosition = (): UseQueryResult<IPositions, Error> => {
-  return useQuery<IPositions>({
-    queryKey: [QUERY_KEY.POSITION],
-    queryFn: async (): Promise<IPositions> => {
+export const useCreatePosition = () => {
+  const { t } = useTranslation();
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (req: ISkillCreate) => {
+      const { data } = await createPosition(req);
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEY.POSITIONS],
+      });
+      notification.success({
+        message: t("SKILL.SUCCESS") as string,
+        description: t("SKILL.CREATE_SUCCESS_POSITION") as string,
+      });
+    },
+    onError: (res) => {
+      notification.error({
+        message: t("SKILL.FAILED") as string,
+        description:
+          (t("SKILL.CREATE_FAILED_POSITION") as string) || (t(`SKILL.${res.message}`) as string),
+      });
+    },
+  });
+};
+
+export const useGetPosition = (): UseQueryResult<ISkills, Error> => {
+  return useQuery<ISkills>({
+    queryKey: [QUERY_KEY.POSITIONS],
+    queryFn: async (): Promise<ISkills> => {
       const { data } = await getAllPosition();
       return data;
+    },
+  });
+};
+
+export const useUpdatePosition = () => {
+  const { t } = useTranslation();
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (req: ISkill) => {
+      const { data } = await updatePosition(req);
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEY.POSITIONS],
+      });
+      notification.success({
+        message: t("SKILL.SUCCESS") as string,
+        description: t("SKILL.UPDATE_SUCCESS_POSITION") as string,
+      });
+    },
+    onError: () => {
+      notification.error({
+        message: t("SKILL.FAILED") as string,
+        description: t("SKILL.UPDATE_FAILED_POSITION") as string,
+      });
+    },
+  });
+};
+
+export const useDeletePosition = () => {
+  const { t } = useTranslation();
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async (id: string) => {
+      const data = await deletePosition(id);
+      return data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEY.POSITIONS],
+      });
+      notification.success({
+        message: t("SKILL.SUCCESS") as string,
+        description: t("SKILL.DELETE_SUCCESS_POSITION") as string,
+      });
+    },
+    onError: () => {
+      notification.error({
+        message: t("SKILL.FAILED") as string,
+        description: t("SKILL.DELETE_FAILED_POSITION") as string,
+      });
     },
   });
 };
