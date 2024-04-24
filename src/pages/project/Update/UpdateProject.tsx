@@ -26,7 +26,6 @@ const UpdateProject = () => {
           },
         ]}
       />
-      {/* <LeftSquareOutlined style={{ fontSize: 25 }} onClick={() => navigate("/projects/list")} /> */}
       {theme === "dark" ? (
         <div className='form-update-dark'>
           {isLoading ? (
