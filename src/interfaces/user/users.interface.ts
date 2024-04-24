@@ -160,3 +160,7 @@ export type IUserDetail = {
     roles: { length: string; role: string; position: { name: string } }[];
   }[];
 };
+
+export interface IGetCV {
+  id: string;
+}

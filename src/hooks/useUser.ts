@@ -1,4 +1,10 @@
-import { deleteUser, getAllUserNoPagination, getDetailEmoloyee, getUsers } from "@/apis/user.api";
+import {
+  deleteUser,
+  exportCv,
+  getAllUserNoPagination,
+  getDetailEmoloyee,
+  getUsers,
+} from "@/apis/user.api";
 import { QUERY_KEY } from "@/constants/queryKey";
 import {
   DeleteUser,
@@ -61,6 +67,19 @@ export const useGetDetailEmployee = (id: string): UseQueryResult<IUserDetail, Er
     queryFn: async (): Promise<IUserDetail> => {
       const { data } = await getDetailEmoloyee(id);
       return data;
+    },
+  });
+};
+
+export const useGetCv = () => {
+  return useMutation({
+    mutationFn: async (id: string) => await exportCv(id),
+
+    onError: () => {
+      notification.error({
+        message: t("SKILL.FAILED") as string,
+        description: t("SKILL.FAILED_CV") as string,
+      });
     },
   });
 };

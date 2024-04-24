@@ -243,6 +243,7 @@
     "CREATE_NEW_LANG": "Tạo ngôn ngữ/Framework mới",
     "CREATE_NEW_TECH": "Tạo kỹ thuật mới",
     "CREATE_NEW_POSITION": "Tạo vị trí mới",
-    "REQUIRED": "Tên không được rỗng"
+    "REQUIRED": "Tên không được rỗng",
+    "FAILED_CV": "Tải CV thất bại. Vui lòng kiểm tra lại."
   }
 }
