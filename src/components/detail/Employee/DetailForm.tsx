@@ -32,7 +32,7 @@ const DetailForm: FC<DataProps> = ({ data }) => {
       key: "name",
       width: 300,
 
-      render: (_text: string, record: LanguageMember) => record.language.name,
+      render: (_text: string, record: LanguageMember) => record?.language?.name,
     },
     {
       title: t("DETAIL_EMPLOYEE.LEVEL"),
