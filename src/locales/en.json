@@ -249,6 +249,7 @@
     "CREATE_NEW_LANG": "Create language/framework",
     "CREATE_NEW_TECH": "Create technical",
     "CREATE_NEW_POSITION": "Create position",
-    "REQUIRED": "Name can't be empty"
+    "REQUIRED": "Name can't be empty",
+    "FAILED_CV": "Failed to upload CV. Please check again."
   }
 }

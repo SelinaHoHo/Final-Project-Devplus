@@ -77,8 +77,8 @@ export const useGetCv = () => {
 
     onError: () => {
       notification.error({
-        message: "Failed",
-        description: "Failed get CV",
+        message: t("SKILL.FAILED") as string,
+        description: t("SKILL.FAILED_CV") as string,
       });
     },
   });
