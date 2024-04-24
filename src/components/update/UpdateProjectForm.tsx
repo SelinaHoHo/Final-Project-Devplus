@@ -64,7 +64,7 @@ const UpdateProjectForm: FC<DataProps> = ({ data }) => {
         ],
         technical: data?.technicalProject?.map((item: any) => item?.technical?.id),
         language: data?.languageProject?.map((item: any) => item?.language?.id),
-        managerId: data?.user?.profile?.fullName,
+        managerId: data?.user?.id,
       }
     : {};
 
@@ -126,6 +126,7 @@ const UpdateProjectForm: FC<DataProps> = ({ data }) => {
                 style={{ width: "100%" }}
                 placeholder={t("CREATE_PROJECT.TECHNICAL_PLACEHOLDER") as string}
                 options={technical?.map((item: SkillType) => ({
+                  key: item.id,
                   value: item.id,
                   label: item.name,
                 }))}
@@ -145,7 +146,6 @@ const UpdateProjectForm: FC<DataProps> = ({ data }) => {
                 style={{ width: "100%" }}
                 placeholder={t("CREATE_PROJECT.LANGUAGE_PLACEHOLDER") as string}
                 notFoundContent={null}
-                // defaultValue={data?.languageProject?.map((item: any) => item?.id)}
                 options={language?.map((item: SkillType) => ({
                   key: item.id,
                   value: item.id,

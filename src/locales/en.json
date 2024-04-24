@@ -169,7 +169,8 @@
     "MANAGER": "Manager",
     "EMPLOYEE": "Employee List",
     "TABLE_NAME": "Name",
-    "TABLE_ROLES": "Roles"
+    "TABLE_ROLES": "Roles",
+    "DETAIL": "Detail"
   },
   "DELETE_USER": {
     "TITLE_DELETE": "Delete: {{name}}",
