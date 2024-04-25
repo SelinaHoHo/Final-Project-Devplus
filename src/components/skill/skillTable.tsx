@@ -14,6 +14,7 @@ export const skillTable = (
   {
     title: <Translation>{(t) => t("SKILL.NAME")}</Translation>,
     dataIndex: "name",
+    width: "70%",
   },
   {
     title: <Translation>{(t) => t("SKILL.ACTIONS")}</Translation>,

@@ -218,6 +218,9 @@
   },
   "SKILL": {
     "NAME": "Name",
+    "SEARCH_POSITION": "Enter position name",
+    "SEARCH_LANG": "Enter language/framework name",
+    "SEARCH_TECH": "Enter technical name",
     "POSITION_NAME": "Position name",
     "LANG_NAME": "Language/framework name",
     "TECH_NAME": "Technical name",

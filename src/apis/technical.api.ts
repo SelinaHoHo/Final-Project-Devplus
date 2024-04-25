@@ -1,7 +1,15 @@
 import instance from "@/config/axios";
 import { API_URL } from "@/constants/apiUrl";
-import ISkill, { ISkillCreate, ISkills } from "@/interfaces/skill/skills.interface";
+import ISkill, {
+  GetListSkills,
+  ISkillCreate,
+  ISkillPagination,
+  ISkills,
+} from "@/interfaces/skill/skills.interface";
 import { AxiosResponse } from "axios";
+
+export const getTechnicalsPagi = (param: GetListSkills): Promise<AxiosResponse<ISkillPagination>> =>
+  instance.get(API_URL.TECHNICALPAGI, { params: param });
 
 export const createTechnical = (data: ISkillCreate) => instance.post(API_URL.TECHNICAL, data);
 

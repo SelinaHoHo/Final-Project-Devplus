@@ -1,8 +1,15 @@
 import instance from "@/config/axios";
 import { API_URL } from "@/constants/apiUrl";
-import ISkill, { ISkillCreate, ISkills } from "@/interfaces/skill/skills.interface";
-
+import ISkill, {
+  GetListSkills,
+  ISkillCreate,
+  ISkillPagination,
+  ISkills,
+} from "@/interfaces/skill/skills.interface";
 import { AxiosResponse } from "axios";
+
+export const getPositionsPagi = (param: GetListSkills): Promise<AxiosResponse<ISkillPagination>> =>
+  instance.get(API_URL.POSITIONPAGI, { params: param });
 
 export const createPosition = (data: ISkillCreate) => instance.post(API_URL.POSITION, data);
 

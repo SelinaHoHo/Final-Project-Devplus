@@ -113,13 +113,6 @@ body[theme-mode="dark"] {
   margin-bottom: 0;
 }
 
-.ant-layout-content.layout-page-content {
-  max-height: 100vh;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  margin-bottom: 10px;
-}
-
 .layout-page-content > :nth-child(2) {
   // height: 10%;
   overflow: unset;

@@ -2,14 +2,18 @@ import { Table } from "@/components/core/Table/Table";
 import i18n from "@/config/i18n";
 import { useDeleteUser, useGetAccounts, useGetCv } from "@/hooks/useUser";
 import { IUser } from "@/interfaces/user/users.interface";
+import { RootState } from "@/redux/store";
 import { Button, Col, Input, Modal, Row } from "antd";
 import { t } from "i18next";
 import { useEffect, useState } from "react";
 import { Translation } from "react-i18next";
+import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import "./ListUser.scss";
 import { UsersColumnsTable } from "./UserListColumn";
 
 const ListUser = () => {
+  const { theme } = useSelector((state: RootState) => state.global);
   const [table, setTable] = useState({
     page: 1,
     take: 10,
@@ -32,8 +36,7 @@ const ListUser = () => {
 
   const handleChangeSearch = (value: string) => {
     if (value === "") {
-      setFilterName("");
-      refetch();
+      Promise.all([setFilterName(""), refetch()]);
     } else {
       setFilterName(value);
     }
@@ -73,44 +76,93 @@ const ListUser = () => {
   };
 
   return (
-    <>
-      <Row gutter={5}>
-        <Col span={6}>
-          <Input
-            placeholder={i18n.t("TABLE.SEARCH_NAME")}
-            size='middle'
-            value={filterName}
-            allowClear
-            onChange={(value) => handleChangeSearch(value.target.value)}
-          ></Input>
-        </Col>
-        <Col span={6}>
-          <Button type='primary' onClick={handleSearch} size='middle'>
-            <Translation>{(t) => t("TABLE.SEARCH")}</Translation>
-          </Button>
-        </Col>
-        <Col span={12} style={{ textAlign: "end" }}>
-          <Button type='primary' size='middle'>
-            <Link to='../createEmployee'>{t("LISTUSER.CREATE_BUTTON")}</Link>
-          </Button>
-        </Col>
-      </Row>
-      <Row>
-        <Col span={24}>
-          <Table<IUser>
-            paginate={{
-              table,
-              setTable,
-              total: data?.meta.itemCount || 1,
-              pageCount: data?.meta.pageCount || 10,
-            }}
-            columns={UsersColumnsTable(handleAction)}
-            loading={isLoading}
-            dataSource={data?.data}
-          />
-        </Col>
-      </Row>
-    </>
+    <div className='page-list-project'>
+      {theme === "dark" ? (
+        <div className='form-create-dark'>
+          <Row
+            gutter={[8, 4]}
+            style={{ paddingLeft: "10px", paddingRight: "10px", marginBottom: "10px" }}
+          >
+            <Col span={6}>
+              <Input
+                placeholder={i18n.t("TABLE.SEARCH_NAME")}
+                size='middle'
+                value={filterName}
+                allowClear
+                onChange={(value) => handleChangeSearch(value.target.value)}
+              ></Input>
+            </Col>
+            <Col span={6}>
+              <Button type='primary' onClick={handleSearch} size='middle'>
+                <Translation>{(t) => t("TABLE.SEARCH")}</Translation>
+              </Button>
+            </Col>
+            <Col span={12} style={{ textAlign: "end" }}>
+              <Button type='primary' size='middle'>
+                <Link to='../createEmployee'>{t("LISTUSER.CREATE_BUTTON")}</Link>
+              </Button>
+            </Col>
+          </Row>
+          <Row>
+            <Col span={24}>
+              <Table<IUser>
+                paginate={{
+                  table,
+                  setTable,
+                  total: data?.meta.itemCount || 1,
+                  pageCount: data?.meta.pageCount || 10,
+                }}
+                columns={UsersColumnsTable(handleAction)}
+                loading={isLoading}
+                dataSource={data?.data}
+              />
+            </Col>
+          </Row>
+        </div>
+      ) : (
+        <div className='form-create-light'>
+          <Row
+            gutter={[8, 4]}
+            style={{ paddingLeft: "10px", paddingRight: "10px", marginBottom: "10px" }}
+          >
+            <Col span={6}>
+              <Input
+                placeholder={i18n.t("TABLE.SEARCH_NAME")}
+                size='middle'
+                value={filterName}
+                allowClear
+                onChange={(value) => handleChangeSearch(value.target.value)}
+              ></Input>
+            </Col>
+            <Col span={6}>
+              <Button type='primary' onClick={handleSearch} size='middle'>
+                <Translation>{(t) => t("TABLE.SEARCH")}</Translation>
+              </Button>
+            </Col>
+            <Col span={12} style={{ textAlign: "end" }}>
+              <Button type='primary' size='middle'>
+                <Link to='../createEmployee'>{t("LISTUSER.CREATE_BUTTON")}</Link>
+              </Button>
+            </Col>
+          </Row>
+          <Row>
+            <Col span={24}>
+              <Table<IUser>
+                paginate={{
+                  table,
+                  setTable,
+                  total: data?.meta.itemCount || 1,
+                  pageCount: data?.meta.pageCount || 10,
+                }}
+                columns={UsersColumnsTable(handleAction)}
+                loading={isLoading}
+                dataSource={data?.data}
+              />
+            </Col>
+          </Row>
+        </div>
+      )}
+    </div>
   );
 };
 export default ListUser;
