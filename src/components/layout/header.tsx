@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { ReactComponent as MoonSvg } from "../../assets/header/ic_moon.svg";
 import { ReactComponent as SunSvg } from "../../assets/header/ic_sun.svg";
 import { ReactComponent as LanguageSvg } from "../../assets/header/language.svg";
+import LogoutSvg from "../../assets/menu/logout-svgrepo-com.svg";
 import i18n from "../../config/i18n";
 import { STORAGE_KEY } from "../../constants/enum";
 import { LOCALES } from "../../constants/locale";
@@ -107,7 +108,7 @@ const HeaderComponent: FC<HeaderProps> = ({ collapsed, toggle }) => {
               ],
             }}
           >
-            <Avatar size={25} src='https://api.dicebear.com/7.x/miniavs/svg?seed=3' />
+            <Avatar size={25} src={LogoutSvg} />
           </Dropdown>
         </div>
       </div>

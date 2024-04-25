@@ -217,6 +217,9 @@
     "EXPERIENCE": "Experience"
   },
   "SKILL": {
+    "SEARCH_POSITION": "Position",
+    "SEARCH_LANG": "Language/Framework",
+    "SEARCH_TECH": "Technical",
     "NAME": "Name",
     "POSITION_NAME": "Position name",
     "LANG_NAME": "Language/framework name",

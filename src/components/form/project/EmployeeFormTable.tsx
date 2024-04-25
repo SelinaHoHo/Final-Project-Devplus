@@ -36,9 +36,9 @@ const EmployeeFormTable: FC<EmployeeFormTableProps> = ({ data }) => {
   const columns: ColumnsType<DataType> = defaultColumns;
 
   return (
-    <Row gutter={[8, 4]}>
+    <Row gutter={[0, 4]}>
       <Col xs={24} sm={24} md={24} lg={12}>
-        <Row gutter={[8, 4]}>
+        <Row gutter={[4, 4]}>
           <Col xs={24} sm={24} md={24} lg={12}>
             <Form.Item
               name='employeeId'
@@ -96,7 +96,7 @@ const EmployeeFormTable: FC<EmployeeFormTableProps> = ({ data }) => {
           </Col>
         </Row>
       </Col>
-      <Col xs={24} sm={24} md={24} lg={12}>
+      <Col xs={24} sm={24} md={24} lg={12} style={{ padding: "0 4px" }}>
         <Form.Item
           name={"employees"}
           labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
