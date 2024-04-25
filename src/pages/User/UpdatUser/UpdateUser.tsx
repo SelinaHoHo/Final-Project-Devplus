@@ -9,6 +9,7 @@ import {
   useUploadAvatar,
 } from "@/hooks/useUser";
 import { IUpdateUser } from "@/interfaces/user/users.interface";
+import { RootState } from "@/redux/store";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import type { GetProp, UploadFile, UploadProps } from "antd";
 import {
@@ -27,8 +28,9 @@ import {
 } from "antd";
 import { Rule } from "antd/es/form";
 import dayjs from "dayjs";
-import { t } from "i18next";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import * as Yup from "yup";
 import LanguageFormTable from "./UpdateLanguageTable";
@@ -36,6 +38,8 @@ import UpdateTechnicalTable from "./UpdateTechnicalTable";
 import "./UpdateUser.scss";
 
 const UpdateUser = () => {
+  const { theme } = useSelector((state: RootState) => state.global);
+  const { t } = useTranslation();
   const { id } = useParams();
   const { data: dataDetail, isLoading: isLoadingGetAll } = useGetUserById(id ?? "");
   const [form] = Form.useForm();
@@ -54,32 +58,32 @@ const UpdateUser = () => {
   const validator = [
     yupSync(
       Yup.object().shape({
-        fullName: Yup.string().required(t("CREATE_EMPLOYEE.NAME_REQUIRED") as string),
+        fullName: Yup.string().required(t("UPDATE_EMPLOYEE.NAME_REQUIRED") as string),
         email: Yup.string()
-          .email(t("CREATE_EMPLOYEE.INVALIDEMAIL_REQUIRED") as string)
-          .required(t("CREATE_EMPLOYEE.EMAIL_REQUIRED") as string),
-        address: Yup.string().required(t("CREATE_EMPLOYEE.ADDRESS_REQUIRED") as string),
+          .email(t("UPDATE_EMPLOYEE.INVALIDEMAIL_REQUIRED") as string)
+          .required(t("UPDATE_EMPLOYEE.EMAIL_REQUIRED") as string),
+        address: Yup.string().required(t("UPDATE_EMPLOYEE.ADDRESS_REQUIRED") as string),
         status: Yup.string()
-          .oneOf(["Active", "Disable"], t("CREATE_EMPLOYEE.INVALID_STATUS") as string)
-          .required(t("CREATE_EMPLOYEE.STATUS_REQUIRED") as string),
-        dayOfBirth: Yup.date().required(t("CREATE_EMPLOYEE.DOB_REQUIRED") as string),
-        description: Yup.string().required(t("CREATE_EMPLOYEE.DESCRIPTION_REQUIRED") as string),
-        isManager: Yup.string().required(t("CREATE_EMPLOYEE.IS_MANAGER_REQUIRED") as string),
-        managerId: Yup.string().required(t("CREATE_EMPLOYEE.MANAGED_BY_REQUIRED") as string),
-        languageMember: Yup.array().required(t("CREATE_EMPLOYEE.LANGUAGE_REQUIRED") as string),
-        technicalMember: Yup.array().required(t("CREATE_EMPLOYEE.TECHNICAL_REQUIRED") as string),
-        positions: Yup.array().required(t("CREATE_EMPLOYEE.POSITIONS_REQUIRED") as string),
-        avatarUrl: Yup.string().required(t("CREATE_EMPLOYEE.AVATAR_REQUIRED") as string),
+          .oneOf(["Active", "Disable"], t("UPDATE_EMPLOYEE.INVALID_STATUS") as string)
+          .required(t("UPDATE_EMPLOYEE.STATUS_REQUIRED") as string),
+        dayOfBirth: Yup.date().required(t("UPDATE_EMPLOYEE.DOB_REQUIRED") as string),
+        description: Yup.string().required(t("UPDATE_EMPLOYEE.DESCRIPTION_REQUIRED") as string),
+        isManager: Yup.string().required(t("UPDATE_EMPLOYEE.IS_MANAGER_REQUIRED") as string),
+        managerId: Yup.string().required(t("UPDATE_EMPLOYEE.MANAGED_BY_REQUIRED") as string),
+        languageMember: Yup.array().required(t("UPDATE_EMPLOYEE.LANGUAGE_REQUIRED") as string),
+        technicalMember: Yup.array().required(t("UPDATE_EMPLOYEE.TECHNICAL_REQUIRED") as string),
+        positions: Yup.array().required(t("UPDATE_EMPLOYEE.POSITIONS_REQUIRED") as string),
+        avatarUrl: Yup.string().required(t("UPDATE_EMPLOYEE.AVATAR_REQUIRED") as string),
         experience: Yup.number()
-          .typeError(t("CREATE_EMPLOYEE.EXPERIENCE_REQUIRED") as string)
-          .positive(t("CREATE_EMPLOYEE.EXPERIENCE_POSITIVE") as string)
-          .integer(t("CREATE_EMPLOYEE.EXPERIENCE_INTEGER") as string)
-          .required(t("CREATE_EMPLOYEE.EXPERIENCE_REQUIRED") as string),
+          .typeError(t("UPDATE_EMPLOYEE.EXPERIENCE_REQUIRED") as string)
+          .positive(t("UPDATE_EMPLOYEE.EXPERIENCE_POSITIVE") as string)
+          .integer(t("UPDATE_EMPLOYEE.EXPERIENCE_INTEGER") as string)
+          .required(t("UPDATE_EMPLOYEE.EXPERIENCE_REQUIRED") as string),
         level: Yup.number()
-          .typeError(t("CREATE_EMPLOYEE.LEVEL_REQUIRED") as string)
-          .positive(t("CREATE_EMPLOYEE.LEVEL_POSITIVE") as string)
-          .integer(t("CREATE_EMPLOYEE.LEVEL_INTEGER") as string)
-          .required(t("CREATE_EMPLOYEE.LEVEL_REQUIRED") as string),
+          .typeError(t("UPDATE_EMPLOYEE.LEVEL_REQUIRED") as string)
+          .positive(t("UPDATE_EMPLOYEE.LEVEL_POSITIVE") as string)
+          .integer(t("UPDATE_EMPLOYEE.LEVEL_INTEGER") as string)
+          .required(t("UPDATE_EMPLOYEE.LEVEL_REQUIRED") as string),
       }),
     ),
   ] as unknown as Rule[];
@@ -212,8 +216,8 @@ const UpdateUser = () => {
 
   return !isLoadingGetAll ? (
     <div className='update-employee'>
-      <section>
-        <h1>{t("CREATE_EMPLOYEE.PROFILE")}</h1>
+      <section className={theme === "dark" ? "dark" : "light"}>
+        <h1>{t("UPDATE_EMPLOYEE.PROFILE")}</h1>
         <hr />
         <Form
           form={form}
@@ -224,7 +228,7 @@ const UpdateUser = () => {
           <Row gutter={[8, 8]}>
             <Col xs={24} sm={24} md={24} lg={12}>
               <Form.Item
-                label={t("CREATE_EMPLOYEE.AVATAR")}
+                label={t("UPDATE_EMPLOYEE.AVATAR")}
                 name='avatarUrl'
                 labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
@@ -260,39 +264,39 @@ const UpdateUser = () => {
             {/* FullName */}
             <Col xs={24} sm={24} md={24} lg={12}>
               <Form.Item
-                label={t("CREATE_EMPLOYEE.FULLNAME")}
+                label={t("UPDATE_EMPLOYEE.FULLNAME")}
                 name='fullName'
                 labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 rules={validator}
               >
-                <Input placeholder={t("CREATE_EMPLOYEE.FULLNAME")} />
+                <Input placeholder={t("UPDATE_EMPLOYEE.FULLNAME")} />
               </Form.Item>
             </Col>
 
             {/* Email */}
             <Col xs={24} sm={24} md={24} lg={12}>
               <Form.Item
-                label={t("CREATE_EMPLOYEE.EMAIL")}
+                label={t("UPDATE_EMPLOYEE.EMAIL")}
                 labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 name='email'
                 rules={validator}
               >
-                <Input disabled placeholder={t("CREATE_EMPLOYEE.EMAIL")} />
+                <Input disabled placeholder={t("UPDATE_EMPLOYEE.EMAIL")} />
               </Form.Item>
             </Col>
 
             {/* Addess */}
             <Col xs={24} sm={24} md={24} lg={12}>
               <Form.Item
-                label={t("CREATE_EMPLOYEE.ADDRESS")}
+                label={t("UPDATE_EMPLOYEE.ADDRESS")}
                 name='address'
                 labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 rules={validator}
               >
-                <Input placeholder={t("CREATE_EMPLOYEE.ADDRESS")} />
+                <Input placeholder={t("UPDATE_EMPLOYEE.ADDRESS")} />
               </Form.Item>
             </Col>
 
@@ -300,7 +304,7 @@ const UpdateUser = () => {
             <Col xs={24} sm={24} md={24} lg={12}>
               <Form.Item
                 name='dayOfBirth'
-                label={t("CREATE_EMPLOYEE.DOB")}
+                label={t("UPDATE_EMPLOYEE.DOB")}
                 labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 rules={validator}
@@ -308,7 +312,7 @@ const UpdateUser = () => {
                 <DatePicker
                   style={{ width: "100%" }}
                   disabledDate={(current) => current && current.isAfter(getEighteenYearsAgo())}
-                  placeholder={t("CREATE_EMPLOYEE.DOB")}
+                  placeholder={t("UPDATE_EMPLOYEE.DOB")}
                 />
               </Form.Item>
             </Col>
@@ -316,25 +320,25 @@ const UpdateUser = () => {
             {/* Des */}
             <Col xs={24} sm={24} md={24} lg={12}>
               <Form.Item
-                label={t("CREATE_EMPLOYEE.DESCRIPTION")}
+                label={t("UPDATE_EMPLOYEE.DESCRIPTION")}
                 name='description'
                 labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 rules={validator}
               >
-                <Input.TextArea placeholder={t("CREATE_EMPLOYEE.DESCRIPTION")} />
+                <Input.TextArea placeholder={t("UPDATE_EMPLOYEE.DESCRIPTION")} />
               </Form.Item>
             </Col>
 
             <Col xs={24} sm={24} md={24} lg={12}>
               <Form.Item
-                label={t("CREATE_EMPLOYEE.POSITIONS")}
+                label={t("UPDATE_EMPLOYEE.POSITIONS")}
                 labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 name='positions'
                 rules={validator}
               >
-                <Select mode='multiple' placeholder={t("CREATE_EMPLOYEE.POSITIONS")}>
+                <Select mode='multiple' placeholder={t("UPDATE_EMPLOYEE.POSITIONS")}>
                   {positions?.map((position) => (
                     <Select.Option value={position.id}>{position.name}</Select.Option>
                   ))}
@@ -344,15 +348,15 @@ const UpdateUser = () => {
 
             <Col xs={24} sm={24} md={24} lg={6}>
               <Form.Item
-                label={t("CREATE_EMPLOYEE.MANAGER")}
+                label={t("UPDATE_EMPLOYEE.MANAGER")}
                 name='isManager'
                 labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 rules={validator}
               >
                 <Radio.Group onChange={handleProfileSelect}>
-                  <Radio value={true}>{t("CREATE_EMPLOYEE.YES")}</Radio>
-                  <Radio value={false}>{t("CREATE_EMPLOYEE.NO")}</Radio>
+                  <Radio value={true}>{t("UPDATE_EMPLOYEE.YES")}</Radio>
+                  <Radio value={false}>{t("UPDATE_EMPLOYEE.NO")}</Radio>
                 </Radio.Group>
               </Form.Item>
             </Col>
@@ -360,13 +364,13 @@ const UpdateUser = () => {
             <Col xs={24} sm={24} md={24} lg={6}>
               {managedByInputVisible && (
                 <Form.Item
-                  label={t("CREATE_EMPLOYEE.MANAGED_BY")}
+                  label={t("UPDATE_EMPLOYEE.MANAGED_BY")}
                   name='managerId'
                   labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                   wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                   rules={validator}
                 >
-                  <Select placeholder={t("CREATE_EMPLOYEE.MANAGED_BY")}>
+                  <Select placeholder={t("UPDATE_EMPLOYEE.MANAGED_BY")}>
                     {users
                       ?.filter((user) => user.isManager)
                       .map((user) => (
@@ -379,14 +383,14 @@ const UpdateUser = () => {
           </Row>
           <Form.Item>
             <Button type='primary' htmlType='submit' disabled={isPending}>
-              {t("CREATE_EMPLOYEE.SUBMIT")}
+              {t("UPDATE_EMPLOYEE.SUBMIT")}
             </Button>
           </Form.Item>
         </Form>
       </section>
 
-      <section>
-        <h1>{t("CREATE_EMPLOYEE.SKILL")}</h1>
+      <section className={theme === "dark" ? "dark" : "light"}>
+        <h1>{t("UPDATE_EMPLOYEE.SKILL")}</h1>
         <hr />
 
         <Row gutter={[8, 8]}>

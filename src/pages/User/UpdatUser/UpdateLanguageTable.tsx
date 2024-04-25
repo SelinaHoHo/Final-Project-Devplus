@@ -29,33 +29,33 @@ const UpdateLanguageTable: FC<DataProps> = ({ dataSource }) => {
 
   const columns: ColumnsType<languageMember> = [
     {
-      title: t("CREATE_PROJECT.NAME"),
+      title: t("UPDATE_EMPLOYEE.LANGUAGE"),
       dataIndex: "name",
       width: "50%",
       key: "name",
       render: (_text, _record) => <Typography>{_record?.language?.name}</Typography>,
     },
     {
-      title: t("CREATE_PROJECT.ROLES"),
+      title: t("UPDATE_EMPLOYEE.LEVEL"),
       dataIndex: "level",
       width: "20%",
       key: "level",
       render: (_text, _record) => <Typography>{_record.level}</Typography>,
     },
     {
-      title: t("CREATE_PROJECT.ROLES"),
+      title: t("UPDATE_EMPLOYEE.EXPERIENCE"),
       dataIndex: "experience",
       width: "20%",
       key: "experience",
       render: (_text, _record) => <Typography>{_record.experience}</Typography>,
     },
     {
-      title: t("CREATE_PROJECT.ACTION"),
+      title: t("UPDATE_EMPLOYEE.ACTION"),
       dataIndex: "operation",
       render: (_: any, _record) =>
         dataSource.length >= 1 ? (
           <a onClick={() => handleDelete(_record.id)} style={{ color: "#16c2c2" }}>
-            {t("CREATE_PROJECT.DELETE")}
+            {t("UPDATE_EMPLOYEE.DELETE")}
           </a>
         ) : null,
     },
@@ -64,17 +64,17 @@ const UpdateLanguageTable: FC<DataProps> = ({ dataSource }) => {
   const validator = [
     yupSync(
       Yup.object().shape({
-        id: Yup.string().required(t("CREATE_EMPLOYEE.NAME_REQUIRED") as string),
+        id: Yup.string().required(t("UPDATE_EMPLOYEE.LANGUAGE_REQUIRED") as string),
         experience: Yup.number()
-          .typeError(t("CREATE_EMPLOYEE.EXPERIENCE_REQUIRED") as string)
-          .positive(t("CREATE_EMPLOYEE.EXPERIENCE_POSITIVE") as string)
-          .integer(t("CREATE_EMPLOYEE.EXPERIENCE_INTEGER") as string)
-          .required(t("CREATE_EMPLOYEE.EXPERIENCE_REQUIRED") as string),
+          .typeError(t("UPDATE_EMPLOYEE.EXPERIENCE_REQUIRED_NUMBER") as string)
+          .positive(t("UPDATE_EMPLOYEE.EXPERIENCE_POSITIVE") as string)
+          .integer(t("UPDATE_EMPLOYEE.EXPERIENCE_INTEGER") as string)
+          .required(t("UPDATE_EMPLOYEE.EXPERIENCE_REQUIRED") as string),
         level: Yup.number()
-          .typeError(t("CREATE_EMPLOYEE.LEVEL_REQUIRED") as string)
-          .positive(t("CREATE_EMPLOYEE.LEVEL_POSITIVE") as string)
-          .integer(t("CREATE_EMPLOYEE.LEVEL_INTEGER") as string)
-          .required(t("CREATE_EMPLOYEE.LEVEL_REQUIRED") as string),
+          .typeError(t("UPDATE_EMPLOYEE.LEVEL_REQUIRED_NUMBER") as string)
+          .positive(t("UPDATE_EMPLOYEE.LEVEL_POSITIVE") as string)
+          .integer(t("UPDATE_EMPLOYEE.LEVEL_INTEGER") as string)
+          .required(t("UPDATE_EMPLOYEE.LEVEL_REQUIRED") as string),
       }),
     ),
   ] as unknown as Rule[];
@@ -100,12 +100,12 @@ const UpdateLanguageTable: FC<DataProps> = ({ dataSource }) => {
             <Col xs={24} sm={24} md={24} lg={8}>
               <Form.Item
                 name='id'
-                label={t("CREATE_EMPLOYEE.CODING_LANGUAGE")}
+                label={t("UPDATE_EMPLOYEE.CODING_LANGUAGE")}
                 labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 rules={validator}
               >
-                <Select placeholder={t("CREATE_EMPLOYEE.CODING_LANGUAGE")}>
+                <Select placeholder={t("UPDATE_EMPLOYEE.CODING_LANGUAGE")}>
                   {filteredLanguages?.map((language) => (
                     <Select.Option key={language.id} value={language.id}>
                       {language.name}
@@ -117,31 +117,31 @@ const UpdateLanguageTable: FC<DataProps> = ({ dataSource }) => {
 
             <Col xs={24} sm={24} md={24} lg={8}>
               <Form.Item
-                label={t("CREATE_EMPLOYEE.LEVEL")}
+                label={t("UPDATE_EMPLOYEE.LEVEL")}
                 name='level'
                 labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 rules={validator}
               >
-                <Input placeholder={t("CREATE_EMPLOYEE.LEVEL")} />
+                <Input placeholder={t("UPDATE_EMPLOYEE.LEVEL")} />
               </Form.Item>
             </Col>
 
             <Col xs={24} sm={24} md={24} lg={8}>
               <Form.Item
-                label={t("CREATE_EMPLOYEE.EXPERIENCE")}
+                label={t("UPDATE_EMPLOYEE.EXPERIENCE")}
                 name='experience'
                 labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
                 rules={validator}
               >
-                <Input placeholder={t("CREATE_EMPLOYEE.EXPERIENCE")} />
+                <Input placeholder={t("UPDATE_EMPLOYEE.EXPERIENCE")} />
               </Form.Item>
             </Col>
             <Col xs={24} sm={24} md={24} lg={24}>
               <Form.Item>
                 <Button htmlType='submit' type='dashed' block icon={<PlusOutlined />}>
-                  {t("CREATE_PROJECT.CREATE_LANGUAGE")}
+                  {t("UPDATE_EMPLOYEE.SUBMIT")}
                 </Button>
               </Form.Item>
             </Col>
