@@ -255,7 +255,6 @@ const TechnicalPage = () => {
                 loading={isLoading}
                 dataSource={data?.data}
               />
-              <Table loading={isLoading} />
             </Col>
           </Row>
         </div>
