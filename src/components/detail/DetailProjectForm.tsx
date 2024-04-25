@@ -1,11 +1,12 @@
 import { IProjectDetail, ProjectMembers } from "@/interfaces/project/projects.interface";
 import { EmployeeProjectsColumnsTable } from "@/pages/project/Detail/DetailColumn";
 import { RootState } from "@/redux/store";
-import { Avatar, Card, Col, List, Row, Space, Steps, Table, Typography } from "antd";
+import { Avatar, Card, Col, List, Row, Space, Table, Typography } from "antd";
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import "./detailProject.scss";
+import Tracking from "../Tracking/Tracking";
 
 type DataProps = {
   data: IProjectDetail | undefined;
@@ -121,24 +122,7 @@ const DetailProjectForm: FC<DataProps> = ({ data }) => {
             </Col>
             <Col md={24} lg={{ span: 8, flex: "column" }} style={{ width: "100%" }}>
               <Card style={{ height: "100%" }} bordered type='inner'>
-                <Title level={5}>{t("DETAIL_PROJECT.TRACKING")}</Title>
-                <Steps
-                  percent={60}
-                  direction='vertical'
-                  labelPlacement='vertical'
-                  current={1}
-                  items={[
-                    {
-                      title: "Pending",
-                    },
-                    {
-                      title: "In Progress",
-                    },
-                    {
-                      title: "Completed",
-                    },
-                  ]}
-                />
+                <Tracking data={data} />
               </Card>
             </Col>
           </Row>
@@ -239,24 +223,7 @@ const DetailProjectForm: FC<DataProps> = ({ data }) => {
             </Col>
             <Col md={24} lg={{ span: 8, flex: "column" }} style={{ width: "100%" }}>
               <Card style={{ height: "100%" }} bordered type='inner'>
-                <Title level={5}>{t("DETAIL_PROJECT.TRACKING")}</Title>
-                <Steps
-                  percent={60}
-                  direction='vertical'
-                  labelPlacement='vertical'
-                  current={1}
-                  items={[
-                    {
-                      title: "Pending",
-                    },
-                    {
-                      title: "In Progress",
-                    },
-                    {
-                      title: "Completed",
-                    },
-                  ]}
-                />
+                <Tracking data={data} />
               </Card>
             </Col>
           </Row>

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { IPositions } from "@/interfaces/position/positions.interface";
-import { DataType, IGetUsers, SkillType, UserType } from "@/interfaces/user/users.interface";
+import { DataType, IGetUser, IGetUsers, SkillType } from "@/interfaces/user/users.interface";
 import { PlusOutlined } from "@ant-design/icons";
 import { Button, Col, Form, Row, Select, Table } from "antd";
 import { ColumnsType } from "antd/es/table";
@@ -55,7 +55,7 @@ const EmployeeFormTable: FC<EmployeeFormTableProps> = ({ data }) => {
                 value={employeeData?.employeeId}
               >
                 {user?.map(
-                  (item: UserType) =>
+                  (item: IGetUser) =>
                     !item.isManager && (
                       <Select.Option key={item?.id} value={item?.id}>
                         {item?.profile?.fullName}

@@ -279,6 +279,15 @@
     "SUBMIT": "Cập nhật",
     "ADD_EMPLOYEE": "Phân công",
     "EMPLOYEE_REQUIRED": "Vui lòng chọn nhân viên dự án",
-    "ROLES_REQUIRED": "Vui lòng chọn vị trí"
+    "ROLES_REQUIRED": "Vui lòng chọn vị trí",
+    "PROJECT_NAME": "Nhập tên dự án"
+  },
+  "TRACKING":{
+    "EMPLOYEE": "Thời Gian Tham Gia Của Các Thành Viên",
+    "OUT":"Ra khỏi", 
+    "IN":"Tham gia",
+    "END":"Kết thúc: {{time}}",
+    "START":"Bắt đầu: {{time}}",
+    "PARTICIPATED":"tham gia"
   }
 }

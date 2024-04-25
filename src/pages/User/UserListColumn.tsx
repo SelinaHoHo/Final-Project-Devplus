@@ -44,7 +44,7 @@ export const UsersColumnsTable = (
     width: "20%",
     render: (manager, record) => {
       return record.managerId === null ? (
-        "..."
+        ""
       ) : (
         <Space>
           <a href={`/users/${record.managerId}`}>

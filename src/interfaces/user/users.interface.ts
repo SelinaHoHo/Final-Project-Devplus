@@ -3,9 +3,11 @@ export interface IUser {
   userName: string;
   fullName: string;
   email: string;
+  languageMember: string;
+  // userName: string;
   isManager: boolean;
   managerId: string | null;
-  manager?: {
+  manager: {
     userName: string;
     profile: {
       avatarUrl: string;
@@ -31,7 +33,7 @@ export interface Position {
   name: string;
   description: string;
 }
-interface IGetUser {
+export interface IGetUser {
   id: string;
   userName: string;
   email: string;
