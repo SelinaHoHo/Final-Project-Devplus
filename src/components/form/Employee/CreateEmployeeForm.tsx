@@ -41,6 +41,8 @@ interface TechnicalMember {
   experience: string;
 }
 
+const { Text } = Typography;
+
 const CreateEmployeeForm = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -111,6 +113,7 @@ const CreateEmployeeForm = () => {
           placement: "top",
         });
         setTableDataLanguage([...tableDataLanguage, newData]);
+
         setLanguageMember("");
         setLevelLanguage("");
         setExperienceLanguage("");
@@ -423,10 +426,13 @@ const CreateEmployeeForm = () => {
                       <Col span={12} style={{ paddingTop: "10px" }}>
                         <Col span={24} style={{ paddingBottom: "10px" }}>
                           <Select
-                            placeholder={t("CREATE_EMPLOYEE.LANGUAGE_FRAMEWORK_SELECT")}
+                            value={languageMember}
                             onChange={(value) => setLanguageMember(value)}
                             style={{ width: "100%" }}
                           >
+                            <Select.Option disabled value=''>
+                              <Text disabled> {t("CREATE_EMPLOYEE.LANGUAGE_FRAMEWORK")}</Text>
+                            </Select.Option>
                             {languages?.map((language) => (
                               <Select.Option value={language.id}>{language.name}</Select.Option>
                             ))}
@@ -481,10 +487,13 @@ const CreateEmployeeForm = () => {
                       <Col span={12} style={{ paddingTop: "10px" }}>
                         <Col span={24} style={{ paddingBottom: "10px" }}>
                           <Select
-                            placeholder={t("CREATE_EMPLOYEE.TECHNICAL_SELECT")}
+                            value={technicalMember}
                             onChange={(value) => setTechnicalMember(value)}
                             style={{ width: "100%" }}
                           >
+                            <Select.Option disabled value=''>
+                              <Text disabled>{t("CREATE_EMPLOYEE.TECHNICAL_SELECT")}</Text>
+                            </Select.Option>
                             {technologies?.map((tech) => (
                               <Select.Option value={tech.id}>{tech.name}</Select.Option>
                             ))}
