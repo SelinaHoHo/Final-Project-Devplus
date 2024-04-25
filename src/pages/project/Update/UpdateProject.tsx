@@ -24,6 +24,9 @@ const UpdateProject = () => {
           {
             title: t("UPDATE_PROJECT.SUBMIT"),
           },
+          {
+            title: data?.name,
+          },
         ]}
       />
       {theme === "dark" ? (

@@ -201,6 +201,7 @@
     "PROJECT_NAME": "Nhập tên dự án"
   },
   "DETAIL_EMPLOYEE": {
+    "DETAIL": "Chi tiết",
     "PROFILE": "Thông tin cá nhân",
     "ADDRESS": "Địa chỉ",
     "EMAIL": "Email",

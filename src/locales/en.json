@@ -202,6 +202,7 @@
     "PROJECT_NAME": "Enter project name"
   },
   "DETAIL_EMPLOYEE": {
+    "DETAIL": "Detail",
     "PROFILE": "Profile",
     "ADDRESS": "Address",
     "EMAIL": "Email",
