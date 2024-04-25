@@ -202,14 +202,13 @@
     "PROJECT_NAME": "Enter project name"
   },
   "DETAIL_EMPLOYEE": {
-    "DETAIL": "Detail",
     "PROFILE": "Profile",
     "ADDRESS": "Address",
     "EMAIL": "Email",
     "POSITION": "Position",
-    "LANGUAGE_FRAMEWORK": "Language/Framework",
+    "LANGUAGE_FRAMEWORK": "Language",
     "TECHNICAL": "Technical",
-    "TYPICAL_PROJECTS": "Typical Projects",
+    "PROJECTS": "Projects",
     "PROJECT_NAME": "Project Name",
     "ROLE": "Role",
     "DESCRIPTION": "Description",
@@ -219,9 +218,6 @@
   },
   "SKILL": {
     "NAME": "Name",
-    "SEARCH_POSITION": "Enter position name",
-    "SEARCH_LANG": "Enter language/framework name",
-    "SEARCH_TECH": "Enter technical name",
     "POSITION_NAME": "Position name",
     "LANG_NAME": "Language/framework name",
     "TECH_NAME": "Technical name",

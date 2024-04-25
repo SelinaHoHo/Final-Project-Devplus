@@ -421,9 +421,9 @@ const CreateEmployeeForm = () => {
                 <Row gutter={[8, 8]}>
                   <Col span={24}>{t("CREATE_EMPLOYEE.LANGUAGE_FRAMEWORK")} :</Col>
 
-                  <Col span={24} style={{ padding: "0", margin: "0" }}>
+                  <Col span={24}>
                     <Row gutter={[8, 8]}>
-                      <Col span={12} style={{ paddingTop: "10px" }}>
+                      <Col span={8} style={{ paddingTop: "10px" }}>
                         <Col span={24} style={{ paddingBottom: "10px" }}>
                           <Select
                             value={languageMember}
@@ -464,7 +464,7 @@ const CreateEmployeeForm = () => {
                         </Col>
                       </Col>
 
-                      <Col span={12}>
+                      <Col span={16}>
                         <Col span={24}>
                           <Table
                             dataSource={tableDataLanguage}
@@ -484,7 +484,7 @@ const CreateEmployeeForm = () => {
 
                   <Col span={24}>
                     <Row gutter={[8, 8]}>
-                      <Col span={12} style={{ paddingTop: "10px" }}>
+                      <Col span={8} style={{ paddingTop: "10px" }}>
                         <Col span={24} style={{ paddingBottom: "10px" }}>
                           <Select
                             value={technicalMember}
@@ -522,7 +522,7 @@ const CreateEmployeeForm = () => {
                         </Col>
                       </Col>
 
-                      <Col span={12}>
+                      <Col span={16}>
                         <Col span={24}>
                           <Table
                             dataSource={tableDataTechnical}
