@@ -1,0 +1,84 @@
+.update-employee {
+  .ant-form.ant-form-horizontal.ant-form-middle.css-dev-only-do-not-override-1kd7ozu {
+    margin: 0 40px;
+    section {
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 10px;
+      margin: 20px 0;
+
+      .ant-form-item-label {
+        display: flex;
+        align-self: flex-start !important;
+      }
+
+      .ant-input {
+        min-height: 40px;
+      }
+
+      .ant-picker {
+        min-height: 40px;
+      }
+
+      .ant-select {
+        min-height: 40px;
+      }
+    }
+    .light {
+      background-color: #fff;
+    }
+  }
+
+  .ant-form.ant-form-horizontal.ant-form-middle.css-dev-only-do-not-override-n3jbno {
+    margin: 0 40px;
+  }
+
+  section {
+    margin: 1rem 2rem !important;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 20px 0;
+
+    .ant-form-item-label {
+      display: flex;
+      align-self: flex-start !important;
+    }
+
+    .ant-input {
+      min-height: 40px;
+    }
+
+    .ant-picker {
+      min-height: 40px;
+    }
+
+    .ant-select {
+      min-height: 40px;
+    }
+  }
+
+  .light {
+    background-color: #fff;
+  }
+
+  .ant-layout-content.layout-page-content {
+    overflow-y: auto !important;
+  }
+  .layout-page-content > :nth-child(2) {
+    flex: unset !important;
+    overflow: auto !important;
+    padding: 6px;
+    box-sizing: border-box;
+  }
+}
+
+.ant-table-wrapper.css-dev-only-do-not-override-1kd7ozu {
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.ant-table-wrapper.css-dev-only-do-not-override-n3jbno {
+  margin-left: 40px;
+  margin-right: 40px;
+}

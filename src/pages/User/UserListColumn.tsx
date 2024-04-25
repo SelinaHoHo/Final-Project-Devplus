@@ -1,7 +1,12 @@
 import { ButtonAction } from "@/components/core/ButtonAction/ButtonAction";
 import i18n from "@/config/i18n";
 import { IUser } from "@/interfaces/user/users.interface";
-import { DeleteOutlined, FileSearchOutlined, VerticalAlignBottomOutlined } from "@ant-design/icons";
+import {
+  DeleteOutlined,
+  EditOutlined,
+  FileSearchOutlined,
+  VerticalAlignBottomOutlined,
+} from "@ant-design/icons";
 import { Avatar, Space, Tag } from "antd";
 import { ColumnsType } from "antd/lib/table";
 import { Translation } from "react-i18next";
@@ -98,6 +103,13 @@ export const UsersColumnsTable = (
           tooltip={i18n.t("ACTION.DETAILS")}
         >
           <FileSearchOutlined />
+        </ButtonAction>
+        <ButtonAction
+          variant='primary'
+          handleAction={() => handleAction("edit", record)}
+          tooltip={i18n.t("ACTION.EDIT")}
+        >
+          <EditOutlined />
         </ButtonAction>
         <ButtonAction
           variant='danger'
