@@ -106,7 +106,7 @@ const UpdateTechnicalTable: FC<DataProps> = ({ dataSourceT }) => {
                 name='id'
                 rules={validator}
               >
-                <Select placeholder={t("UPDATE_EMPLOYEE.TECHNICAL")}>
+                <Select placeholder={t("UPDATE_EMPLOYEE.CODING_LANGUAGE")}>
                   {filteredTechnicalMembers?.map((technology) => (
                     <Select.Option key={technology.id} value={technology.id}>
                       {technology.name}

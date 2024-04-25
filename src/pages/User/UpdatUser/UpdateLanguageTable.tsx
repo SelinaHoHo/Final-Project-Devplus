@@ -23,6 +23,9 @@ const UpdateLanguageTable: FC<DataProps> = ({ dataSource }) => {
   const [form] = Form.useForm();
   const { mutate: postLanguage } = usePostLanguage();
   const { mutate: deleteLanguage } = useDeleteLanguage();
+  const filteredLanguages = languages?.filter((lang) => {
+    return !dataSource.some((user) => user.language.id === lang.id);
+  });
 
   const columns: ColumnsType<languageMember> = [
     {
@@ -86,6 +89,7 @@ const UpdateLanguageTable: FC<DataProps> = ({ dataSource }) => {
       userId: id,
     };
     postLanguage(userId);
+    form.resetFields();
   };
 
   return (
@@ -102,8 +106,10 @@ const UpdateLanguageTable: FC<DataProps> = ({ dataSource }) => {
                 rules={validator}
               >
                 <Select placeholder={t("UPDATE_EMPLOYEE.CODING_LANGUAGE")}>
-                  {languages?.map((language) => (
-                    <Select.Option value={language.id}>{language.name}</Select.Option>
+                  {filteredLanguages?.map((language) => (
+                    <Select.Option key={language.id} value={language.id}>
+                      {language.name}
+                    </Select.Option>
                   ))}
                 </Select>
               </Form.Item>

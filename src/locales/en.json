@@ -114,6 +114,7 @@
     "TECHNOLOGIES": "Technologies",
     "POSITIONS": "Positions",
     "FAIL": "Fail",
+    "CREATE_USER_FAILED":"Create user failed",
     "SUCCESS": "Success",
     "DUPLICATE_LANG": "Duplicate Language/Framework already exists in the table.",
     "DUPLICATE_TECH": "Duplicate Technical already exists in the table.",
