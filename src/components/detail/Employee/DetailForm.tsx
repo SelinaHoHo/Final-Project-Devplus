@@ -339,64 +339,70 @@ const DetailForm: FC<DataProps> = ({ data }) => {
             </Col>
 
             <Col span={12}>
-              {data?.projectMembers?.map((item, index) => (
-                <Card bordered type='inner' style={{ padding: "20px" }}>
-                  <Col key={index} span={24}>
-                    <Title level={1} style={{ display: "flex", justifyContent: "center" }}>
-                      {item?.project.name}
-                    </Title>
-                    <br />
+              {data?.projectMembers?.length ?? 0 > 0 ? (
+                data?.projectMembers?.map((item, index) => (
+                  <Card bordered type='inner' style={{ padding: "20px" }}>
+                    <Col key={index} span={24}>
+                      <Title level={1} style={{ display: "flex", justifyContent: "center" }}>
+                        {item?.project.name}
+                      </Title>
+                      <br />
 
-                    <Steps direction='horizontal' size='small'>
-                      <Step title={moment(item?.project.startDate).format("DD/MM/YYYY")} />
-                      <Step
-                        title={moment(item?.project.endDate).format("DD/MM/YYYY")}
-                        status='finish'
-                      />
-                    </Steps>
-                    <br />
+                      <Steps direction='horizontal' size='small'>
+                        <Step title={moment(item?.project.startDate).format("DD/MM/YYYY")} />
+                        <Step
+                          title={moment(item?.project.endDate).format("DD/MM/YYYY")}
+                          status='finish'
+                        />
+                      </Steps>
+                      <br />
 
-                    <Text style={{ fontSize: "16px" }}>
-                      <Text strong style={{ fontSize: "18px" }}>
-                        {t("DETAIL_EMPLOYEE.ROLE")}:{" "}
+                      <Text style={{ fontSize: "16px" }}>
+                        <Text strong style={{ fontSize: "18px" }}>
+                          {t("DETAIL_EMPLOYEE.ROLE")}:{" "}
+                        </Text>
+                        {item?.roles?.length
+                          ? item.roles.map((role) => role?.position?.name).join(", ")
+                          : "Manager"}
                       </Text>
-                      {item?.roles?.length
-                        ? item.roles.map((role) => role?.position?.name).join(", ")
-                        : "Manager"}
-                    </Text>
-                    <br />
+                      <br />
 
-                    <Text style={{ fontSize: "16px" }}>
-                      <Text strong style={{ fontSize: "18px" }}>
-                        {t("DETAIL_EMPLOYEE.LANGUAGE_FRAMEWORK")}:
-                      </Text>{" "}
-                      {item?.project?.languageProject
-                        ?.map((lang) => lang?.language?.name)
-                        .join(", ")}
-                    </Text>
-                    <br />
+                      <Text style={{ fontSize: "16px" }}>
+                        <Text strong style={{ fontSize: "18px" }}>
+                          {t("DETAIL_EMPLOYEE.LANGUAGE_FRAMEWORK")}:
+                        </Text>{" "}
+                        {item?.project?.languageProject
+                          ?.map((lang) => lang?.language?.name)
+                          .join(", ")}
+                      </Text>
+                      <br />
 
-                    <Text style={{ fontSize: "16px" }}>
-                      <Text strong style={{ fontSize: "18px" }}>
-                        {t("DETAIL_EMPLOYEE.TECHNICAL")}:
-                      </Text>{" "}
-                      {item?.project?.technicalProject
-                        ?.map((tech) => tech?.technical?.name)
-                        .join(", ")}
-                    </Text>
-                    <br />
+                      <Text style={{ fontSize: "16px" }}>
+                        <Text strong style={{ fontSize: "18px" }}>
+                          {t("DETAIL_EMPLOYEE.TECHNICAL")}:
+                        </Text>{" "}
+                        {item?.project?.technicalProject
+                          ?.map((tech) => tech?.technical?.name)
+                          .join(", ")}
+                      </Text>
+                      <br />
 
-                    <Text style={{ fontSize: "16px" }}>
-                      <Text strong style={{ fontSize: "18px" }}>
-                        {t("DETAIL_EMPLOYEE.DESCRIPTION")}:
-                      </Text>{" "}
-                      {item?.project.description}
-                    </Text>
-                    <br />
-                    <hr />
-                  </Col>
+                      <Text style={{ fontSize: "16px" }}>
+                        <Text strong style={{ fontSize: "18px" }}>
+                          {t("DETAIL_EMPLOYEE.DESCRIPTION")}:
+                        </Text>{" "}
+                        {item?.project.description}
+                      </Text>
+                      <br />
+                      <hr />
+                    </Col>
+                  </Card>
+                ))
+              ) : (
+                <Card bordered type='inner' style={{ padding: "20px" }}>
+                  <Title> {t("DETAIL_EMPLOYEE.PROJECTS")}</Title>
                 </Card>
-              ))}
+              )}
             </Col>
           </Row>
         </div>
