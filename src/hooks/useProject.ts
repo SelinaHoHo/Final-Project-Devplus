@@ -163,12 +163,16 @@ export const useAddEmployeeToProject = () => {
 };
 
 export const useUnAssignEmployee = () => {
+  const queryClient = useQueryClient();
   return useMutation({
     mutationFn: async (id: string) => {
       const { data } = await unassignEmployeeToProject(id);
       return data;
     },
     onSuccess: () => {
+      queryClient.refetchQueries({
+        queryKey: [QUERY_KEY.PROJECT],
+      });
       notification.success({
         message: t("UPDATE_PROJECT.SUCCESS") as string,
         description: t("UPDATE_PROJECT.UNASSIGNEMPLOYEE_SUCCESS_MESSAGE") as string,

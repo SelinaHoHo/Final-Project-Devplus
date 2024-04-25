@@ -38,7 +38,7 @@ const CreateProjectForm: React.FC = () => {
   const { data: position } = useGetPosition();
   const { t } = useTranslation();
   const [form] = Form.useForm();
-  const { mutate: createProject } = useCreateProject();
+  const { mutate: createProject, isPending } = useCreateProject();
   const [messageApi, contextHolder] = message.useMessage();
 
   //table
@@ -320,7 +320,7 @@ const CreateProjectForm: React.FC = () => {
           </Col>
         </Row>
         <Form.Item style={{ textAlign: "right" }}>
-          <Button type='primary' size='large' htmlType='submit' form='prj'>
+          <Button type='primary' size='large' loading={isPending} htmlType='submit' form='prj'>
             {t("CREATE_PROJECT.SUBMIT")}
           </Button>
         </Form.Item>

@@ -1,12 +1,10 @@
 import { Table } from "@/components/core/Table/Table";
-import i18n from "@/config/i18n";
 import { useDeleteProject, useGetProjects, useUpdateStatus } from "@/hooks/useProject";
 import { ColumnIProject } from "@/interfaces/project/projects.interface";
 import { RootState } from "@/redux/store";
 import { Button, Col, Input, Modal, Row } from "antd";
-import { t } from "i18next";
 import { useState } from "react";
-import { Translation } from "react-i18next";
+import { Translation, useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import "./ListProject.scss";
@@ -14,6 +12,7 @@ import { ProjectsColumnsTable } from "./ProjectListColumn";
 
 const ListProject = () => {
   const { theme } = useSelector((state: RootState) => state.global);
+  const { t } = useTranslation();
   const [table, setTable] = useState({
     page: 1,
     take: 10,
@@ -27,7 +26,7 @@ const ListProject = () => {
     take: table.take,
   };
 
-  const { data, isLoading, refetch } = useGetProjects(paginatorSearch);
+  const { data, isLoading, refetch, isFetching } = useGetProjects(paginatorSearch);
   const navigate = useNavigate();
   const { mutate: onDeleteProject } = useDeleteProject();
   const handleAction = (key: string, _item: ColumnIProject) => {
@@ -83,20 +82,20 @@ const ListProject = () => {
             <Row gutter={[8, 4]} style={{ marginBottom: "1.5rem" }}>
               <Col span={4}>
                 <Input
-                  placeholder={i18n.t("LISTPROJECT.PROJECT_NAME")}
+                  placeholder={t("LISTPROJECT.PROJECT_NAME")}
                   size='middle'
                   allowClear
                   onChange={(value) => handleChangeSearch(value.target.value)}
                 />
               </Col>
               <Col span={6}>
-                <Button type='primary' onClick={onSearch} size='middle'>
+                <Button type='primary' loading={isFetching} onClick={onSearch} size='middle'>
                   <Translation>{(t) => t("TABLE.SEARCH")}</Translation>
                 </Button>
               </Col>
               <Col span={14} style={{ textAlign: "end" }}>
                 <Button type='primary' size='middle'>
-                  <Link to='../create'>{i18n.t("LISTPROJECT.CREATE_BUTTON")}</Link>
+                  <Link to='../create'>{t("LISTPROJECT.CREATE_BUTTON")}</Link>
                 </Button>
               </Col>
             </Row>
@@ -122,20 +121,20 @@ const ListProject = () => {
           <Row gutter={[8, 4]} style={{ marginBottom: "1.5rem" }}>
             <Col span={4}>
               <Input
-                placeholder={i18n.t("LISTPROJECT.PROJECT_NAME")}
+                placeholder={t("LISTPROJECT.PROJECT_NAME")}
                 size='middle'
                 allowClear
                 onChange={(value) => handleChangeSearch(value.target.value)}
               />
             </Col>
             <Col span={6}>
-              <Button type='primary' onClick={onSearch} size='middle'>
+              <Button type='primary' loading={isFetching} onClick={onSearch} size='middle'>
                 <Translation>{(t) => t("TABLE.SEARCH")}</Translation>
               </Button>
             </Col>
             <Col span={14} style={{ textAlign: "end" }}>
               <Button type='primary' size='middle'>
-                <Link to='../create'>{i18n.t("LISTPROJECT.CREATE_BUTTON")}</Link>
+                <Link to='../create'>{t("LISTPROJECT.CREATE_BUTTON")}</Link>
               </Button>
             </Col>
           </Row>

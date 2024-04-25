@@ -285,7 +285,7 @@
     "PROJECT_NAME": "Enter project name"
   },
   "TRACKING": {
-    "EMPLOYEE": "Employee Participation Timeline",
+    "EMPLOYEE": "Project tracking",
     "OUT": "Out",
     "IN": "In",
     "END": "End: {{time}}",

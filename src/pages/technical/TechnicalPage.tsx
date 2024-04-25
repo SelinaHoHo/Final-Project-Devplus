@@ -86,7 +86,7 @@ const TechnicalPage = () => {
     page: table.page,
     take: table.take,
   };
-  const { data, isLoading, refetch } = useGetTechnicals(paginatorSearch);
+  const { data, isLoading, refetch, isFetching } = useGetTechnicals(paginatorSearch);
 
   const validator = [
     yupSync(
@@ -192,7 +192,7 @@ const TechnicalPage = () => {
               />
             </Col>
             <Col span={6}>
-              <Button type='primary' onClick={onSearch} size='middle'>
+              <Button type='primary' loading={isFetching} onClick={onSearch} size='middle'>
                 <Translation>{(t) => t("TABLE.SEARCH")}</Translation>
               </Button>
             </Col>
@@ -231,7 +231,7 @@ const TechnicalPage = () => {
               />
             </Col>
             <Col span={6}>
-              <Button type='primary' onClick={onSearch} size='middle'>
+              <Button type='primary' loading={isFetching} onClick={onSearch} size='middle'>
                 <Translation>{(t) => t("TABLE.SEARCH")}</Translation>
               </Button>
             </Col>

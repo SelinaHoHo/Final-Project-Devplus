@@ -86,7 +86,7 @@ const LanguagePage = () => {
     page: table.page,
     take: table.take,
   };
-  const { data, isLoading, refetch } = useGetLanguages(paginatorSearch);
+  const { data, isLoading, refetch, isFetching } = useGetLanguages(paginatorSearch);
 
   const onSearch = () => {
     setTable({
@@ -192,7 +192,7 @@ const LanguagePage = () => {
               </Button>
             </Col>
             <Col span={14} style={{ textAlign: "right" }}>
-              <Button type='primary' onClick={showModal}>
+              <Button type='primary' loading={isFetching} onClick={showModal}>
                 {t("SKILL.CREATE_NEW_LANG")}
               </Button>
               <CreateForm visible={visible} onCreate={handleCreate} onCancel={handleCancel} />
@@ -226,7 +226,7 @@ const LanguagePage = () => {
               />
             </Col>
             <Col span={6}>
-              <Button type='primary' onClick={onSearch} size='middle'>
+              <Button type='primary' loading={isFetching} onClick={onSearch} size='middle'>
                 <Translation>{(t) => t("TABLE.SEARCH")}</Translation>
               </Button>
             </Col>

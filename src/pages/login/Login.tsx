@@ -34,7 +34,7 @@ const Login: React.FC = () => {
   const screens = useBreakpoint();
   const { t } = useTranslation();
   const [form] = Form.useForm();
-  const { mutate: handleLogin } = useLogin();
+  const { mutate: handleLogin, isPending } = useLogin();
 
   const onChangeTheme = () => {
     const newTheme = theme === "dark" ? "light" : "dark";
@@ -199,7 +199,13 @@ const Login: React.FC = () => {
               />
             </Form.Item>
             <Form.Item style={{ marginBottom: "0px" }}>
-              <Button block={true} size='large' type='primary' htmlType='submit'>
+              <Button
+                block={true}
+                size='large'
+                type='primary'
+                loading={isPending}
+                htmlType='submit'
+              >
                 {t("LOGIN.SIGN_IN")}
               </Button>
             </Form.Item>
