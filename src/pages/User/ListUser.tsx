@@ -51,7 +51,7 @@ const ListUser = () => {
         exportCv(item.id);
         break;
       case "detail":
-        navigate(`/employees/detail/${item.id}`);
+        navigate(`/employees/${item.profile.id}`, { state: { userData: item } });
         break;
       case "delete":
         //  eslint-disable-next-line no-case-declarations

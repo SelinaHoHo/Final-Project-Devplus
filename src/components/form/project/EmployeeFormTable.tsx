@@ -57,7 +57,7 @@ const EmployeeFormTable: FC<EmployeeFormTableProps> = ({ data }) => {
                 {user?.map(
                   (item: IGetUser) =>
                     !item.isManager && (
-                      <Select.Option key={item?.id} value={item?.profile.fullName}>
+                      <Select.Option key={item?.id} value={item?.id}>
                         {item?.profile?.fullName}
                       </Select.Option>
                     ),

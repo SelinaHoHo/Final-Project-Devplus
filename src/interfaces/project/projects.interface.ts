@@ -17,6 +17,7 @@ interface IProjectDe {
   projectMembers: ProjectMembers[];
   languageProject: languageProject[];
   technicalProject: technicalProject[];
+  projectHistory: projectHistory[];
 }
 
 export interface languageProject {
@@ -153,4 +154,12 @@ export interface IUpdateProject {
   language: string[];
   technical: string[];
   managerId?: string;
+}
+export interface projectHistory {
+  id: string;
+  createDate: Date;
+  updateDate: Date;
+  description: string;
+  type: string;
+  name: string;
 }

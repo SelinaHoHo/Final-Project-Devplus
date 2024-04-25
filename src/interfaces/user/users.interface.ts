@@ -3,6 +3,8 @@ export interface IUser {
   userName: string;
   fullName: string;
   email: string;
+  languageMember: string;
+  // userName: string;
   isManager: boolean;
   managerId: string | null;
   manager: {

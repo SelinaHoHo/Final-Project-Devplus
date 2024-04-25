@@ -282,7 +282,15 @@
     "SUBMIT": "Update",
     "ADD_EMPLOYEE": "Assign",
     "EMPLOYEE_REQUIRED": "Please select employee",
-    "ROLES_REQUIRED": "Please select roles"
+    "ROLES_REQUIRED": "Please select roles",
+    "PROJECT_NAME": "Enter project name"},
+  "TRACKING":{
+    "EMPLOYEE": "Employee Participation Timeline",
+    "OUT":"Out", 
+    "IN":"In",
+    "END":"End: {{time}}",
+    "START":"Start: {{time}}",
+    "PARTICIPATED":" participated in the"
   }
   
 }
