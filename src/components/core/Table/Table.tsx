@@ -66,10 +66,9 @@ export const Table = <T extends HasId>({ paginate, dataSource, ...rest }: TableP
         <Row
           justify='space-between'
           style={{
-            padding: 10,
+            padding: "10px 0",
             backgroundColor: theme === "dark" ? "rgb(29 29 29)" : "white",
             borderRadius: "0 0 8px 8px",
-            margin: "0 10px",
           }}
         >
           <Space>

@@ -192,7 +192,7 @@ const CreateProjectForm: React.FC = () => {
   };
 
   return (
-    <>
+    <div className='create-project'>
       {contextHolder}
       <Form onFinish={onFinish} form={form} initialValues={{ items: [{}] }} id='prj'>
         <Row gutter={[8, 4]}>
@@ -325,7 +325,7 @@ const CreateProjectForm: React.FC = () => {
           </Button>
         </Form.Item>
       </Form>
-    </>
+    </div>
   );
 };
 

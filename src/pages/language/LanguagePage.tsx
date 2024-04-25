@@ -178,7 +178,7 @@ const LanguagePage = () => {
       {theme === "dark" ? (
         <div className='form-create-dark'>
           <Row gutter={[8, 4]} style={{ marginBottom: "10px" }}>
-            <Col span={6}>
+            <Col span={4}>
               <Input
                 placeholder={i18n.t("SKILL.SEARCH_LANG")}
                 size='middle'
@@ -191,7 +191,7 @@ const LanguagePage = () => {
                 <Translation>{(t) => t("TABLE.SEARCH")}</Translation>
               </Button>
             </Col>
-            <Col span={12} style={{ textAlign: "right" }}>
+            <Col span={14} style={{ textAlign: "right" }}>
               <Button type='primary' onClick={showModal}>
                 {t("SKILL.CREATE_NEW_LANG")}
               </Button>
@@ -217,7 +217,7 @@ const LanguagePage = () => {
       ) : (
         <div className='form-create-light'>
           <Row gutter={[8, 4]} style={{ marginBottom: "10px" }}>
-            <Col span={6}>
+            <Col span={4}>
               <Input
                 placeholder={i18n.t("SKILL.SEARCH_LANG")}
                 size='middle'
@@ -230,7 +230,7 @@ const LanguagePage = () => {
                 <Translation>{(t) => t("TABLE.SEARCH")}</Translation>
               </Button>
             </Col>
-            <Col span={12} style={{ textAlign: "right" }}>
+            <Col span={14} style={{ textAlign: "right" }}>
               <Button type='primary' onClick={showModal}>
                 {t("SKILL.CREATE_NEW_LANG")}
               </Button>

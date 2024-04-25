@@ -538,8 +538,8 @@ const CreateEmployeeForm = () => {
             </Row>
           </section>
 
-          <Form.Item>
-            <Button type='primary' htmlType='submit'>
+          <Form.Item style={{ textAlign: "right" }}>
+            <Button type='primary' size='large' htmlType='submit'>
               {t("CREATE_EMPLOYEE.SUBMIT")}
             </Button>
           </Form.Item>

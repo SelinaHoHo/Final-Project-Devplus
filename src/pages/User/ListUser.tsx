@@ -79,11 +79,8 @@ const ListUser = () => {
     <div className='page-list-project'>
       {theme === "dark" ? (
         <div className='form-create-dark'>
-          <Row
-            gutter={[8, 4]}
-            style={{ paddingLeft: "10px", paddingRight: "10px", marginBottom: "10px" }}
-          >
-            <Col span={6}>
+          <Row gutter={[8, 4]} style={{ marginBottom: "1.5rem" }}>
+            <Col span={4}>
               <Input
                 placeholder={i18n.t("TABLE.SEARCH_NAME")}
                 size='middle'
@@ -97,7 +94,7 @@ const ListUser = () => {
                 <Translation>{(t) => t("TABLE.SEARCH")}</Translation>
               </Button>
             </Col>
-            <Col span={12} style={{ textAlign: "end" }}>
+            <Col span={14} style={{ textAlign: "end" }}>
               <Button type='primary' size='middle'>
                 <Link to='../createEmployee'>{t("LISTUSER.CREATE_BUTTON")}</Link>
               </Button>
@@ -121,11 +118,8 @@ const ListUser = () => {
         </div>
       ) : (
         <div className='form-create-light'>
-          <Row
-            gutter={[8, 4]}
-            style={{ paddingLeft: "10px", paddingRight: "10px", marginBottom: "10px" }}
-          >
-            <Col span={6}>
+          <Row gutter={[8, 4]} style={{ marginBottom: "1.5rem" }}>
+            <Col span={4}>
               <Input
                 placeholder={i18n.t("TABLE.SEARCH_NAME")}
                 size='middle'
@@ -139,7 +133,7 @@ const ListUser = () => {
                 <Translation>{(t) => t("TABLE.SEARCH")}</Translation>
               </Button>
             </Col>
-            <Col span={12} style={{ textAlign: "end" }}>
+            <Col span={14} style={{ textAlign: "end" }}>
               <Button type='primary' size='middle'>
                 <Link to='../createEmployee'>{t("LISTUSER.CREATE_BUTTON")}</Link>
               </Button>

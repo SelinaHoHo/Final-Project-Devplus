@@ -140,17 +140,15 @@ const PositionPage = () => {
           okText: t("SKILL.UPDATE_BUTTON"),
           cancelText: t("SKILL.CANCEL"),
           onOk: () => {
-            {
-              if (_item.name === "") {
-                messageApi.open({
-                  type: "error",
-                  content: t("SKILL.REQUIRED") as string,
-                }),
-                  (_item.name = position);
-              } else if (_item.name !== position) {
-                _item.name !== position && updatePosition({ name: _item?.name, id: _item?.id }),
-                  (_item.name = position);
-              }
+            if (_item.name === "") {
+              messageApi.open({
+                type: "error",
+                content: t("SKILL.REQUIRED") as string,
+              }),
+                (_item.name = position);
+            } else if (_item.name !== position) {
+              _item.name !== position && updatePosition({ name: _item?.name, id: _item?.id }),
+                (_item.name = position);
             }
           },
           onCancel: () => {
@@ -159,9 +157,8 @@ const PositionPage = () => {
         });
         break;
       case "delete":
-        const positionName = _item.name || "";
         Modal.confirm({
-          title: t("SKILL.TECH_DELETE", { name: positionName }),
+          title: t("SKILL.TECH_DELETE", { name: _item.name }),
           okText: t("SKILL.OK_CREATE"),
           cancelText: t("SKILL.CANCEL"),
           onOk: () => deletePosition(_item.id),
@@ -178,7 +175,7 @@ const PositionPage = () => {
       {theme === "dark" ? (
         <div className='form-create-dark'>
           <Row gutter={[8, 4]} style={{ marginBottom: "10px" }}>
-            <Col span={6}>
+            <Col span={4}>
               <Input
                 placeholder={i18n.t("SKILL.SEARCH_POSITION")}
                 size='middle'
@@ -191,7 +188,7 @@ const PositionPage = () => {
                 <Translation>{(t) => t("TABLE.SEARCH")}</Translation>
               </Button>
             </Col>
-            <Col span={12} style={{ textAlign: "right" }}>
+            <Col span={14} style={{ textAlign: "right" }}>
               <Button type='primary' onClick={showModal}>
                 {t("SKILL.CREATE_NEW_POSITION")}
               </Button>
@@ -217,7 +214,7 @@ const PositionPage = () => {
       ) : (
         <div className='form-create-light'>
           <Row gutter={[8, 4]} style={{ marginBottom: "10px" }}>
-            <Col span={6}>
+            <Col span={4}>
               <Input
                 placeholder={i18n.t("SKILL.SEARCH_POSITION")}
                 size='middle'
@@ -230,7 +227,7 @@ const PositionPage = () => {
                 <Translation>{(t) => t("TABLE.SEARCH")}</Translation>
               </Button>
             </Col>
-            <Col span={12} style={{ textAlign: "right" }}>
+            <Col span={14} style={{ textAlign: "right" }}>
               <Button type='primary' onClick={showModal}>
                 {t("SKILL.CREATE_NEW_POSITION")}
               </Button>
