@@ -74,13 +74,13 @@ export const useUploadAvatar = () => {
         queryKey: [QUERY_KEY.FILE],
       });
       notification.success({
-        message: t("UPLOAD_AVATAR.SUCCESS") as string,
+        message: t("UPDATE_EMPLOYEE.SUCCESS") as string,
       });
     },
     onError: () => {
       notification.error({
-        message: t("UPLOAD_AVATAR.FAILED") as string,
-        description: t("UPLOAD_AVATAR.FAILED_MESSAGE") as string,
+        message: t("UPDATE_EMPLOYEE.FAILED") as string,
+        description: t("UPDATE_EMPLOYEE.FAILED_MESSAGE") as string,
       });
     },
   });
@@ -165,13 +165,13 @@ export const useUpdateUser = (id: string) => {
         queryKey: [QUERY_KEY.USERS],
       });
       notification.success({
-        message: t("UPDATE_USER.SUCCESS"),
+        message: t("UPDATE_EMPLOYEE.SUCCESS_USER"),
       });
     },
     onError: () => {
       notification.error({
-        message: t("UPDATE_PROJECT.FAILED") as string,
-        description: t("UPDATE_PROJECT.ADDEMPLOYEE_FAILED_MESSAGE") as string,
+        message: t("UPDATE_EMPLOYEE.FAILED") as string,
+        description: t("UPDATE_EMPLOYEE.USER_FAILED_MESSAGE") as string,
       });
     },
   });
@@ -209,13 +209,13 @@ export const usePostLanguage = () => {
         queryKey: [QUERY_KEY.USERS, data.data.user.id],
       });
       notification.success({
-        message: t("UPDATE_USER.SUCCESS"),
+        message: t("UPDATE_EMPLOYEE.POST_LANGUAGE_SUCCESS"),
       });
     },
     onError: () => {
       notification.error({
-        message: t("UPDATE_USER.FAILED"),
-        description: t("UPDATE_USER.DESCRIPTION"),
+        message: t("UPDATE_EMPLOYEE.FAILED"),
+        description: t("UPDATE_EMPLOYEE.LANGUAGE_DESCRIPTION"),
       });
     },
   });
@@ -233,13 +233,13 @@ export const useDeleteLanguage = () => {
         queryKey: [QUERY_KEY.USERS, data.data.id],
       });
       notification.success({
-        message: t("DELETE_USER.SUCCESS") as string,
+        message: t("UPDATE_EMPLOYEE.LANGUAGE_SUCCESS") as string,
       });
     },
     onError: () => {
       notification.error({
-        message: t("DELETE_USER.FAILED") as string,
-        description: t("DELETE_USER.FAILED_MESSAGE") as string,
+        message: t("UPDATE_EMPLOYEE.FAILED") as string,
+        description: t("UPDATE_EMPLOYEE.LANGUAGE_FAILED_MESSAGE") as string,
       });
     },
   });
@@ -257,13 +257,13 @@ export const usePostTechnical = () => {
         queryKey: [QUERY_KEY.USERS, data.data.user.id],
       });
       notification.success({
-        message: t("UPDATE_USER.SUCCESS"),
+        message: t("UPDATE_EMPLOYEE.POST_TECHNICAL_SUCCESS"),
       });
     },
     onError: () => {
       notification.error({
-        message: t("UPDATE_USER.FAILED"),
-        description: t("UPDATE_USER.DESCRIPTION"),
+        message: t("UPDATE_EMPLOYEE.FAILED"),
+        description: t("UPDATE_EMPLOYEE.TECHNICAL_DESCRIPTION"),
       });
     },
   });
@@ -281,13 +281,13 @@ export const useDeleteTechnical = () => {
         queryKey: [QUERY_KEY.USERS, data.data.id],
       });
       notification.success({
-        message: t("DELETE_USER.SUCCESS") as string,
+        message: t("UPDATE_EMPLOYEE.DELETE_TECHNICAL_SUCCESS") as string,
       });
     },
     onError: () => {
       notification.error({
-        message: t("DELETE_USER.FAILED") as string,
-        description: t("DELETE_USER.FAILED_MESSAGE") as string,
+        message: t("UPDATE_EMPLOYEE.FAILED") as string,
+        description: t("UPDATE_EMPLOYEE.TECHNICAL_FAILED_MESSAGE") as string,
       });
     },
   });
