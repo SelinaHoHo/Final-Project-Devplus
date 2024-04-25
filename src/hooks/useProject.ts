@@ -50,7 +50,7 @@ export const useCreateProject = () => {
 
 export const useGetProjects = (param: GetListProject): UseQueryResult<IProject, Error> => {
   return useQuery<IProject>({
-    queryKey: [QUERY_KEY.PROJECTS],
+    queryKey: [QUERY_KEY.PROJECTS, param.page, param.take],
     queryFn: async (): Promise<IProject> => {
       const { data } = await getProjects(param);
       return data;

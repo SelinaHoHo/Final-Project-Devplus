@@ -2,13 +2,29 @@ import {
   createTechnical,
   deleteTechnical,
   getAllTechnical,
+  getTechnicalsPagi,
   updateTechnical,
 } from "@/apis/technical.api";
 import { QUERY_KEY } from "@/constants/queryKey";
-import ISkill, { ISkillCreate, ISkills } from "@/interfaces/skill/skills.interface";
+import ISkill, {
+  GetListSkills,
+  ISkillCreate,
+  ISkillPagination,
+  ISkills,
+} from "@/interfaces/skill/skills.interface";
 import { UseQueryResult, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { notification } from "antd";
 import { useTranslation } from "react-i18next";
+
+export const useGetTechnicals = (param: GetListSkills): UseQueryResult<ISkillPagination, Error> => {
+  return useQuery<ISkillPagination>({
+    queryKey: [QUERY_KEY.TECHNICALS, param.page, param.take],
+    queryFn: async (): Promise<ISkillPagination> => {
+      const { data } = await getTechnicalsPagi(param);
+      return data;
+    },
+  });
+};
 
 export const useCreateTechnical = () => {
   const { t } = useTranslation();

@@ -201,6 +201,7 @@
     "PROJECT_NAME": "Nhập tên dự án"
   },
   "DETAIL_EMPLOYEE": {
+    "DETAIL": "Chi tiết",
     "PROFILE": "Thông tin cá nhân",
     "ADDRESS": "Địa chỉ",
     "EMAIL": "Email",
@@ -215,6 +216,9 @@
   },
   "SKILL": {
     "NAME": "Tên",
+    "SEARCH_POSITION": "Nhập tên vị trí",
+    "SEARCH_LANG": "Nhập tên ngôn ngữ/framework",
+    "SEARCH_TECH": "Nhập tên kỹ thuật",
     "POSITION_NAME": "Tên vị trí",
     "LANG_NAME": "Tên ngôn ngữ/framework",
     "TECH_NAME": "Tên kỹ thuật",

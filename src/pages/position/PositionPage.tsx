@@ -1,19 +1,23 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-case-declarations */
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { Table } from "@/components/core/Table/Table";
 import { skillTable } from "@/components/skill/skillTable";
+import i18n from "@/config/i18n";
 import { yupSync } from "@/helpers/validation";
 import {
   useCreatePosition,
   useDeletePosition,
-  useGetPosition,
+  useGetPositions,
   useUpdatePosition,
 } from "@/hooks/usePosition";
 import ISkill, { ISkillCreate } from "@/interfaces/skill/skills.interface";
-import { Button, Col, Form, Input, Modal, Row, Table, Typography, message } from "antd";
+import { RootState } from "@/redux/store";
+import { Button, Col, Form, Input, Modal, Row, message } from "antd";
 import { Rule } from "antd/es/form";
 import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
+import { Translation, useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 import * as Yup from "yup";
 import "../project/Create/createProject.scss";
 
@@ -61,15 +65,45 @@ const CreateForm: React.FC<CreateFormProps> = ({ visible, onCreate, onCancel }) 
   );
 };
 
-const { Title } = Typography;
 const PositionPage = () => {
   const { t } = useTranslation();
-  const { data, isLoading } = useGetPosition();
   const { mutate: deletePosition } = useDeletePosition();
   const { mutate: createPosition } = useCreatePosition();
   const { mutate: updatePosition } = useUpdatePosition();
   const [visible, setVisible] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
+  const { theme } = useSelector((state: RootState) => state.global);
+
+  const [table, setTable] = useState({
+    page: 1,
+    take: 10,
+  });
+
+  const [filterName, setFilterName] = useState("");
+
+  const paginatorSearch = {
+    name: filterName,
+    page: table.page,
+    take: table.take,
+  };
+  const { data, isLoading, refetch } = useGetPositions(paginatorSearch);
+
+  const onSearch = () => {
+    setTable({
+      page: 1,
+      take: 10,
+    });
+    refetch();
+  };
+
+  const handleChangeSearch = async (value: string) => {
+    if (value === "") {
+      await setFilterName(value);
+      refetch();
+    } else {
+      setFilterName(value);
+    }
+  };
 
   const handleCreate = (values: ISkillCreate) => {
     createPosition(values);
@@ -138,25 +172,89 @@ const PositionPage = () => {
   };
 
   return (
-    <>
+    <div className='page-create-project'>
       {contextHolder}
-      <Row style={{ marginLeft: 15, marginRight: 15 }}>
-        <Col span={12}>
-          <Title level={3}>{t("SKILL.POSITION_TITLE")}</Title>
-        </Col>
-        <Col span={12} style={{ textAlign: "right" }}>
-          <Button type='primary' onClick={showModal}>
-            {t("SKILL.CREATE_NEW_POSITION")}
-          </Button>
-          <CreateForm visible={visible} onCreate={handleCreate} onCancel={handleCancel} />
-        </Col>
-      </Row>
-      <Row>
-        <Col span={24}>
-          <Table columns={skillTable(handleAction, true)} loading={isLoading} dataSource={data} />
-        </Col>
-      </Row>
-    </>
+
+      {theme === "dark" ? (
+        <div className='form-create-dark'>
+          <Row gutter={[8, 4]} style={{ marginBottom: "10px" }}>
+            <Col span={6}>
+              <Input
+                placeholder={i18n.t("SKILL.SEARCH_POSITION")}
+                size='middle'
+                allowClear
+                onChange={(value) => handleChangeSearch(value.target.value)}
+              />
+            </Col>
+            <Col span={6}>
+              <Button type='primary' onClick={onSearch} size='middle'>
+                <Translation>{(t) => t("TABLE.SEARCH")}</Translation>
+              </Button>
+            </Col>
+            <Col span={12} style={{ textAlign: "right" }}>
+              <Button type='primary' onClick={showModal}>
+                {t("SKILL.CREATE_NEW_POSITION")}
+              </Button>
+              <CreateForm visible={visible} onCreate={handleCreate} onCancel={handleCancel} />
+            </Col>
+          </Row>
+          <Row>
+            <Col span={24}>
+              <Table
+                paginate={{
+                  table,
+                  setTable,
+                  total: data?.meta.itemCount || 1,
+                  pageCount: data?.meta.pageCount || 10,
+                }}
+                columns={skillTable(handleAction, true)}
+                loading={isLoading}
+                dataSource={data?.data}
+              />
+            </Col>
+          </Row>
+        </div>
+      ) : (
+        <div className='form-create-light'>
+          <Row gutter={[8, 4]} style={{ marginBottom: "10px" }}>
+            <Col span={6}>
+              <Input
+                placeholder={i18n.t("SKILL.SEARCH_POSITION")}
+                size='middle'
+                allowClear
+                onChange={(value) => handleChangeSearch(value.target.value)}
+              />
+            </Col>
+            <Col span={6}>
+              <Button type='primary' onClick={onSearch} size='middle'>
+                <Translation>{(t) => t("TABLE.SEARCH")}</Translation>
+              </Button>
+            </Col>
+            <Col span={12} style={{ textAlign: "right" }}>
+              <Button type='primary' onClick={showModal}>
+                {t("SKILL.CREATE_NEW_POSITION")}
+              </Button>
+              <CreateForm visible={visible} onCreate={handleCreate} onCancel={handleCancel} />
+            </Col>
+          </Row>
+          <Row>
+            <Col span={24}>
+              <Table
+                paginate={{
+                  table,
+                  setTable,
+                  total: data?.meta.itemCount || 1,
+                  pageCount: data?.meta.pageCount || 10,
+                }}
+                columns={skillTable(handleAction, true)}
+                loading={isLoading}
+                dataSource={data?.data}
+              />
+            </Col>
+          </Row>
+        </div>
+      )}
+    </div>
   );
 };
 

@@ -2,15 +2,18 @@ import { Table } from "@/components/core/Table/Table";
 import i18n from "@/config/i18n";
 import { useDeleteProject, useGetProjects, useUpdateStatus } from "@/hooks/useProject";
 import { ColumnIProject } from "@/interfaces/project/projects.interface";
-import { Button, Col, Modal, Row } from "antd";
-import Search from "antd/es/input/Search";
+import { RootState } from "@/redux/store";
+import { Button, Col, Input, Modal, Row } from "antd";
 import { t } from "i18next";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Translation } from "react-i18next";
+import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import "./ListProject.scss";
 import { ProjectsColumnsTable } from "./ProjectListColumn";
 
 const ListProject = () => {
+  const { theme } = useSelector((state: RootState) => state.global);
   const [table, setTable] = useState({
     page: 1,
     take: 10,
@@ -63,45 +66,103 @@ const ListProject = () => {
     refetch();
   };
 
-  useEffect(() => {
-    refetch();
-  }, [table, refetch]);
+  const handleChangeSearch = async (value: string) => {
+    if (value === "") {
+      await setFilterName(value);
+      refetch();
+    } else {
+      setFilterName(value);
+    }
+  };
 
   return (
-    <>
-      <Row>
-        <Col span={12}>
-          <Search
-            placeholder={i18n.t("LISTPROJECT.PROJECT_NAME")}
-            onChange={(value) => setFilterName(value.target.value)}
-            allowClear
-            size='middle'
-            onSearch={onSearch}
-            style={{ width: 250 }}
-          />
-        </Col>
-        <Col span={12} style={{ textAlign: "end" }}>
-          <Button type='primary' size='middle'>
-            <Link to='../create'>{i18n.t("LISTPROJECT.CREATE_BUTTON")}</Link>
-          </Button>
-        </Col>
-      </Row>
-      <Row>
-        <Col span={24}>
-          <Table
-            paginate={{
-              table,
-              setTable,
-              total: data?.meta.itemCount || 1,
-              pageCount: data?.meta.pageCount || 10,
-            }}
-            columns={ProjectsColumnsTable(handleAction, handleChange, true)}
-            loading={isLoading}
-            dataSource={data?.data}
-          />
-        </Col>
-      </Row>
-    </>
+    <div className='page-list-project'>
+      {theme === "dark" ? (
+        <div className='form-create-dark'>
+          <div className='test'>
+            <Row
+              gutter={[8, 4]}
+              style={{ paddingLeft: "10px", paddingRight: "10px", marginBottom: "10px" }}
+            >
+              <Col span={6}>
+                <Input
+                  placeholder={i18n.t("LISTPROJECT.PROJECT_NAME")}
+                  size='middle'
+                  allowClear
+                  onChange={(value) => handleChangeSearch(value.target.value)}
+                />
+              </Col>
+              <Col span={6}>
+                <Button type='primary' onClick={onSearch} size='middle'>
+                  <Translation>{(t) => t("TABLE.SEARCH")}</Translation>
+                </Button>
+              </Col>
+              <Col span={12} style={{ textAlign: "end" }}>
+                <Button type='primary' size='middle'>
+                  <Link to='../create'>{i18n.t("LISTPROJECT.CREATE_BUTTON")}</Link>
+                </Button>
+              </Col>
+            </Row>
+          </div>
+          <Row>
+            <Col span={24}>
+              <Table
+                paginate={{
+                  table,
+                  setTable,
+                  total: data?.meta.itemCount || 1,
+                  pageCount: data?.meta.pageCount || 10,
+                }}
+                columns={ProjectsColumnsTable(handleAction, handleChange, true)}
+                loading={isLoading}
+                dataSource={data?.data}
+              />
+            </Col>
+          </Row>
+        </div>
+      ) : (
+        <div className='form-create-light'>
+          <Row
+            gutter={[8, 4]}
+            style={{ paddingLeft: "10px", paddingRight: "10px", marginBottom: "10px" }}
+          >
+            <Col span={6}>
+              <Input
+                placeholder={i18n.t("LISTPROJECT.PROJECT_NAME")}
+                size='middle'
+                allowClear
+                onChange={(value) => handleChangeSearch(value.target.value)}
+              />
+            </Col>
+            <Col span={6}>
+              <Button type='primary' onClick={onSearch} size='middle'>
+                <Translation>{(t) => t("TABLE.SEARCH")}</Translation>
+              </Button>
+            </Col>
+            <Col span={12} style={{ textAlign: "end" }}>
+              <Button type='primary' size='middle'>
+                <Link to='../create'>{i18n.t("LISTPROJECT.CREATE_BUTTON")}</Link>
+              </Button>
+            </Col>
+          </Row>
+          <Row>
+            <Col span={24}>
+              <Table
+                paginate={{
+                  table,
+                  setTable,
+                  total: data?.meta.itemCount || 1,
+                  pageCount: data?.meta.pageCount || 10,
+                }}
+                columns={ProjectsColumnsTable(handleAction, handleChange, true)}
+                loading={isLoading}
+                dataSource={data?.data}
+              />
+            </Col>
+          </Row>
+        </div>
+      )}
+    </div>
   );
 };
 export default ListProject;

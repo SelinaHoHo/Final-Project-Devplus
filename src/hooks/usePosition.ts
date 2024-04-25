@@ -2,13 +2,29 @@ import {
   createPosition,
   deletePosition,
   getAllPosition,
+  getPositionsPagi,
   updatePosition,
 } from "@/apis/position.api";
 import { QUERY_KEY } from "@/constants/queryKey";
-import ISkill, { ISkillCreate, ISkills } from "@/interfaces/skill/skills.interface";
+import ISkill, {
+  GetListSkills,
+  ISkillCreate,
+  ISkillPagination,
+  ISkills,
+} from "@/interfaces/skill/skills.interface";
 import { UseQueryResult, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { notification } from "antd";
 import { useTranslation } from "react-i18next";
+
+export const useGetPositions = (param: GetListSkills): UseQueryResult<ISkillPagination, Error> => {
+  return useQuery<ISkillPagination>({
+    queryKey: [QUERY_KEY.POSITIONS, param.page, param.take],
+    queryFn: async (): Promise<ISkillPagination> => {
+      const { data } = await getPositionsPagi(param);
+      return data;
+    },
+  });
+};
 
 export const useCreatePosition = () => {
   const { t } = useTranslation();

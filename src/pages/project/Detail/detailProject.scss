@@ -1,22 +1,22 @@
 .page-detail-project {
   text-align: center;
-  margin: 0 40px;
+  margin: 0 2rem;
   height: 100vh;
 }
 .detail-project-light {
-  margin-top: 10px;
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 8px 8px 0 #16c2c20e, 0 4px 10px 0 #16c2c21f;
+  max-height: 75vh;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .detail-project-dark {
-  margin-top: 10px;
-  background-color: #141414;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 8px 8px 0 #ffffff00, 0 4px 10px rgba(255, 255, 255, 0.26);
+  max-height: 75vh;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 .ant-typography {
   margin-top: 5px;
