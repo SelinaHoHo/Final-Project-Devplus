@@ -1,13 +1,13 @@
 {
   "MENU": {
     "DASHBOARD": "Bảng điều khiển",
-    "USERS": "Người dùng",
+    "USERS": "Nhân viên",
     "PROJECTS": "Dự án",
     "TECHNICALS": "Kỹ thuật",
     "LANGUAGES": "Ngôn ngữ",
     "POSITIONS": "Vị trí",
-    "LIST_USERS": "Danh sách người dùng",
-    "CREATE_USER": "Tạo người dùng",
+    "LIST_USERS": "Danh sách nhân viên",
+    "CREATE_USER": "Tạo nhân viên",
     "LIST_PROJECTS": "Danh sách dự án",
     "CREATE_PROJECTS": "Tạo dự án",
     "CLOSE_CURRENT": "Đóng tab hiện tại",
@@ -189,12 +189,12 @@
     "CONFIRM_DELETE": "Xác nhận xóa: {{name}}",
     "OK": "OK",
     "CANCEL": "Hủy",
-    "SUCCESS": "Xóa Người dùng thành công",
+    "SUCCESS": "Xóa nhân viên thành công",
     "FAILED": "Xóa người dùng thất bại",
-    "FAILED_MESSAGE": "Người dùng này đang trong dự án, vui lòng kiểm tra lại"
+    "FAILED_MESSAGE": "Nhân viên này đang trong dự án, vui lòng kiểm tra lại"
   },
   "LISTUSER": {
-    "CREATE_BUTTON": "Tạo người dùng"
+    "CREATE_BUTTON": "Tạo nhân viên"
   },
   "LISTPROJECT": {
     "CREATE_BUTTON": "Tạo dự án",
@@ -283,12 +283,12 @@
     "ROLES_REQUIRED": "Vui lòng chọn vị trí",
     "PROJECT_NAME": "Nhập tên dự án"
   },
-  "TRACKING":{
+  "TRACKING": {
     "EMPLOYEE": "Thời Gian Tham Gia Của Các Thành Viên",
-    "OUT":"Ra khỏi", 
-    "IN":"Tham gia",
-    "END":"Kết thúc: {{time}}",
-    "START":"Bắt đầu: {{time}}",
-    "PARTICIPATED":"tham gia"
+    "OUT": "Ra khỏi",
+    "IN": "Tham gia",
+    "END": "Kết thúc: {{time}}",
+    "START": "Bắt đầu: {{time}}",
+    "PARTICIPATED": "tham gia"
   }
 }

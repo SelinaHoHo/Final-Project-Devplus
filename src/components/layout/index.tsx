@@ -73,7 +73,8 @@ const LayoutPage: FC = () => {
           style={{ backgroundColor: token.token.colorBgContainer }}
           collapsedWidth={isMobile ? 0 : 80}
           collapsed={collapsed}
-          breakpoint='md'
+          breakpoint='lg'
+          width='250'
         >
           <div className='collapsed' onClick={toggle}>
             <svg
@@ -105,7 +106,7 @@ const LayoutPage: FC = () => {
         </Sider>
       ) : (
         <Drawer
-          width='200'
+          width='250'
           placement='left'
           bodyStyle={{ padding: 0, height: "100%" }}
           closable={false}
