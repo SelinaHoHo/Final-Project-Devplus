@@ -38,7 +38,7 @@ const EmployeeFormTable: FC<EmployeeFormTableProps> = ({ data }) => {
   return (
     <Row gutter={[0, 4]}>
       <Col xs={24} sm={24} md={24} lg={12}>
-        <Row gutter={[0, 4]}>
+        <Row gutter={[4, 4]}>
           <Col xs={24} sm={24} md={24} lg={12}>
             <Form.Item
               name='employeeId'
