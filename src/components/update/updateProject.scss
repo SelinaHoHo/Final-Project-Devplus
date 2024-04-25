@@ -49,3 +49,10 @@
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
+
+.table-assign-employee {
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
+}

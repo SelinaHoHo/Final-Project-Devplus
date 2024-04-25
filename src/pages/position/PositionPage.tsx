@@ -86,7 +86,7 @@ const PositionPage = () => {
     page: table.page,
     take: table.take,
   };
-  const { data, isLoading, refetch } = useGetPositions(paginatorSearch);
+  const { data, isLoading, refetch, isFetching } = useGetPositions(paginatorSearch);
 
   const onSearch = () => {
     setTable({
@@ -189,7 +189,7 @@ const PositionPage = () => {
               </Button>
             </Col>
             <Col span={14} style={{ textAlign: "right" }}>
-              <Button type='primary' onClick={showModal}>
+              <Button type='primary' loading={isFetching} onClick={showModal}>
                 {t("SKILL.CREATE_NEW_POSITION")}
               </Button>
               <CreateForm visible={visible} onCreate={handleCreate} onCancel={handleCancel} />
@@ -223,7 +223,7 @@ const PositionPage = () => {
               />
             </Col>
             <Col span={6}>
-              <Button type='primary' onClick={onSearch} size='middle'>
+              <Button type='primary' loading={isFetching} onClick={onSearch} size='middle'>
                 <Translation>{(t) => t("TABLE.SEARCH")}</Translation>
               </Button>
             </Col>

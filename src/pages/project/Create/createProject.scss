@@ -10,7 +10,7 @@
   border-radius: 10px;
   box-shadow: 0 8px 8px 0 #16c2c20e, 0 4px 10px 0 #16c2c21f;
   &::-webkit-scrollbar {
-    display: none;
+    display: none !important;
   }
 }
 
@@ -23,14 +23,14 @@
   border-radius: 10px;
   box-shadow: 0 8px 8px 0 #ffffff00, 0 4px 10px rgba(255, 255, 255, 0.26);
   &::-webkit-scrollbar {
-    display: none;
+    display: none !important;
   }
 }
 .ant-typography {
   margin-top: 5px;
 }
 
-.ant-table-wrapper .ant-table-pagination.ant-pagination {
+.ant-table-wrapper.ant-table-pagination.ant-pagination {
   margin: unset !important;
 }
 
@@ -46,8 +46,16 @@
 
 .ant-table-wrapper.css-dev-only-do-not-override-1kd7ozu {
   margin: unset !important;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
 }
 
 .ant-table-wrapper.css-dev-only-do-not-override-n3jbno {
   margin: unset !important;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
 }

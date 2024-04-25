@@ -1,12 +1,10 @@
 import { Table } from "@/components/core/Table/Table";
-import i18n from "@/config/i18n";
 import { useDeleteUser, useGetAccounts, useGetCv } from "@/hooks/useUser";
 import { IUser } from "@/interfaces/user/users.interface";
 import { RootState } from "@/redux/store";
 import { Button, Col, Input, Modal, Row } from "antd";
-import { t } from "i18next";
 import { useEffect, useState } from "react";
-import { Translation } from "react-i18next";
+import { Translation, useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import "./ListUser.scss";
@@ -14,6 +12,7 @@ import { UsersColumnsTable } from "./UserListColumn";
 
 const ListUser = () => {
   const { theme } = useSelector((state: RootState) => state.global);
+  const { t } = useTranslation();
   const [table, setTable] = useState({
     page: 1,
     take: 10,
@@ -24,7 +23,7 @@ const ListUser = () => {
     page: table.page,
     take: table.take,
   };
-  const { data, isLoading, refetch } = useGetAccounts(paginatorSearch);
+  const { data, isLoading, refetch, isFetching } = useGetAccounts(paginatorSearch);
 
   const { mutate: exportCv } = useGetCv();
   useEffect(() => {
@@ -82,7 +81,7 @@ const ListUser = () => {
           <Row gutter={[8, 4]} style={{ marginBottom: "1.5rem" }}>
             <Col span={4}>
               <Input
-                placeholder={i18n.t("TABLE.SEARCH_NAME")}
+                placeholder={t("TABLE.SEARCH_NAME")}
                 size='middle'
                 value={filterName}
                 allowClear
@@ -90,7 +89,7 @@ const ListUser = () => {
               ></Input>
             </Col>
             <Col span={6}>
-              <Button type='primary' onClick={handleSearch} size='middle'>
+              <Button type='primary' loading={isFetching} onClick={handleSearch} size='middle'>
                 <Translation>{(t) => t("TABLE.SEARCH")}</Translation>
               </Button>
             </Col>
@@ -121,7 +120,7 @@ const ListUser = () => {
           <Row gutter={[8, 4]} style={{ marginBottom: "1.5rem" }}>
             <Col span={4}>
               <Input
-                placeholder={i18n.t("TABLE.SEARCH_NAME")}
+                placeholder={t("TABLE.SEARCH_NAME")}
                 size='middle'
                 value={filterName}
                 allowClear
@@ -129,7 +128,7 @@ const ListUser = () => {
               ></Input>
             </Col>
             <Col span={6}>
-              <Button type='primary' onClick={handleSearch} size='middle'>
+              <Button type='primary' loading={isFetching} onClick={handleSearch} size='middle'>
                 <Translation>{(t) => t("TABLE.SEARCH")}</Translation>
               </Button>
             </Col>

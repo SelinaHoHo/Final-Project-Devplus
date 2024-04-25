@@ -25,8 +25,8 @@ type DataProps = {
 const UpdateEmployeeProject: FC<DataProps> = ({ data }) => {
   const { data: user } = useGetAllUserNoPagination();
   const { data: position } = useGetPosition();
-  const { mutate: assignEmployee } = useAddEmployeeToProject();
-  const { mutate: unassignEmployee } = useUnAssignEmployee();
+  const { mutate: assignEmployee, isPending: isPendingAssign } = useAddEmployeeToProject();
+  const { mutate: unassignEmployee, isPending: isPendingUnassign } = useUnAssignEmployee();
   const { t } = useTranslation();
   const [form] = Form.useForm();
   const [messageApi, contextHolder] = message.useMessage();
@@ -117,7 +117,13 @@ const UpdateEmployeeProject: FC<DataProps> = ({ data }) => {
               </Col>
               <Col xs={24} sm={24} md={24} lg={24}>
                 <Form.Item>
-                  <Button type='dashed' htmlType='submit' block icon={<PlusOutlined />}>
+                  <Button
+                    type='dashed'
+                    htmlType='submit'
+                    loading={isPendingAssign}
+                    block
+                    icon={<PlusOutlined />}
+                  >
                     {t("UPDATE_PROJECT.ADD_EMPLOYEE")}
                   </Button>
                 </Form.Item>
@@ -132,6 +138,7 @@ const UpdateEmployeeProject: FC<DataProps> = ({ data }) => {
               wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
             >
               <Table<ProjectMembers>
+                loading={isPendingUnassign || isPendingAssign}
                 columns={UpdateAssignEmployee(handleActionDelete)}
                 dataSource={data?.projectMembers}
               />

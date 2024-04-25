@@ -34,7 +34,7 @@ const UpdateProjectForm: FC<DataProps> = ({ data }) => {
   const { data: language } = useGetLanguage();
   const { t } = useTranslation();
   const [form] = Form.useForm();
-  const { mutate: updateProject } = useUpdateProject(data?.id as string);
+  const { mutate: updateProject, isPending } = useUpdateProject(data?.id as string);
 
   const validator = [
     yupSync(
@@ -192,7 +192,13 @@ const UpdateProjectForm: FC<DataProps> = ({ data }) => {
           </Col>
         </Row>
         <Form.Item style={{ textAlign: "right" }}>
-          <Button type='primary' size='large' htmlType='submit' form='updateProject'>
+          <Button
+            type='primary'
+            size='large'
+            htmlType='submit'
+            loading={isPending}
+            form='updateProject'
+          >
             {t("UPDATE_PROJECT.SUBMIT")}
           </Button>
         </Form.Item>
