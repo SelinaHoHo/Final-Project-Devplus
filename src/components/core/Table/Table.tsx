@@ -34,7 +34,7 @@ interface PaginateOptions {
   pageCount: number;
 }
 
-const pageSizeOptions = [{ value: 5 }, { value: 10 }, { value: 20 }, { value: 50 }, { value: 100 }];
+const pageSizeOptions = [{ value: 5 }, { value: 10 }, { value: 20 }, { value: 50 }];
 
 type TableProps<T> = TablePropsAntd<T> & {
   paginate?: PaginateOptions;

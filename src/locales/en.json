@@ -153,10 +153,10 @@
     "DETAIL": "Detail"
   },
   "PROJECT": {
-    "PROJECTNAME": "Project Name",
+    "PROJECTNAME": "Name",
     "STARTDATE": "Start Date",
-    "TARGETDATE": "Target Completion Date",
-    "PROJECTSTATUS": "Project Status",
+    "TARGETDATE": "End Date",
+    "PROJECTSTATUS": "Status",
     "PROGRESS": "Progress",
     "ACTIONS": "Actions",
     "MEMBERS": "Members",
@@ -279,14 +279,14 @@
     "ADD_EMPLOYEE": "Assign",
     "EMPLOYEE_REQUIRED": "Please select employee",
     "ROLES_REQUIRED": "Please select roles",
-    "PROJECT_NAME": "Enter project name"},
-  "TRACKING":{
+    "PROJECT_NAME": "Enter project name"
+  },
+  "TRACKING": {
     "EMPLOYEE": "Employee Participation Timeline",
-    "OUT":"Out", 
-    "IN":"In",
-    "END":"End: {{time}}",
-    "START":"Start: {{time}}",
-    "PARTICIPATED":" participated in the"
+    "OUT": "Out",
+    "IN": "In",
+    "END": "End: {{time}}",
+    "START": "Start: {{time}}",
+    "PARTICIPATED": " participated in the"
   }
-  
 }
