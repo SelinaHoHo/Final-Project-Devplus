@@ -1,12 +1,14 @@
+import type { PayloadAction } from "@reduxjs/toolkit";
 import type { TagItem, TagState } from "../../../interfaces/layout/tagView.interface";
 import { history } from "../../../routes/history";
-import type { PayloadAction } from "@reduxjs/toolkit";
 
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: TagState = {
   activeTagId: location.pathname,
   tags: [],
+  name: "",
+  namePrj: "",
 };
 
 const tagsViewSlice = createSlice({
@@ -62,10 +64,23 @@ const tagsViewSlice = createSlice({
 
       state.tags = activeIsDashboard ? [state.tags[0]] : [state.tags[0], activeTag!];
     },
+    setEmployeeDetailName(state, action: PayloadAction<string>) {
+      state.name = action.payload;
+    },
+    setProjectDetailName(state, action: PayloadAction<string>) {
+      state.namePrj = action.payload;
+    },
   },
 });
 
-export const { setActiveTag, addTag, removeTag, removeAllTag, removeOtherTag } =
-  tagsViewSlice.actions;
+export const {
+  setActiveTag,
+  addTag,
+  removeTag,
+  removeAllTag,
+  removeOtherTag,
+  setEmployeeDetailName,
+  setProjectDetailName,
+} = tagsViewSlice.actions;
 
 export default tagsViewSlice.reducer;

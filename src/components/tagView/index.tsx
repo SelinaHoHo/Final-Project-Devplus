@@ -12,7 +12,7 @@ import { formatLocale } from "../../utils/locale";
 import TagsViewAction from "./tagViewAction";
 
 const TagsView: FC = () => {
-  const { tags, activeTagId } = useSelector((state: RootState) => state.tagsView);
+  const { tags, activeTagId, name, namePrj } = useSelector((state: RootState) => state.tagsView);
   const { menuList } = useSelector((state: RootState) => state.global);
   const dispatch = useDispatch();
   const location = useLocation();
@@ -63,6 +63,24 @@ const TagsView: FC = () => {
     }
   }, [dispatch, location.pathname, menuList]);
 
+  // useEffect(() => {
+  //   if (location.pathname.startsWith("/employees/detail/")) {
+  //     setDetailNameEmployee(name);
+  //   } else if (location.pathname.startsWith("/employees/edit")) {
+  //     setDetailNameEmployee(name);
+  //   } else {
+  //     setDetailNameEmployee(undefined);
+  //   }
+
+  //   if (location.pathname.startsWith("/projects/detail/")) {
+  //     setDetailNameProject(namePrj);
+  //   } else if (location.pathname.startsWith("/projects/edit/")) {
+  //     setDetailNameProject(namePrj);
+  //   } else {
+  //     setDetailNameProject(undefined);
+  //   }
+  // }, [location.pathname, name, namePrj]);
+
   return (
     <div id='pageTabs' style={{ padding: "6px" }}>
       <Tabs
@@ -74,10 +92,31 @@ const TagsView: FC = () => {
         onEdit={(targetKey, action) => action === "remove" && onClose(targetKey as string)}
         tabBarExtraContent={<TagsViewAction />}
         items={tags.map((tag) => {
+          let label = formatLocale(t, "MENU", tag.label);
+
+          if (tag.path === "/employees/list" && location.pathname.startsWith("/employees/detail")) {
+            label = name;
+          } else if (
+            tag.path === "/projects/list" &&
+            location.pathname.startsWith("/projects/detail")
+          ) {
+            label = namePrj;
+          } else if (
+            tag.path === "/employees/list" &&
+            location.pathname.startsWith("/employees/edit")
+          ) {
+            label = name;
+          } else if (
+            tag.path === "/projects/list" &&
+            location.pathname.startsWith("/projects/edit")
+          ) {
+            label = namePrj;
+          }
+
           return {
             key: tag.path,
             closable: tag.closable,
-            label: formatLocale(t, "MENU", tag.label),
+            label,
           };
         })}
       />
