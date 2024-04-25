@@ -36,7 +36,7 @@ const ListProject = () => {
         navigate(`/projects/edit/${_item.id}`);
         break;
       case "detail":
-        navigate(`/projects/${_item.id}`);
+        navigate(`/projects/detail/${_item.id}`);
         break;
       case "delete":
         //  eslint-disable-next-line no-case-declarations

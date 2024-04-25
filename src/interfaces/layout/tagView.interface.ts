@@ -10,6 +10,7 @@ export type TagItem = {
 
 export interface TagState {
   tags: TagItem[];
-
+  name: string;
+  namePrj: string;
   activeTagId: TagItem["path"];
 }

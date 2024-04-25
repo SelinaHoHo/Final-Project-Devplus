@@ -90,7 +90,7 @@ const Router = () => {
               element: <UpdateProject />,
             },
             {
-              path: ":id",
+              path: "detail/:id",
               element: <DetailProject />,
             },
           ],
