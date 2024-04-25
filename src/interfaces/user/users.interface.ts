@@ -26,8 +26,103 @@ export interface IUser {
     description: string;
     positions: { id: string; name: string; description: string }[];
     technicalMember: { id: string }[];
+    languageMember: { id: string }[];
+    positionMember: { id: string }[];
   };
 }
+
+export interface GetUserById {
+  id: string;
+  userName: string;
+  email: string;
+  isManager: boolean;
+  managerId: string | null;
+  profile: {
+    fullName: string;
+    avatarUrl: string;
+    dayOfBirth: string;
+    description: string;
+    phoneNumber: string | null;
+    address: string | null;
+  };
+  languageMember: languageMember[];
+  technicalMember: technicalMember[];
+  positionMember: positionMember[];
+}
+
+export interface IUpdateUser {
+  fullName: string;
+  isManager: boolean;
+  dayOfBirth: string;
+  description: string;
+  managerId: string;
+  address: string;
+  avatarUrl: string;
+  languageMember: languageMember[];
+  technicalMember: technicalMember[];
+  positionMember: positionMember[];
+}
+
+export interface technicalMember {
+  key: React.Key;
+  id: string;
+  experience: string;
+  level: string;
+  technical: {
+    id: string;
+    name: string;
+  };
+}
+
+export interface technicalMemberAdd {
+  id: string;
+  experience: string;
+  level: string;
+  technical: {
+    id: string;
+    name: string;
+    isDelete: boolean;
+    technicalProject: { id: string }[];
+    user: GetUserById;
+  };
+}
+
+export interface languageMember {
+  key: React.Key;
+  id: string;
+  experience: string;
+  level: string;
+  language: {
+    id: string;
+    name: string;
+  };
+}
+export interface languageMemberAdd {
+  id: string;
+  experience: string;
+  level: string;
+  language: {
+    id: string;
+    name: string;
+    isDelete: boolean;
+    languageProject: { id: string }[];
+    user: GetUserById;
+  };
+}
+
+export interface positionMember {
+  id: string;
+  postion: {
+    id: string;
+    name: string;
+    description: string;
+  };
+}
+
+export interface positions {
+  id: string;
+}
+
 export interface Position {
   id: string;
   name: string;

@@ -17,4 +17,7 @@ export const API_URL = {
   CREATE_PROJECT: "/project",
   ADD_EMPLOYEE: "/project/add-employee",
   UNASSIGN_EMPLOYEE: "/project/unassign-employee",
+  FILE: "/file",
+  LANGUAGE_MEMBER: "/languageMember",
+  TECHNICAL_MEMBER: "/technicalMember",
 };

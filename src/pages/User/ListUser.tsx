@@ -49,6 +49,9 @@ const ListUser = () => {
       case "down":
         exportCv(item.id);
         break;
+      case "edit":
+        navigate(`/employees/update/${item.id}`);
+        break;
       case "detail":
         navigate(`/employees/detail/${item.id}`);
         break;

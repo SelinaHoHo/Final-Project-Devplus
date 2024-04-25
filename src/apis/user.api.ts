@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import instance from "@/config/axios";
 import { API_URL } from "@/constants/apiUrl";
 import { ILanguage } from "@/interfaces/langs/langs.interface";
@@ -7,10 +8,16 @@ import { ITechnology } from "@/interfaces/tech/tech.interface";
 import {
   DeleteUser,
   GetListUsers,
+  GetUserById,
   IAssignEmployee,
   IGetUsers,
+  IUpdateUser,
   IUserDetail,
   IUsers,
+  languageMember,
+  languageMemberAdd,
+  technicalMember,
+  technicalMemberAdd,
 } from "@/interfaces/user/users.interface";
 import { AxiosResponse } from "axios";
 import { Buffer } from "buffer";
@@ -72,3 +79,30 @@ export const addEmployeeToProject = (data: IAssignEmployee): Promise<AxiosRespon
 
 export const unassignEmployeeToProject = (id: string) =>
   instance.delete(`${API_URL.UNASSIGN_EMPLOYEE}/${id}`);
+
+export const getUserById = (id: string): Promise<AxiosResponse<GetUserById>> =>
+  instance.get(`${API_URL.USERS}/${id}`);
+
+export const uploadAvatar = (file: any): Promise<AxiosResponse<{ url: string }>> =>
+  instance.post(API_URL.FILE, file, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
+
+export const updateUser = (id: string, params: IUpdateUser): Promise<AxiosResponse<IUpdateUser>> =>
+  instance.patch(`${API_URL.USERS}/${id}`, params);
+
+export const postLanguage = (
+  params: languageMember,
+): Promise<AxiosResponse<{ user: languageMemberAdd }>> =>
+  instance.post(API_URL.LANGUAGE_MEMBER, params);
+
+export const deleteLanguage = (id: string): Promise<AxiosResponse<languageMember>> =>
+  instance.delete(`${API_URL.LANGUAGE_MEMBER}/${id}`);
+
+export const postTechnical = (
+  params: technicalMember,
+): Promise<AxiosResponse<{ user: technicalMemberAdd }>> =>
+  instance.post(API_URL.TECHNICAL_MEMBER, params);
+
+export const deleteTechnical = (id: string): Promise<AxiosResponse<technicalMember>> =>
+  instance.delete(`${API_URL.TECHNICAL_MEMBER}/${id}`);

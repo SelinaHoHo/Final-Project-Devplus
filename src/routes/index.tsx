@@ -2,6 +2,7 @@ import AuthGuard from "@/guards/AuthGuard";
 import GuestGuard from "@/guards/GuestGuard";
 import EmployeeDetail from "@/pages/User/Detail/EmployeeDetail";
 import ListUser from "@/pages/User/ListUser";
+import UpdateUser from "@/pages/User/UpdatUser/UpdateUser";
 import CreateUser from "@/pages/Users/CreateUser/CreateUser";
 import { lazy } from "react";
 import { Navigate, useRoutes } from "react-router-dom";
@@ -62,6 +63,10 @@ const Router = () => {
             {
               path: "createEmployee",
               element: <CreateUser />,
+            },
+            {
+              path: "update/:id",
+              element: <UpdateUser />,
             },
           ],
         },

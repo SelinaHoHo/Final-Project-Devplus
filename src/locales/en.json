@@ -121,7 +121,10 @@
     "FAIL_LANG": "Language/Framework is required",
     "FAIL_TECH": "TECHNICAL is required",
     "POSITIONS_REQUIRED": "Please enter positions",
-    "CREATE_SUCCESS": "Create employee success"
+    "CREATE_SUCCESS": "Create employee success",
+    "ERROR_ROLES": "Please select employee roles",
+    "AVATAR": "Avatar",
+    "AVATAR_REQUIRED": "Please add avatar"
   },
   "TABLE": {
     "EMPTY": "Empty",
