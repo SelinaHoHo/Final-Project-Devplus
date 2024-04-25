@@ -114,6 +114,7 @@ export interface DeleteUser {
 export type IUserDetail = {
   id: string;
   email: string;
+  created_at: string;
   isManager: boolean;
   positionMember: {
     id: string;

@@ -41,6 +41,8 @@ interface TechnicalMember {
   experience: string;
 }
 
+const { Text } = Typography;
+
 const CreateEmployeeForm = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -111,6 +113,7 @@ const CreateEmployeeForm = () => {
           placement: "top",
         });
         setTableDataLanguage([...tableDataLanguage, newData]);
+
         setLanguageMember("");
         setLevelLanguage("");
         setExperienceLanguage("");
@@ -336,6 +339,22 @@ const CreateEmployeeForm = () => {
                 </Form.Item>
               </Col>
 
+              <Col xs={24} sm={24} md={24} lg={12}>
+                <Form.Item
+                  label={t("CREATE_EMPLOYEE.POSITIONS")}
+                  labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
+                  wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
+                  name='positions'
+                  rules={validator}
+                >
+                  <Select mode='multiple' placeholder={t("CREATE_EMPLOYEE.POSITIONS")}>
+                    {positions?.map((position) => (
+                      <Select.Option value={position.id}>{position.name}</Select.Option>
+                    ))}
+                  </Select>
+                </Form.Item>
+              </Col>
+
               <Col
                 xs={24}
                 sm={24}
@@ -399,67 +418,62 @@ const CreateEmployeeForm = () => {
 
             <Row gutter={[8, 8]}>
               <Col xs={24} sm={24} md={24} lg={24}>
-                <Form.Item
-                  label={t("CREATE_EMPLOYEE.POSITIONS")}
-                  labelCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
-                  wrapperCol={{ xs: 24, sm: 24, md: 24, lg: 24 }}
-                  name='positions'
-                  rules={validator}
-                >
-                  <Select mode='multiple' placeholder={t("CREATE_EMPLOYEE.POSITIONS")}>
-                    {positions?.map((position) => (
-                      <Select.Option value={position.id}>{position.name}</Select.Option>
-                    ))}
-                  </Select>
-                </Form.Item>
-              </Col>
-
-              <Col xs={24} sm={24} md={24} lg={24}>
                 <Row gutter={[8, 8]}>
                   <Col span={24}>{t("CREATE_EMPLOYEE.LANGUAGE_FRAMEWORK")} :</Col>
 
-                  <Col span={8}>
-                    <Select
-                      // placeholder={t("CREATE_EMPLOYEE.POSITIONS")}
-                      value={languageMember}
-                      onChange={(value) => setLanguageMember(value)}
-                      style={{ width: "100%", marginBottom: 16 }}
-                    >
-                      <Select.Option disabled value=''>
-                        {t("CREATE_EMPLOYEE.LANGUAGE_FRAMEWORK_SELECT")}
-                      </Select.Option>
-                      {languages?.map((language) => (
-                        <Select.Option value={language.id}>{language.name}</Select.Option>
-                      ))}
-                    </Select>
-                  </Col>
+                  <Col span={24} style={{ padding: "0", margin: "0" }}>
+                    <Row gutter={[8, 8]}>
+                      <Col span={12} style={{ paddingTop: "10px" }}>
+                        <Col span={24} style={{ paddingBottom: "10px" }}>
+                          <Select
+                            value={languageMember}
+                            onChange={(value) => setLanguageMember(value)}
+                            style={{ width: "100%" }}
+                          >
+                            <Select.Option disabled value=''>
+                              <Text disabled> {t("CREATE_EMPLOYEE.LANGUAGE_FRAMEWORK")}</Text>
+                            </Select.Option>
+                            {languages?.map((language) => (
+                              <Select.Option value={language.id}>{language.name}</Select.Option>
+                            ))}
+                          </Select>
+                        </Col>
 
-                  <Col span={8}>
-                    <Input
-                      value={levelLanguage}
-                      onChange={(e) => setLevelLanguage(e.target.value)}
-                      placeholder={t("CREATE_EMPLOYEE.LEVEL_SELECT")}
-                    />
-                  </Col>
+                        <Col span={24} style={{ paddingBottom: "10px" }}>
+                          <Input
+                            type='number'
+                            value={levelLanguage}
+                            onChange={(e) => setLevelLanguage(e.target.value)}
+                            placeholder={t("CREATE_EMPLOYEE.LEVEL_SELECT")}
+                          />
+                        </Col>
 
-                  <Col span={8}>
-                    <Input
-                      value={experienceLanguage}
-                      onChange={(e) => setExperienceLanguage(e.target.value)}
-                      placeholder={t("CREATE_EMPLOYEE.EXPERIENCE_SELECT")}
-                    />
-                  </Col>
+                        <Col span={24} style={{ paddingBottom: "10px" }}>
+                          <Input
+                            type='number'
+                            value={experienceLanguage}
+                            onChange={(e) => setExperienceLanguage(e.target.value)}
+                            placeholder={t("CREATE_EMPLOYEE.EXPERIENCE_SELECT")}
+                          />
+                        </Col>
 
-                  <Col span={24}>
-                    <Button onClick={handleAddDataLanguage}>{t("CREATE_EMPLOYEE.ADD")}</Button>
-                  </Col>
+                        <Col span={24} style={{ paddingTop: "20px" }}>
+                          <Button onClick={handleAddDataLanguage}>
+                            {t("CREATE_EMPLOYEE.ADD")}
+                          </Button>
+                        </Col>
+                      </Col>
 
-                  <Col span={24}>
-                    <Table
-                      dataSource={tableDataLanguage}
-                      columns={columnsLanguage}
-                      pagination={false}
-                    />
+                      <Col span={12}>
+                        <Col span={24}>
+                          <Table
+                            dataSource={tableDataLanguage}
+                            columns={columnsLanguage}
+                            pagination={false}
+                          />
+                        </Col>
+                      </Col>
+                    </Row>
                   </Col>
                 </Row>
               </Col>
@@ -468,47 +482,56 @@ const CreateEmployeeForm = () => {
                 <Row gutter={[8, 8]}>
                   <Col span={24}>{t("CREATE_EMPLOYEE.TECHNOLOGIES")} :</Col>
 
-                  <Col span={8}>
-                    <Select
-                      value={technicalMember}
-                      onChange={(value) => setTechnicalMember(value)}
-                      style={{ width: "100%", marginBottom: 16 }}
-                    >
-                      <Select.Option value=''>
-                        {t("CREATE_EMPLOYEE.TECHNICAL_SELECT")}
-                      </Select.Option>
-                      {technologies?.map((tech) => (
-                        <Select.Option value={tech.id}>{tech.name}</Select.Option>
-                      ))}
-                    </Select>
-                  </Col>
-
-                  <Col span={8}>
-                    <Input
-                      value={levelTechnical}
-                      onChange={(e) => setLevelTechnical(e.target.value)}
-                      placeholder={t("CREATE_EMPLOYEE.LEVEL_SELECT")}
-                    />
-                  </Col>
-
-                  <Col span={8}>
-                    <Input
-                      value={experienceTechnical}
-                      onChange={(e) => setExperienceTechnical(e.target.value)}
-                      placeholder={t("CREATE_EMPLOYEE.EXPERIENCE_SELECT")}
-                    />
-                  </Col>
-
                   <Col span={24}>
-                    <Button onClick={handleAddDataTechnical}>{t("CREATE_EMPLOYEE.ADD")}</Button>
-                  </Col>
+                    <Row gutter={[8, 8]}>
+                      <Col span={12} style={{ paddingTop: "10px" }}>
+                        <Col span={24} style={{ paddingBottom: "10px" }}>
+                          <Select
+                            value={technicalMember}
+                            onChange={(value) => setTechnicalMember(value)}
+                            style={{ width: "100%" }}
+                          >
+                            <Select.Option disabled value=''>
+                              <Text disabled>{t("CREATE_EMPLOYEE.TECHNICAL_SELECT")}</Text>
+                            </Select.Option>
+                            {technologies?.map((tech) => (
+                              <Select.Option value={tech.id}>{tech.name}</Select.Option>
+                            ))}
+                          </Select>
+                        </Col>
+                        <Col span={24} style={{ paddingBottom: "10px" }}>
+                          <Input
+                            type='number'
+                            value={levelTechnical}
+                            onChange={(e) => setLevelTechnical(e.target.value)}
+                            placeholder={t("CREATE_EMPLOYEE.LEVEL_SELECT")}
+                          />
+                        </Col>
+                        <Col span={24} style={{ paddingBottom: "10px" }}>
+                          <Input
+                            type='number'
+                            value={experienceTechnical}
+                            onChange={(e) => setExperienceTechnical(e.target.value)}
+                            placeholder={t("CREATE_EMPLOYEE.EXPERIENCE_SELECT")}
+                          />
+                        </Col>
+                        <Col span={24} style={{ paddingTop: "20px" }}>
+                          <Button onClick={handleAddDataTechnical}>
+                            {t("CREATE_EMPLOYEE.ADD")}
+                          </Button>
+                        </Col>
+                      </Col>
 
-                  <Col span={24}>
-                    <Table
-                      dataSource={tableDataTechnical}
-                      columns={columnsTechnical}
-                      pagination={false}
-                    />
+                      <Col span={12}>
+                        <Col span={24}>
+                          <Table
+                            dataSource={tableDataTechnical}
+                            columns={columnsTechnical}
+                            pagination={false}
+                          />
+                        </Col>
+                      </Col>
+                    </Row>
                   </Col>
                 </Row>
               </Col>
