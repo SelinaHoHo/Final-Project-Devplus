@@ -100,6 +100,7 @@
     "IS_MANAGER_REQUIRED": "Vui lòng chọn quản lí hoặc không",
     "MANAGED_BY": "Quản lí bởi",
     "FAIL": "Thất bại",
+    "CREATE_USER_FAILED":"Tạo mới nhân viên thất bại",
     "SUCCESS": "Thành công",
     "DUPLICATE_LANG": "Ngôn ngữ/Framework đã tồn tại",
     "DUPLICATE_TECH": "Công nghệ đã tồn tại",
@@ -134,7 +135,7 @@
     "DETAILS": "Chi tiết",
     "NAME": "Tên",
     "SEARCH": "Tìm kiếm",
-    "SEARCH_NAME": "Nhập tên người dùng"
+    "SEARCH_NAME": "Nhập tên nhân viên"
   },
   "LIST": {
     "POSITIONS": "Vị trí",
@@ -192,7 +193,7 @@
     "OK": "OK",
     "CANCEL": "Hủy",
     "SUCCESS": "Xóa nhân viên thành công",
-    "FAILED": "Xóa người dùng thất bại",
+    "FAILED": "Xóa nhân viên thất bại",
     "FAILED_MESSAGE": "Nhân viên này đang trong dự án, vui lòng kiểm tra lại"
   },
   "LISTUSER": {
@@ -275,10 +276,10 @@
     "SUCCESS_MESSAGE": "Bạn đã cập nhật dự án thành công.",
     "FAILED": "Thất bại!",
     "FAILED_MESSAGE": "Bạn đã cập nhật dự án thất bại.",
-    "ADDEMPLOYEE_SUCCESS_MESSAGE": "Thêm người dùng vào dự án thành công.",
-    "ADDEMPLOYEE_FAILED_MESSAGE": "Thêm người dùng vào dự án thất bại.",
-    "UNASSIGNEMPLOYEE_SUCCESS_MESSAGE": "Xóa người dùng ra khỏi dự án thành công.",
-    "UNASSIGNEMPLOYEE_FAILED_MESSAGE": "Xóa người dùng ra khỏi dự án thất bại.",
+    "ADDEMPLOYEE_SUCCESS_MESSAGE": "Thêm nhân viên vào dự án thành công.",
+    "ADDEMPLOYEE_FAILED_MESSAGE": "Thêm nhân viên vào dự án thất bại.",
+    "UNASSIGNEMPLOYEE_SUCCESS_MESSAGE": "Xóa nhân viên ra khỏi dự án thành công.",
+    "UNASSIGNEMPLOYEE_FAILED_MESSAGE": "Xóa nhân viên ra khỏi dự án thất bại.",
     "SUBMIT": "Cập nhật",
     "ADD_EMPLOYEE": "Phân công",
     "EMPLOYEE_REQUIRED": "Vui lòng chọn nhân viên dự án",

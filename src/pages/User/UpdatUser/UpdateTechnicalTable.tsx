@@ -24,6 +24,10 @@ const UpdateTechnicalTable: FC<DataProps> = ({ dataSourceT }) => {
   const { mutate: postTechnical } = usePostTechnical();
   const { mutate: deleteTechnical } = useDeleteTechnical();
 
+  const filteredTechnicalMembers = technologies?.filter((lang) => {
+    return !dataSourceT.some((user) => user.technical.id === lang.id);
+  });
+
   const columns: ColumnsType<technicalMember> = [
     {
       title: t("CREATE_PROJECT.NAME"),
@@ -82,6 +86,7 @@ const UpdateTechnicalTable: FC<DataProps> = ({ dataSourceT }) => {
       userId: id,
     };
     postTechnical(userId);
+    form.resetFields();
   };
 
   const handleDelete = (id: string) => {
@@ -102,8 +107,10 @@ const UpdateTechnicalTable: FC<DataProps> = ({ dataSourceT }) => {
                 rules={validator}
               >
                 <Select placeholder={t("CREATE_EMPLOYEE.CODING_LANGUAGE")}>
-                  {technologies?.map((technology) => (
-                    <Select.Option value={technology.id}>{technology.name}</Select.Option>
+                  {filteredTechnicalMembers?.map((technology) => (
+                    <Select.Option key={technology.id} value={technology.id}>
+                      {technology.name}
+                    </Select.Option>
                   ))}
                 </Select>
               </Form.Item>
