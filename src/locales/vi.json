@@ -121,7 +121,9 @@
     "LANGUAGE_REQUIRED": "Vui lòng chọn ngôn ngữ lập trình/framework",
     "TECHNICAL_REQUIRED": "Vui lòng chọn công nghệ",
     "POSITIONS_REQUIRED": "Vui lòng chọn vị trí",
-    "CREATE_SUCCESS": "Tạo nhân viên thành công"
+    "CREATE_SUCCESS": "Tạo nhân viên thành công",
+    "AVATAR": "Ảnh đại diện",
+    "AVATAR_REQUIRED": "Vui lòng thêm ảnh"
   },
   "TABLE": {
     "EMPTY": "Không có dữ liệu",
