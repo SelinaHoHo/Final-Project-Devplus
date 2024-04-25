@@ -1,11 +1,13 @@
 import { IUserDetail } from "@/interfaces/user/users.interface";
 import { RootState } from "@/redux/store";
-import { Avatar, Card, Col, Row, Space, Table, Typography } from "antd";
+import { Avatar, Card, Col, Row, Space, Steps, Table, Typography } from "antd";
 import moment from "moment";
 import { FC } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import "./DetailForm.scss";
+
+const { Step } = Steps;
 
 type DataProps = {
   data: IUserDetail | undefined;
@@ -78,98 +80,100 @@ const DetailForm: FC<DataProps> = ({ data }) => {
     <div>
       {theme === "dark" ? (
         <div className='detail-employee-dark'>
-          <Row gutter={[16, 16]} style={{ width: "100%" }}>
-            <Col md={24} lg={{ span: 24, flex: "column" }} style={{ width: "100%" }}>
-              <Space direction='vertical'>
-                <Card bordered type='inner' style={{ padding: "20px" }}>
-                  <Row gutter={[8, 8]}>
-                    <Col span={24}>
-                      <Title level={2}>{t("DETAIL_EMPLOYEE.PROFILE")}</Title>
-                    </Col>
-                    <Col span={24}>
-                      <Row gutter={[24, 24]}>
-                        <Col span={12} style={{ display: "flex", alignItems: "center" }}>
+          {/* <Row gutter={[8, 8]} style={{ width: "100%" }}>
+            <Col md={8} lg={{ span: 24, flex: "column" }} style={{ width: "100%" }}>
+              <Col span={24}>
+                <Col span={12}>
+                  <Card bordered type='inner' style={{ padding: "20px" }}>
+                    <Row gutter={[8, 8]}>
+                      <Col span={24}>
+                        <Title level={2}>{t("DETAIL_EMPLOYEE.PROFILE")}</Title>
+                      </Col>
+                      <Col span={24}>
+                        <Row gutter={[24, 24]}>
+                          <Col span={12} style={{ display: "flex", alignItems: "center" }}>
+                            <Col span={12}>
+                              <Avatar size={450} src={data?.profile.avatarUrl} />
+                            </Col>
+                          </Col>
+
                           <Col span={12}>
-                            <Avatar size={450} src={data?.profile.avatarUrl} />
-                          </Col>
-                        </Col>
-
-                        <Col span={12}>
-                          <Col>
-                            <Text
-                              style={{
-                                color: "#16c2c2",
-                                fontSize: "30px",
-                                margin: "0",
-                              }}
-                            >
-                              {data?.profile.fullName}
-                            </Text>
-                          </Col>
-
-                          <Col>
-                            <Text strong>
-                              {data?.projectHistory.map((day) =>
-                                moment(day.createDate).format("MM/YYYY"),
-                              )}{" "}
-                              - {t("DETAIL_EMPLOYEE.NOW")}
-                            </Text>
-                          </Col>
-
-                          <Col>
-                            <Text style={{ fontSize: "16px", margin: "0", paddingTop: "10px" }}>
-                              <Text strong>{t("DETAIL_EMPLOYEE.ADDRESS")}:</Text>{" "}
-                              {data?.profile.address}
-                            </Text>
-                          </Col>
-
-                          <Col>
-                            <Text style={{ fontSize: "16px", margin: "0" }}>
-                              <Text strong>{t("DETAIL_EMPLOYEE.EMAIL")}:</Text> {data?.email}
-                            </Text>
-                          </Col>
-
-                          <Col>
-                            <Text style={{ fontSize: "16px" }}>
-                              <Text strong style={{ fontSize: "18px" }}>
-                                {t("DETAIL_EMPLOYEE.POSITION")}:{" "}
+                            <Col>
+                              <Text
+                                style={{
+                                  color: "#16c2c2",
+                                  fontSize: "30px",
+                                  margin: "0",
+                                }}
+                              >
+                                {data?.profile.fullName}
                               </Text>
-                              {data?.positionMember.map((item) => item?.postion.name).join(", ")}
-                            </Text>
-                          </Col>
+                            </Col>
 
-                          <Col span={24}>
-                            <Table
-                              dataSource={data?.languageMember}
-                              columns={columnsLanguage}
-                              pagination={false}
-                              style={{ margin: "0" }}
-                            />
-                          </Col>
-
-                          <Col>
-                            <Table
-                              dataSource={data?.technicalMember}
-                              columns={columnsTechnical}
-                              pagination={false}
-                              style={{ margin: "0" }}
-                            />
-                          </Col>
-
-                          <Col>
-                            <Text>
-                              {" "}
-                              <Text strong style={{ fontSize: "18px" }}>
-                                {t("DETAIL_EMPLOYEE.DESCRIPTION")}:{" "}
+                            <Col>
+                              <Text strong>
+                                {data?.projectHistory.map((day) =>
+                                  moment(day.createDate).format("MM/YYYY"),
+                                )}{" "}
+                                - {t("DETAIL_EMPLOYEE.NOW")}
                               </Text>
-                              {data?.profile?.description}
-                            </Text>
+                            </Col>
+
+                            <Col>
+                              <Text style={{ fontSize: "16px", margin: "0", paddingTop: "10px" }}>
+                                <Text strong>{t("DETAIL_EMPLOYEE.ADDRESS")}:</Text>{" "}
+                                {data?.profile.address}
+                              </Text>
+                            </Col>
+
+                            <Col>
+                              <Text style={{ fontSize: "16px", margin: "0" }}>
+                                <Text strong>{t("DETAIL_EMPLOYEE.EMAIL")}:</Text> {data?.email}
+                              </Text>
+                            </Col>
+
+                            <Col>
+                              <Text style={{ fontSize: "16px" }}>
+                                <Text strong style={{ fontSize: "18px" }}>
+                                  {t("DETAIL_EMPLOYEE.POSITION")}:{" "}
+                                </Text>
+                                {data?.positionMember.map((item) => item?.postion.name).join(", ")}
+                              </Text>
+                            </Col>
+
+                            <Col span={24}>
+                              <Table
+                                dataSource={data?.languageMember}
+                                columns={columnsLanguage}
+                                pagination={false}
+                                style={{ margin: "0" }}
+                              />
+                            </Col>
+
+                            <Col>
+                              <Table
+                                dataSource={data?.technicalMember}
+                                columns={columnsTechnical}
+                                pagination={false}
+                                style={{ margin: "0" }}
+                              />
+                            </Col>
+
+                            <Col>
+                              <Text>
+                                {" "}
+                                <Text strong style={{ fontSize: "18px" }}>
+                                  {t("DETAIL_EMPLOYEE.DESCRIPTION")}:{" "}
+                                </Text>
+                                {data?.profile?.description}
+                              </Text>
+                            </Col>
                           </Col>
-                        </Col>
-                      </Row>
-                    </Col>
-                  </Row>
-                </Card>
+                        </Row>
+                      </Col>
+                    </Row>
+                  </Card>
+                </Col>
 
                 {data?.projectMembers?.map((item, index) => (
                   <Card bordered type='inner' style={{ padding: "20px" }}>
@@ -221,7 +225,169 @@ const DetailForm: FC<DataProps> = ({ data }) => {
                     </Col>
                   </Card>
                 ))}
-              </Space>
+              </Col>
+            </Col>
+
+            <Col span={24}>
+              <Card>a</Card>
+            </Col>
+          </Row> */}
+          <Row gutter={[8, 8]}>
+            <Col span={12}>
+              <Col span={24}>
+                <Card bordered type='inner' style={{ padding: "10px" }}>
+                  <Row gutter={[8, 8]}>
+                    <Col span={24} style={{ display: "flex", justifyContent: "center" }}>
+                      <Title level={2}>{t("DETAIL_EMPLOYEE.PROFILE")}</Title>
+                    </Col>
+
+                    <Col span={24}>
+                      <Row gutter={[24, 24]}>
+                        <Col span={24} style={{ display: "flex", justifyContent: "center" }}>
+                          <Avatar size={200} src={data?.profile.avatarUrl} />
+                        </Col>
+
+                        <Col span={24}>
+                          <Col>
+                            <Text
+                              style={{
+                                color: "#16c2c2",
+                                fontSize: "30px",
+                                margin: "0",
+                                display: "flex",
+                                justifyContent: "center",
+                              }}
+                            >
+                              {data?.profile.fullName}
+                            </Text>
+                          </Col>
+
+                          <Col
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                              paddingBottom: "30px",
+                            }}
+                          >
+                            <Text strong>
+                              {moment(data?.created_at).format("MM/YYYY")} -{" "}
+                              {t("DETAIL_EMPLOYEE.NOW")}
+                            </Text>
+                          </Col>
+
+                          <Col>
+                            <Text style={{ fontSize: "16px", margin: "0", paddingTop: "10px" }}>
+                              <Text strong>{t("DETAIL_EMPLOYEE.ADDRESS")}:</Text>{" "}
+                              {data?.profile.address}
+                            </Text>
+                          </Col>
+
+                          <Col>
+                            <Text style={{ fontSize: "16px", margin: "0" }}>
+                              <Text strong>{t("DETAIL_EMPLOYEE.EMAIL")}:</Text> {data?.email}
+                            </Text>
+                          </Col>
+
+                          <Col>
+                            <Text style={{ fontSize: "16px" }}>
+                              <Text strong>{t("DETAIL_EMPLOYEE.POSITION")}: </Text>
+                              {data?.positionMember.map((item) => item?.postion.name).join(", ")}
+                            </Text>
+                          </Col>
+
+                          <Col span={24} style={{ paddingTop: "10px" }}>
+                            <Table
+                              dataSource={data?.languageMember}
+                              columns={columnsLanguage}
+                              pagination={false}
+                              style={{ margin: "0" }}
+                            />
+                          </Col>
+
+                          <Col span={24} style={{ paddingTop: "10px" }}>
+                            <Table
+                              dataSource={data?.technicalMember}
+                              columns={columnsTechnical}
+                              pagination={false}
+                              style={{ margin: "0" }}
+                            />
+                          </Col>
+
+                          <Col style={{ paddingTop: "20px" }}>
+                            <Text>
+                              <Text strong style={{ fontSize: "16px" }}>
+                                {t("DETAIL_EMPLOYEE.DESCRIPTION")}:{" "}
+                              </Text>
+                              {data?.profile?.description}
+                            </Text>
+                          </Col>
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
+                </Card>
+              </Col>
+            </Col>
+
+            <Col span={12}>
+              {data?.projectMembers?.map((item, index) => (
+                <Card bordered type='inner' style={{ padding: "20px" }}>
+                  <Col key={index} span={24}>
+                    <Title level={1} style={{ display: "flex", justifyContent: "center" }}>
+                      {item?.project.name}
+                    </Title>
+                    <br />
+
+                    <Steps direction='horizontal' size='small'>
+                      <Step title={moment(item?.project.startDate).format("DD/MM/YYYY")} />
+                      <Step
+                        title={moment(item?.project.endDate).format("DD/MM/YYYY")}
+                        status='finish'
+                      />
+                    </Steps>
+                    <br />
+
+                    <Text style={{ fontSize: "16px" }}>
+                      <Text strong style={{ fontSize: "18px" }}>
+                        {t("DETAIL_EMPLOYEE.ROLE")}:{" "}
+                      </Text>
+                      {item?.roles?.length
+                        ? item.roles.map((role) => role?.position?.name).join(", ")
+                        : "Manager"}
+                    </Text>
+                    <br />
+
+                    <Text style={{ fontSize: "16px" }}>
+                      <Text strong style={{ fontSize: "18px" }}>
+                        {t("DETAIL_EMPLOYEE.LANGUAGE_FRAMEWORK")}:
+                      </Text>{" "}
+                      {item?.project?.languageProject
+                        ?.map((lang) => lang?.language?.name)
+                        .join(", ")}
+                    </Text>
+                    <br />
+
+                    <Text style={{ fontSize: "16px" }}>
+                      <Text strong style={{ fontSize: "18px" }}>
+                        {t("DETAIL_EMPLOYEE.TECHNICAL")}:
+                      </Text>{" "}
+                      {item?.project?.technicalProject
+                        ?.map((tech) => tech?.technical?.name)
+                        .join(", ")}
+                    </Text>
+                    <br />
+
+                    <Text style={{ fontSize: "16px" }}>
+                      <Text strong style={{ fontSize: "18px" }}>
+                        {t("DETAIL_EMPLOYEE.DESCRIPTION")}:
+                      </Text>{" "}
+                      {item?.project.description}
+                    </Text>
+                    <br />
+                    <hr />
+                  </Col>
+                </Card>
+              ))}
             </Col>
           </Row>
         </div>
@@ -238,8 +404,23 @@ const DetailForm: FC<DataProps> = ({ data }) => {
                     <Col span={24}>
                       <Row gutter={[24, 24]}>
                         <Col span={12} style={{ display: "flex", alignItems: "center" }}>
-                          <Col span={12}>
-                            <Avatar size={450} src={data?.profile.avatarUrl} />
+                          <Col
+                            span={24}
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                            }}
+                          >
+                            <Avatar
+                              size={300}
+                              src={data?.profile.avatarUrl}
+                              style={{
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                              }}
+                            />
                           </Col>
                         </Col>
 
