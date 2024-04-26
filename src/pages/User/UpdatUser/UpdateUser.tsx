@@ -9,6 +9,7 @@ import {
   useUploadAvatar,
 } from "@/hooks/useUser";
 import { IUpdateUser } from "@/interfaces/user/users.interface";
+import { setEmployeeDetailName } from "@/redux/features/tagView/tagViewSlice";
 import { RootState } from "@/redux/store";
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons";
 import type { GetProp, UploadFile, UploadProps } from "antd";
@@ -30,7 +31,7 @@ import { Rule } from "antd/es/form";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import * as Yup from "yup";
 import LanguageFormTable from "./UpdateLanguageTable";
@@ -41,6 +42,7 @@ const UpdateUser = () => {
   const { theme } = useSelector((state: RootState) => state.global);
   const { t } = useTranslation();
   const { id } = useParams();
+  const dispatch = useDispatch();
   const { data: dataDetail, isLoading: isLoadingGetAll } = useGetUserById(id ?? "");
   const [form] = Form.useForm();
   const { data: positions } = useGetPosition();
@@ -54,6 +56,10 @@ const UpdateUser = () => {
     const eighteenYearsAgo = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
     return eighteenYearsAgo;
   };
+
+  if (dataDetail) {
+    dispatch(setEmployeeDetailName(dataDetail.profile.fullName));
+  }
 
   const validator = [
     yupSync(

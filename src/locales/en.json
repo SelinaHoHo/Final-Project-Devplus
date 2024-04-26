@@ -78,6 +78,7 @@
   },
   "CREATE_EMPLOYEE": {
     "CREATE_EMPLOYEE": "Create Employee",
+    "ALREADY_EXISTS": "Email already exists",
     "POSITION": "Position",
     "EMAIL": "Email",
     "FULLNAME": "Full name",
@@ -114,7 +115,7 @@
     "TECHNOLOGIES": "Technologies",
     "POSITIONS": "Positions",
     "FAIL": "Fail",
-    "CREATE_USER_FAILED":"Create user failed",
+    "CREATE_USER_FAILED": "Create user failed",
     "SUCCESS": "Success",
     "DUPLICATE_LANG": "Duplicate Language/Framework already exists in the table.",
     "DUPLICATE_TECH": "Duplicate Technical already exists in the table.",
@@ -206,6 +207,7 @@
     "PROJECT_NAME": "Enter project name"
   },
   "DETAIL_EMPLOYEE": {
+    "DETAIL": "Detail",
     "PROFILE": "Profile",
     "ADDRESS": "Address",
     "EMAIL": "Email",

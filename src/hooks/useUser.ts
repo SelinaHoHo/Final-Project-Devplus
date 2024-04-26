@@ -64,12 +64,11 @@ export const useGetUserById = (id: string): UseQueryResult<GetUserById, Error> =
 export const useUploadAvatar = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: async (file: any) => {
+    mutationFn: async (file: FormData) => {
       const url = await uploadAvatar(file);
       return url.data;
     },
-    onSuccess: (data, variables) => {
-      queryClient.setQueryData(["todo", { id: variables.id }], data);
+    onSuccess: (_data, _variables) => {
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEY.FILE],
       });

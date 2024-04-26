@@ -65,7 +65,7 @@ const Router = () => {
               element: <CreateUser />,
             },
             {
-              path: "update/:id",
+              path: "edit/:id",
               element: <UpdateUser />,
             },
           ],
