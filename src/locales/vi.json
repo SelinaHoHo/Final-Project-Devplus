@@ -294,6 +294,15 @@
     "START": "Bắt đầu: {{time}}",
     "PARTICIPATED": "tham gia"
   },
+  "DASHBOARD":{
+    "MANAGER": "Tất cả quản lí: ",
+    "EMPLOYEE":"Tất cả nhân viên: ",
+    "PROJECT": "tất cả dự án:  ",
+    "STATISTICS":"Thống kê các dự án",
+    "TECHNICAL": "Công nghệ",
+    "STATUS": "Trạng thái các dự án",
+    "LANGUAGE":"Ngôn Ngữ Lập Trình",
+    "FOLLOW": "Theo dõi nhân viên"},
   "UPDATE_EMPLOYEE": {
     "NAME_REQUIRED": "Vui lòng nhập tên",
     "INVALIDEMAIL_REQUIRED": "Sai địa chỉ email",

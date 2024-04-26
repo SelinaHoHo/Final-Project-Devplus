@@ -20,4 +20,8 @@ export const API_URL = {
   FILE: "/file",
   LANGUAGE_MEMBER: "/languageMember",
   TECHNICAL_MEMBER: "/technicalMember",
+  ONLY_PROJECT: "/project/projectInMonth",
+  TECHNICAL_COUNT: "/technical/getMostTechnical",
+  LANGUAGE_COUNT: "/language/getMostLanguage",
+  COUNT_USER: "/user/count-user-in-project",
 };

@@ -163,3 +163,14 @@ export interface projectHistory {
   type: string;
   name: string;
 }
+export interface IOnlyProject {
+  totalProjet: number;
+  projectInYear: {
+    number: number;
+  };
+  projectStatus: {
+    pending: number;
+    progress: number;
+    complete: number;
+  };
+}

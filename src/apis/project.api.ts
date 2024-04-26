@@ -4,6 +4,7 @@ import {
   GetListProject,
   IAssignEmployee,
   ICreateProjectReq,
+  IOnlyProject,
   IProject,
   IProjectDetail,
   IUpdateProject,
@@ -34,3 +35,8 @@ export const addEmployeeToProject = (data: IAssignEmployee): Promise<AxiosRespon
 
 export const unassignEmployeeToProject = (id: string) =>
   instance.delete(`${API_URL.UNASSIGN_EMPLOYEE}/${id}`);
+export const getOnlyProject = (): Promise<AxiosResponse<IOnlyProject>> =>
+  instance.get(API_URL.ONLY_PROJECT);
+
+// export const getMemberProject = (): Promise<AxiosResponse<IProject>> =>
+//   instance.get(API_URL.PROJECTS);

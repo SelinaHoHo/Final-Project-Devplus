@@ -20,6 +20,7 @@
     "buffer": "^6.0.3",
     "date-fns": "^3.6.0",
     "dayjs": "^1.11.10",
+    "echarts": "^5.5.0",
     "history": "^5.3.0",
     "i18next": "^23.7.14",
     "i18next-http-backend": "^2.4.2",
