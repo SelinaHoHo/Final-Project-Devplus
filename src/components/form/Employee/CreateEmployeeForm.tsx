@@ -262,10 +262,10 @@ const CreateEmployeeForm = () => {
       });
       navigate("/employees");
       form.resetFields();
-    } catch (error: unknown) {
+    } catch (_error: unknown) {
       notification.error({
         message: t("CREATE_EMPLOYEE.FAIL"),
-        description: t(`CREATE_EMPLOYEE.${(error as Error).message}`) as string,
+        description: t("CREATE_EMPLOYEE.ALREADY_EXISTS"),
       });
     } finally {
       setLoading(false);

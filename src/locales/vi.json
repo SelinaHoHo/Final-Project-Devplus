@@ -74,6 +74,7 @@
   },
   "CREATE_EMPLOYEE": {
     "CREATE_EMPLOYEE": "Tạo nhân viên",
+    "ALREADY_EXISTS": "Email đã tồn tại",
     "POSITION": "Vị trí",
     "EMAIL": "Email",
     "FULLNAME": "Họ và tên",
@@ -100,7 +101,7 @@
     "IS_MANAGER_REQUIRED": "Vui lòng chọn quản lí hoặc không",
     "MANAGED_BY": "Quản lí bởi",
     "FAIL": "Thất bại",
-    "CREATE_USER_FAILED":"Tạo mới nhân viên thất bại",
+    "CREATE_USER_FAILED": "Tạo mới nhân viên thất bại",
     "SUCCESS": "Thành công",
     "DUPLICATE_LANG": "Ngôn ngữ/Framework đã tồn tại",
     "DUPLICATE_TECH": "Công nghệ đã tồn tại",

@@ -16,9 +16,9 @@
     padding: 20px 20px 10px 20px;
     border-radius: 10px;
     box-shadow: 0 8px 8px 0 #16c2c20e, 0 4px 10px 0 #16c2c21f;
-    &::-webkit-scrollbar {
-      display: none !important;
-    }
+    // &::-webkit-scrollbar {
+    //   display: none !important;
+    // }
   }
 
   .form-create-dark {
@@ -29,8 +29,8 @@
     padding: 20px 20px 10px 20px;
     border-radius: 10px;
     box-shadow: 0 8px 8px 0 #ffffff00, 0 4px 10px rgba(255, 255, 255, 0.26);
-    &::-webkit-scrollbar {
-      display: none !important;
-    }
+    // &::-webkit-scrollbar {
+    //   display: none !important;
+    // }
   }
 }
