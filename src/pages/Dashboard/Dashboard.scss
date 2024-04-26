@@ -9,11 +9,11 @@
     row-gap: 0;
 
     :where(.css-dev-only-do-not-override-1kd7ozu).ant-space-gap-col-small {
-      column-gap: 20px;
+      column-gap: 20px !important;
     }
 
     :where(.css-dev-only-do-not-override-n3jbno).ant-space-gap-col-small {
-      column-gap: 20px;
+      column-gap: 20px !important;
     }
 
     :where(.css-dev-only-do-not-override-1kd7ozu).ant-statistic .ant-statistic-title {
