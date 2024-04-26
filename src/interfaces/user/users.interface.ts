@@ -268,3 +268,10 @@ export interface IAssignEmployee {
   projectId: string;
   roles: string[];
 }
+
+export interface IGetCountUser {
+  userWithoughtProject: number;
+  totalUser: number;
+}
+
+export type IGetCountUsers = IGetCountUser[];

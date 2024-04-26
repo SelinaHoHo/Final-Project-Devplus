@@ -14,7 +14,7 @@ const LanguagePage = lazy(() => import("@/pages/language/LanguagePage"));
 const PositionPage = lazy(() => import("@/pages/position/PositionPage"));
 const CreateProject = lazy(() => import("@/pages/project/Create/CreateProject"));
 const PageNoFound = lazy(() => import("@/pages/PageNotFound"));
-const Dashboard = lazy(() => import("@/pages/Dashboard"));
+const Dashboard = lazy(() => import("@/pages/Dashboard/Dashboard"));
 const Login = lazy(() => import("@/pages/login/Login"));
 const DetailProject = lazy(() => import("@/pages/project/Detail/DetailProject"));
 const UpdateProject = lazy(() => import("@/pages/project/Update/UpdateProject"));

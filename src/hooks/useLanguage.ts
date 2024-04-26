@@ -2,10 +2,12 @@ import {
   createLanguage,
   deleteLanguage,
   getAllLanguage,
+  getCountLanguage,
   getLanguagesPagi,
   updateLanguage,
 } from "@/apis/language.api";
 import { QUERY_KEY } from "@/constants/queryKey";
+import { ICountLanguages } from "@/interfaces/language/languages.interface";
 import ISkill, {
   GetListSkills,
   ISkillCreate,
@@ -111,6 +113,15 @@ export const useDeleteLanguage = () => {
         message: t("SKILL.FAILED") as string,
         description: t("SKILL.DELETE_FAILED_LANG") as string,
       });
+    },
+  });
+};
+export const useGetCountLanguage = (): UseQueryResult<ICountLanguages, Error> => {
+  return useQuery<ICountLanguages>({
+    queryKey: [QUERY_KEY.LANGUAGE_COUNT],
+    queryFn: async (): Promise<ICountLanguages> => {
+      const { data } = await getCountLanguage();
+      return data;
     },
   });
 };

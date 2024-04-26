@@ -6,6 +6,7 @@ import ISkill, {
   ISkillPagination,
   ISkills,
 } from "@/interfaces/skill/skills.interface";
+import { ICountTechnicals } from "@/interfaces/technical/technicals.interface";
 import { AxiosResponse } from "axios";
 
 export const getTechnicalsPagi = (param: GetListSkills): Promise<AxiosResponse<ISkillPagination>> =>
@@ -20,3 +21,5 @@ export const updateTechnical = (data: ISkill): Promise<AxiosResponse<ISkill>> =>
   instance.patch(`${API_URL.TECHNICAL}/${data?.id}`, data);
 
 export const deleteTechnical = (id: string) => instance.delete(`${API_URL.TECHNICAL}/${id}`);
+export const getCountTechnical = (): Promise<AxiosResponse<ICountTechnicals>> =>
+  instance.get(API_URL.TECHNICAL_COUNT);

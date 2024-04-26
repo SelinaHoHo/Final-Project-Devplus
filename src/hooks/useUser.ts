@@ -5,6 +5,7 @@ import {
   deleteUser,
   exportCv,
   getAllUserNoPagination,
+  getCountUser,
   getDetailEmoloyee,
   getUserById,
   getUsers,
@@ -20,6 +21,7 @@ import {
   GetListUsers,
   GetUserById,
   IAssignEmployee,
+  IGetCountUsers,
   IGetUsers,
   IUpdateUser,
   IUserDetail,
@@ -288,6 +290,16 @@ export const useDeleteTechnical = () => {
         message: t("UPDATE_EMPLOYEE.FAILED") as string,
         description: t("UPDATE_EMPLOYEE.TECHNICAL_FAILED_MESSAGE") as string,
       });
+    },
+  });
+};
+
+export const useGetCountUser = (): UseQueryResult<IGetCountUsers, Error> => {
+  return useQuery<IGetCountUsers>({
+    queryKey: [QUERY_KEY.COUNT_USER_IN_PROJECT],
+    queryFn: async (): Promise<IGetCountUsers> => {
+      const { data } = await getCountUser();
+      return data;
     },
   });
 };

@@ -2,6 +2,7 @@ import {
   createTechnical,
   deleteTechnical,
   getAllTechnical,
+  getCountTechnical,
   getTechnicalsPagi,
   updateTechnical,
 } from "@/apis/technical.api";
@@ -12,6 +13,7 @@ import ISkill, {
   ISkillPagination,
   ISkills,
 } from "@/interfaces/skill/skills.interface";
+import { ICountTechnicals } from "@/interfaces/technical/technicals.interface";
 import { UseQueryResult, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { notification } from "antd";
 import { useTranslation } from "react-i18next";
@@ -88,7 +90,6 @@ export const useUpdateTechnical = () => {
     },
   });
 };
-
 export const useDeleteTechnical = () => {
   const { t } = useTranslation();
   const queryClient = useQueryClient();
@@ -111,6 +112,15 @@ export const useDeleteTechnical = () => {
         message: t("SKILL.FAILED") as string,
         description: t("SKILL.DELETE_FAILED_TECH") as string,
       });
+    },
+  });
+};
+export const useGetCountTechnical = (): UseQueryResult<ICountTechnicals, Error> => {
+  return useQuery<ICountTechnicals>({
+    queryKey: [QUERY_KEY.TECHNICAL_COUNT],
+    queryFn: async (): Promise<ICountTechnicals> => {
+      const { data } = await getCountTechnical();
+      return data;
     },
   });
 };

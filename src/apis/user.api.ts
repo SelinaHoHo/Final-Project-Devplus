@@ -10,6 +10,7 @@ import {
   GetListUsers,
   GetUserById,
   IAssignEmployee,
+  IGetCountUsers,
   IGetUsers,
   IUpdateUser,
   IUserDetail,
@@ -106,3 +107,5 @@ export const postTechnical = (
 
 export const deleteTechnical = (id: string): Promise<AxiosResponse<technicalMember>> =>
   instance.delete(`${API_URL.TECHNICAL_MEMBER}/${id}`);
+export const getCountUser = (): Promise<AxiosResponse<IGetCountUsers>> =>
+  instance.get(API_URL.COUNT_USER);

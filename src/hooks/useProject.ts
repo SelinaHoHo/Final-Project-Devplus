@@ -3,6 +3,7 @@ import {
   createProject,
   deleteProject,
   getDetailProject,
+  getOnlyProject,
   getProjects,
   patchUpdateProject,
   patchUpdateStatus,
@@ -13,6 +14,7 @@ import {
   GetListProject,
   IAssignEmployee,
   ICreateProjectReq,
+  IOnlyProject,
   IProject,
   IProjectDetail,
   IUpdateProject,
@@ -183,6 +185,15 @@ export const useUnAssignEmployee = () => {
         message: t("UPDATE_PROJECT.FAILED") as string,
         description: t("UPDATE_PROJECT.UNASSIGNEMPLOYEE_FAILED_MESSAGE") as string,
       });
+    },
+  });
+};
+export const useOnlyGetProjects = (): UseQueryResult<IOnlyProject, Error> => {
+  return useQuery<IOnlyProject>({
+    queryKey: [QUERY_KEY.ONLY_PROJECT],
+    queryFn: async (): Promise<IOnlyProject> => {
+      const { data } = await getOnlyProject();
+      return data;
     },
   });
 };

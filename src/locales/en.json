@@ -298,6 +298,16 @@
     "START": "Start: {{time}}",
     "PARTICIPATED": " participated in the"
   },
+  "DASHBOARD":{
+    "MANAGER": "Total Manager",
+    "EMPLOYEE":"Total Employees",
+    "PROJECT": "Total Projects",
+    "STATISTICS":"Project statistics",
+    "TECHNICAL": "Technical",
+    "STATUS": "Status Of Project",
+    "LANGUAGE": "Language",
+    "FOLLOW": "Follow employee"
+  },
   "UPDATE_EMPLOYEE": {
     "NAME_REQUIRED": "Please enter name",
     "INVALIDEMAIL_REQUIRED": "Invalid email address",
