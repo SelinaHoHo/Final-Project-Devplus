@@ -32,6 +32,7 @@ import {
 import { UseQueryResult, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { notification } from "antd";
 import { t } from "i18next";
+import { useNavigate } from "react-router-dom";
 
 export const useGetAccounts = (param: GetListUsers): UseQueryResult<IUsers, Error> => {
   return useQuery<IUsers>({
@@ -156,6 +157,7 @@ export const useAddEmployeeToProject = () => {
 
 export const useUpdateUser = (id: string) => {
   const queryClient = useQueryClient();
+  const navigate = useNavigate();
   return useMutation({
     mutationFn: async (params: IUpdateUser) => {
       const data = await updateUser(id, params);
@@ -168,6 +170,7 @@ export const useUpdateUser = (id: string) => {
       notification.success({
         message: t("UPDATE_EMPLOYEE.SUCCESS_USER"),
       });
+      navigate("/employees/list");
     },
     onError: () => {
       notification.error({

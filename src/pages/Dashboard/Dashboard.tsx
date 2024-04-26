@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import { FolderOpenOutlined, TeamOutlined, UserOutlined } from "@ant-design/icons";
 import { Card, Col, Row } from "antd";
-import { TeamOutlined, FolderOpenOutlined, UserOutlined } from "@ant-design/icons";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { useGetAllUserNoPagination } from "@/hooks/useUser";
-import { useOnlyGetProjects } from "@/hooks/useProject";
-import DashboardCard from "@/interfaces/dashboard/DashboardCard";
-import BarChart from "@/interfaces/dashboard/BarChart";
-import PieChart from "@/interfaces/dashboard/PieChart";
-import { useGetCountTechnical } from "@/hooks/useTechnical";
 import { useGetCountLanguage } from "@/hooks/useLanguage";
-import "./Dashboard.scss";
+import { useOnlyGetProjects } from "@/hooks/useProject";
+import { useGetCountTechnical } from "@/hooks/useTechnical";
+import { useGetAllUserNoPagination } from "@/hooks/useUser";
+import BarChart from "@/interfaces/dashboard/BarChart";
+import DashboardCard from "@/interfaces/dashboard/DashboardCard";
 import LineChart from "@/interfaces/dashboard/LineChart";
+import PieChart from "@/interfaces/dashboard/PieChart";
+import "./Dashboard.scss";
 
 const Dashboard: React.FC = () => {
   const { data: users } = useGetAllUserNoPagination();
